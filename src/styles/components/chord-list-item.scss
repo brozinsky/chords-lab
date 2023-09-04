@@ -1,0 +1,28 @@
+.chord-list-item {
+  @apply border-gray-700 bg-gray-800 border text-gray-300 flex flex-col items-center p-2 justify-center gap-4;
+  border-radius: 20px;
+  height: 100px;
+  cursor: pointer;
+  transition: 0.1s;
+  user-select: none;
+  &:hover {
+    @apply bg-gray-700 text-gray-300;
+  }
+  &:active {
+    @apply bg-gray-600 text-white border-gray-600;
+  }
+  &--active {
+    @apply border-green-500 bg-green-900 border text-green-300;
+    &:hover,
+    &:active {
+      @extend .chord-list-item--active;
+    }
+  }
+  &__name {
+    @apply text-lg font-bold;
+    font-size: 2rem;
+  }
+  &__suffix {
+    @apply text-center text-sm;
+  }
+}

@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary-100: #8dc6fb;
+    --color-primary-200: #6ab4fa;
+    --color-primary-300: #48a3f8;
+    --color-primary-400: #2592f7;
+    --color-primary-500: #1188f7;
+    --color-primary-600: #066ecf;
+    --color-primary-700: #055cac;
+    --color-primary-800: #04498a;
+    --color-primary-900: #033767;
+
+    --color-dark-50: #3a3a3a;
+    --color-dark-100: #d4d3d4;
+    --color-dark-200: #a8a8aa;
+    --color-dark-300: #7d7c7f;
+    --color-dark-400: #515155;
+    --color-dark-500: #26252a;
+    --color-dark-600: #1e1e22;
+    --color-dark-700: #171619;
+    --color-dark-800: #0f0f11;
+    --color-dark-900: #080708;
+
+    --color-elevation-50: #3a3a3a;
+    --color-elevation-100: #cccccc;
+    --color-elevation-200: #989895;
+    --color-elevation-300: #7d7c7f;
+    --color-elevation-400: #3c3c3c;
+    --color-elevation-500: #333333;
+    --color-elevation-600: #2c2c2d;
+    --color-elevation-700: #252526;
+    --color-elevation-800: #252526;
+    --color-elevation-900: #1e1e1e;
+
+    --color-typography-100: #aaa;
+    --color-typography-300: #dedede;
+    --color-typography-500: #eee;
+    --color-typography-900: #fff;
+
+    --color-green-500: hsl(158, 81%, 39%);
+    --color-green-dark: hsla(158, 90%, 39%, 0.08);
+  }
+}
+
+@import "abstracts/index.scss";
+@import "base/index.scss";
+@import "components/index.scss";
+@import "pages/index.scss";
+
+.piano-note {
+  @apply flex items-center justify-center text-typography-300;
+  height: 2rem;
+  width: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: darken(#fff, 15%);
+  &--circle {
+    @apply text-white bg-emerald-400 rounded-full;
+  }
+}
+.piano-key {
+  @apply items-end flex justify-center py-4;
+  position: relative;
+  &--black {
+    width: 3rem;
+    height: 9rem;
+    background: black;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    z-index: 1;
+    @apply rounded-b-xl;
+    .piano-note {
+      color: darken(#fff, 70%);
+    }
+    &.piano-key--active {
+      @apply bg-emerald-600;
+      .piano-note {
+        @apply text-emerald-400;
+      }
+    }
+    .kbd {
+      top: calc(-2.2em - 1rem);
+      bottom: unset;
+    }
+  }
+  &--white {
+    width: 4rem;
+    height: 15rem;
+    background: white;
+    border: 1px solid transparent;
+    @apply border-dark-800 rounded-b-xl;
+    &.piano-key--active {
+      @apply bg-emerald-300;
+      .piano-note {
+        @apply text-emerald-100;
+      }
+    }
+  }
+}
+
+.kbd {
+  @apply text-gray-100 bg-gray-800 rounded-md border border-gray-500 text-xs bg-opacity-80;
+  padding: 0.25rem;
+  min-height: 2.2em;
+  min-width: 2.2em;
+  position: absolute;
+  bottom: calc(-2.2em - 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}

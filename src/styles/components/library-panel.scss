@@ -1,0 +1,5 @@
+.library-panel {
+    @apply grid;
+    grid-template-columns: minmax(0, 250px) minmax(0, 5fr);
+    gap: 1rem;
+}

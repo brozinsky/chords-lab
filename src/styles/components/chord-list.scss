@@ -1,0 +1,6 @@
+.chord-list {
+    @apply grid grid-cols-8 grid-rows-3 gap-4 p-4 rounded-xl;
+    border: 1px solid theme('colors.gray.500');
+    row-gap: 1rem;
+    grid-auto-rows: 1fr;
+}
