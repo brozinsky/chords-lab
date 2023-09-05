@@ -7,6 +7,7 @@ import { createScale, notes } from "@/utils/notesData";
 import useCombinedFilters from "@/hooks/useCombinedFilters";
 import useChordCombinations from "@/hooks/useChordCombinations";
 import useFilteredListsStore from "@/stores/useFilteredListsStore";
+import useSelectedChord from "@/stores/useSelectedChord";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import getIntervalNotes from "@/utils/getIntervalNotes";
 import isChordInScale from "@/utils/isChordInScale";
@@ -35,6 +36,7 @@ const Listing = () => {
   const endIndex = startIndex + itemsPerPage;
 
   const { filteredLists, updateFilteredLists } = useFilteredListsStore();
+  const { selectedChord, setSelectedChord } = useSelectedChord();
 
   // handle filtering by search field
   const searchFilteredResults = chordCombinations.filter((chord) => {
@@ -77,16 +79,24 @@ const Listing = () => {
     setTotalPages(Math.ceil(searchFilteredResults.length / itemsPerPage));
   }, [searchValue]);
 
+  const handleChordSelect = (chord) => {
+    setSelectedChord(chord)
+  }
+
+  useEffect(() => {
+    console.log(selectedChord);
+  }, [selectedChord]);
+
   return (
     <>
       <div ref={animationParent} className="chord-list">
         {(searchValue === ""
           ? combinedFilteredResults.slice(startIndex, endIndex)
           : searchFilteredResults.slice(startIndex, endIndex)
-        ).map(({ note, chordName }, index) => (
-          <div key={note + chordName + index} className="chord-list-item">
-            <div className="chord-list-item__name">{note}</div>
-            <div className="chord-list-item__suffix">{chordName}</div>
+        ).map((chord, index) => (
+          <div key={chord.note + chord.chordName + index} onClick={() => handleChordSelect(chord)} className="chord-list-item">
+            <div className="chord-list-item__name">{chord.note}</div>
+            <div className="chord-list-item__suffix">{chord.chordName}</div>
           </div>
         ))}
       </div>
