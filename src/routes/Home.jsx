@@ -9,9 +9,9 @@ export default function Root() {
   const { selectedChord } = useSelectedChord();
   return (
     <main className="bg-dark-800">
-      <div className="container flex flex-col items-center justify-center py-20">
+      <div className="container flex flex-col items-center justify-center py-12">
         <div className="flex flex-row">
-          <Piano />
+          {/* <Piano /> */}
           <ChordDetails chord={selectedChord}/>
         </div>
       </div>

@@ -51,6 +51,11 @@
 @import "components/index.scss";
 @import "pages/index.scss";
 
+$piano-key-black-width: 3rem;
+$piano-key-black-height: 9rem;
+$piano-key-white-width: 4rem;
+$piano-key-white-height: 15rem;
+
 .piano-note {
   @apply flex items-center justify-center text-typography-300;
   height: 2rem;
@@ -63,14 +68,14 @@
   }
 }
 .piano-key {
-  @apply items-end flex justify-center py-4;
+  @apply items-end flex justify-center py-4 select-none;
   position: relative;
   &--black {
-    width: 3rem;
-    height: 9rem;
+    width: $piano-key-black-width;
+    height: $piano-key-black-height;
     background: black;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
+    margin-left: -(calc($piano-key-black-width / 2));
+    margin-right: -(calc($piano-key-black-width / 2));
     z-index: 1;
     @apply rounded-b-xl;
     .piano-note {
@@ -88,8 +93,8 @@
     }
   }
   &--white {
-    width: 4rem;
-    height: 15rem;
+    width: $piano-key-white-width;
+    height: $piano-key-white-height;
     background: white;
     border: 1px solid transparent;
     @apply border-dark-800 rounded-b-xl;
@@ -98,6 +103,24 @@
       .piano-note {
         @apply text-emerald-100;
       }
+    }
+  }
+  &--sm {
+    $size-scale: 0.65;
+    &.piano-key--white {
+      @apply rounded-b-md;
+      width: calc($piano-key-white-width * $size-scale);
+      height: calc($piano-key-white-height * $size-scale);
+    }
+    &.piano-key--black {
+      @apply rounded-b-md;
+      width: calc($piano-key-black-width * $size-scale);
+      height: calc($piano-key-black-height * $size-scale);
+      margin-left: -(calc($piano-key-black-width * $size-scale / 2));
+      margin-right: -(calc($piano-key-black-width * $size-scale / 2));
+    }
+    & > .piano-note {
+      font-size: 1.2rem;
     }
   }
 }
