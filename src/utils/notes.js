@@ -25,6 +25,31 @@ export const notesWithSprite = {
   b3: [179492, 3000],
 };
 
+export const intervalDegrees = [
+  {id: 1, symbol: "1", name: "unison"},
+  {id: 2, symbol: "♭2", name: "minor 2nd"},
+  {id: 3, symbol: "2", name: "major 2nd"},
+  {id: 4, symbol: "♭3", name: "minor 3rd"},
+  {id: 5, symbol: "3", name: "major 3rd"},
+  {id: 6, symbol: "4", name: "perfect 4th"},
+  {id: 7, symbol: "♭5", name: "diminished 5th"},
+  {id: 8, symbol: "5", name: "perfect 5th"},
+  {id: 9, symbol: "♭6", name: "minor 6th"},
+  {id: 10, symbol: "6", name: "major 6th"},
+  {id: 11, symbol: "♭7", name: "minor 7th"},
+  {id: 12, symbol: "7", name: "major 7th"},
+  {id: 13, symbol: "8", name: "octave"},
+  {id: 14, symbol: "♭9", name: "minor 9th"},
+  {id: 15, symbol: "9", name: "major 9th"},
+  {id: 16, symbol: "♭10", name: "minor 10th"},
+  {id: 17, symbol: "10", name: "major 10th"},
+  {id: 18, symbol: "11", name: "major 11th"},
+  {id: 19, symbol: "12", name: "minor 12th"},
+  {id: 20, symbol: "12", name: "major 12th"},
+  {id: 21, symbol: "♭13", name: "minor 13th"},
+  {id: 22, symbol: "13", name: "major 13th"},
+];
+
 export const pianoNotes = [];
 for (const note in notesWithSprite) {
   const name = note;

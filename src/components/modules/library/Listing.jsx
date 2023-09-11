@@ -96,7 +96,7 @@ const Listing = () => {
         ).map((chord, index) => (
           <div key={chord.note + chord.chordName + index} onClick={() => handleChordSelect(chord)} className="chord-list-item">
             <div className="chord-list-item__name">{chord.note}</div>
-            <div className="chord-list-item__suffix">{chord.chordName}</div>
+            <div className="chord-list-item__suffix">{chord.abbreviations ? chord.abbreviations[0] : null}</div>
           </div>
         ))}
       </div>

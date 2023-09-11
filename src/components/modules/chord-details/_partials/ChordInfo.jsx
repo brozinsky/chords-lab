@@ -1,3 +1,4 @@
+import { intervalDegrees } from "@/utils/notes";
 import React from "react";
 
 const ChordInfo = ({ chord }) => {
@@ -6,8 +7,9 @@ const ChordInfo = ({ chord }) => {
   }
   console.log(chord);
   if (isEmpty(chord)) return;
+
   return (
-    <div className="text-white flex-col flex space-y-4">
+    <div className="flex-col flex space-y-4">
       <div className="flex flex-col">
         <div>Name:</div>
         <div className="flex gap-1">
@@ -16,12 +18,13 @@ const ChordInfo = ({ chord }) => {
         </div>
       </div>
       <div className="flex flex-col">
-        <div>Chord Structure:</div>
+        <div>Chord Formula:</div>
         <div className="flex flex-col">
           <div className="flex gap-2">
             <div className="flex gap-2">Intervals:</div>
             {chord.intervals.map((interval) => {
-              return <div key={interval}>{interval}</div>;
+              const intervalName = intervalDegrees.find((degree) => degree.id === interval).symbol;
+              return <div key={interval}>{intervalName}</div>;
             })}
           </div>
           <div className="flex gap-2">

@@ -6,7 +6,7 @@ function useChordCombinations(notes, chords) {
 
   useEffect(() => {
     const updatedChordCombinations = notes.flatMap((note) =>
-      chords.map(({ name, notes }) => ({ note, chordName: name, intervals: notes, intervalNotes: getIntervalNotes(notes, note) }))
+      chords.map(({ name, notes, abbreviations }) => ({ note, chordName: name, abbreviations: abbreviations, intervals: notes, intervalNotes: getIntervalNotes(notes, note) }))
     );
     setChordCombinations(updatedChordCombinations);
   }, [notes, chords]);
