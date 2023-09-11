@@ -26,7 +26,7 @@ const Checkbox = ({
       "checkbox",
       state.isSelected ?? "checkbox--selected",
       isDisabled
-        ? "border-gray-300"
+        ? "border-neutral-500"
         : isFocusVisible || state.isSelected
         ? "checkbox--selected"
         : "checkbox--empty",

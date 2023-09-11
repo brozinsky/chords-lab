@@ -3,12 +3,12 @@ import React from "react";
 const Badge = ({children, handleCloseClick}) => {
   return (
     <span
-      className="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-gray-800 bg-gray-100 rounded dark:bg-gray-700 dark:text-gray-300"
+      className="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium border border-neutral-500 bg-neutral-600 rounded text-text-100"
     >
       {children}
       <button
         type="button"
-        className="inline-flex items-center p-1 ml-2 text-sm text-gray-400 bg-transparent rounded-sm hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300"
+        className="inline-flex items-center p-1 ml-2 text-sm text-neutral-400 bg-transparent rounded-sm hover:text-neutral-200"
         data-dismiss-target="#badge-dismiss-dark"
         aria-label="Remove"
         onClick={handleCloseClick}

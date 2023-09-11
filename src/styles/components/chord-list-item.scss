@@ -1,15 +1,13 @@
 .chord-list-item {
-  @apply border-gray-700 bg-gray-800 border text-gray-300 flex flex-col items-center p-2 justify-center gap-4;
-  border-radius: 20px;
-  height: 100px;
+  @apply px-8 py-4 rounded-xl border-neutral-500 bg-neutral-600 border text-text-300 flex flex-row items-center p-2 justify-center gap-2;
   cursor: pointer;
   transition: 0.1s;
   user-select: none;
   &:hover {
-    @apply bg-gray-700 text-gray-300;
+    @apply bg-neutral-500 text-text-100;
   }
   &:active {
-    @apply bg-gray-600 text-white border-gray-600;
+    @apply bg-neutral-400 text-white border-neutral-600;
   }
   &--active {
     @apply border-green-500 bg-green-900 border text-green-300;

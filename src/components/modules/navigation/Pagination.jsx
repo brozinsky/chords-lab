@@ -8,7 +8,7 @@ const Pagination = () => {
   return (
     <nav className="flex items-center mx-auto h-8 text-sm">
       <button
-        className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-100 bg-transparent border border-gray-300 rounded-l-lg hover:bg-gray-300 hover:text-gray-700 disabled:text-gray-500 disabled:border-gray-500 hover:disabled:bg-transparent"
+        className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-neutral-100 bg-transparent border border-neutral-300 rounded-l-lg hover:bg-neutral-300 hover:text-neutral-700 disabled:text-neutral-500 disabled:border-neutral-500 hover:disabled:bg-transparent"
         onClick={handlePrevPage}
         disabled={currentPage === 1}
         aria-label="Previous Page"
@@ -36,7 +36,7 @@ const Pagination = () => {
         <div>{totalPages}</div>
       </div>
       <button
-        className="flex items-center justify-center px-3 h-8 leading-tight text-gray-100 bg-transparent border border-gray-300 rounded-r-lg hover:bg-gray-300 hover:text-gray-700 disabled:text-gray-500 disabled:border-gray-500 hover:disabled:bg-transparent"
+        className="flex items-center justify-center px-3 h-8 leading-tight text-neutral-100 bg-transparent border border-neutral-300 rounded-r-lg hover:bg-neutral-300 hover:text-neutral-700 disabled:text-neutral-500 disabled:border-neutral-500 hover:disabled:bg-transparent"
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
         aria-label="Next Page"

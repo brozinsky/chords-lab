@@ -14,32 +14,21 @@
     --color-primary-800: #04498a;
     --color-primary-900: #033767;
 
-    --color-dark-50: #3a3a3a;
-    --color-dark-100: #d4d3d4;
-    --color-dark-200: #a8a8aa;
-    --color-dark-300: #7d7c7f;
-    --color-dark-400: #515155;
-    --color-dark-500: #26252a;
-    --color-dark-600: #1e1e22;
-    --color-dark-700: #171619;
-    --color-dark-800: #0f0f11;
-    --color-dark-900: #080708;
+    --color-neutral-50: #3a3a3a;
+    --color-neutral-100: #E1E4E8;
+    --color-neutral-200: #B9C0C9;
+    --color-neutral-300: #8E959E;
+    --color-neutral-400: #6A737D;
+    --color-neutral-500: #4D5358;
+    --color-neutral-600: #24292E;
+    --color-neutral-700: #232B2F;
+    --color-neutral-800: #212629;
+    --color-neutral-900: #1F2428;
 
-    --color-elevation-50: #3a3a3a;
-    --color-elevation-100: #cccccc;
-    --color-elevation-200: #989895;
-    --color-elevation-300: #7d7c7f;
-    --color-elevation-400: #3c3c3c;
-    --color-elevation-500: #333333;
-    --color-elevation-600: #2c2c2d;
-    --color-elevation-700: #252526;
-    --color-elevation-800: #252526;
-    --color-elevation-900: #1e1e1e;
-
-    --color-typography-100: #aaa;
-    --color-typography-300: #dedede;
-    --color-typography-500: #eee;
-    --color-typography-900: #fff;
+    --color-text-100: #efefef;
+    --color-text-300: #dedede;
+    --color-text-500: #eee;
+    --color-text-900: #fff;
 
     --color-green-500: hsl(158, 81%, 39%);
     --color-green-dark: hsla(158, 90%, 39%, 0.08);
@@ -57,14 +46,14 @@ $piano-key-white-width: 4rem;
 $piano-key-white-height: 15rem;
 
 .piano-note {
-  @apply flex items-center justify-center text-typography-300;
+  @apply flex items-center justify-center text-text-300;
   height: 2rem;
   width: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
   color: darken(#fff, 15%);
   &--circle {
-    @apply text-white bg-emerald-400 rounded-full;
+    @apply bg-emerald-400 rounded-full;
   }
 }
 .piano-key {
@@ -97,7 +86,7 @@ $piano-key-white-height: 15rem;
     height: $piano-key-white-height;
     background: white;
     border: 1px solid transparent;
-    @apply border-dark-800 rounded-b-xl;
+    @apply border-neutral-800 rounded-b-xl;
     &.piano-key--active {
       @apply bg-emerald-300;
       .piano-note {
@@ -126,7 +115,7 @@ $piano-key-white-height: 15rem;
 }
 
 .kbd {
-  @apply text-gray-100 bg-gray-800 rounded-md border border-gray-500 text-xs bg-opacity-80;
+  @apply text-neutral-100 bg-neutral-700 rounded-md border border-neutral-500 text-xs bg-opacity-80;
   padding: 0.25rem;
   min-height: 2.2em;
   min-width: 2.2em;

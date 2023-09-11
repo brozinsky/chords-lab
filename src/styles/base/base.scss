@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   // overflow-x: hidden;
+  @apply text-text-100;
 }
 
 a {
@@ -12,6 +13,16 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.elevation-1 {
+  @apply bg-neutral-800;
+}
+.elevation-2 {
+  @apply bg-neutral-700;
+}
+.elevation-3 {
+  @apply bg-neutral-600;
 }
 
 // @media (prefers-color-scheme: dark) {

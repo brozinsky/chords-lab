@@ -1,22 +1,22 @@
 .checkbox {
-    @apply cursor-pointer border bg-transparent overflow-hidden text-dark-300 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2;
+    @apply cursor-pointer border bg-transparent overflow-hidden text-neutral-300 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2;
     transition: 0.15s all ease-in-out;
     & > svg {
-        @apply text-elevation-900;
+        @apply text-neutral-900;
     }
     &--selected {
         @apply bg-primary-500 border-primary-500 group-active:border-primary-800;
         & > svg {
-            @apply text-elevation-900;
+            @apply text-neutral-900;
         }
     }
     &--empty {
-        @apply border-typography-500 group-active:border-typography-900;
+        @apply border-neutral-300 group-active:border-neutral-900;
     }
     &__label {
-        @apply text-typography-500 group-active:text-typography-900 select-none cursor-pointer;
+        @apply text-text-500 group-active:text-text-900 select-none cursor-pointer;
         &--disabled {
-            @apply text-typography-100 select-none;
+            @apply text-text-100 select-none;
         }
     }
 }

@@ -56,7 +56,7 @@ const Filter = () => {
   };
 
   return (
-    <div className="border border-gray-500 rounded-xl p-4">
+    <div className="border border-neutral-500 rounded-xl p-4">
       <h3 className="text-2xl mb-2">Filter</h3>
       <div className="space-y-4">
         <div>

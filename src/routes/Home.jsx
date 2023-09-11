@@ -8,14 +8,14 @@ import useSelectedChord from "@/stores/useSelectedChord";
 export default function Root() {
   const { selectedChord } = useSelectedChord();
   return (
-    <main className="bg-dark-800">
+    <main className="bg-neutral-900">
       <div className="container flex flex-col items-center justify-center py-12">
         <div className="flex flex-row">
           {/* <Piano /> */}
           <ChordDetails chord={selectedChord}/>
         </div>
       </div>
-      <section className="text-white py-20">
+      <section className="py-20">
         <Library />
       </section>
       <Settings />
