@@ -29,6 +29,8 @@ const router = createBrowserRouter([
   },
 ]);
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />

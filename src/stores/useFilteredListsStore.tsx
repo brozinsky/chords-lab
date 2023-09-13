@@ -1,8 +1,27 @@
 import { create } from "zustand";
 import isChordInScale from "@/utils/isChordInScale";
 import { createScale } from "@/utils/notesData";
+import { ChordCombination } from "@/hooks/useChordCombinations";
 
-const useFilteredListsStore = create((set) => ({
+interface FilteredListsStore {
+  filteredLists: {
+    scaleFiltered: ChordCombination[];
+    rootFiltered: ChordCombination[];
+    suffixFiltered: ChordCombination[];
+  };
+  updateFilteredLists: (
+    isRoot: boolean,
+    isSearchedBySuffix: boolean,
+    chordRoot: string,
+    chordSuffix: string,
+    chordCombinations: ChordCombination[],
+    isInScale: boolean,
+    scaleMode: string,
+    scaleTonic: string
+  ) => void;
+}
+
+const useFilteredListsStore = create<FilteredListsStore>((set) => ({
   filteredLists: {
     scaleFiltered: [],
     rootFiltered: [],
