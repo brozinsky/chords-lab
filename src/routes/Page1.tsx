@@ -1,11 +1,11 @@
-import MenuTop from "@/modules/navigation/MenuTop";
+// import MenuTop from "@/modules/navigation/MenuTop";
 
 export default function Root() {
   return (
     <>
-      <MenuTop />
+      {/* <MenuTop /> */}
       <div className="container flex items-center justify-center h-screen">
-        <h1 className="text-3xl text-center text-primary-500">Page2</h1>
+        <h1 className="text-3xl text-center text-primary-500">Page1</h1>
       </div>
     </>
   );

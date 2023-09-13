@@ -2,7 +2,33 @@ import { create } from "zustand";
 import { scales, notes as pianoNotes } from "@/utils/notesData";
 import { chords } from "@/utils/chords";
 
-const useFilterStore = create((set) => ({
+interface FilterStoreState {
+  isRoot: boolean;
+  setIsRoot: (value: boolean) => void;
+
+  isInScale: boolean;
+  setIsInScale: (value: boolean) => void;
+
+  isSearchedBySuffix: boolean;
+  setIsSearchedBySuffix: (value: boolean) => void;
+
+  scaleTonic: string; // eg "C"
+  setScaleTonic: (value: string) => void;
+
+  scaleMode: string; // eg "major"
+  setScaleMode: (value: string) => void;
+
+  chordRoot: string; // eg "C"
+  setChordRoot: (value: string) => void;
+
+  chordSuffix: string; // eg "major triad"
+  setChordSuffix: (value: string) => void;
+
+  searchValue: string;
+  setSearchValue: (value: string) => void;
+}
+
+const useFilterStore = create<FilterStoreState>((set) => ({
   isRoot: false,
   setIsRoot: (value) => set(() => ({ isRoot: value })),
 

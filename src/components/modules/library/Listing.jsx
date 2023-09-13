@@ -38,6 +38,10 @@ const Listing = () => {
   const { filteredLists, updateFilteredLists } = useFilteredListsStore();
   const { selectedChord, setSelectedChord } = useSelectedChord();
 
+  useEffect(() => {
+    console.log('filteredLists', filteredLists);
+  }, []);
+
   // handle filtering by search field
   const searchFilteredResults = chordCombinations.filter((chord) => {
     const text = `${chord.note} ${chord.chordName}`;
@@ -84,7 +88,7 @@ const Listing = () => {
   }
 
   useEffect(() => {
-    console.log(selectedChord);
+    console.log('selectedChord', selectedChord);
   }, [selectedChord]);
 
   return (
