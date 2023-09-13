@@ -1,13 +1,11 @@
+import useChordInScales from "@/hooks/useChordInScales";
 import useSelectedChord from "@/stores/useSelectedChord";
 import { intervalDegrees } from "@/utils/notes";
-import { scales } from "@/utils/notesData";
 
 const ChordInfo = () => {
   const { selectedChord } = useSelectedChord();
+  const relatedScales = useChordInScales(selectedChord?.intervalNotes);
 
-  // function isEmpty(obj) {
-  //   return Object.keys(obj).length === 0;
-  // }
   if (selectedChord === undefined) return;
 
   return (
@@ -47,8 +45,10 @@ const ChordInfo = () => {
       </div>
       <div className="flex flex-col">
         <div>Related scales:</div>
-        <div className="flex gap-1">
-          {/* {scales} */}
+        <div className="">
+          {relatedScales.map((scale) => {
+              return <a href="" key={scale.name}>{scale.name}</a>;
+            })}
         </div>
       </div>
     </div>
