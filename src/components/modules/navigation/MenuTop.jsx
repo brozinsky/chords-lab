@@ -1,17 +1,17 @@
+import NavLink from "@/components/elements/buttons/NavLink";
 import { Link } from "react-router-dom";
-import Hamburger from "@/elements/buttons/Hamburger";
-import NavLink from "@/elements/buttons/NavLink";
+// import Hamburger from "@/elements/buttons/Hamburger";
+// import NavLink from "@/elements/buttons/NavLink";
 
 const navItems = [
-  { name: "Page1", url: "/page-1" },
-  { name: "Page2", url: "/page-2" },
-  { name: "Page3", url: "/page-3" },
+  { name: "Chords", url: "/chords" },
+  { name: "Scales", url: "/scales" },
 ];
 
 const Header = () => {
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white shadow-md">
+      <header className="sticky top-0 z-50 bg-neutral-600 border border-neutral-500">
         <nav className="container flex flex-wrap items-center justify-between">
           <Link to="/">
             <div className="flex items-center flex-shrink-0 mr-6 text-white cursor-pointer select-none">
@@ -20,7 +20,7 @@ const Header = () => {
               </span>
             </div>
           </Link>
-          <Hamburger />
+          {/* <Hamburger /> */}
           <div className="justify-end flex-grow block w-full lg:flex lg:items-center lg:w-auto">
             <ul className="flex items-center justify-end space-x-8 text-sm">
               {navItems.map(({ name, url }, i) => {

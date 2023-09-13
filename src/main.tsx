@@ -3,9 +3,8 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Home from "@/routes/Home";
-import Page1 from "@/routes/Page1";
-import Page2 from "@/routes/Page2";
-import Page3 from "@/routes/Page3";
+import ChordsPage from "@/routes/ChordsPage";
+import ScalesPage from "@/routes/ScalesPage";
 import ErrorPage from "@/routes/ErrorPage";
 import "@/styles//main.scss";
 
@@ -16,16 +15,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "page-1",
-    element: <Page1 />,
+    path: "chords",
+    element: <ChordsPage />,
   },
   {
-    path: "page-2",
-    element: <Page2 />,
-  },
-  {
-    path: "page-3",
-    element: <Page3 />,
+    path: "scales",
+    element: <ScalesPage />,
   },
 ]);
 

@@ -1,6 +1,6 @@
 .navlink {
   $this: &;
-  @apply relative overflow-x-hidden py-6;
+  @apply relative overflow-x-hidden py-2;
 
   &:after {
     @apply bg-primary-500 w-full block absolute;
@@ -17,12 +17,6 @@
       transform: translateX(0);
       animation-name: translate-to-right;
       animation-duration: 0.35s;
-    }
-    &#{$this}--sale {
-      @apply relative text-red-500;
-      &:after {
-        @apply bg-red-500;
-      }
     }
   }
 }

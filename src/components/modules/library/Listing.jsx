@@ -88,8 +88,8 @@ const Listing = () => {
   }
 
   useEffect(() => {
-    console.log('selectedChord', selectedChord);
-  }, [selectedChord]);
+    console.log('combinedFilteredResults', combinedFilteredResults);
+  }, [combinedFilteredResults]);
 
   return (
     <>

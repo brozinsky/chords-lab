@@ -3,6 +3,7 @@ import getIntervalNotes from "@/utils/getIntervalNotes";
 import { notes, scales } from "@/utils/notesData";
 
 export interface ScalesCombinations {
+  note: string;
   name: string;
   intervals: number[];
   intervalNotes: string[];
@@ -15,7 +16,8 @@ function useScalesCombinations(): ScalesCombinations[] {
   const scalesCombinations = useMemo(() => {
     return notes.flatMap((note) =>
     scales.map(({ name, notes }) => ({
-        name: note + " " + name,
+        note: note,
+        name: name,
         intervals: notes,
         intervalNotes: getIntervalNotes(notes, note),
       }))

@@ -4,7 +4,7 @@ import Library from "@/components/modules/library/Library";
 import ChordDetails from "@/components/modules/chord-details/ChordDetails";
 import MenuTop from "@/components/modules/navigation/MenuTop";
 
-export default function Root() {
+export default function ChordsPage() {
   return (
     <>
       <MenuTop />
