@@ -1,33 +1,43 @@
 import PianoKey from "./PianoKey";
 import { pianoNotes } from "@/utils/notes";
 import useSelectedScale from "@/stores/useSelectedScale";
+import React from "react";
+import { processIntervals } from "@/utils/processIntervals";
+import { Note, Scale } from "tonal";
 
-const PianoScale = () => {
-  const { selectedScale } = useSelectedScale();
+interface ScaleProps {
+  empty: boolean;
+  name: string;
+  setNum: number;
+  chroma: string;
+  normalized: string;
+  intervals: string[];
+  aliases: string[];
+  type: string;
+  tonic: string | null;
+  notes: string[];
+}
 
-  console.log(selectedScale);
-  if (selectedScale === undefined) return;
-  const rootNoteIndex = pianoNotes.findIndex(({ name }) =>
-    name
-      .replace(/[0-9]/g, "")
-      .replace("s", "#")
-      .toUpperCase()
-      .startsWith(selectedScale.intervalNotes[0])
-  );
-  const markedNotes = selectedScale.intervals.map(interval => rootNoteIndex + interval - 1);
+const PianoScale: React.FC<{ scale?: ScaleProps }> = ({ scale }) => {
+  if (!scale || Object.keys(scale).length === 0) return;
+
+  const pianoNotesUppercase = pianoNotes.map((note) => ({
+    name: note.name.replace("s", "#").toUpperCase(),
+  }));
+
   return (
     <div className="flex flex-row">
-     {pianoNotes.map(({ name }, index) => {
+      {pianoNotesUppercase.map(({ name }, index) => {
         const convertedName = name
           .replace(/[0-9]/g, "")
           .replace("s", "#")
           .toUpperCase();
         return (
           <PianoKey
-            key={name}
+            key={name + index}
             name={convertedName}
             currentKeys={["C", "D"]}
-            isActive={markedNotes.includes(index)}
+            isActive={scale.notes.includes(name)}
           />
         );
       })}
