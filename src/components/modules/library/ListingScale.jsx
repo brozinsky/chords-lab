@@ -7,7 +7,7 @@ import { processIntervals } from "@/utils/processIntervals";
 
 const ListingScale = () => {
   const itemsPerPage = 24;
-  const { tonic, setTonic, type, setType, setScale } = useSelectedScale();
+  const { tonic, setTonic, type, setType, setSelectedScale } = useSelectedScale();
 
   const [animationParent] = useAutoAnimate({ duration: 50 });
 
@@ -16,7 +16,6 @@ const ListingScale = () => {
   const newScales = ScaleType.all();
 
   const noteNames = Note.names();
-
 
   const handleScaleSelect = (scale) => {
     setTonic(scale.tonic);
@@ -28,24 +27,24 @@ const ListingScale = () => {
     // console.log('type', type);
     if (tonic !== "" && type !== "") {
       // console.log("scale", Scale.get(`${tonic} ${type}`));
-      setScale(Scale.get(`${tonic}2 ${type}`));
+      setSelectedScale(Scale.get(`${tonic}2 ${type}`));
     }
-  }, [tonic,type ]);
+  }, [tonic, type]);
 
   return (
     <>
       <div className="flex flex-row gap-2 mb-4">
         {noteNames.map((note, index) => (
-            <div
-              key={note + index}
-              onClick={() => setTonic(note)}
-              className="chord-list-item"
-            >
-              <div className="flex flex-col">
-                <div className="chord-list-item__suffix">{note}</div>
-              </div>
+          <div
+            key={note + index}
+            onClick={() => setTonic(note)}
+            className="chord-list-item"
+          >
+            <div className="flex flex-col">
+              <div className="chord-list-item__suffix">{note}</div>
             </div>
-          ))}
+          </div>
+        ))}
       </div>
       <div ref={animationParent} className="chord-list">
         {/* {allScales.map((scale, index) => (

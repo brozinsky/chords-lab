@@ -7,27 +7,27 @@ import AddInfoMinor from "./_partials/AddInfoMinor";
 import AddInfoMajor from "./_partials/AddInfoMajor";
 
 const ScaleDetails = () => {
-  const { tonic, type, scale } = useSelectedScale();
+  const { tonic, type, selectedScale } = useSelectedScale();
 
   // Check if 'scale' is undefined before rendering the 'PianoScale' component
-  if (!scale) {
+  if (!selectedScale) {
     return <div>Select a scale.</div>;
   }
 
   const infoScale = Scale.get(`${tonic} ${type}`);
 
-  const isMajor = scale.type.toLowerCase() === "major";
+  const isMajor = selectedScale.type.toLowerCase() === "major";
   const isMinor =
-    scale.type.includes("minor") &&
-    (scale.type.includes("harmonic") ||
-      scale.type === "minor" ||
-      scale.type.includes("melodic"));
+    selectedScale.type.includes("minor") &&
+    (selectedScale.type.includes("harmonic") ||
+      selectedScale.type === "minor" ||
+      selectedScale.type.includes("melodic"));
 
   let minorScaleType = null;
   if (isMinor) {
-    if (scale.type.includes("harmonic")) minorScaleType = "harmonic";
-    else if (scale.type === "minor") minorScaleType = "natural";
-    else if (scale.type.includes("melodic")) minorScaleType = "melodic";
+    if (selectedScale.type.includes("harmonic")) minorScaleType = "harmonic";
+    else if (selectedScale.type === "minor") minorScaleType = "natural";
+    else if (selectedScale.type.includes("melodic")) minorScaleType = "melodic";
   }
 
   return (
@@ -43,8 +43,8 @@ const ScaleDetails = () => {
         </>
       ) : null}
       {isMajor ? <AddInfoMajor /> : null}
-      {isMinor ? <AddInfoMinor type={minorScaleType} /> : null}
-      <PianoScale scale={scale} />
+      {isMinor && minorScaleType !== null ? <AddInfoMinor type={minorScaleType} /> : null}
+      <PianoScale scale={selectedScale} />
     </div>
   );
 };

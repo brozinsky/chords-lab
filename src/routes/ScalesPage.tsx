@@ -1,5 +1,4 @@
 import Settings from "@/components/modules/settings/Settings";
-// import Piano from "@/components/modules/piano/Piano";
 import LibraryScale from "@/components/modules/library/LibraryScale";
 import ScaleDetails from "@/components/modules/scale-details/ScaleDetails";
 import MenuTop from "@/components/modules/navigation/MenuTop";

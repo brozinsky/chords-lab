@@ -18,8 +18,8 @@ interface SelectedScaleState {
   setTonic: (value: string) => void;
   type: string;
   setType: (value: string) => void;
-  scale: ScaleProps | undefined; // Specify the type as ScaleProps | undefined
-  setScale: (value: ScaleProps | undefined) => void;
+  selectedScale: ScaleProps | undefined;
+  setSelectedScale: (value: ScaleProps | undefined) => void;
 }
 
 const useSelectedScale = create<SelectedScaleState>((set) => ({
@@ -27,8 +27,8 @@ const useSelectedScale = create<SelectedScaleState>((set) => ({
   setTonic: (value) => set(() => ({ tonic: value })),
   type: "major",
   setType: (value) => set(() => ({ type: value })),
-  scale: undefined,
-  setScale: (value) => set(() => ({ scale: value })),
+  selectedScale: undefined,
+  setSelectedScale: (value) => set(() => ({ selectedScale: value })),
 }));
 
 export default useSelectedScale;
