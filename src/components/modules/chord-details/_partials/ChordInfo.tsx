@@ -3,8 +3,8 @@ import useSelectedChord from "@/stores/useSelectedChord";
 import { intervalDegrees } from "@/utils/notes";
 
 const ChordInfo = () => {
-  const { selectedChord } = useSelectedChord();
-  const relatedScales = useChordInScales(selectedChord?.intervalNotes);
+  const { selectedChord, root } = useSelectedChord();
+  // const relatedScales = useChordInScales(selectedChord?.intervalNotes);
 
   if (selectedChord === undefined) return;
 
@@ -13,44 +13,43 @@ const ChordInfo = () => {
       <div className="flex flex-col">
         <div>Name:</div>
         <div className="flex gap-1">
-          <div>{selectedChord.note}</div>
-          <div>{selectedChord.chordName}</div>
+          <div>{selectedChord.name && selectedChord.name.length > 3 ? selectedChord.name : root + " " + (selectedChord.aliases && selectedChord.aliases[0])}</div>
         </div>
       </div>
-      <div className="flex flex-col">
+      {/* <div className="flex flex-col">
         <div>Abbreviations:</div>
         <div className="flex gap-1">
           {selectedChord.abbreviations && selectedChord.abbreviations.map((abbreviation, index) => {
-              return <div key={abbreviation}>{selectedChord.note}{abbreviation}{index !== selectedChord.abbreviations.length - 1 && ", "}</div>;
+              return <div key={abbreviation + index}>{selectedChord.note}{abbreviation}{index !== selectedChord.abbreviations.length - 1 && ", "}</div>;
           })}
         </div>
-      </div>
-      <div className="flex flex-col">
+      </div> */}
+      {/* <div className="flex flex-col">
         <div>Chord Formula:</div>
         <div className="flex flex-col">
           <div className="flex gap-2">
             <div className="flex gap-2">Intervals:</div>
-            {selectedChord.intervals.map((interval) => {
+            {selectedChord.intervals.map((interval, i) => {
               const intervalName = intervalDegrees.find((degree) => degree.id === interval)?.symbol;
-              return <div key={interval}>{intervalName}</div>;
+              return <div key={interval + i}>{intervalName}</div>;
             })}
           </div>
           <div className="flex gap-2">
             <div>Notes:</div>
-            {selectedChord.intervalNotes.map((intervalNote) => {
-              return <div key={intervalNote}>{intervalNote}</div>;
+            {selectedChord.intervalNotes.map((intervalNote, i) => {
+              return <div key={intervalNote + i}>{intervalNote}</div>;
             })}
           </div>
         </div>
-      </div>
-      <div className="flex flex-col">
+      </div> */}
+      {/* <div className="flex flex-col">
         <div>Related scales:</div>
         <div className="">
-          {relatedScales.map((scale) => {
-              return <a href="" key={scale.name}>{scale.name}</a>;
+          {relatedScales.map((scale, i) => {
+              return <a key={scale.name + i}  href="">{scale.name}</a>;
             })}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

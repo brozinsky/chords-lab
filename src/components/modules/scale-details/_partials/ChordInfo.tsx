@@ -21,7 +21,7 @@ const ChordInfo = () => {
         <div>Abbreviations:</div>
         <div className="flex gap-1">
           {selectedChord.abbreviations && selectedChord.abbreviations.map((abbreviation, index) => {
-              return <div key={abbreviation}>{selectedChord.note}{abbreviation}{index !== selectedChord.abbreviations.length - 1 && ", "}</div>;
+              return <div key={abbreviation + index}>{selectedChord.note}{abbreviation}{index !== selectedChord.abbreviations.length - 1 && ", "}</div>;
           })}
         </div>
       </div>

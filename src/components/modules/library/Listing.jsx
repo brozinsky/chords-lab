@@ -38,9 +38,9 @@ const Listing = () => {
   const { filteredLists, updateFilteredLists } = useFilteredListsStore();
   const { selectedChord, setSelectedChord } = useSelectedChord();
 
-  useEffect(() => {
-    console.log('filteredLists', filteredLists);
-  }, []);
+  // useEffect(() => {
+  //   console.log('filteredLists', filteredLists);
+  // }, []);
 
   // handle filtering by search field
   const searchFilteredResults = chordCombinations.filter((chord) => {
@@ -94,6 +94,15 @@ const Listing = () => {
   return (
     <>
       <div ref={animationParent} className="chord-list">
+        {/* {(searchValue === ""
+          ? combinedFilteredResults.slice(startIndex, endIndex)
+          : searchFilteredResults.slice(startIndex, endIndex)
+        ).map((chord, index) => (
+          <div key={chord.note + chord.chordName + index} onClick={() => handleChordSelect(chord)} className="chord-list-item">
+            <div className="chord-list-item__name">{chord.note}</div>
+            <div className="chord-list-item__suffix">{chord.abbreviations ? chord.abbreviations[0] : null}</div>
+          </div>
+        ))} */}
         {(searchValue === ""
           ? combinedFilteredResults.slice(startIndex, endIndex)
           : searchFilteredResults.slice(startIndex, endIndex)

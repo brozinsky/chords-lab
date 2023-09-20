@@ -4,7 +4,7 @@ import PianoChord from "./_partials/PianoChord";
 
 const ChordDetails = () => {
   const { selectedChord } = useSelectedChord();
-  if (selectedChord === undefined) return;
+  // if (selectedChord === undefined) return;
   return (
     <div>
       <PianoChord />
