@@ -1,31 +1,27 @@
-import PianoKey from "./PianoKey";
 import { pianoNotes } from "@/utils/notes";
 import useSelectedChord from "@/stores/useSelectedChord";
+import { convertFlatsToSharps } from "@/utils/flatToSharps";
+import PianoKey from "@/components/elements/piano/PianoKey";
 
 const PianoChord = () => {
   const { selectedChord } = useSelectedChord();
   if (selectedChord === undefined) return;
-  const rootNoteIndex = pianoNotes.findIndex(({ name }) =>
-    name
-      .replace(/[0-9]/g, "")
-      .replace("s", "#")
-      .toUpperCase()
-      .startsWith(selectedChord.intervalNotes[0])
-  );
-  const markedNotes = selectedChord.intervals.map(interval => rootNoteIndex + interval - 1);
+
+  const pianoNotesUppercase = pianoNotes.map((note) => ({
+    name: note.name.replace("s", "#").toUpperCase(),
+  }));
   return (
     <div className="flex flex-row">
-      {pianoNotes.map(({ name }, index) => {
+      {pianoNotesUppercase.map(({ name }, index) => {
         const convertedName = name
           .replace(/[0-9]/g, "")
           .replace("s", "#")
           .toUpperCase();
         return (
           <PianoKey
-            key={name}
+            key={name + index}
             name={convertedName}
-            currentKeys={selectedChord.intervalNotes}
-            isActive={markedNotes.includes(index)}
+            isActive={convertFlatsToSharps(selectedChord.notes)?.includes(name)}
           />
         );
       })}

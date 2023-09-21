@@ -1,20 +1,34 @@
-import {create} from "zustand";
+import { create } from "zustand";
 
-export interface Scale {
-  note: string;
+interface ScaleProps {
+  empty: boolean;
   name: string;
-  intervals: number[];
-  intervalNotes: string[];
+  setNum: number;
+  chroma: string;
+  normalized: string;
+  intervals: string[];
+  aliases: string[];
+  type: string;
+  tonic: string;
+  notes: string[];
 }
 
 interface SelectedScaleState {
-  selectedScale: Scale | undefined;
-  setSelectedScale: (newScale: any) => void;
+  tonic: string;
+  setTonic: (value: string) => void;
+  type: string;
+  setType: (value: string) => void;
+  selectedScale: ScaleProps | undefined;
+  setSelectedScale: (value: ScaleProps | undefined) => void;
 }
 
 const useSelectedScale = create<SelectedScaleState>((set) => ({
+  tonic: "C",
+  setTonic: (value) => set(() => ({ tonic: value })),
+  type: "major",
+  setType: (value) => set(() => ({ type: value })),
   selectedScale: undefined,
-  setSelectedScale: (newScale) => set({ selectedScale: newScale }),
+  setSelectedScale: (value) => set(() => ({ selectedScale: value })),
 }));
 
 export default useSelectedScale;

@@ -4,13 +4,14 @@
   transition: 0.1s;
   user-select: none;
   &:hover {
-    @apply bg-neutral-500 text-text-100;
+    @apply bg-neutral-700 text-text-100;
   }
   &:active {
-    @apply bg-neutral-400 text-white border-neutral-600;
+    @apply bg-neutral-600 text-white border-neutral-500;
   }
   &--active {
-    @apply border-green-500 bg-green-900 border text-green-300;
+    border-color: rgba(#fff, 0.5);
+    box-shadow: 0 0 2px rgba(#fff, 0.5), inset 0 0 8px rgba(#fff, 0.5);
     &:hover,
     &:active {
       @extend .chord-list-item--active;

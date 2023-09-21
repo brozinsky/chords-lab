@@ -40,9 +40,9 @@
 @import "components/index.scss";
 @import "pages/index.scss";
 
-$piano-key-black-width: 3rem;
+$piano-key-black-width: 2.25rem;
 $piano-key-black-height: 9rem;
-$piano-key-white-width: 4rem;
+$piano-key-white-width: 3.5rem;
 $piano-key-white-height: 15rem;
 
 .piano-note {
@@ -68,7 +68,7 @@ $piano-key-white-height: 15rem;
     z-index: 1;
     @apply rounded-b-xl;
     .piano-note {
-      color: darken(#fff, 70%);
+      color: darken(#fff, 25%);
     }
     &.piano-key--active {
       @apply bg-emerald-600;
@@ -109,7 +109,7 @@ $piano-key-white-height: 15rem;
       margin-right: -(calc($piano-key-black-width * $size-scale / 2));
     }
     & > .piano-note {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
     }
   }
 }

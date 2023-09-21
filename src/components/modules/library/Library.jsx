@@ -3,6 +3,7 @@ import Filter from "./Filter";
 import Tags from "./Tags";
 import Listing from "./Listing";
 import ListingScale from "./ListingScale";
+import ListingChords from "./ListingChords";
 
 const Library = () => {
   return (
@@ -11,7 +12,8 @@ const Library = () => {
         <Filter />
         <div className="flex flex-col gap-4">
           <Tags />
-          <Listing />
+          <ListingChords />
+          {/* <Listing /> */}
         </div>
       </div>
     </div>
