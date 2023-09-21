@@ -8,12 +8,12 @@ export interface Chord {
 
 export const chords: Chord[] = [
   {
-    name: "major triad",
+    name: "major",
     notes: [1, 5, 8],
     abbreviations: ["maj", "major", "M", "△"],
   },
   {
-    name: "minor triad",
+    name: "minor",
     notes: [1, 4, 8],
     abbreviations: ["min", "minor", "m", "-"],
   },

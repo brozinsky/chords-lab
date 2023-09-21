@@ -13,10 +13,6 @@ const ListingScale = () => {
 
   const allScales = useScalesCombinations();
 
-  const newScales = ScaleType.all();
-
-  const noteNames = Note.names();
-
   const handleScaleSelect = (scale) => {
     setTonic(scale.tonic);
     setType(scale.name);
@@ -34,7 +30,7 @@ const ListingScale = () => {
   return (
     <>
       <div className="flex flex-row gap-2 mb-4">
-        {noteNames.map((note, index) => (
+        {Note.names().map((note, index) => (
           <div
             key={note + index}
             onClick={() => setTonic(note)}
@@ -47,16 +43,7 @@ const ListingScale = () => {
         ))}
       </div>
       <div ref={animationParent} className="chord-list">
-        {/* {allScales.map((scale, index) => (
-          <div key={scale.note + scale.name + index} onClick={() => handleScaleSelect(scale)} className="chord-list-item">
-            <div className="flex flex-col">
-              <div className="chord-list-item__suffix">{scale.note + scale.name}</div>
-              <div className="chord-list-item__suffix">{scale.intervals}</div>
-              <div className="chord-list-item__suffix">{scale.intervalNotes}</div>
-            </div>
-          </div>
-        ))} */}
-        {newScales.map((scale, index) => (
+        {ScaleType.all().map((scale, index) => (
           <div
             key={scale.name + index}
             onClick={() => setType(scale.name)}
