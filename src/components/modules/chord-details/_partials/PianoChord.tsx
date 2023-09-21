@@ -1,13 +1,11 @@
-import PianoKey from "./PianoKey";
 import { pianoNotes } from "@/utils/notes";
 import useSelectedChord from "@/stores/useSelectedChord";
-import { Note } from "tonal";
 import { convertFlatsToSharps } from "@/utils/flatToSharps";
+import PianoKey from "@/components/elements/piano/PianoKey";
 
 const PianoChord = () => {
   const { selectedChord } = useSelectedChord();
   if (selectedChord === undefined) return;
-  console.log(selectedChord, "selectedChord!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
   const pianoNotesUppercase = pianoNotes.map((note) => ({
     name: note.name.replace("s", "#").toUpperCase(),

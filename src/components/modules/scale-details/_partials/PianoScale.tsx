@@ -1,9 +1,6 @@
-import PianoKey from "./PianoKey";
+import PianoKey from "@/components/elements/piano/PianoKey";
 import { pianoNotes } from "@/utils/notes";
-import useSelectedScale from "@/stores/useSelectedScale";
 import React from "react";
-import { processIntervals } from "@/utils/processIntervals";
-import { Note, Scale } from "tonal";
 
 interface ScaleProps {
   empty: boolean;
@@ -36,7 +33,6 @@ const PianoScale: React.FC<{ scale?: ScaleProps }> = ({ scale }) => {
           <PianoKey
             key={name + index}
             name={convertedName}
-            currentKeys={["C", "D"]}
             isActive={scale.notes.includes(name)}
           />
         );
