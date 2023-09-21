@@ -10,6 +10,7 @@ import useFilteredListsStore from "@/stores/useFilteredListsStore";
 import useSelectedChord from "@/stores/useSelectedChord";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { Chord, ChordType, Note } from "tonal";
+import clsx from "clsx";
 
 const Listing = () => {
   const [animationParent] = useAutoAnimate({ duration: 50 });
@@ -43,7 +44,7 @@ const Listing = () => {
           <div
             key={note + index}
             onClick={() => setRoot(note)}
-            className="chord-list-item"
+            className={clsx('chord-list-item', { 'chord-list-item--active': root ===  note})}
           >
             <div className="flex flex-col">
               <div className="chord-list-item__suffix">{note}</div>
@@ -59,7 +60,7 @@ const Listing = () => {
             <div
               key={chord.name + index}
               onClick={() => setQuality(chord.abbreviations[0])}
-              className="chord-list-item"
+              className={clsx('chord-list-item', { 'chord-list-item--active': quality ===  chord.abbreviations[0]})}
             >
               {/* <div className="chord-list-item__name">{chord.aliases[0]}</div> */}
               <div className="chord-list-item__suffix">

@@ -4,6 +4,7 @@ import useScalesCombinations from "@/hooks/useScalesCombinations";
 import { ScaleType, Note, Scale } from "tonal";
 import { useEffect } from "react";
 import { processIntervals } from "@/utils/processIntervals";
+import clsx from "clsx";
 
 const ListingScale = () => {
   const itemsPerPage = 24;
@@ -34,7 +35,7 @@ const ListingScale = () => {
           <div
             key={note + index}
             onClick={() => setTonic(note)}
-            className="chord-list-item"
+            className={clsx('chord-list-item', { 'chord-list-item--active': tonic ===  note})}
           >
             <div className="flex flex-col">
               <div className="chord-list-item__suffix">{note}</div>
@@ -47,7 +48,7 @@ const ListingScale = () => {
           <div
             key={scale.name + index}
             onClick={() => setType(scale.name)}
-            className="chord-list-item"
+            className={clsx('chord-list-item', { 'chord-list-item--active': type ===  scale.name})}
           >
             <div className="flex flex-col">
               <div className="chord-list-item__suffix">{scale.name}</div>

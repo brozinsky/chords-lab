@@ -68,7 +68,7 @@ $piano-key-white-height: 15rem;
     z-index: 1;
     @apply rounded-b-xl;
     .piano-note {
-      color: darken(#fff, 70%);
+      color: darken(#fff, 25%);
     }
     &.piano-key--active {
       @apply bg-emerald-600;
@@ -109,7 +109,7 @@ $piano-key-white-height: 15rem;
       margin-right: -(calc($piano-key-black-width * $size-scale / 2));
     }
     & > .piano-note {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
     }
   }
 }
