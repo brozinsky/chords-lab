@@ -1,7 +1,6 @@
 import Settings from "@/components/modules/settings/Settings";
 // import Piano from "@/components/modules/piano/Piano";
 import Library from "@/components/modules/library/Library";
-import ChordDetails from "@/components/modules/chord-details/ChordDetails";
 import MenuTop from "@/components/modules/navigation/MenuTop";
 import ChordInfo from "@/components/modules/chord-details/_partials/ChordInfo";
 import PianoChord from "@/components/modules/chord-details/_partials/PianoChord";
