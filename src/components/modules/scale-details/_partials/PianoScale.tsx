@@ -2,20 +2,7 @@ import PianoKey from "@/components/elements/piano/PianoKey";
 import { pianoNotes } from "@/utils/notes";
 import React from "react";
 
-interface ScaleProps {
-  empty: boolean;
-  name: string;
-  setNum: number;
-  chroma: string;
-  normalized: string;
-  intervals: string[];
-  aliases: string[];
-  type: string;
-  tonic: string | null;
-  notes: string[];
-}
-
-const PianoScale: React.FC<{ scale?: ScaleProps }> = ({ scale }) => {
+const PianoScale: React.FC<{ scale?: string[] }> = ({ scale }) => {
   if (!scale || Object.keys(scale).length === 0) return;
 
   const pianoNotesUppercase = pianoNotes.map((note) => ({
@@ -33,7 +20,7 @@ const PianoScale: React.FC<{ scale?: ScaleProps }> = ({ scale }) => {
           <PianoKey
             key={name + index}
             name={convertedName}
-            isActive={scale.notes.includes(name)}
+            isActive={scale.includes(name)}
           />
         );
       })}

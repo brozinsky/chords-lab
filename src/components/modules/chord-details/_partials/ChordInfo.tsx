@@ -10,12 +10,6 @@ const ChordInfo = () => {
 
   return (
     <div className="flex-col flex space-y-4">
-      <div className="flex flex-col">
-        <div>Name:</div>
-        <div className="flex gap-1">
-          <div>{selectedChord.name && selectedChord.name.length > 3 ? selectedChord.name : root + " " + (selectedChord.aliases && selectedChord.aliases[0])}</div>
-        </div>
-      </div>
       {/* <div className="flex flex-col">
         <div>Abbreviations:</div>
         <div className="flex gap-1">

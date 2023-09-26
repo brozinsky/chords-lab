@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import useSelectedScale from "@/stores/useSelectedScale";
 import PianoScale from "./_partials/PianoScale";
-import { Key, Scale } from "tonal";
+import { Key, Note, Scale } from "tonal";
 import { processIntervals } from "@/utils/processIntervals";
 import AddInfoMinor from "./_partials/AddInfoMinor";
 import AddInfoMajor from "./_partials/AddInfoMajor";
 import shortid from "shortid";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import { findIntervalNameBySymbol, getNumberStepsArray, getWholeAndHalfSteps } from "@/utils/notes";
+import {
+  findIntervalNameBySymbol,
+  getNumberStepsArray,
+  getWholeAndHalfSteps,
+} from "@/utils/notes";
 
 const ScaleDetails = () => {
   const { tonic, type, selectedScale } = useSelectedScale();
@@ -35,58 +39,60 @@ const ScaleDetails = () => {
     else if (selectedScale.type.includes("melodic")) minorScaleType = "melodic";
   }
 
-
-  // useEffect(() => {
-  //   console.log('tester', Scale.scaleChords(selectedScale.name));
-  // }, [selectedScale]);
+  const simplifiedScale = selectedScale.notes.map(note => note.includes("b") ? Note.enharmonic(note) : Note.simplify(note))
+  const simplifiedInfoScale = infoScale.notes.map(note => note.includes("b") ? Note.enharmonic(note) : Note.simplify(note))
 
   return (
     <section className="flex flex-col">
       <h1 className="text-5xl mb-6 text-center">{infoScale.name}</h1>
-      <PianoScale scale={selectedScale} />
+      <PianoScale scale={simplifiedScale} />
       <section className="mt-6 space-y-2">
         <div className="items-end flex flex-row gap-4">
           <span className="w-[4rem]">Notes:</span>
-          {infoScale.notes.map((note, index) => {
-            return (
-              <React.Fragment key={note}>
-                <span
-                  data-tooltip-id={"note-" + note}
-                  className="text-center text-2xl min-w-[2rem]"
-                >
-                  {note}
-                </span>
-                <span className="text-2xl text-center">
-                  {infoScale.notes.length - 1 !== index ? "-" : null}
-                </span>
-              </React.Fragment>
-            );
-          })}
+          <div className="gap-2 flex">
+            {simplifiedInfoScale.map((note, index) => {
+              return (
+                <React.Fragment key={note}>
+                  <span
+                    // data-tooltip-id={"note-" + note}
+                    className="text-center text-2xl min-w-[2rem]"
+                  >
+                    {note}
+                  </span>
+                  <span className="text-2xl text-center">
+                    {infoScale.notes.length - 1 !== index ? "-" : null}
+                  </span>
+                </React.Fragment>
+              );
+            })}
+          </div>
         </div>
         <div className="items-end flex flex-row gap-4">
           <span className="w-[4rem]">Formula:</span>
-          {processIntervals(infoScale.intervals).map((interval, index) => {
-            return (
-              <React.Fragment key={shortid.generate()}>
-                <span
-                  data-tooltip-id={"interval-" + interval}
-                  className="cursor-default text-center text-2xl min-w-[2rem]"
-                >
-                  {interval}
-                </span>
-                <span className="text-2xl text-center">
-                  {infoScale.notes.length - 1 !== index ? "-" : null}
-                </span>
-                <ReactTooltip
-                  key={interval}
-                  id={"interval-" + interval}
-                  place="right"
-                  variant="light"
-                  content={findIntervalNameBySymbol(interval) as string}
-                />
-              </React.Fragment>
-            );
-          })}
+          <div className="flex gap-2">
+            {processIntervals(infoScale.intervals).map((interval, index) => {
+              return (
+                <React.Fragment key={shortid.generate()}>
+                  <span
+                    data-tooltip-id={"interval-" + interval}
+                    className="cursor-default text-center text-2xl min-w-[2rem]"
+                  >
+                    {interval}
+                  </span>
+                  <span className="text-2xl text-center">
+                    {infoScale.notes.length - 1 !== index ? "-" : null}
+                  </span>
+                  <ReactTooltip
+                    key={interval}
+                    id={"interval-" + interval}
+                    place="right"
+                    variant="light"
+                    content={findIntervalNameBySymbol(interval) as string}
+                  />
+                </React.Fragment>
+              );
+            })}
+          </div>
         </div>
         <div className="flex flex-row gap-6">
           <div className="mt-4">Intervals:</div>
@@ -96,45 +102,58 @@ const ScaleDetails = () => {
                 {getNumberStepsArray(infoScale.chroma).map((step) => {
                   return (
                     <React.Fragment key={shortid.generate()}>
-                      <td className="text-sm px-1.5 text-center border border-neutral-500">{step}</td>
+                      <td className="text-sm px-1.5 text-center border border-neutral-500">
+                        {step}
+                      </td>
                     </React.Fragment>
                   );
                 })}
               </tr>
               <tr>
-                {getWholeAndHalfSteps(getNumberStepsArray(infoScale.chroma)).map(
-                  (step) => {
-                    return (
-                      <React.Fragment key={shortid.generate()}>
-                        <td className="text-sm px-1.5 text-center border border-neutral-500">{step}</td>
-                      </React.Fragment>
-                    );
-                  }
-                )}
+                {getWholeAndHalfSteps(
+                  getNumberStepsArray(infoScale.chroma)
+                ).map((step) => {
+                  return (
+                    <React.Fragment key={shortid.generate()}>
+                      <td className="text-sm px-1.5 text-center border border-neutral-500">
+                        {step}
+                      </td>
+                    </React.Fragment>
+                  );
+                })}
               </tr>
             </tbody>
           </table>
         </div>
-        <div className="items-end flex flex-row gap-4 max-w-[509px] flex-wrap">
-          <p>Extended Scales:</p>
-          <div className="inline-flex gap-3">
-            {extendedScales && extendedScales.map((type) => {
-              return (
-                <a href="#" className="underline">{type}</a>
-              )
-            })}
+        {extendedScales.length > 0 ? (
+          <div className="items-end flex flex-row gap-4 max-w-[509px] flex-wrap">
+            <p>Extended Scales:</p>
+            <div className="inline-flex flex-wrap gap-3 gap-y-1">
+              {extendedScales.map((type) => {
+                return (
+                  <a href="#" className="underline">
+                    {type}
+                  </a>
+                );
+              })}
+            </div>
           </div>
-        </div>
-        <div className="items-end flex flex-row gap-4 max-w-[509px] flex-wrap">
-          <p>Reduced Scales:</p>
-          <div className="inline-flex gap-3">
-            {reducedScales && reducedScales.map((type) => {
-              return (
-                <a href="#" className="underline">{type}</a>
-              )
-            })}
+        ) : null}
+
+        {reducedScales.length > 0 ? (
+          <div className="items-end flex flex-row gap-4 max-w-[509px] flex-wrap">
+            <p>Reduced Scales:</p>
+            <div className="inline-flex flex-wrap gap-3 gap-y-1">
+              {reducedScales.map((type) => {
+                return (
+                  <a href="#" className="underline">
+                    {type}
+                  </a>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        ) : null}
         {/* {isMajor ? (
           <>
             <div>{Key.majorKey(tonic).grades}</div>

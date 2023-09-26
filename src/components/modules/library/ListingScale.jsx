@@ -5,6 +5,7 @@ import { ScaleType, Note, Scale } from "tonal";
 import { useEffect } from "react";
 import { processIntervals } from "@/utils/processIntervals";
 import clsx from "clsx";
+import { notes } from "@/utils/notesData";
 
 const ListingScale = () => {
   const itemsPerPage = 24;
@@ -31,11 +32,11 @@ const ListingScale = () => {
   return (
     <>
       <div className="flex flex-row gap-2 mb-4">
-        {Note.names().map((note, index) => (
+        {notes.map((note, index) => (
           <div
             key={note + index}
             onClick={() => setTonic(note)}
-            className={clsx('chord-list-item', { 'chord-list-item--active': tonic ===  note})}
+            className={clsx('chord-list-item chord-list-item--note', { 'chord-list-item--active': tonic ===  note})}
           >
             <div className="flex flex-col">
               <div className="chord-list-item__suffix">{note}</div>

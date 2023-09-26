@@ -37,14 +37,37 @@ const Listing = () => {
     }
   }, [root, quality]);
 
+  const colStartClasses = {
+    1: "col-start-1",
+    2: "col-start-2",
+    3: "col-start-3",
+    4: "col-start-4",
+    5: "col-start-5",
+    6: "col-start-6",
+    7: "col-start-7",
+    8: "col-start-8",
+    9: "col-start-9",
+    10: "col-start-10",
+    11: "col-start-11",
+    12: "col-start-12",
+  };
+
   return (
     <>
+      {/* TODO - use similiar view on mobile */}
+      {/* <div className="grid grid-cols-12 grid-rows-2">
+        {notes.map((item, index) => {
+          return <div className={`flex items-center justify-center cursor-pointer p-2 bg-neutral-600 border border-neutral-500 h-[40px] w-[40px] rounded-xl mx-auto ${colStartClasses[index + 1]} ${item.includes("#") ? "row-start-1" : "row-start-2"}`} key={item}>{item}</div>;
+        })}
+      </div> */}
       <div className="flex flex-row gap-2 mb-4">
-        {Note.names().map((note, index) => (
+        {notes.map((note, index) => (
           <div
             key={note + index}
             onClick={() => setRoot(note)}
-            className={clsx('chord-list-item', { 'chord-list-item--active': root ===  note})}
+            className={clsx("chord-list-item chord-list-item--note", {
+              "chord-list-item--active": root === note,
+            })}
           >
             <div className="flex flex-col">
               <div className="chord-list-item__suffix">{note}</div>
@@ -60,7 +83,9 @@ const Listing = () => {
             <div
               key={chord.name + index}
               onClick={() => setQuality(chord.abbreviations[0])}
-              className={clsx('chord-list-item', { 'chord-list-item--active': quality ===  chord.abbreviations[0]})}
+              className={clsx("chord-list-item", {
+                "chord-list-item--active": quality === chord.abbreviations[0],
+              })}
             >
               {/* <div className="chord-list-item__name">{chord.aliases[0]}</div> */}
               <div className="chord-list-item__suffix">
