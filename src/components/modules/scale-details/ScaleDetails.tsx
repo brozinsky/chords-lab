@@ -131,7 +131,7 @@ const ScaleDetails = () => {
             <div className="inline-flex flex-wrap gap-3 gap-y-1">
               {extendedScales.map((type) => {
                 return (
-                  <a href="#" className="underline">
+                  <a key={shortid.generate()} href="#" className="underline">
                     {type}
                   </a>
                 );
@@ -146,7 +146,7 @@ const ScaleDetails = () => {
             <div className="inline-flex flex-wrap gap-3 gap-y-1">
               {reducedScales.map((type) => {
                 return (
-                  <a href="#" className="underline">
+                  <a key={shortid.generate()} href="#" className="underline">
                     {type}
                   </a>
                 );
