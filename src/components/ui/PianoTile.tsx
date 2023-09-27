@@ -1,7 +1,7 @@
 import { processIntervals } from "@/utils/processIntervals";
 import clsx from "clsx";
 import PianoScaleSVG from "@/components/elements/svg/PianoScaleSVG";
-import { Chord, Scale } from "tonal";
+import { Chord, Note, Scale } from "tonal";
 
 type PianoTileProps = {
   note: string;
@@ -22,8 +22,12 @@ const PianoTile = ({
 }: PianoTileProps) => {
   const notes =
     variant === "scale"
-      ? Scale.get(`${note}1 ${name}`).notes
-      : Chord.get([note + "1", name]).notes;
+      ? Scale.get(`${note}1 ${name}`).notes.map(note => note.includes("b") ? Note.enharmonic(note) : Note.simplify(note))
+      : Chord.get([note + "1", name]).notes.map((note) =>
+          note.includes("b") ? Note.enharmonic(note) : Note.simplify(note)
+        );
+
+
   return (
     <div
       onClick={() => setType(name)}
