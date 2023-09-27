@@ -3,22 +3,27 @@ import clsx from "clsx";
 import PianoScaleSVG from "@/components/elements/svg/PianoScaleSVG";
 import { Chord, Scale } from "tonal";
 
-type ChordTileProps = {
+type PianoTileProps = {
   note: string;
   name: string;
   type: string;
   setType: any;
   intervals?: string[];
+  variant?: "scale" | "chord";
 };
 
-const ChordTile = ({
+const PianoTile = ({
+  variant = "scale",
   note,
   name,
   type,
   setType,
   intervals,
-}: ChordTileProps) => {
-  const scaleNotes = Chord.get([note + "1", name]).notes;
+}: PianoTileProps) => {
+  const notes =
+    variant === "scale"
+      ? Scale.get(`${note}1 ${name}`).notes
+      : Chord.get([note + "1", name]).notes;
   return (
     <div
       onClick={() => setType(name)}
@@ -30,9 +35,11 @@ const ChordTile = ({
         <PianoScaleSVG
           key={note + name}
           className="max-h-[60px] w-full"
-          scale={scaleNotes && scaleNotes.length > 0 ? scaleNotes : []}
+          scale={notes && notes.length > 0 ? notes : []}
         />
-        <div className="chord-list-item__suffix"><span className="text-lg">{note}</span> {name}</div>
+        <div className="chord-list-item__suffix">
+          <span className="text-lg">{note}</span> {name}
+        </div>
         {intervals ? (
           <div className="chord-list-item__suffix">
             {processIntervals(intervals)}
@@ -43,4 +50,4 @@ const ChordTile = ({
   );
 };
 
-export default ChordTile;
+export default PianoTile;

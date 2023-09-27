@@ -13,7 +13,7 @@ import { Chord, ChordType, Note } from "tonal";
 import clsx from "clsx";
 import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
 import shortid from "shortid";
-import ChordTile from "@/components/ui/ChordTile";
+import PianoTile from "@/components/ui/PianoTile";
 
 const Listing = () => {
   const [animationParent] = useAutoAnimate({ duration: 50 });
@@ -73,7 +73,7 @@ const Listing = () => {
           // .filter((item) => item.intervals.length <= 4)
           // .map((get) => get)
           .map((chord, index) => (
-            <ChordTile key={chord.name} note={root} name={chord.abbreviations[0]} type={quality} setType={setQuality} />
+            <PianoTile key={chord.name} variant="chord" note={root} name={chord.abbreviations[0]} type={quality} setType={setQuality} />
           ))}
       </div>
       {/* {totalPages !== 1 ? <Pagination /> : null} */}

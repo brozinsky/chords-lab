@@ -9,7 +9,7 @@ import { notes } from "@/utils/notesData";
 import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
 import shortid from "shortid";
 import PianoScaleSVG from "@/components/elements/svg/PianoScaleSVG";
-import ScaleTile from "@/components/ui/ScaleTile";
+import PianoTile from "@/components/ui/PianoTile";
 
 const ListingScale = () => {
   const itemsPerPage = 24;
@@ -48,7 +48,7 @@ const ListingScale = () => {
       <div ref={animationParent} className="chord-list">
         {ScaleType.all().map((scale, index) => {
           return (
-            <ScaleTile key={scale.name} tonic={tonic} intervals={scale.intervals} name={scale.name} type={type} setType={setType} />
+            <PianoTile key={scale.name} note={tonic} intervals={scale.intervals} name={scale.name} type={type} setType={setType} />
           );
         })}
       </div>
