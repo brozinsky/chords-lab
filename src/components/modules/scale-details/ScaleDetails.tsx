@@ -39,8 +39,12 @@ const ScaleDetails = () => {
     else if (selectedScale.type.includes("melodic")) minorScaleType = "melodic";
   }
 
-  const simplifiedScale = selectedScale.notes.map(note => note.includes("b") ? Note.enharmonic(note) : Note.simplify(note))
-  const simplifiedInfoScale = infoScale.notes.map(note => note.includes("b") ? Note.enharmonic(note) : Note.simplify(note))
+  function simplifyNotes(notes: string[]) {
+    return notes.map(note => note.includes("b") ? Note.enharmonic(note) : Note.simplify(note));
+  }
+
+  const simplifiedScale = simplifyNotes(selectedScale.notes);
+  const simplifiedInfoScale = simplifyNotes(infoScale.notes);
 
   return (
     <section className="flex flex-col">
