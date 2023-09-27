@@ -1,5 +1,5 @@
 .chord-list-item {
-  @apply px-8 py-4 rounded-xl border-neutral-500 bg-neutral-600 border text-text-300 flex flex-row items-center p-2 justify-center gap-2;
+  @apply px-4 py-4 rounded-xl border-neutral-500 bg-neutral-600 border text-text-300 flex flex-row items-center justify-center gap-2;
   cursor: pointer;
   transition: 0.1s;
   user-select: none;

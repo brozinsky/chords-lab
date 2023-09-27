@@ -11,6 +11,9 @@ import useSelectedChord from "@/stores/useSelectedChord";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { Chord, ChordType, Note } from "tonal";
 import clsx from "clsx";
+import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
+import shortid from "shortid";
+import PianoTile from "@/components/ui/PianoTile";
 
 const Listing = () => {
   const [animationParent] = useAutoAnimate({ duration: 50 });
@@ -54,7 +57,7 @@ const Listing = () => {
 
   return (
     <>
-      {/* TODO - use similiar view on mobile */}
+      {/* TODO - use similar view on mobile */}
       {/* <div className="grid grid-cols-12 grid-rows-2">
         {notes.map((item, index) => {
           return <div className={`flex items-center justify-center cursor-pointer p-2 bg-neutral-600 border border-neutral-500 h-[40px] w-[40px] rounded-xl mx-auto ${colStartClasses[index + 1]} ${item.includes("#") ? "row-start-1" : "row-start-2"}`} key={item}>{item}</div>;
@@ -62,17 +65,7 @@ const Listing = () => {
       </div> */}
       <div className="flex flex-row gap-2 mb-4">
         {notes.map((note, index) => (
-          <div
-            key={note + index}
-            onClick={() => setRoot(note)}
-            className={clsx("chord-list-item chord-list-item--note", {
-              "chord-list-item--active": root === note,
-            })}
-          >
-            <div className="flex flex-col">
-              <div className="chord-list-item__suffix">{note}</div>
-            </div>
-          </div>
+          <LibraryNoteButton key={shortid.generate()} note={note} activeNote={root} onClick={() => setRoot(note)}/>
         ))}
       </div>
       <div ref={animationParent} className="chord-list">
@@ -80,19 +73,7 @@ const Listing = () => {
           // .filter((item) => item.intervals.length <= 4)
           // .map((get) => get)
           .map((chord, index) => (
-            <div
-              key={chord.name + index}
-              onClick={() => setQuality(chord.abbreviations[0])}
-              className={clsx("chord-list-item", {
-                "chord-list-item--active": quality === chord.abbreviations[0],
-              })}
-            >
-              {/* <div className="chord-list-item__name">{chord.aliases[0]}</div> */}
-              <div className="chord-list-item__suffix">
-                {chord.abbreviations ? chord.abbreviations[0] : null}
-                {/* {chord.aliases ? chord.aliases[0] : null} */}
-              </div>
-            </div>
+            <PianoTile key={chord.name} variant="chord" note={root} name={chord.abbreviations[0]} type={quality} setType={setQuality} />
           ))}
       </div>
       {/* {totalPages !== 1 ? <Pagination /> : null} */}

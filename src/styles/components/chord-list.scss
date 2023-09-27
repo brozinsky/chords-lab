@@ -1,15 +1,15 @@
 .chord-list {
-    @apply grid grid-cols-3 grid-rows-6 gap-4 p-4 rounded-xl;
+    @apply grid grid-cols-2 grid-rows-6 gap-4 p-4 rounded-xl;
     border: 1px solid theme('colors.neutral.500');
     row-gap: 1rem;
     grid-auto-rows: 1fr;
     @include sm {
-        @apply grid-cols-4 grid-rows-5;
+        @apply grid-cols-3 grid-rows-5;
     }
     @include lg {
-        @apply grid-cols-5 grid-rows-5;
+        @apply grid-cols-4 grid-rows-5;
     }
     @include xl {
-        @apply grid-cols-8 grid-rows-3;
+        @apply grid-cols-5 grid-rows-3;
     }
 }
