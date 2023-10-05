@@ -1,0 +1,65 @@
+:root {
+  --color-primary-100: #8dc6fb;
+  --color-primary-200: #6ab4fa;
+  --color-primary-300: #48a3f8;
+  --color-primary-400: #2592f7;
+  --color-primary-500: #1188f7;
+  --color-primary-600: #066ecf;
+  --color-primary-700: #055cac;
+  --color-primary-800: #04498a;
+  --color-primary-900: #033767;
+
+  --color-emerald-100: #dbfaed;
+  --color-emerald-200: #b7f5db;
+  --color-emerald-300: #92f1ca;
+  --color-emerald-400: #6eecb8;
+  --color-emerald-500: #4ae7a6;
+  --color-emerald-600: #3bb985;
+  --color-emerald-700: #2c8b64;
+  --color-emerald-800: #1e5c42;
+  --color-emerald-900: #0f2e21;
+
+  --color-neutral-50: #f2f3f5;
+  --color-neutral-100: #d7d7d8;
+  --color-neutral-200: #afafb1;
+  --color-neutral-300: #878689;
+  --color-neutral-400: #4a4950;
+  --color-neutral-500: #37363b;
+  --color-neutral-600: #2c2b2f;
+  --color-neutral-700: #26252a;
+  --color-neutral-800: #212023;
+  --color-neutral-900: #1a1a1c;
+  --color-neutral-950: #161618;
+
+  --color-text-100: #efefef;
+  --color-text-300: #dedede;
+  --color-text-500: #eee;
+  --color-text-900: #fff;
+
+  --color-green-500: hsl(158, 81%, 39%);
+  --color-green-dark: hsla(158, 90%, 39%, 0.08);
+}
+
+@layer {
+  .bg-background {
+    @apply bg-neutral-800;
+  }
+  .bg-background-deep {
+    @apply bg-neutral-900;
+  }
+  .bg-background-tester {
+    @apply bg-neutral-500;
+  }
+  .bg-card {
+    @apply bg-neutral-500;
+  }
+  .text-muted {
+    @apply text-neutral-200;
+  }
+  .text-foreground {
+    @apply text-neutral-100;
+  }
+  .text-light {
+    @apply text-neutral-50;
+  }
+}

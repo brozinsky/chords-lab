@@ -1,0 +1,11 @@
+.kbd {
+  @apply text-neutral-100 bg-neutral-700 rounded-md border border-neutral-500 text-xs bg-opacity-80;
+  padding: 0.25rem;
+  min-height: 2.2em;
+  min-width: 2.2em;
+  position: absolute;
+  bottom: calc(-2.2em - 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}

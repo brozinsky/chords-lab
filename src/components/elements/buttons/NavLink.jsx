@@ -8,7 +8,7 @@ const NavLink = ({ children, href }) => {
       <span
         className={`${
           location.pathname === href ? "navlink--active" : ""
-        } text-neutral-100 navlink select-none block mt-4 text-lg cursor-pointer lg:inline-block lg:mt-0 `}
+        } text-muted navlink select-none block mt-4 text-lg cursor-pointer lg:inline-block lg:mt-0 `}
       >
         {children}
       </span>

@@ -36,6 +36,17 @@ module.exports = {
           800: "var(--color-primary-800)",
           900: "var(--color-primary-900)",
         },
+        emerald: {
+          100: "var(--color-emerald-100)",
+          200: "var(--color-emerald-200)",
+          300: "var(--color-emerald-300)",
+          400: "var(--color-emerald-400)",
+          500: "var(--color-emerald-500)",
+          600: "var(--color-emerald-600)",
+          700: "var(--color-emerald-700)",
+          800: "var(--color-emerald-800)",
+          900: "var(--color-emerald-900)",
+        },
         neutral: {
           50: "var(--color-neutral-50)",
           100: "var(--color-neutral-100)",

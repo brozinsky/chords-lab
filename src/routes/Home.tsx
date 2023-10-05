@@ -8,7 +8,7 @@ export default function Root() {
   return (
     <>
       <MenuTop />
-      <main className="bg-neutral-900">
+      <main>
         <div className="container flex flex-col items-center justify-center py-12">
           <div className="flex flex-row">
             {/* <Piano /> */}

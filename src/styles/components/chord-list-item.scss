@@ -1,21 +1,29 @@
 .chord-list-item {
-  @apply px-4 py-4 rounded-xl border-neutral-500 bg-neutral-600 border text-text-300 flex flex-row items-center justify-center gap-2;
+  @apply px-4 py-4 rounded-xl bg-card border text-light flex flex-row items-center justify-center gap-2;
   cursor: pointer;
-  transition: 0.1s;
+  border: 2px solid transparent;
+  transition: 0.25s all ease;
+  opacity: 0.75;
   user-select: none;
+  position: relative;
+  overflow: hidden;
+
   &:hover {
-    @apply bg-neutral-700 text-text-100;
+    @apply bg-card to-neutral-500 text-foreground border-neutral-400;
+    opacity: 1;
   }
   &:active {
-    @apply bg-neutral-600 text-white border-neutral-500;
+    @apply bg-card to-neutral-500 text-white;
+    opacity: 1;
   }
   &--note {
     @apply px-4 py-2;
     width: 55px;
   }
   &--active {
-    border-color: rgba(#fff, 0.5);
-    box-shadow: 0 0 2px rgba(#fff, 0.5), inset 0 0 8px rgba(#fff, 0.5);
+    @apply border-active;
+    // box-shadow: 0 0 2px rgba(#fff, 0.5), inset 0 0 8px rgba(#fff, 0.5);
+    opacity: 1;
     &:hover,
     &:active {
       @extend .chord-list-item--active;

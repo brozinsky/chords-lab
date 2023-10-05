@@ -1,5 +1,5 @@
 .checkbox {
-    @apply cursor-pointer border bg-transparent overflow-hidden text-neutral-300 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2;
+    @apply cursor-pointer border bg-transparent overflow-hidden text-muted rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2;
     transition: 0.15s all ease-in-out;
     & > svg {
         @apply text-neutral-900;

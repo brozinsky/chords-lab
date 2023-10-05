@@ -1,0 +1,57 @@
+.piano-key {
+  @apply items-end flex justify-center py-4 select-none;
+  position: relative;
+  &--black {
+    width: $piano-key-black-width;
+    height: $piano-key-black-height;
+    background: black;
+    margin-left: -(calc($piano-key-black-width / 2));
+    margin-right: -(calc($piano-key-black-width / 2));
+    z-index: 1;
+    @apply rounded-b-xl;
+    .piano-note {
+      color: darken(#fff, 25%);
+    }
+    &.piano-key--active {
+      @apply bg-emerald-700;
+      .piano-note {
+        @apply text-emerald-400;
+      }
+    }
+    .kbd {
+      top: calc(-2.2em - 1rem);
+      bottom: unset;
+    }
+  }
+  &--white {
+    width: $piano-key-white-width;
+    height: $piano-key-white-height;
+    background: white;
+    border: 2px solid transparent;
+    @apply border-neutral-800 rounded-b-xl;
+    &.piano-key--active {
+      @apply bg-emerald-500;
+      .piano-note {
+        @apply text-emerald-100;
+      }
+    }
+  }
+  &--sm {
+    $size-scale: 0.65;
+    &.piano-key--white {
+      @apply rounded-b-lg;
+      width: calc($piano-key-white-width * $size-scale);
+      height: calc($piano-key-white-height * $size-scale);
+    }
+    &.piano-key--black {
+      @apply rounded-b-md;
+      width: calc($piano-key-black-width * $size-scale);
+      height: calc($piano-key-black-height * $size-scale);
+      margin-left: -(calc($piano-key-black-width * $size-scale / 2));
+      margin-right: -(calc($piano-key-black-width * $size-scale / 2));
+    }
+    & > .piano-note {
+      font-size: 1.25rem;
+    }
+  }
+}
