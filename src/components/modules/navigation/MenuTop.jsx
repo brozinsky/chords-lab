@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const navItems = [
   { name: "Chords", url: "/chords" },
   { name: "Scales", url: "/scales" },
+  { name: "Circle", url: "/circle" },
 ];
 
 const Header = () => {

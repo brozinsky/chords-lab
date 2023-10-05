@@ -7,6 +7,7 @@ import ChordsPage from "@/routes/ChordsPage";
 import ScalesPage from "@/routes/ScalesPage";
 import ErrorPage from "@/routes/ErrorPage";
 import "@/styles//main.scss";
+import CirclePage from "./routes/CirclePage";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "scales",
     element: <ScalesPage />,
+  },
+  {
+    path: "circle",
+    element: <CirclePage />,
   },
 ]);
 
