@@ -7,7 +7,7 @@ import ListingScale from "./ListingScale";
 const LibraryScale = () => {
   return (
     <div className="container">
-      <div className="library-panel library-panel--scale">
+      <div className="flex flex-col gap-4">
         <ListingScale />
       </div>
     </div>

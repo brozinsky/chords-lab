@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { chords } from "@/utils/chords";
 import useFilterStore from "@/stores/useFilterStore";
 import usePaginationStore from "@/stores/usePaginationStore ";
-import Pagination from "../navigation/Pagination";
+// import Pagination from "../navigation/Pagination";
 import { createScale, notes } from "@/utils/notesData";
 import useCombinedFilters from "@/hooks/useCombinedFilters";
 import useChordCombinations from "@/hooks/useChordCombinations";
@@ -14,6 +14,11 @@ import clsx from "clsx";
 import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
 import shortid from "shortid";
 import PianoTile from "@/components/ui/PianoTile";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/grid";
+import "swiper/css/navigation";
+import { Grid, Navigation } from "swiper/modules";
 
 const Listing = () => {
   const [animationParent] = useAutoAnimate({ duration: 50 });
@@ -65,17 +70,41 @@ const Listing = () => {
       </div> */}
       <div className="flex flex-row gap-2 mb-4">
         {notes.map((note, index) => (
-          <LibraryNoteButton key={shortid.generate()} note={note} activeNote={root} onClick={() => setRoot(note)}/>
+          <LibraryNoteButton
+            key={shortid.generate()}
+            note={note}
+            activeNote={root}
+            onClick={() => setRoot(note)}
+          />
         ))}
       </div>
-      <div ref={animationParent} className="chord-list">
+      <Swiper
+        slidesPerView={6}
+        grid={{
+          rows: 2,
+        }}
+        spaceBetween={30}
+        navigation={true}
+        modules={[Grid, Navigation]}
+        className="swiper-chord"
+      >
         {chords
           // .filter((item) => item.intervals.length <= 4)
           // .map((get) => get)
           .map((chord, index) => (
-            <PianoTile key={chord.name} variant="chord" note={root} name={chord.abbreviations[0]} type={quality} setType={setQuality} />
+            <SwiperSlide>
+              <PianoTile
+                key={chord.name}
+                variant="chord"
+                note={root}
+                name={chord.abbreviations[0]}
+                type={quality}
+                setType={setQuality}
+              />
+            </SwiperSlide>
           ))}
-      </div>
+      </Swiper>
+
       {/* {totalPages !== 1 ? <Pagination /> : null} */}
     </>
   );

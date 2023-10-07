@@ -10,6 +10,11 @@ import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
 import shortid from "shortid";
 import PianoScaleSVG from "@/components/elements/svg/PianoScaleSVG";
 import PianoTile from "@/components/ui/PianoTile";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/grid";
+import "swiper/css/navigation";
+import { Grid, Navigation } from "swiper/modules";
 
 const ListingScale = () => {
   const itemsPerPage = 24;
@@ -38,20 +43,36 @@ const ListingScale = () => {
       <div className="flex flex-row gap-2 mb-4">
         {notes.map((note, index) => (
           <LibraryNoteButton
-          key={shortid.generate()}
-          note={note}
-          activeNote={tonic}
-          onClick={() => setTonic(note)}
+            key={shortid.generate()}
+            note={note}
+            activeNote={tonic}
+            onClick={() => setTonic(note)}
           />
-          ))}
+        ))}
       </div>
-      <div ref={animationParent} className="chord-list">
-        {ScaleType.all().map((scale, index) => {
-          return (
-            <PianoTile key={scale.name} note={tonic} intervals={scale.intervals} name={scale.name} type={type} setType={setType} />
-          );
-        })}
-      </div>
+      <Swiper
+        slidesPerView={6}
+        grid={{
+          rows: 2,
+        }}
+        spaceBetween={30}
+        navigation={true}
+        modules={[Grid, Navigation]}
+        className="swiper-scale"
+      >
+        {ScaleType.all().map((scale, index) => (
+          <SwiperSlide>
+            <PianoTile
+              key={scale.name}
+              note={tonic}
+              intervals={scale.intervals}
+              name={scale.name}
+              type={type}
+              setType={setType}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   );
 };
