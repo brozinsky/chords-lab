@@ -1706,6 +1706,11 @@
   dependencies:
     history "*"
 
+"@types/howler@^2.2.9":
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/@types/howler/-/howler-2.2.9.tgz#cc2ceaa27663cf263bb15e557ba92bfbb49128eb"
+  integrity sha512-kNi8mBM+IAmMzo1xhFlR8pKUWqCz9kEtiT1Xp5hZW0ynQl2wUg0EAm+brsHvhahMzxlADt0Xhu0jV/NHmk/Ibg==
+
 "@types/node@^20.6.0":
   version "20.6.0"
   resolved "https://registry.npmjs.org/@types/node/-/node-20.6.0.tgz"

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { chords } from "@/utils/chords";
 import useFilterStore from "@/stores/useFilterStore";
 import usePaginationStore from "@/stores/usePaginationStore ";
@@ -19,9 +19,12 @@ import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
 import { Grid, Navigation } from "swiper/modules";
+import usePlayPiano from "@/hooks/usePlayPiano";
 
 const Listing = () => {
   const [animationParent] = useAutoAnimate({ duration: 50 });
+
+  const { playPianoNotes } = usePlayPiano();
 
   const chordCombinations = useChordCombinations(notes, chords);
 
@@ -34,6 +37,15 @@ const Listing = () => {
     setSelectedChord,
   } = useSelectedChord();
 
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    playPianoNotes(selectedChord.notes);
+  }, [selectedChord]);
+
   const handleChordSelect = (chordRoot, chordQuality) => {
     const newChord = Chord.get([chordRoot, chordQuality]);
     setSelectedChord(newChord);
@@ -44,21 +56,6 @@ const Listing = () => {
       setSelectedChord(Chord.get([root + "2", quality]));
     }
   }, [root, quality]);
-
-  const colStartClasses = {
-    1: "col-start-1",
-    2: "col-start-2",
-    3: "col-start-3",
-    4: "col-start-4",
-    5: "col-start-5",
-    6: "col-start-6",
-    7: "col-start-7",
-    8: "col-start-8",
-    9: "col-start-9",
-    10: "col-start-10",
-    11: "col-start-11",
-    12: "col-start-12",
-  };
 
   return (
     <>
