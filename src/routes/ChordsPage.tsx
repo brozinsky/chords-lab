@@ -15,7 +15,7 @@ export default function ChordsPage() {
           </div>
         </div>
         <section className="py-20">
-          <Library />
+          <Library variant="chords" />
         </section>
         <Settings />
       </main>

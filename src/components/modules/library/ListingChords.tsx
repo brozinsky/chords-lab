@@ -1,16 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { chords } from "@/utils/chords";
-import useFilterStore from "@/stores/useFilterStore";
-import usePaginationStore from "@/stores/usePaginationStore ";
-// import Pagination from "../navigation/Pagination";
-import { createScale, notes } from "@/utils/notesData";
-import useCombinedFilters from "@/hooks/useCombinedFilters";
-import useChordCombinations from "@/hooks/useChordCombinations";
-import useFilteredListsStore from "@/stores/useFilteredListsStore";
+import { notes } from "@/utils/notesData";
 import useSelectedChord from "@/stores/useSelectedChord";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { Chord, ChordType, Note } from "tonal";
-import clsx from "clsx";
+import { Chord } from "tonal";
 import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
 import shortid from "shortid";
 import PianoTile from "@/components/ui/PianoTile";
@@ -18,15 +10,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
+// @ts-ignore
 import { Grid, Navigation } from "swiper/modules";
 import usePlayPiano from "@/hooks/usePlayPiano";
 
 const Listing = () => {
-  const [animationParent] = useAutoAnimate({ duration: 50 });
-
   const { playPianoNotes } = usePlayPiano();
-
-  const chordCombinations = useChordCombinations(notes, chords);
 
   const {
     root,
@@ -43,13 +32,9 @@ const Listing = () => {
       isFirstRender.current = false;
       return;
     }
-    playPianoNotes(selectedChord.notes);
+    playPianoNotes(selectedChord?.notes as string[]);
   }, [selectedChord]);
 
-  const handleChordSelect = (chordRoot, chordQuality) => {
-    const newChord = Chord.get([chordRoot, chordQuality]);
-    setSelectedChord(newChord);
-  };
 
   useEffect(() => {
     if (root !== "" && quality !== "") {
@@ -101,8 +86,6 @@ const Listing = () => {
             </SwiperSlide>
           ))}
       </Swiper>
-
-      {/* {totalPages !== 1 ? <Pagination /> : null} */}
     </>
   );
 };

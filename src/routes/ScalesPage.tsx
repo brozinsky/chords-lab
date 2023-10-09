@@ -1,7 +1,7 @@
 import Settings from "@/components/modules/settings/Settings";
-import LibraryScale from "@/components/modules/library/LibraryScale";
 import ScaleDetails from "@/components/modules/scale-details/ScaleDetails";
 import MenuTop from "@/components/modules/navigation/MenuTop";
+import Library from "@/components/modules/library/Library";
 
 export default function ScalesPage() {
   return (
@@ -14,7 +14,7 @@ export default function ScalesPage() {
         </div>
       </div>
       <section className="py-20">
-        <LibraryScale />
+        <Library variant="scales" />
       </section>
       <Settings />
     </main>
