@@ -1,3 +1,4 @@
+import { Scale } from "tonal";
 import { create } from "zustand";
 
 interface ScaleProps {
@@ -9,7 +10,7 @@ interface ScaleProps {
   intervals: string[];
   aliases: string[];
   type: string;
-  tonic: string;
+  tonic: string | null;
   notes: string[];
 }
 
@@ -30,5 +31,21 @@ const useSelectedScale = create<SelectedScaleState>((set) => ({
   selectedScale: undefined,
   setSelectedScale: (value) => set(() => ({ selectedScale: value })),
 }));
+
+// update selectedScale on tonic and type changes
+useSelectedScale.subscribe((state, prevState) => {
+  const { tonic, type } = state;
+  const { tonic: prevTonic, type: prevType } = prevState;
+
+
+  if (tonic !== prevTonic || type !== prevType) {
+    const scaleData = Scale.get(`${tonic}2 ${type}`);
+    const newScale: ScaleProps = {
+      ...scaleData,
+    };
+
+    state.setSelectedScale(newScale);
+  }
+});
 
 export default useSelectedScale;

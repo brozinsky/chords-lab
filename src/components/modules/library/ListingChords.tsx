@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { chords } from "@/utils/chords";
 import { notes } from "@/utils/notesData";
 import useSelectedChord from "@/stores/useSelectedChord";
-import { Chord } from "tonal";
 import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
 import shortid from "shortid";
 import PianoTile from "@/components/ui/PianoTile";
@@ -23,7 +22,6 @@ const Listing = () => {
     quality,
     setQuality,
     selectedChord,
-    setSelectedChord,
   } = useSelectedChord();
 
   const isFirstRender = useRef(true);
@@ -34,13 +32,6 @@ const Listing = () => {
     }
     playPianoNotes(selectedChord?.notes as string[]);
   }, [selectedChord]);
-
-
-  useEffect(() => {
-    if (root !== "" && quality !== "") {
-      setSelectedChord(Chord.get([root + "2", quality]));
-    }
-  }, [root, quality]);
 
   return (
     <>

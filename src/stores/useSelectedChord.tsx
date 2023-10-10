@@ -65,4 +65,19 @@ const useSelectedChord = create<SelectedChordState>((set) => ({
   setSelectedChord: (value) => set(() => ({ selectedChord: value })),
 }));
 
+// update selectedChord on root and quality changes
+useSelectedChord.subscribe((state, prevState) => {
+  const { root, quality } = state;
+  const { root: prevRoot, quality: prevQuality } = prevState;
+
+  if (root !== prevRoot || quality !== prevQuality) {
+    const chordData = Chord.get([root + "2", quality]);
+    const newChord: ChordProps = {
+      ...chordData,
+    };
+
+    state.setSelectedChord(newChord);
+  }
+});
+
 export default useSelectedChord;

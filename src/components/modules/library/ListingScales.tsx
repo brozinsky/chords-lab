@@ -1,6 +1,5 @@
 import useSelectedScale from "@/stores/useSelectedScale";
-import { ScaleType, Scale } from "tonal";
-import { useEffect } from "react";
+import { ScaleType } from "tonal";
 import { notes } from "@/utils/notesData";
 import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
 import shortid from "shortid";
@@ -13,14 +12,8 @@ import "swiper/css/navigation";
 import { Grid, Navigation } from "swiper/modules";
 
 const ListingScales = () => {
-  const { tonic, setTonic, type, setType, setSelectedScale } =
+  const { tonic, setTonic, type, setType } =
     useSelectedScale();
-
-  useEffect(() => {
-    if (tonic !== "" && type !== "") {
-      setSelectedScale(Scale.get(`${tonic}2 ${type}`));
-    }
-  }, [tonic, type]);
 
   return (
     <>
