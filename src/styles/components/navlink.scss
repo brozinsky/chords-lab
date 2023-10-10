@@ -3,7 +3,7 @@
   @apply relative overflow-x-hidden py-2;
 
   &:after {
-    @apply bg-primary-500 w-full block absolute;
+    @apply bg-emerald-500 w-full block absolute;
     content: "";
     bottom: 0;
     left: 0;
@@ -12,7 +12,7 @@
     transform: translateX(-100%);
   }
   &--active {
-    @apply relative text-primary-500;
+    @apply relative text-emerald-500;
     &:after {
       transform: translateX(0);
       animation-name: translate-to-right;
