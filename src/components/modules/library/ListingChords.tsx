@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { chords } from "@/utils/chords";
 import { notes } from "@/utils/notesData";
-import useSelectedChord from "@/stores/useSelectedChord";
+import useSelectedChord from "@/stores/chords/useSelectedChord";
 import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
 import shortid from "shortid";
 import PianoTile from "@/components/ui/PianoTile";
@@ -12,9 +12,17 @@ import "swiper/css/navigation";
 // @ts-ignore
 import { Grid, Navigation } from "swiper/modules";
 import usePlayPiano from "@/hooks/usePlayPiano";
+import useRomanNumerals from "@/hooks/chords/useRomanNumerals";
+import useChordsListStore from "@/stores/chords/useChordsListStore";
+import useChordsTab from "@/hooks/chords/useChordsTabs";
 
 const Listing = () => {
   const { playPianoNotes } = usePlayPiano();
+  const {getRomanChords} = useRomanNumerals();
+  // const {chordsList} = useChordsListStore();
+
+  const { activeTab, chordsList, changeTab } = useChordsTab();
+
 
   const {
     root,
@@ -32,6 +40,13 @@ const Listing = () => {
     }
     playPianoNotes(selectedChord?.notes as string[]);
   }, [selectedChord]);
+
+
+  // console.log(getRomanChords("c", "major"));
+
+  useEffect(() => {
+    console.log(chordsList);
+  }, [chordsList]);
 
   return (
     <>
@@ -55,13 +70,14 @@ const Listing = () => {
         slidesPerView={6}
         grid={{
           rows: 2,
+          fill: "row",
         }}
         spaceBetween={30}
         navigation={true}
         modules={[Grid, Navigation]}
         className="swiper-chord"
       >
-        {chords
+        {chordsList
           // .filter((item) => item.intervals.length <= 4)
           // .map((get) => get)
           .map((chord, index) => (
@@ -69,7 +85,7 @@ const Listing = () => {
               <PianoTile
                 key={chord.name}
                 variant="chord"
-                note={root}
+                note={chord.root}
                 name={chord.abbreviations[0]}
                 type={quality}
                 setType={setQuality}

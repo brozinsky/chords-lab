@@ -1,4 +1,4 @@
-import useSelectedChord from "@/stores/useSelectedChord";
+import useSelectedChord from "@/stores/chords/useSelectedChord";
 import ChordInfo from "./_partials/ChordInfo";
 import PianoChord from "./_partials/PianoChord";
 import React from "react";

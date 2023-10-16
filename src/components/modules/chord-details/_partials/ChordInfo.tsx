@@ -1,5 +1,5 @@
 import useChordInScales from "@/hooks/useChordInScales";
-import useSelectedChord from "@/stores/useSelectedChord";
+import useSelectedChord from "@/stores/chords/useSelectedChord";
 import { intervalDegrees } from "@/utils/notes";
 
 const ChordInfo = () => {

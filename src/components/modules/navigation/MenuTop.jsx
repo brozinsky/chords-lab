@@ -16,7 +16,7 @@ const Header = () => {
         <nav className="container flex flex-wrap items-center justify-between">
           <Link to="/">
             <div className="flex items-center flex-shrink-0 mr-6 text-white cursor-pointer select-none">
-              <span className="text-xl font-semibold tracking-tight text-primary-500">
+              <span className="text-xl font-semibold tracking-tight text-emerald-500">
                 Logo
               </span>
             </div>
