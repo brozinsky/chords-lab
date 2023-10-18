@@ -27,9 +27,9 @@ export default function ChordsPage() {
               <TabsTrigger onClick={() => changeTab("roman")} value="roman">
                 Roman
               </TabsTrigger>
-              <TabsTrigger onClick={() => changeTab("notes")} value="notes">
+              {/* <TabsTrigger onClick={() => changeTab("notes")} value="notes">
                 Notes
-              </TabsTrigger>
+              </TabsTrigger> */}
             </TabsList>
             <TabsContent value="all">
               <Library variant="chords" tab="all" />
@@ -42,9 +42,6 @@ export default function ChordsPage() {
             </TabsContent>
           </Tabs>
         </div>
-        <section className="py-20">
-          <Library variant="chords" />
-        </section>
         <Settings />
       </main>
     </>

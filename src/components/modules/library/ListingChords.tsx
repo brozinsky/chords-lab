@@ -15,18 +15,21 @@ import usePlayPiano from "@/hooks/usePlayPiano";
 import useRomanNumerals from "@/hooks/chords/useRomanNumerals";
 import useChordsListStore from "@/stores/chords/useChordsListStore";
 import useChordsTab from "@/hooks/chords/useChordsTabs";
+import Filter from "./components/Filter";
+import useRomanFilterScale from "@/stores/chords/useRomanFilterScale";
 
 const Listing = () => {
   const { playPianoNotes } = usePlayPiano();
   const {getRomanChords} = useRomanNumerals();
-  // const {chordsList} = useChordsListStore();
 
-  const { activeTab, chordsList, changeTab } = useChordsTab();
+  const { chordsList, setChordsList } = useChordsTab();
+  const { tonic, type } = useRomanFilterScale();
 
+  useEffect(() => {
+    setChordsList(getRomanChords(tonic, type));
+  }, [tonic, type]);
 
   const {
-    root,
-    setRoot,
     quality,
     setQuality,
     selectedChord,
@@ -41,13 +44,6 @@ const Listing = () => {
     playPianoNotes(selectedChord?.notes as string[]);
   }, [selectedChord]);
 
-
-  // console.log(getRomanChords("c", "major"));
-
-  useEffect(() => {
-    console.log(chordsList);
-  }, [chordsList]);
-
   return (
     <>
       {/* TODO - use similar view on mobile */}
@@ -56,16 +52,7 @@ const Listing = () => {
           return <div className={`flex items-center justify-center cursor-pointer p-2 bg-neutral-600 border border-neutral-500 h-[40px] w-[40px] rounded-xl mx-auto ${colStartClasses[index + 1]} ${item.includes("#") ? "row-start-1" : "row-start-2"}`} key={item}>{item}</div>;
         })}
       </div> */}
-      <div className="flex flex-row gap-2 mb-4">
-        {notes.map((note, index) => (
-          <LibraryNoteButton
-            key={shortid.generate()}
-            note={note}
-            activeNote={root}
-            onClick={() => setRoot(note)}
-          />
-        ))}
-      </div>
+      <Filter />
       <Swiper
         slidesPerView={6}
         grid={{
