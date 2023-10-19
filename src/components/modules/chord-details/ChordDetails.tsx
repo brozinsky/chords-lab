@@ -1,12 +1,13 @@
 import useSelectedChord from "@/stores/chords/useSelectedChord";
-import ChordInfo from "./_partials/ChordInfo";
 import PianoChord from "./_partials/PianoChord";
 import React from "react";
 import { processIntervals } from "@/utils/processIntervals";
 import shortid from "shortid";
+import useFilterStore from "@/stores/chords/useFilterStore";
 
 const ChordDetails = () => {
-  const { selectedChord, root } = useSelectedChord();
+  const { selectedChord } = useSelectedChord();
+  const { allChordsRoot } = useFilterStore();
 
   if (selectedChord === undefined) return;
 
@@ -15,7 +16,7 @@ const ChordDetails = () => {
       <h1 className="text-5xl mb-6 text-center">
         {selectedChord.name && selectedChord.name.length > 3
           ? selectedChord.name
-          : root + " " + (selectedChord.aliases && selectedChord.aliases[0])}
+          : allChordsRoot + " " + (selectedChord.aliases && selectedChord.aliases[0])}
       </h1>
       <PianoChord />
       <section className="mt-6 space-y-2">

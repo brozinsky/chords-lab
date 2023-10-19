@@ -1,10 +1,14 @@
-export interface ChordType {
+import { notes } from "@/utils/notesData";
+
+export type NotesTypes = (typeof notes)[number];
+
+export type ChordType = {
   name: string;
   notes: number[];
   abbreviations: string[];
 }
 
-export interface ChordDetails {
+export type ChordDetails = {
   abbreviations: string[];
   chordName: string;
   intervalNotes: string[];
@@ -12,14 +16,14 @@ export interface ChordDetails {
   note: string;
 }
 
-export interface ScalesCombinations {
+export type ScalesCombinations = {
   note: string;
   name: string;
   intervals: number[];
   intervalNotes: string[];
 }
 
-export interface ChordCombination {
+export type ChordCombination = {
   note: string;
   chordName: string;
   abbreviations: string[];
@@ -27,7 +31,7 @@ export interface ChordCombination {
   intervalNotes: string[];
 }
 
-export interface ScaleDetails {
+export type ScaleDetails = {
   empty: boolean;
   name: string;
   setNum: number;

@@ -2,23 +2,30 @@ import useChordsListStore from "@/stores/chords/useChordsListStore";
 import { chords } from "@/utils/chords";
 import { useNavigate } from "react-router-dom";
 import useRomanNumerals from "./useRomanNumerals";
-
-const chordsWithRoot = chords.map((chord) => ({
-  ...chord,
-  root: "c",
-}));
+import { useEffect, useState } from "react";
+import useFilterStore from "@/stores/chords/useFilterStore";
 
 type ChordsTabs = "all" | "roman" | "notes";
 
 const useChordsTab = () => {
-  const activeTab = useChordsListStore((state) => state.chordTab);
-  const chordsList = useChordsListStore((state) => state.chordsList);
-  const setActiveTab = useChordsListStore((state) => state.setChordTab);
-  const setChordsList = useChordsListStore((state) => state.setChordsList);
+  const {
+    chordTab: activeTab,
+    chordsList,
+    setChordTab: setActiveTab,
+    setChordsList,
+  } = useChordsListStore((state) => state);
   const navigate = useNavigate();
   const { getRomanChords } = useRomanNumerals();
 
-  const chordsRoman = getRomanChords("c", "major");
+  const { allChordsRoot, romanScaleTonic, romanScaleType } = useFilterStore();
+
+  const [romanChords, setRomanChords] = useState(
+    getRomanChords(romanScaleTonic, romanScaleType)
+  );
+
+  useEffect(() => {
+    setRomanChords(getRomanChords(romanScaleTonic, romanScaleType));
+  }, [romanScaleTonic, romanScaleType]);
 
   const changeTab = (tabName: ChordsTabs) => {
     setActiveTab(tabName);
@@ -26,13 +33,21 @@ const useChordsTab = () => {
     // set the chordsList based on the selected tab
     switch (tabName) {
       case "all":
+        const chordsWithRoot = chords.map((chord) => ({
+          ...chord,
+          root: allChordsRoot,
+        }));
         setChordsList(chordsWithRoot);
         break;
       case "roman":
-        setChordsList(chordsRoman);
+        setChordsList(romanChords);
         break;
       case "notes":
-        setChordsList(chordsWithRoot);
+        const chordsList = chords.map((chord) => ({
+          ...chord,
+          root: allChordsRoot,
+        }));
+        setChordsList(chordsList);
         break;
       default:
         break;
@@ -41,7 +56,7 @@ const useChordsTab = () => {
     navigate(`/chords/${tabName}`);
   };
 
-  return { activeTab, chordsList, changeTab };
+  return { activeTab, chordsList, changeTab, setChordsList };
 };
 
 export default useChordsTab;

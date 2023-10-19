@@ -1,9 +1,5 @@
 import { useEffect, useRef } from "react";
-import { chords } from "@/utils/chords";
-import { notes } from "@/utils/notesData";
 import useSelectedChord from "@/stores/chords/useSelectedChord";
-import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
-import shortid from "shortid";
 import PianoTile from "@/components/ui/PianoTile";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -13,26 +9,34 @@ import "swiper/css/navigation";
 import { Grid, Navigation } from "swiper/modules";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import useRomanNumerals from "@/hooks/chords/useRomanNumerals";
-import useChordsListStore from "@/stores/chords/useChordsListStore";
 import useChordsTab from "@/hooks/chords/useChordsTabs";
 import Filter from "./components/Filter";
-import useRomanFilterScale from "@/stores/chords/useRomanFilterScale";
+import { Chord } from "tonal";
+import useFilterStore from "@/stores/chords/useFilterStore";
+import { chords } from "@/utils/chords";
 
 const Listing = () => {
   const { playPianoNotes } = usePlayPiano();
   const {getRomanChords} = useRomanNumerals();
 
   const { chordsList, setChordsList } = useChordsTab();
-  const { tonic, type } = useRomanFilterScale();
+  const { allChordsRoot, romanScaleTonic, romanScaleType } = useFilterStore();
 
   useEffect(() => {
-    setChordsList(getRomanChords(tonic, type));
-  }, [tonic, type]);
+    setChordsList(getRomanChords(romanScaleTonic, romanScaleType));
+  }, [romanScaleTonic, romanScaleType]);
+
+  useEffect(() => {
+    const chordsWithRoot = chords.map((chord) => ({
+      ...chord,
+      root: allChordsRoot,
+    }));
+    setChordsList(chordsWithRoot);
+  }, [allChordsRoot]);
 
   const {
-    quality,
-    setQuality,
     selectedChord,
+    setSelectedChord
   } = useSelectedChord();
 
   const isFirstRender = useRef(true);
@@ -43,6 +47,12 @@ const Listing = () => {
     }
     playPianoNotes(selectedChord?.notes as string[]);
   }, [selectedChord]);
+
+  const handleTileClick = (root: string, quality: string) => {
+    const chordData = Chord.get([root + "2", quality]);
+    setSelectedChord(chordData);
+    console.log("chordData", chordData);
+  }
 
   return (
     <>
@@ -74,8 +84,8 @@ const Listing = () => {
                 variant="chord"
                 note={chord.root}
                 name={chord.abbreviations[0]}
-                type={quality}
-                setType={setQuality}
+                selected={selectedChord}
+                onClick={handleTileClick}
               />
             </SwiperSlide>
           ))}

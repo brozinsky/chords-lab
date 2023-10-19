@@ -6,8 +6,8 @@ import { Chord, Note, Scale } from "tonal";
 type PianoTileProps = {
   note: string;
   name: string;
-  type: string;
-  setType: any;
+  selected: any;
+  onClick: any;
   intervals?: string[];
   variant?: "scale" | "chord";
 };
@@ -16,23 +16,26 @@ const PianoTile = ({
   variant = "scale",
   note,
   name,
-  type,
-  setType,
+  selected,
+  onClick,
   intervals,
 }: PianoTileProps) => {
   const notes =
     variant === "scale"
-      ? Scale.get(`${note}1 ${name}`).notes.map(note => note.includes("b") ? Note.enharmonic(note) : Note.simplify(note))
+      ? Scale.get(`${note}1 ${name}`).notes.map((note) =>
+          note.includes("b") ? Note.enharmonic(note) : Note.simplify(note)
+        )
       : Chord.get([note + "1", name]).notes.map((note) =>
           note.includes("b") ? Note.enharmonic(note) : Note.simplify(note)
         );
 
+  const chordName = Chord.get([note + "2", name]).name;
 
   return (
     <div
-      onClick={() => setType(name)}
+      onClick={() => onClick(note, name)}
       className={clsx("chord-list-item", {
-        "chord-list-item--active": type === name,
+        "chord-list-item--active": selected.name === chordName,
       })}
     >
       <div className="flex flex-col">

@@ -3,7 +3,7 @@ import useSelectedChord from "@/stores/chords/useSelectedChord";
 import { intervalDegrees } from "@/utils/notes";
 
 const ChordInfo = () => {
-  const { selectedChord, root } = useSelectedChord();
+  const { selectedChord } = useSelectedChord();
   // const relatedScales = useChordInScales(selectedChord?.intervalNotes);
 
   if (selectedChord === undefined) return;
