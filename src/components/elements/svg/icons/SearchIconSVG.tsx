@@ -15,14 +15,14 @@ export default function SearchIconSVG({ className, width = "24" }: SVGProps) {
     >
       <path
         d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-        stroke="#C3C3C3"
+        className="stroke-foreground"
         stroke-width="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M22 22L20 20"
-        stroke="#C3C3C3"
+        className="stroke-foreground"
         stroke-width="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
