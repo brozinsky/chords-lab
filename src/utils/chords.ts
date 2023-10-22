@@ -112,3 +112,24 @@ export const createChord = (
     return undefined;
   }
 };
+
+export function getAllChords() {
+  const allChordVariations: any = [];
+  const chordTypes = chords;
+
+  chordTypes.forEach((chordType) => {
+    notes.forEach((rootNote) => {
+      const notesRootFirst = arrangeNotesByRoot(rootNote)
+      const notesArr = chordType.notes.map(noteValue => notesRootFirst[noteValue - 1]);
+      allChordVariations.push({
+        name: chordType.name,
+        notes: chordType.notes,
+        root: rootNote,
+        notesArr: notesArr,
+        abbreviations: chordType.abbreviations,
+      });
+    });
+  });
+
+  return allChordVariations;
+}

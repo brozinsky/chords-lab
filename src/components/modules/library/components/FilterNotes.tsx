@@ -16,7 +16,7 @@ export default function FilterNotes({ onClick, activeNote }: Props) {
         <FilterButton
           key={shortid.generate()}
           item={note}
-          active={activeNote}
+          active={activeNote === note}
           onClick={() => onClick(note)}
           variant="note"
         />

@@ -1,5 +1,5 @@
 import useChordsListStore from "@/stores/chords/useChordsListStore";
-import { chords } from "@/utils/chords";
+import { chords, getAllChords } from "@/utils/chords";
 import { useNavigate } from "react-router-dom";
 import useRomanNumerals from "./useRomanNumerals";
 import { useEffect, useState } from "react";
@@ -17,7 +17,7 @@ const useChordsTab = () => {
   const navigate = useNavigate();
   const { getRomanChords } = useRomanNumerals();
 
-  const { allChordsRoot, romanScaleTonic, romanScaleType } = useFilterStore();
+  const { allChordsRoot, romanScaleTonic, romanScaleType, notesChordsNotes } = useFilterStore();
 
   const [romanChords, setRomanChords] = useState(
     getRomanChords(romanScaleTonic, romanScaleType)
@@ -37,17 +37,15 @@ const useChordsTab = () => {
           ...chord,
           root: allChordsRoot,
         }));
+        console.log('chordsWithRoot', chordsWithRoot);
         setChordsList(chordsWithRoot);
         break;
       case "roman":
         setChordsList(romanChords);
         break;
       case "notes":
-        const chordsList = chords.map((chord) => ({
-          ...chord,
-          root: allChordsRoot,
-        }));
-        setChordsList(chordsList);
+        const notesList = getAllChords();
+        setChordsList(notesList);
         break;
       default:
         break;

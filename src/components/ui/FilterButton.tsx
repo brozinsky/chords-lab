@@ -4,7 +4,7 @@ import { MouseEventHandler } from "react";
 type FilterButtonProps = {
   onClick: MouseEventHandler<HTMLDivElement>;
   item: string;
-  active: string;
+  active: boolean
   variant: string;
 };
 
@@ -18,7 +18,7 @@ const FilterButton = ({
     <div
       onClick={onClick}
       className={clsx("chord-list-item", {
-        "chord-list-item--active": active === item,
+        "chord-list-item--active": active,
         "chord-list-item--note": variant === 'note',
         "chord-list-item--type": variant === 'type',
       })}

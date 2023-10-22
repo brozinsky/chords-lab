@@ -14,17 +14,31 @@ import Filter from "./components/Filter";
 import { Chord } from "tonal";
 import useFilterStore from "@/stores/chords/useFilterStore";
 import { chords } from "@/utils/chords";
+import useChordsListStore from "@/stores/chords/useChordsListStore";
+import SearchIconSVG from "@/components/elements/svg/icons/SearchIconSVG";
 
 const Listing = () => {
   const { playPianoNotes } = usePlayPiano();
-  const {getRomanChords} = useRomanNumerals();
+  const { getRomanChords } = useRomanNumerals();
 
   const { chordsList, setChordsList } = useChordsTab();
-  const { allChordsRoot, romanScaleTonic, romanScaleType } = useFilterStore();
+  const { allChordsList } = useChordsListStore();
+  const { notesChordsNotes, allChordsRoot, romanScaleTonic, romanScaleType } =
+    useFilterStore();
 
   useEffect(() => {
     setChordsList(getRomanChords(romanScaleTonic, romanScaleType));
   }, [romanScaleTonic, romanScaleType]);
+
+  useEffect(() => {
+    const filteredChords = allChordsList.filter((chord: any) => {
+      return notesChordsNotes.every((note) => {
+        const included = chord.notesArr.includes(note);
+        return included;
+      });
+    });
+    setChordsList(filteredChords);
+  }, [notesChordsNotes]);
 
   useEffect(() => {
     const chordsWithRoot = chords.map((chord) => ({
@@ -34,10 +48,7 @@ const Listing = () => {
     setChordsList(chordsWithRoot);
   }, [allChordsRoot]);
 
-  const {
-    selectedChord,
-    setSelectedChord
-  } = useSelectedChord();
+  const { selectedChord, setSelectedChord } = useSelectedChord();
 
   const isFirstRender = useRef(true);
   useEffect(() => {
@@ -52,7 +63,7 @@ const Listing = () => {
     const chordData = Chord.get([root + "2", quality]);
     setSelectedChord(chordData);
     console.log("chordData", chordData);
-  }
+  };
 
   return (
     <>
@@ -63,33 +74,42 @@ const Listing = () => {
         })}
       </div> */}
       <Filter />
-      <Swiper
-        slidesPerView={6}
-        grid={{
-          rows: 2,
-          fill: "row",
-        }}
-        spaceBetween={30}
-        navigation={true}
-        modules={[Grid, Navigation]}
-        className="swiper-chord"
-      >
-        {chordsList
-          // .filter((item) => item.intervals.length <= 4)
-          // .map((get) => get)
-          .map((chord, index) => (
-            <SwiperSlide>
-              <PianoTile
-                key={chord.name}
-                variant="chord"
-                note={chord.root}
-                name={chord.abbreviations[0]}
-                selected={selectedChord}
-                onClick={handleTileClick}
-              />
-            </SwiperSlide>
-          ))}
-      </Swiper>
+      {chordsList.length > 0 && (
+        <Swiper
+          slidesPerView={6}
+          grid={{
+            rows: 2,
+            fill: "row",
+          }}
+          spaceBetween={30}
+          navigation={true}
+          modules={[Grid, Navigation]}
+          className="swiper-chord"
+        >
+          {chordsList
+            // .filter((item) => item.intervals.length <= 4)
+            // .map((get) => get)
+            .map((chord, index) => (
+              <SwiperSlide>
+                <PianoTile
+                  key={chord.name}
+                  variant="chord"
+                  note={chord.root}
+                  name={chord.abbreviations[0]}
+                  selected={selectedChord}
+                  onClick={handleTileClick}
+                />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      )}
+      {chordsList.length <= 0 && (
+        <div className="p-8 mx-auto flex flex-col items-center">
+          <SearchIconSVG className={"mb-3"} width={"50"}/>
+          <div className="font-bold text-foreground">No chords found matching the current filter</div>
+          <div className="text-muted">You may want to try using different notes combination</div>
+        </div>
+      )}
     </>
   );
 };

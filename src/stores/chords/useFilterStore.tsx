@@ -9,6 +9,9 @@ interface FilterStoreState {
   setRomanScaleTonic: (value: string) => void;
   romanScaleType: "major" | "minor";
   setRomanScaleType: (value: "major" | "minor") => void;
+
+  notesChordsNotes: NotesTypes[];
+  setNotesChordsNotes: (value: NotesTypes[]) => void;
 }
 
 const useFilterStore = create<FilterStoreState>((set) => ({
@@ -19,6 +22,9 @@ const useFilterStore = create<FilterStoreState>((set) => ({
   setRomanScaleTonic: (value) => set(() => ({ romanScaleTonic: value })),
   romanScaleType: "major",
   setRomanScaleType: (value) => set(() => ({ romanScaleType: value })),
+
+  notesChordsNotes: ["C"],
+  setNotesChordsNotes: (value) => set(() => ({ notesChordsNotes: value })),
 }));
 
 export default useFilterStore;

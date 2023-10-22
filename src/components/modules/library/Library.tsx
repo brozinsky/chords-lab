@@ -3,10 +3,9 @@ import ListingScales from "./ListingScales";
 
 interface Props {
   variant: "chords" | "scales";
-  tabs: "all" | "roman" | "notes";
 }
 
-const Library = ({ variant = "chords", tabs = "all" }: Props) => {
+const Library = ({ variant = "chords" }: Props) => {
   return (
     <div className="container">
       {/* <div className="library-panel library-panel--chord"> */}

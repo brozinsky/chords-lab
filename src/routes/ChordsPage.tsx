@@ -27,18 +27,18 @@ export default function ChordsPage() {
               <TabsTrigger onClick={() => changeTab("roman")} value="roman">
                 Roman
               </TabsTrigger>
-              {/* <TabsTrigger onClick={() => changeTab("notes")} value="notes">
+              <TabsTrigger onClick={() => changeTab("notes")} value="notes">
                 Notes
-              </TabsTrigger> */}
+              </TabsTrigger>
             </TabsList>
             <TabsContent value="all">
-              <Library variant="chords" tab="all" />
+              <Library variant="chords" />
             </TabsContent>
             <TabsContent value="roman">
-              <Library variant="chords" tab="roman" />
+              <Library variant="chords" />
             </TabsContent>
             <TabsContent value="notes">
-              <Library variant="chords" tab="notes" />
+              <Library variant="chords" />
             </TabsContent>
           </Tabs>
         </div>

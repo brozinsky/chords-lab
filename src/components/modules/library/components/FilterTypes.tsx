@@ -20,7 +20,7 @@ export default function FilterTypes({ onClick, activeType }: Props) {
         <FilterButton
           key={shortid.generate()}
           item={type}
-          active={activeType}
+          active={type === activeType}
           onClick={() => onClick(type)}
           variant="type"
         />
