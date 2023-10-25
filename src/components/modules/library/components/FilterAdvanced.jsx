@@ -20,7 +20,8 @@ const keybind = [
   { name: "b2", keybind: "j" },
 ];
 
-const Filter = () => {
+// TODO - handle advanced filtering in the future
+const FilterAdvanced = () => {
   const {
     isRoot,
     setIsRoot,
@@ -209,4 +210,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export default FilterAdvanced;

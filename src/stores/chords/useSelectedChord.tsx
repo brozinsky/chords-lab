@@ -27,10 +27,6 @@ interface ChordProps {
 }
 
 interface SelectedChordState {
-  root: string;
-  setRoot: (value: string) => void;
-  quality: string;
-  setQuality: (value: string) => void;
   selectedChord: ChordProps | undefined;
   setSelectedChord: (value: ChordProps | undefined) => void;
 }
@@ -57,27 +53,8 @@ const initialChord: ChordProps = {
 };
 
 const useSelectedChord = create<SelectedChordState>((set) => ({
-  root: initialRoot,
-  setRoot: (value) => set(() => ({ root: value })),
-  quality: initialQuality,
-  setQuality: (value) => set(() => ({ quality: value })),
   selectedChord: initialChord,
   setSelectedChord: (value) => set(() => ({ selectedChord: value })),
 }));
-
-// update selectedChord on root and quality changes
-useSelectedChord.subscribe((state, prevState) => {
-  const { root, quality } = state;
-  const { root: prevRoot, quality: prevQuality } = prevState;
-
-  if (root !== prevRoot || quality !== prevQuality) {
-    const chordData = Chord.get([root + "2", quality]);
-    const newChord: ChordProps = {
-      ...chordData,
-    };
-
-    state.setSelectedChord(newChord);
-  }
-});
 
 export default useSelectedChord;

@@ -18,6 +18,11 @@ const router = createBrowserRouter([
   {
     path: "chords",
     element: <ChordsPage />,
+    children: [
+      { path: "all" },
+      { path: "roman" },
+      { path: "notes" },
+    ],
   },
   {
     path: "scales",

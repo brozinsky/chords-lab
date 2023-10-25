@@ -1,5 +1,5 @@
 import { pianoNotes } from "@/utils/notes";
-import useSelectedChord from "@/stores/useSelectedChord";
+import useSelectedChord from "@/stores/chords/useSelectedChord";
 import { convertFlatsToSharps } from "@/utils/flatToSharps";
 import PianoKey from "@/components/elements/piano/PianoKey";
 import { Note } from "tonal";
