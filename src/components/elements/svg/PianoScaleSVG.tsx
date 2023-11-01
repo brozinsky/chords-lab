@@ -63,6 +63,7 @@ const PianoScaleSVG: React.FC<PianoScaleProps> = ({ scale, className }) => {
     >
       {WHITE_KEY_COORDS.map(({ note, x }) => (
         <rect
+          key={note + x}
           x={x}
           width={whiteKeyWidth}
           height={whiteKeyHeight}
@@ -73,6 +74,7 @@ const PianoScaleSVG: React.FC<PianoScaleProps> = ({ scale, className }) => {
       ))}
       {BLACK_KEY_COORDS.map(({ note, x }) => (
         <rect
+          key={note + x}
           x={x}
           width={blackKeyWidth}
           height={blackKeyHeight}

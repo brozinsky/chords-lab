@@ -109,9 +109,8 @@ const ListingChords = () => {
             // .filter((item) => item.intervals.length <= 4)
             // .map((get) => get)
             .map((chord, index) => (
-              <SwiperSlide>
+              <SwiperSlide key={chord.name}>
                 <PianoTile
-                  key={chord.name}
                   variant="chord"
                   note={chord.root}
                   name={chord.abbreviations[0]}

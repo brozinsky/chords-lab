@@ -84,7 +84,7 @@ const PianoTile = ({
         <motion.div variants={notesMotion} className="absolute bottom-2 left-2 flex gap-1 items-center">
           {notes.map((note, index) => {
             return (
-              <span className="text-xs">
+              <span key={note} className="text-xs">
                 {note.slice(0, -1)}
                 {index !== notes.length - 1 && " -"}
               </span>
