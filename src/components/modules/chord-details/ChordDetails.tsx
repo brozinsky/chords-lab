@@ -4,22 +4,33 @@ import React from "react";
 import { processIntervals } from "@/utils/processIntervals";
 import shortid from "shortid";
 import useFilterStore from "@/stores/chords/useFilterStore";
+import usePlayPiano from "@/hooks/usePlayPiano";
+import { motion } from "framer-motion";
+import Button from "@/components/ui/buttons/Button";
 
 const ChordDetails = () => {
   const { selectedChord } = useSelectedChord();
   const { allChordsRoot } = useFilterStore();
+  const { playPianoNotes } = usePlayPiano();
 
   if (selectedChord === undefined) return;
+
+  const playSelectedChord = () => {
+    playPianoNotes(selectedChord?.notes as string[]);
+  };
 
   return (
     <div>
       <h1 className="text-5xl mb-6 text-center">
         {selectedChord.name && selectedChord.name.length > 3
           ? selectedChord.name
-          : allChordsRoot + " " + (selectedChord.aliases && selectedChord.aliases[0])}
+          : allChordsRoot +
+            " " +
+            (selectedChord.aliases && selectedChord.aliases[0])}
       </h1>
       <PianoChord />
       <section className="mt-6 space-y-2">
+        <div className="flex justify-end"><Button variant="emerald" icon="play" onClick={playSelectedChord}>Play</Button></div>
         <div className="items-end flex flex-row gap-4">
           <span className="w-[4rem]">Notes:</span>
           {selectedChord.notes?.map((note, index) => {

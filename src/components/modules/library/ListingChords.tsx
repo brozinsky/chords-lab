@@ -53,14 +53,11 @@ const ListingChords = () => {
 
   const { selectedChord, setSelectedChord } = useSelectedChord();
 
-  const isFirstRender = useRef(true);
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    playPianoNotes(selectedChord?.notes as string[]);
-  }, [selectedChord]);
+  const handlePlayClick = (event: Event, root: string, quality: string) => {
+    const chordData = Chord.get([root + "2", quality]);
+    event.stopPropagation()
+    playPianoNotes(chordData?.notes as string[]);
+  };
 
   const handleTileClick = (root: string, quality: string) => {
     const chordData = Chord.get([root + "2", quality]);
@@ -120,6 +117,7 @@ const ListingChords = () => {
                   name={chord.abbreviations[0]}
                   selected={selectedChord}
                   onClick={handleTileClick}
+                  onPlayClick={handlePlayClick}
                 />
               </SwiperSlide>
             ))}
