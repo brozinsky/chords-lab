@@ -1,7 +1,7 @@
 import NavLink from "@/components/elements/buttons/NavLink";
+import Modal from "@/components/ui/Modal";
+import ButtonSettings from "@/components/ui/buttons/ButtonSettings";
 import { Link } from "react-router-dom";
-// import Hamburger from "@/elements/buttons/Hamburger";
-// import NavLink from "@/elements/buttons/NavLink";
 
 const navItems = [
   { name: "Chords", url: "/chords" },
@@ -10,10 +10,11 @@ const navItems = [
 ];
 
 const Header = () => {
+
   return (
     <>
       <header className="sticky top-0 z-50 bg-neutral-600 border border-neutral-500">
-        <nav className="container flex flex-wrap items-center justify-between">
+        <nav className="container flex flex-wrap items-center justify-between gap-4">
           <Link to="/">
             <div className="flex items-center flex-shrink-0 mr-6 text-white cursor-pointer select-none">
               <span className="text-xl font-semibold tracking-tight text-emerald-500">
@@ -33,6 +34,7 @@ const Header = () => {
               })}
             </ul>
           </div>
+          <Modal trigger={<ButtonSettings/>}>Settings</Modal>
         </nav>
       </header>
     </>

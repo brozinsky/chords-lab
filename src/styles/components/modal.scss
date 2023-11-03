@@ -1,0 +1,19 @@
+.modal {
+  &__content {
+    @apply z-50 fixed left-1/2 top-1/2;
+    transform: translate(-50%, -50%);
+  }
+  &__body {
+    @apply p-8 bg-neutral-600 text-neutral-100 rounded-xl overflow-hidden;
+    width: 600px;
+    max-width: 95vw;
+    min-height: 300px;
+    max-height: 95vh;
+  }
+  &__overlay {
+    @apply bg-neutral-950 z-50;
+    opacity: 0.6;
+    position: fixed;
+    inset: 0;
+  }
+}
