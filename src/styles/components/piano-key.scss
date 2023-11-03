@@ -15,7 +15,13 @@
     &.piano-key--active {
       @apply bg-emerald-700;
       .piano-note {
-        @apply text-emerald-400;
+        @apply text-emerald-300;
+      }
+    }
+    &:active {
+      @apply bg-emerald-800;
+      .piano-note {
+        @apply text-emerald-200;
       }
     }
     .kbd {
@@ -33,6 +39,12 @@
       @apply bg-emerald-500;
       .piano-note {
         @apply text-emerald-100;
+      }
+    }
+    &:active {
+      @apply bg-emerald-300;
+      .piano-note {
+        @apply text-white;
       }
     }
   }

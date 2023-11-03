@@ -3,10 +3,12 @@ import useSelectedChord from "@/stores/chords/useSelectedChord";
 import { convertFlatsToSharps } from "@/utils/flatToSharps";
 import PianoKey from "@/components/elements/piano/PianoKey";
 import { Note } from "tonal";
+import usePlayPiano from "@/hooks/usePlayPiano";
 
 const PianoChord = () => {
   const { selectedChord } = useSelectedChord();
   if (selectedChord === undefined) return;
+  const { playPianoNotes } = usePlayPiano();
 
   const pianoNotesUppercase = pianoNotes.map((note) => ({
     name: note.name.replace("s", "#").toUpperCase(),
@@ -24,6 +26,7 @@ const PianoChord = () => {
         return (
           <PianoKey
             key={name + index}
+            onClick={() => playPianoNotes([name])}
             name={convertedName}
             // isActive={convertFlatsToSharps(selectedChord.notes)?.includes(name)}
             isActive={simplifiedChord?.includes(name) as boolean}

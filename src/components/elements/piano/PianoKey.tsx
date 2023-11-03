@@ -3,13 +3,15 @@ import { Note } from "tonal";
 interface PianoKeyProps {
   name: string;
   isActive: boolean;
+  onClick?: () => void;
 }
 
-const PianoKey = ({ name, isActive }: PianoKeyProps) => {
+const PianoKey = ({ name, isActive, onClick }: PianoKeyProps) => {
   const activeAccidental = "♯";
   // const activeAccidental = "♭";
   return (
     <div
+      onClick={onClick}
       className={`piano-key piano-key--sm ${
         name.includes("#") ? "piano-key--black" : "piano-key--white"
       } ${isActive ? "piano-key--active" : ""}`}
