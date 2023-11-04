@@ -51,7 +51,7 @@ const ListingChords = () => {
     setChordsList(chordsWithRoot);
   }, [allChordsRoot]);
 
-  const { selectedChord, setSelectedChord } = useSelectedChord();
+  const { selectedChord, setRoot, setQuality } = useSelectedChord();
 
   const handlePlayClick = (event: Event, root: string, quality: string) => {
     const chordData = Chord.get([root + "2", quality]);
@@ -60,8 +60,10 @@ const ListingChords = () => {
   };
 
   const handleTileClick = (root: string, quality: string) => {
-    const chordData = Chord.get([root + "2", quality]);
-    setSelectedChord(chordData);
+    // const chordData = Chord.get([root + "2", quality]);
+    // setSelectedChord(chordData);
+    setRoot(root);
+    setQuality(quality);
   };
 
   return (

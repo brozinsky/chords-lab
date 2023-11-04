@@ -1,5 +1,5 @@
 import { Chord } from "tonal";
-import {create} from "zustand";
+import { create } from "zustand";
 
 export interface Chord {
   abbreviations: string[];
@@ -29,6 +29,10 @@ interface ChordProps {
 interface SelectedChordState {
   selectedChord: ChordProps | undefined;
   setSelectedChord: (value: ChordProps | undefined) => void;
+  root: string;
+  setRoot: (value: string) => void;
+  quality: string;
+  setQuality: (value: string) => void;
 }
 
 const initialRoot = "C";
@@ -53,8 +57,31 @@ const initialChord: ChordProps = {
 };
 
 const useSelectedChord = create<SelectedChordState>((set) => ({
+  root: "C",
+  setRoot: (value) => set(() => ({ root: value })),
+
+  quality: "major",
+  setQuality: (value) => set(() => ({ quality: value })),
+
   selectedChord: initialChord,
   setSelectedChord: (value) => set(() => ({ selectedChord: value })),
 }));
+
+useSelectedChord.subscribe((state, prevState) => {
+  const { root, quality } = state;
+  const {
+    root: prevRoot,
+    quality: prevQuality,
+  } = prevState;
+
+  if (root !== prevRoot || quality !== prevQuality) {
+    const chordData = Chord.get([root + "2", quality]);
+    const newChord: ChordProps = {
+      ...chordData,
+    };
+
+    state.setSelectedChord(newChord);
+  }
+});
 
 export default useSelectedChord;

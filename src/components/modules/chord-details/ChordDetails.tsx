@@ -1,20 +1,36 @@
 import useSelectedChord from "@/stores/chords/useSelectedChord";
 import PianoChord from "./_partials/PianoChord";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { processIntervals } from "@/utils/processIntervals";
 import shortid from "shortid";
 import useFilterStore from "@/stores/chords/useFilterStore";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import Button from "@/components/ui/buttons/Button";
 import RadioGroup from "@/components/ui/RadioGroup";
+import Select from "@/components/ui/Select";
+import { notes } from "@/utils/notesData";
+import { chords } from "@/utils/chords";
 
 const playModeOptions = [
-  { id: "11", label: "Chord", value: "chord" },
-  { id: "22", label: "Arpeggio", value: "arpeggio" },
+  { id: "11", name: "Chord", value: "chord" },
+  { id: "22", name: "Arpeggio", value: "arpeggio" },
 ];
 
+const chordQualityOptions = chords.map((chord) => ({
+  id: chord.abbreviations[0],
+  value: chord.abbreviations[0],
+  name: chord.name,
+}));
+
+const notesOptions = notes.map((note) => ({
+  id: note,
+  value: note,
+  name: note,
+}));
+
 const ChordDetails = () => {
-  const { selectedChord } = useSelectedChord();
+  const { selectedChord, root, setRoot, quality, setQuality } =
+    useSelectedChord();
   const { allChordsRoot } = useFilterStore();
   const { playPianoNotes } = usePlayPiano();
   const [playMode, setPlayMode] = useState(playModeOptions[0].value);
@@ -45,21 +61,45 @@ const ChordDetails = () => {
   };
 
   return (
-    <div>
+    <section id="ChordDetails">
       {/* Chord name */}
-      <h1 className="text-5xl mb-6 text-center">
+      {/* <h1 className="text-5xl mb-6 text-center">
         {selectedChord.name && selectedChord.name.length > 3
           ? selectedChord.name
           : allChordsRoot +
             " " +
             (selectedChord.aliases && selectedChord.aliases[0])}
-      </h1>
+      </h1> */}
+      <div className="flex flex-row gap-2 justify-center mb-6">
+        <Select
+          variant="ghost"
+          options={notesOptions}
+          state={root}
+          setState={setRoot}
+        />
+        <Select
+          variant="ghost"
+          options={chordQualityOptions}
+          displayValue={
+            selectedChord.name && selectedChord.name.length > 3
+              ? selectedChord.name.split(' ').slice(1).join(' ')
+              : selectedChord.aliases && selectedChord.aliases[0]
+          }
+          state={quality}
+          setState={setQuality}
+        />
+      </div>
       {/* Piano keyboard */}
       <PianoChord />
       <section className="mt-6 space-y-2">
         {/* Play settings */}
         <div className="flex justify-end gap-4">
-          <RadioGroup options={playModeOptions} defaultOption="chord" state={playMode} setState={setPlayMode}/>
+          <RadioGroup
+            options={playModeOptions}
+            defaultOption="chord"
+            state={playMode}
+            setState={setPlayMode}
+          />
           <Button
             variant="emerald"
             icon="play"
@@ -119,7 +159,7 @@ const ChordDetails = () => {
           })}
         </div>
       </section>
-    </div>
+    </section>
   );
 };
 

@@ -6,7 +6,7 @@ export type ChordType = {
   name: string;
   notes: number[];
   abbreviations: string[];
-}
+};
 
 export type ChordDetails = {
   abbreviations: string[];
@@ -14,14 +14,14 @@ export type ChordDetails = {
   intervalNotes: string[];
   intervals: number[];
   note: string;
-}
+};
 
 export type ScalesCombinations = {
   note: string;
   name: string;
   intervals: number[];
   intervalNotes: string[];
-}
+};
 
 export type ChordCombination = {
   note: string;
@@ -29,7 +29,7 @@ export type ChordCombination = {
   abbreviations: string[];
   intervals: string[];
   intervalNotes: string[];
-}
+};
 
 export type ScaleDetails = {
   empty: boolean;
@@ -42,4 +42,15 @@ export type ScaleDetails = {
   type: string;
   tonic: string | null;
   notes: string[];
-}
+};
+
+export type InputOption = {
+  id: string;
+  name: string;
+  value: string;
+};
+
+export type State = string;
+
+export type SetState = (value: string) => void;
+

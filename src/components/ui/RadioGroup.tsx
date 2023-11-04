@@ -1,3 +1,4 @@
+import { InputOption, SetState, State } from "@/utils/types";
 import { RadioGroup as HUIRadioGroup } from "@headlessui/react";
 import { cva } from "class-variance-authority";
 
@@ -13,34 +14,25 @@ const optionStyles = cva(
   }
 );
 
-type Option = {
-  id: string;
-  label: string;
-  value: string;
-};
-
-type State = string;
-
-type SetState = React.Dispatch<React.SetStateAction<State>>;
-
 type RadioGroupProps = {
   state: State;
   setState: SetState;
-  options: Option[];
-  label?: string;
+  options: InputOption[];
+  name?: string;
   defaultOption?: string;
 };
 
-const RadioGroup = ({ state, setState, options, label }: RadioGroupProps) => {
+const RadioGroup = ({ state, setState, options, name }: RadioGroupProps) => {
   return (
     <HUIRadioGroup
+      id="RadioGroup"
       className={"flex flex-wrap justify-start items-center h-fit w-fit gap-2"}
       value={state}
       onChange={setState}
     >
-      {label && <HUIRadioGroup.Label>{label}</HUIRadioGroup.Label>}
+      {name && <HUIRadioGroup.Label>{name}</HUIRadioGroup.Label>}
       <div className={"flex flex-col flex-wrap justify-start items-start"}>
-        {options.map(({ id, label, value }) => {
+        {options.map(({ id, name, value }) => {
           return (
             <HUIRadioGroup.Option
               className={`h-fit w-fit cursor-pointer min-w-[80px]`}
@@ -54,7 +46,7 @@ const RadioGroup = ({ state, setState, options, label }: RadioGroupProps) => {
                       <div className="rounded-full bg-neutral-100 h-1.5 w-1.5"></div>
                     )}
                   </div>
-                  {label}
+                  {name}
                 </div>
               )}
             </HUIRadioGroup.Option>

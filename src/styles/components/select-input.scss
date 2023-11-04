@@ -1,0 +1,35 @@
+.select-input {
+  @apply relative z-10;
+  &__button {
+    @apply py-2 px-4 w-full text-left;
+  }
+  &__option {
+    @apply py-2 px-3 relative cursor-default select-none;
+    &--active {
+      @apply bg-emerald-500 text-emerald-900;
+    }
+  }
+  &__list {
+    @apply w-full absolute overflow-auto rounded-lg mt-2;
+    max-height: 10rem;
+    min-width: 5rem;
+  }
+  &__label {
+    @apply mb-3 text-emerald-500;
+  }
+  &--ghost {
+    .select-input {
+      &__button {
+        @apply py-2 text-5xl px-2 rounded-lg;
+        transition: 0.25s ease all;
+        &:hover,
+        &[data-headlessui-state="open"] {
+          @apply bg-neutral-700;
+        }
+      }
+      &__list {
+        @apply bg-neutral-700;
+      }
+    }
+  }
+}
