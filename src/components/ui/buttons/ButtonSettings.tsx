@@ -9,6 +9,7 @@ type Props = {
 export default function ButtonSettings({ onClick, srOnly = "Settings" }: Props) {
   return (
     <motion.button
+      id="ButtonSettings"
       onClick={onClick}
       className="flex items-center justify-center p-2 w-fit cursor-pointer"
       whileHover={{ scale: 1.1, rotate: 30 }}

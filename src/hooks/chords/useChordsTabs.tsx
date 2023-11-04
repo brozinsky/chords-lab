@@ -37,7 +37,6 @@ const useChordsTab = () => {
           ...chord,
           root: allChordsRoot,
         }));
-        console.log('chordsWithRoot', chordsWithRoot);
         setChordsList(chordsWithRoot);
         break;
       case "roman":

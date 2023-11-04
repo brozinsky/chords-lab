@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { MouseEventHandler } from "react";
+import { MouseEventHandler } from "react";
 
 type LibraryNoteButtonProps = {
   onClick: MouseEventHandler<HTMLDivElement>;
@@ -14,6 +14,7 @@ const LibraryNoteButton = ({
 }: LibraryNoteButtonProps) => {
   return (
     <div
+      id="LibraryNoteButton"
       onClick={onClick}
       className={clsx("chord-list-item chord-list-item--note", {
         "chord-list-item--active": activeNote === note,

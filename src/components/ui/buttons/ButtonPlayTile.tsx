@@ -23,6 +23,7 @@ const slideUpMotion = {
 export default function ButtonPlayTile({ onClick, srOnly = "Play" }: Props) {
   return (
     <motion.button
+      id="ButtonPlayTile"
       onClick={onClick}
       variants={slideUpMotion}
       className="absolute bottom-2 right-2 flex items-center justify-center p-2.5 bg-emerald-500 rounded-full cursor-pointer"

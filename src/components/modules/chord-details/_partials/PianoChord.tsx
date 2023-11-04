@@ -17,7 +17,7 @@ const PianoChord = () => {
   const simplifiedChord = selectedChord.notes?.map(note => note.includes("b") ? Note.enharmonic(note) : Note.simplify(note))
 
   return (
-    <div className="flex flex-row">
+    <div id="PianoChord" className="flex flex-row">
       {pianoNotesUppercase.map(({ name }, index) => {
         const convertedName = name
           .replace(/[0-9]/g, "")

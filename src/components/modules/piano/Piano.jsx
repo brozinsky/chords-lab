@@ -45,11 +45,6 @@ const Piano = () => {
     setIsKeybindDisabled(true);
   }, []);
 
-  // useEffect(() => {
-  //   console.log(isKeybindDisabled);
-  //   console.log('currentKeys', currentKeys);
-  // }, [currentKeys]);
-
   const handleButtonRelease = (note) => {
     !isLoading
       ? setCurrentKeys((prevKeys) => prevKeys.filter((key) => key !== note))

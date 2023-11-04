@@ -17,6 +17,7 @@ export default function Modal({ children, trigger }: Props) {
       <Dialog.Overlay className="modal__overlay" />
       <Dialog.Content className="modal__content">
         <motion.div
+          id="Modal"
           initial={{ y: -20, scaleX: 0.8 }}
           animate={{ y: 0, scaleX: 1 }}
           className="modal__body"

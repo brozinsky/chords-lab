@@ -60,6 +60,7 @@ export default function Button({
   });
   return (
     <motion.button
+      id="Button"
       onClick={onClick}
       className={classes({variant, shape, size})}
       whileHover={{ scale: 1.05 }}

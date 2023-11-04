@@ -9,7 +9,7 @@ const ChordInfo = () => {
   if (selectedChord === undefined) return;
 
   return (
-    <div className="flex-col flex space-y-4">
+    <div id="ChordInfo" className="flex-col flex space-y-4">
       {/* <div className="flex flex-col">
         <div>Abbreviations:</div>
         <div className="flex gap-1">

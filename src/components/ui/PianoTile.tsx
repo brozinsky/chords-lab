@@ -61,6 +61,7 @@ const PianoTile = ({
 
   return (
     <motion.div
+      id="PianoTile"
       initial="rest"
       whileHover="hover"
       animate="rest"

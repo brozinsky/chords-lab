@@ -21,9 +21,9 @@ export default function ChordsPage() {
             <ChordDetails />
           </div>
         </div>
-        <Tabs defaultValue="all">
+        <Tabs id="Tabs" defaultValue="all">
           <div className="container">
-            <TabsList className="grid w-full grid-cols-3 max-w-[400px]">
+            <TabsList id="TabsList" className="grid w-full grid-cols-3 max-w-[400px]">
               <TabsTrigger onClick={() => changeTab("all")} value="all">
                 <LibraryIconSVG className="mr-2" width={"16"} />
                 All

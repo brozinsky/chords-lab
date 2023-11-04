@@ -16,6 +16,7 @@ const FilterButton = ({
 }: FilterButtonProps) => {
   return (
     <div
+      id="FilterButton"
       onClick={onClick}
       className={clsx("chord-list-item", {
         "chord-list-item--active": active,
