@@ -55,7 +55,7 @@ const ListingChords = () => {
 
   const handlePlayClick = (event: Event, root: string, quality: string) => {
     const chordData = Chord.get([root + "2", quality]);
-    event.stopPropagation()
+    event.stopPropagation();
     playPianoNotes(chordData?.notes as string[]);
   };
 
@@ -108,18 +108,25 @@ const ListingChords = () => {
           {chordsList
             // .filter((item) => item.intervals.length <= 4)
             // .map((get) => get)
-            .map((chord, index) => (
-              <SwiperSlide key={chord.name}>
-                <PianoTile
-                  variant="chord"
-                  note={chord.root}
-                  name={chord.abbreviations[0]}
-                  selected={selectedChord}
-                  onClick={handleTileClick}
-                  onPlayClick={handlePlayClick}
-                />
-              </SwiperSlide>
-            ))}
+            .map((chord, index) => {
+              const notes = Chord.get([
+                chord.root + "1",
+                chord.abbreviations[0],
+              ]).notes;
+              if (notes.length < 1) return;
+              return (
+                <SwiperSlide key={chord.name}>
+                  <PianoTile
+                    variant="chord"
+                    note={chord.root}
+                    name={chord.abbreviations[0]}
+                    selected={selectedChord}
+                    onClick={handleTileClick}
+                    onPlayClick={handlePlayClick}
+                  />
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       )}
       {chordsList.length <= 0 && (
