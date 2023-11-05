@@ -12,9 +12,17 @@ import {
   getNumberStepsArray,
   getWholeAndHalfSteps,
 } from "@/utils/notes";
+import {
+  simplifyNote,
+  simplifyNotes,
+} from "@/utils/functions/music-theory/simplifyNotes";
+import usePlayPiano from "@/hooks/usePlayPiano";
+import Select from "@/components/ui/Select";
+import { notesOptions, scaleTypeOptions } from "@/utils/functions/music-theory/selectOptions";
 
 const ScaleDetails = () => {
-  const { tonic, type, selectedScale } = useSelectedScale();
+  const { tonic, setTonic, type, setType, selectedScale } = useSelectedScale();
+  const { playPianoNotes } = usePlayPiano();
 
   if (!selectedScale) {
     return <div>Select a scale.</div>;
@@ -39,31 +47,42 @@ const ScaleDetails = () => {
     else if (selectedScale.type.includes("melodic")) minorScaleType = "melodic";
   }
 
-  function simplifyNotes(notes: string[]) {
-    return notes.map(note => note.includes("b") ? Note.enharmonic(note) : Note.simplify(note));
-  }
-
   const simplifiedScale = simplifyNotes(selectedScale.notes);
-  const simplifiedInfoScale = simplifyNotes(infoScale.notes);
 
   return (
     <section className="flex flex-col">
-      <h1 className="text-5xl mb-6 text-center">{infoScale.name}</h1>
+      {/* <h1 className="text-5xl mb-6 text-center">{infoScale.name}</h1> */}
+      <div className="flex flex-row gap-2 justify-center mb-6">
+        <Select
+          variant="ghost"
+          options={notesOptions}
+          state={tonic}
+          setState={setTonic}
+        />
+        <Select
+          variant="ghost"
+          options={scaleTypeOptions}
+          displayValue={infoScale.name.split(" ").slice(1).join(" ")}
+          state={type}
+          setState={setType}
+        />
+      </div>
       <PianoScale scale={simplifiedScale} />
       <section className="mt-6 space-y-2">
         <div className="items-end flex flex-row gap-4">
-          <span className="w-[4rem]">Notes:</span>
+          <span className="w-[4rem] mb-2">Notes:</span>
           <div className="gap-2 flex">
-            {simplifiedInfoScale.map((note, index) => {
+            {selectedScale.notes.map((note, index) => {
               return (
                 <React.Fragment key={note}>
                   <span
                     // data-tooltip-id={"note-" + note}
-                    className="text-center text-2xl min-w-[2rem]"
+                    onClick={() => playPianoNotes([note])}
+                    className="p-2 rounded-lg active:bg-neutral-600 cursor-pointer select-none text-center text-2xl min-w-[2rem]"
                   >
-                    {note}
+                    {simplifyNote(note).slice(0, -1)}
                   </span>
-                  <span className="text-2xl text-center">
+                  <span className="self-center text-2xl text-center">
                     {infoScale.notes.length - 1 !== index ? "-" : null}
                   </span>
                 </React.Fragment>
@@ -135,9 +154,9 @@ const ScaleDetails = () => {
             <div className="inline-flex flex-wrap gap-3 gap-y-1">
               {extendedScales.map((type) => {
                 return (
-                  <a key={shortid.generate()} href="#" className="underline">
+                  <span key={shortid.generate()} onClick={() => setType(type)} className="cursor-pointer underline">
                     {type}
-                  </a>
+                  </span>
                 );
               })}
             </div>
@@ -150,9 +169,9 @@ const ScaleDetails = () => {
             <div className="inline-flex flex-wrap gap-3 gap-y-1">
               {reducedScales.map((type) => {
                 return (
-                  <a key={shortid.generate()} href="#" className="underline">
+                  <span key={shortid.generate()} onClick={() => setType(type)} className="cursor-pointer underline">
                     {type}
-                  </a>
+                  </span>
                 );
               })}
             </div>

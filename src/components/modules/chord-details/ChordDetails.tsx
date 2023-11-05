@@ -13,23 +13,13 @@ import { chords } from "@/utils/chords";
 import Modal from "@/components/ui/Modal";
 import ButtonInfo from "@/components/ui/buttons/ButtonInfo";
 import ChordFormula from "./_partials/ChordFormula";
+import { Chord } from "tonal";
+import { chordQualityOptions, notesOptions } from "@/utils/functions/music-theory/selectOptions";
 
 const playModeOptions = [
   { id: "11", name: "Chord", value: "chord" },
   { id: "22", name: "Arpeggio", value: "arpeggio" },
 ];
-
-const chordQualityOptions = chords.map((chord) => ({
-  id: chord.abbreviations[0],
-  value: chord.abbreviations[0],
-  name: chord.name,
-}));
-
-const notesOptions = notes.map((note) => ({
-  id: note,
-  value: note,
-  name: note,
-}));
 
 const ChordDetails = () => {
   const { selectedChord, root, setRoot, quality, setQuality } =
@@ -38,8 +28,11 @@ const ChordDetails = () => {
   const { playPianoNotes } = usePlayPiano();
   const [playMode, setPlayMode] = useState(playModeOptions[0].value);
 
+  const extendedChords = Chord.extended(selectedChord.name.toLowerCase());
+  const reducedChords = Chord.reduced(selectedChord.name.toLowerCase());
+  
   if (selectedChord === undefined) return;
-
+  
   const playSelectedChord = (playMode: string) => {
     const notes = selectedChord?.notes;
 
@@ -137,11 +130,7 @@ const ChordDetails = () => {
         <div className="items-end flex flex-row gap-4">
           <span className="w-[5rem] flex items-center">
             Formula:
-            <Modal
-              trigger={
-                <ButtonInfo/>
-              }
-            >
+            <Modal trigger={<ButtonInfo />}>
               <ChordFormula />
             </Modal>
           </span>
@@ -170,6 +159,32 @@ const ChordDetails = () => {
             );
           })}
         </div>
+        {extendedChords.length > 0 ? (
+          <div className="pt-2 items-end inline-flex flex-row gap-x-4 gap-y-2 max-w-[509px] flex-wrap">
+            <span>Extended chords:</span>
+              {extendedChords.map((type) => {
+                return (
+                  <a key={shortid.generate()} href="#" className="underline">
+                    {type}
+                  </a>
+                );
+              })}
+          </div>
+        ) : null}
+        {reducedChords.length > 0 ? (
+          <div className="pt-4 items-end flex flex-row gap-4 max-w-[509px] flex-wrap">
+            <p>Reduced chords:</p>
+            <div className="inline-flex flex-wrap gap-3 gap-y-1">
+              {reducedChords.map((type) => {
+                return (
+                  <a key={shortid.generate()} href="#" className="underline">
+                    {type}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
       </section>
     </section>
   );

@@ -12,7 +12,8 @@ const Library = ({ variant = "chords" }: Props) => {
       {/* <Filter /> */}
       <div className="flex flex-col gap-4">
         {/* <Tags /> */}
-        {variant === "chords" ? <ListingChords /> : <ListingScales />}
+        {variant === "chords" && <ListingChords />}
+        {variant === "scales" && <ListingScales />}
       </div>
       {/* </div> */}
     </div>
