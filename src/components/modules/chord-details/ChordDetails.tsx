@@ -1,6 +1,6 @@
 import useSelectedChord from "@/stores/chords/useSelectedChord";
 import PianoChord from "./_partials/PianoChord";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { processIntervals } from "@/utils/processIntervals";
 import shortid from "shortid";
 import useFilterStore from "@/stores/chords/useFilterStore";
@@ -10,6 +10,9 @@ import RadioGroup from "@/components/ui/RadioGroup";
 import Select from "@/components/ui/Select";
 import { notes } from "@/utils/notesData";
 import { chords } from "@/utils/chords";
+import Modal from "@/components/ui/Modal";
+import ButtonInfo from "@/components/ui/buttons/ButtonInfo";
+import ChordFormula from "./_partials/ChordFormula";
 
 const playModeOptions = [
   { id: "11", name: "Chord", value: "chord" },
@@ -82,7 +85,7 @@ const ChordDetails = () => {
           options={chordQualityOptions}
           displayValue={
             selectedChord.name && selectedChord.name.length > 3
-              ? selectedChord.name.split(' ').slice(1).join(' ')
+              ? selectedChord.name.split(" ").slice(1).join(" ")
               : selectedChord.aliases && selectedChord.aliases[0]
           }
           state={quality}
@@ -132,7 +135,16 @@ const ChordDetails = () => {
         </div>
         {/* Formula */}
         <div className="items-end flex flex-row gap-4">
-          <span className="w-[4rem]">Formula:</span>
+          <span className="w-[5rem] flex items-center">
+            Formula:
+            <Modal
+              trigger={
+                <ButtonInfo/>
+              }
+            >
+              <ChordFormula />
+            </Modal>
+          </span>
           {processIntervals(selectedChord.intervals).map((interval, index) => {
             const isLastItem =
               processIntervals(selectedChord.intervals).length - 1 !== index;

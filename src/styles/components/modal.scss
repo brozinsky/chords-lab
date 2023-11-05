@@ -4,8 +4,8 @@
     transform: translate(-50%, -50%);
   }
   &__body {
-    @apply p-8 bg-neutral-600 text-neutral-100 rounded-xl overflow-hidden;
-    width: 600px;
+    @apply p-8 bg-neutral-600 text-neutral-100 rounded-xl overflow-auto;
+    width: 1000px;
     max-width: 95vw;
     min-height: 300px;
     max-height: 95vh;

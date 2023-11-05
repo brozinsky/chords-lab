@@ -1,0 +1,30 @@
+table {
+  @apply w-full text-sm text-left text-foreground rounded-xl overflow-hidden;
+  thead {
+    @apply text-muted border-b border-neutral-400;
+    background: rgba(#fff, 4%);
+    th {
+      @apply px-6 py-4 font-medium whitespace-nowrap text-white;
+    }
+  }
+  tbody {
+    td {
+      @apply px-6 py-2;
+    }
+    tr {
+      @apply bg-transparent border-b border-neutral-400;
+      &:nth-child(odd) {
+        @apply bg-transparent;
+      }
+      &:nth-child(even) {
+        background: rgba(#fff, 2.5%);
+      }
+      &:last-of-type {
+        @apply border-transparent;
+      }
+      &:hover {
+        background: rgba(#fff, 5%);
+      }
+    }
+  }
+}

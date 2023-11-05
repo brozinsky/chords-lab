@@ -12,7 +12,8 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.7.0",
     "@headlessui/react": "^1.7.17",
-    "@mantine/hooks": "^6.0.17",
+    "@mantine/core": "^7.1.7",
+    "@mantine/hooks": "^7.1.7",
     "@popperjs/core": "^2.11.8",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
