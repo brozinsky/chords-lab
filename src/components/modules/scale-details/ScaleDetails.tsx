@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useSelectedScale from "@/stores/useSelectedScale";
 import PianoScale from "./_partials/PianoScale";
 import { Key, Note, Scale } from "tonal";
@@ -18,11 +18,22 @@ import {
 } from "@/utils/functions/music-theory/simplifyNotes";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import Select from "@/components/ui/Select";
-import { notesOptions, scaleTypeOptions } from "@/utils/functions/music-theory/selectOptions";
+import {
+  notesOptions,
+  scaleTypeOptions,
+} from "@/utils/functions/music-theory/selectOptions";
+import RadioGroup from "@/components/ui/RadioGroup";
+import Button from "@/components/ui/buttons/Button";
+
+const playModeOptions = [
+  { id: "11", name: "Ascending", value: "ascending" },
+  { id: "22", name: "Descending", value: "descending" },
+];
 
 const ScaleDetails = () => {
   const { tonic, setTonic, type, setType, selectedScale } = useSelectedScale();
   const { playPianoNotes } = usePlayPiano();
+  const [playMode, setPlayMode] = useState(playModeOptions[0].value);
 
   if (!selectedScale) {
     return <div>Select a scale.</div>;
@@ -49,6 +60,37 @@ const ScaleDetails = () => {
 
   const simplifiedScale = simplifyNotes(selectedScale.notes);
 
+  const playSelectedScale = (playMode: string) => {
+    const notes = selectedScale?.notes;
+
+    if (!notes) {
+      return;
+    }
+
+    const playNoteWithInterval = (
+      noteIndex: number,
+      direction: "ascending" | "descending"
+    ) => {
+      if (direction === "ascending" && noteIndex < notes.length) {
+        playPianoNotes([notes[noteIndex]] as string[]);
+        setTimeout(() => {
+          playNoteWithInterval(noteIndex + 1, direction);
+        }, 200);
+      } else if (direction === "descending" && noteIndex >= 0) {
+        playPianoNotes([notes[noteIndex]] as string[]);
+        setTimeout(() => {
+          playNoteWithInterval(noteIndex - 1, direction);
+        }, 200);
+      }
+    };
+
+    if (playMode === "ascending") {
+      playNoteWithInterval(0, "ascending");
+    } else if (playMode === "descending") {
+      playNoteWithInterval(notes.length - 1, "descending");
+    }
+  };
+
   return (
     <section className="flex flex-col">
       {/* <h1 className="text-5xl mb-6 text-center">{infoScale.name}</h1> */}
@@ -69,6 +111,21 @@ const ScaleDetails = () => {
       </div>
       <PianoScale scale={simplifiedScale} />
       <section className="mt-6 space-y-2">
+        <div className="flex justify-end gap-4">
+          <RadioGroup
+            options={playModeOptions}
+            defaultOption="chord"
+            state={playMode}
+            setState={setPlayMode}
+          />
+          <Button
+            variant="emerald"
+            icon="play"
+            onClick={() => playSelectedScale(playMode)}
+          >
+            Play
+          </Button>
+        </div>
         <div className="items-end flex flex-row gap-4">
           <span className="w-[4rem] mb-2">Notes:</span>
           <div className="gap-2 flex">
@@ -154,7 +211,11 @@ const ScaleDetails = () => {
             <div className="inline-flex flex-wrap gap-3 gap-y-1">
               {extendedScales.map((type) => {
                 return (
-                  <span key={shortid.generate()} onClick={() => setType(type)} className="cursor-pointer underline">
+                  <span
+                    key={shortid.generate()}
+                    onClick={() => setType(type)}
+                    className="cursor-pointer underline"
+                  >
                     {type}
                   </span>
                 );
@@ -169,7 +230,11 @@ const ScaleDetails = () => {
             <div className="inline-flex flex-wrap gap-3 gap-y-1">
               {reducedScales.map((type) => {
                 return (
-                  <span key={shortid.generate()} onClick={() => setType(type)} className="cursor-pointer underline">
+                  <span
+                    key={shortid.generate()}
+                    onClick={() => setType(type)}
+                    className="cursor-pointer underline"
+                  >
                     {type}
                   </span>
                 );
