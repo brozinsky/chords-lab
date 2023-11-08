@@ -1,0 +1,14 @@
+.tabs {
+  transition: 0.35s cubic-bezier(.65,-0.18,.4,.73) all;
+  transform: translateY(265px);
+  &--open {
+    transform: translateY(0);
+  }
+}
+
+.tab {
+    @apply h-full inline-flex items-center justify-center whitespace-nowrap rounded-t-lg px-3 py-1.5 text-sm font-medium ring-offset-background transition-all opacity-70 bg-neutral-700;
+    &--active {
+        @apply data-[state=active]:bg-neutral-700 data-[state=active]:text-foreground data-[state=active]:shadow-sm data-[state=active]:opacity-100;
+    }
+}

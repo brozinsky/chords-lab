@@ -6,7 +6,17 @@
   height: 24rem;
 }
 .swiper-chord {
-  height: 22rem;
+  height: 11rem;
+  padding-bottom: 2.5rem;
+  .swiper-wrapper {
+    height: fit-content;
+  }
+  &--expanded {
+    height: 22rem;
+  }
+  &--expanded.grid {
+    height: 22rem;
+  }
 }
 .swiper-button-next,
 .swiper-button-prev {

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useSelectedChord from "@/stores/chords/useSelectedChord";
 import PianoTile from "@/components/ui/PianoTile";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,18 +16,30 @@ import useFilterStore from "@/stores/chords/useFilterStore";
 import { chords } from "@/utils/chords";
 import useChordsListStore from "@/stores/chords/useChordsListStore";
 import SearchIconSVG from "@/components/elements/svg/icons/SearchIconSVG";
-import LibrarySquareNoteIconSVG from "@/components/elements/svg/icons/LibrarySquareNoteIconSVG";
-import LibrarySquareAllIconSVG from "@/components/elements/svg/icons/LibrarySquareAllIconSVG";
-import LibrarySquareRomanIconSVG from "@/components/elements/svg/icons/LibrarySquareRomanIconSVG";
+import PianoTileSkeleton from "@/components/ui/PianoTileSkeleton";
+import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
+import ButtonToggled from "@/components/ui/buttons/ButtonToggled";
 
 const ListingChords = () => {
   const { playPianoNotes } = usePlayPiano();
   const { getRomanChords } = useRomanNumerals();
+  const { isDrawerExpanded, toggleIsDrawerExpanded, isTwoRows, toggleIsTwoRows } = useMenuDrawer();
 
-  const { activeTab, chordsList, setChordsList } = useChordsTab();
+  const { chordsList, setChordsList } = useChordsTab();
   const { allChordsList } = useChordsListStore();
   const { notesChordsNotes, allChordsRoot, romanScaleTonic, romanScaleType } =
     useFilterStore();
+
+  const [renderAsync, setRenderAsync] = useState(false);
+
+  useEffect(() => {
+    // Simulate an asynchronous operation
+    const fetchDataAsync = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      setRenderAsync(true);
+    };
+    fetchDataAsync();
+  }, []);
 
   useEffect(() => {
     setChordsList(getRomanChords(romanScaleTonic, romanScaleType));
@@ -68,43 +80,65 @@ const ListingChords = () => {
 
   return (
     <>
+      <div className="flex flex-row gap-0 absolute left-1/2 -top-14">
+        {/* <Button
+            variant="ghost"
+            icon="expand"
+            size="sm"
+            onClick={toggleIsDrawerExpanded}
+          >
+        </Button> */}
+        <ButtonToggled
+            className=""
+            toggleState={isDrawerExpanded}
+            variant="neutral-dark"
+            shape="hemicircle"
+            icon="arrow-sm-top"
+            size="wide"
+            classNameIcon="rotate-90 transition"
+            classNameIconToggled="-rotate-90 transition"
+            onToggle={toggleIsDrawerExpanded}
+          >
+        </ButtonToggled>
+      </div>
       {/* TODO - use similar view on mobile */}
       {/* <div className="grid grid-cols-12 grid-rows-2">
         {notes.map((item, index) => {
           return <div className={`flex items-center justify-center cursor-pointer p-2 bg-neutral-600 border border-neutral-500 h-[40px] w-[40px] rounded-xl mx-auto ${colStartClasses[index + 1]} ${item.includes("#") ? "row-start-1" : "row-start-2"}`} key={item}>{item}</div>;
         })}
       </div> */}
-      <h2 className="text-3xl font-medium flex items-center gap-3">
-        {activeTab === "all" && (
-          <>
-            <LibrarySquareAllIconSVG width={"28"} />
-            Chord library
-          </>
-        )}
-        {activeTab === "roman" && (
-          <>
-            <LibrarySquareRomanIconSVG width={"28"} />
-            Roman numerals
-          </>
-        )}
-        {activeTab === "notes" && (
-          <>
-            <LibrarySquareNoteIconSVG width={"28"} />
-            Chords by notes
-          </>
-        )}
-      </h2>
       <Filter />
-      {chordsList.length > 0 && (
+      {!renderAsync && (
         <Swiper
           slidesPerView={6}
-          grid={{
-            rows: 2,
-            fill: "row",
-          }}
+          // grid={{
+          //   rows: 2,
+          //   fill: "row",
+          // }}
           spaceBetween={30}
           navigation={true}
-          modules={[Grid, Navigation]}
+          // modules={[Grid, Navigation]}
+          className="swiper-chord"
+        >
+          {Array.from({ length: 12 }, () => 1).map(() => {
+              return (
+                <SwiperSlide key={1}>
+                  <PianoTileSkeleton />
+                </SwiperSlide>
+              );
+            })}
+        </Swiper>
+      )}
+      {renderAsync && chordsList.length > 0 && (
+        <Swiper
+          slidesPerView={6}
+          // grid={{
+          //   rows: 2,
+          //   fill: "row",
+          // }}
+          spaceBetween={30}
+          navigation={true}
+          // modules={[Grid, Navigation]}
           className="swiper-chord"
         >
           {chordsList

@@ -1,52 +1,83 @@
-import * as React from "react";
-import * as TabsPrimitive from "@radix-ui/react-tabs";
-import { cn } from "@/lib/utils";
+// @ts-ignore
+import { Tabs as TabsShadcn, TabsContent, TabsList, TabsTrigger } from "@/components/ui/TabsShadcn";
+import LibrarySquareAllIconSVG from "../elements/svg/icons/LibrarySquareAllIconSVG";
+import LibrarySquareRomanIconSVG from "../elements/svg/icons/LibrarySquareRomanIconSVG";
+import LibrarySquareNoteIconSVG from "../elements/svg/icons/LibrarySquareNoteIconSVG";
+import Library from "../modules/library/Library";
+import clsx from "clsx";
+import useChordsTab from "@/hooks/chords/useChordsTabs";
+import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 
-const Tabs = TabsPrimitive.Root;
+type Tab = {
+  label: string;
+  value: string;
+};
 
-const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.List
-    ref={ref}
-    className={cn(
-      "gap-1 inline-flex h-10 items-center justify-center rounded-md bg-muted text-muted",
-      className
-    )}
-    {...props}
-  />
-));
-TabsList.displayName = TabsPrimitive.List.displayName;
+type Props = {
+  tabs: Tab[];
+};
 
-const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "h-full inline-flex items-center justify-center whitespace-nowrap rounded-t-lg px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-neutral-700 data-[state=active]:text-foreground data-[state=active]:shadow-sm data-[state=active]:opacity-100 opacity-70 bg-neutral-700",
-      className
-    )}
-    {...props}
-  />
-));
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+export default function Tabs({ tabs }: Props) {
+  const { changeTab } = useChordsTab();
 
-const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Content
-    ref={ref}
-    className={cn(
-      "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-      className
-    )}
-    {...props}
-  />
-));
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+  const { isDrawerExpanded, setIsDrawerExpanded } = useMenuDrawer();
 
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+  return (
+    <TabsShadcn
+      id="Tabs"
+      defaultValue="all"
+      className={clsx(
+        "tabs fixed w-full bottom-0",
+        isDrawerExpanded && "tabs--open"
+      )}
+    >
+      <div className="container">
+        <TabsList
+          id="TabsList"
+          className="backdrop-blur-lg justify flex-start h-fit"
+        >
+          {tabs.map(({ value, label }) => {
+            return (
+              <TabsTrigger
+                onClick={() => {
+                  changeTab(value as "all" | "roman" | "notes");
+                  setIsDrawerExpanded(true);
+                }}
+                value={value}
+                className={clsx(
+                  "px-4 py-2 font-medium flex items-center gap-1 transition",
+                  !isDrawerExpanded && "!text-none"
+                )}
+              >
+                {value === "all" && (
+                  <LibrarySquareAllIconSVG className="mr-1" width={"28"} />
+                )}
+                {value === "roman" && (
+                  <LibrarySquareRomanIconSVG className="mr-1" width={"28"} />
+                )}
+                {value === "notes" && (
+                  <LibrarySquareNoteIconSVG className="mr-1" width={"28"} />
+                )}
+                {label}
+              </TabsTrigger>
+            );
+          })}
+        </TabsList>
+      </div>
+
+      <div className="relative bg-neutral-700 py-4">
+        <div className="container">
+          <TabsContent value="all">
+            <Library variant="chords" />
+          </TabsContent>
+          <TabsContent value="roman">
+            <Library variant="chords" />
+          </TabsContent>
+          <TabsContent value="notes">
+            <Library variant="chords" />
+          </TabsContent>
+        </div>
+      </div>
+    </TabsShadcn>
+  );
+}

@@ -7,7 +7,7 @@ interface Props {
 
 const Library = ({ variant = "chords" }: Props) => {
   return (
-    <div id="Library" className="container">
+    <div id="Library" className="container relative">
       {/* <div className="library-panel library-panel--chord"> */}
       {/* <Filter /> */}
       <div className="flex flex-col gap-4">

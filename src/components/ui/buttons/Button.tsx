@@ -4,11 +4,13 @@ import { clsx } from "clsx";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import {cva} from "class-variance-authority";
+import ExpandSVG from "@/components/elements/svg/icons/interface/ExpandSVG";
+import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
 
 type Props = {
   onClick?: any;
   children?: ReactNode;
-  variant?: "neutral" | "emerald" | null | undefined;
+  variant?: "neutral" | "emerald" | "ghost" | null | undefined;
   icon?: string;
   className?: string;
   shape?: "rectangle" | "circle" | "square" | null | undefined;
@@ -29,6 +31,7 @@ export default function Button({
       variant: {
         neutral: "bg-neutral-500 hover:bg-neutral-400",
         emerald: "bg-emerald-500 text-neutral-600 font-bold",
+        ghost: "group bg-transparent-500 hover:bg-neutral-500 text-neutral-500 hover:text-neutral-500 font-bold",
       },
       shape: {
         rectangle: "rounded-xl",
@@ -68,6 +71,8 @@ export default function Button({
     >
       {icon === "play" && <PlayIconSVG pathClass={pathClass} />}
       {icon === "close" && <CloseIconSVG pathClass={pathClass} />}
+      {icon === "expand" && <ExpandSVG className="-rotate-90" pathClass="transition fill-neutral-300 group-hover:fill-neutral-100"/>}
+      {icon === "arrow-sm-top" && <ArrowSmSVG direction="top" pathClass="transition stroke-neutral-300 group-hover:stroke-neutral-100"/>}
       {children}
     </motion.button>
   );

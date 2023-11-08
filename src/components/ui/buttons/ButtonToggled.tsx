@@ -1,0 +1,82 @@
+import CloseIconSVG from "@/components/elements/svg/icons/interface/CloseIconSVG";
+import PlayIconSVG from "@/components/elements/svg/icons/media/PlayIconSVG";
+import { clsx } from "clsx";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
+import { cva } from "class-variance-authority";
+import ExpandSVG from "@/components/elements/svg/icons/interface/ExpandSVG";
+import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
+
+type Props = {
+  onToggle?: any;
+  toggleState: boolean;
+  children?: ReactNode;
+  variant?: "neutral" | "emerald" | "ghost" | "neutral-dark" | null | undefined;
+  icon?: string;
+  className?: string;
+  classNameToggled?: string;
+  classNameIcon?: string;
+  classNameIconToggled?: string;
+  shape?: "rectangle" | "circle" | "square" | "hemicircle" | null | undefined;
+  size?: "md" | "sm" | "wide" | null | undefined;
+};
+
+export default function ButtonToggled({
+  children,
+  toggleState,
+  onToggle,
+  variant = "neutral",
+  icon,
+  className,
+  classNameIcon,
+  classNameIconToggled,
+  shape = "rectangle",
+  size = "md",
+}: Props) {
+  const classes = cva(
+    [
+      className,
+      "flex items-center justify-center w-fit  gap-2 cursor-pointer",
+    ],
+    {
+      variants: {
+        variant: {
+          neutral: "bg-neutral-500 hover:bg-neutral-400",
+          "neutral-dark": "group bg-neutral-700 text-neutral-500",
+          emerald: "bg-emerald-500 text-neutral-600 font-bold",
+          ghost:
+            "group bg-transparent-500 hover:bg-neutral-500 text-neutral-500 hover:text-neutral-500 font-bold",
+        },
+        shape: {
+          rectangle: "rounded-xl",
+          circle: "rounded-full",
+          square: "rounded-xl",
+          hemicircle: "rounded-tl-full rounded-tr-full",
+        },
+        size: {
+          md: "px-6 py-3",
+          sm: "px-2 py-2",
+          wide: "px-12 pt-1 pb-2"
+        },
+      },
+    }
+  );
+
+  return (
+    <motion.button
+      id="ButtonToggled"
+      onClick={onToggle}
+      className={classes({ variant, shape, size })}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.9 }}
+    >
+      {icon === "arrow-sm-top" && (
+        <ArrowSmSVG
+          className={clsx(toggleState ? classNameIcon : classNameIconToggled)}
+          pathClass="transition stroke-neutral-300 group-hover:stroke-neutral-100"
+        />
+      )}
+      {children}
+    </motion.button>
+  );
+}

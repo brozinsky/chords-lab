@@ -8,6 +8,7 @@ import ScalesPage from "@/routes/ScalesPage";
 import ErrorPage from "@/routes/ErrorPage";
 import "@/styles//main.scss";
 import CirclePage from "./routes/CirclePage";
+import { MantineProvider } from "@mantine/core";
 
 const router = createBrowserRouter([
   {
@@ -18,11 +19,7 @@ const router = createBrowserRouter([
   {
     path: "chords",
     element: <ChordsPage />,
-    children: [
-      { path: "all" },
-      { path: "roman" },
-      { path: "notes" },
-    ],
+    children: [{ path: "all" }, { path: "roman" }, { path: "notes" }],
   },
   {
     path: "scales",
@@ -38,6 +35,8 @@ const router = createBrowserRouter([
 // @ts-ignore
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <MantineProvider>
+      <RouterProvider router={router} />
+    </MantineProvider>
   </React.StrictMode>
 );

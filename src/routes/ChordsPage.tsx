@@ -1,44 +1,90 @@
 import Settings from "@/components/modules/settings/Settings";
-// import Piano from "@/components/modules/piano/Piano";
-import Library from "@/components/modules/library/Library";
 import MenuTop from "@/components/modules/navigation/MenuTop";
 import ChordDetails from "@/components/modules/chord-details/ChordDetails";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import useChordsTab from "@/hooks/chords/useChordsTabs";
-import LibraryRomanIconSVG from "@/components/elements/svg/icons/LibraryRomanIconSVG";
-import LibraryIconSVG from "@/components/elements/svg/icons/LibraryIconSVG";
-import LibraryNoteIconSVG from "@/components/elements/svg/icons/LibraryNoteIconSVG";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import clsx from "clsx";
+import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
+import Tabs from "@/components/ui/Tabs";
+
+const tabs = [
+  {
+    label: "All chords library",
+    value: "all",
+  },
+  {
+    label: "Roman numerals",
+    value: "roman",
+  },
+  {
+    label: "Chords by notes",
+    value: "notes",
+  },
+];
 
 export default function ChordsPage() {
-  const { changeTab } = useChordsTab();
+  const { isDrawerExpanded } = useMenuDrawer();
 
   return (
     <>
       <MenuTop />
       <main>
-        <div className="container flex flex-col items-center justify-center py-12">
+        <div
+          className={clsx(
+            "container flex flex-col items-center justify-center py-12",
+            isDrawerExpanded && "pb-[300px] mb-[20px]"
+          )}
+        >
           <div className="flex flex-row">
             <ChordDetails />
           </div>
         </div>
-        <Tabs id="Tabs" defaultValue="all">
+        <Tabs tabs={tabs} />
+        {/* <Tabs
+          id="Tabs"
+          defaultValue="all"
+          className={clsx(
+            "tabs fixed w-full bottom-0",
+            isDrawerExpanded && "tabs--open"
+          )}
+        >
           <div className="container">
-            <TabsList id="TabsList" className="grid w-full grid-cols-3 max-w-[400px]">
-              <TabsTrigger onClick={() => changeTab("all")} value="all">
-                <LibraryIconSVG className="mr-2" width={"16"} />
-                All
-              </TabsTrigger>
-              <TabsTrigger onClick={() => changeTab("roman")} value="roman">
-                <LibraryRomanIconSVG className="mr-1" width={"16"} />
-                Roman
-              </TabsTrigger>
-              <TabsTrigger onClick={() => changeTab("notes")} value="notes">
-                <LibraryNoteIconSVG className="mr-2" width={"16"} />
-                Notes
-              </TabsTrigger>
+            <TabsList
+              id="TabsList"
+              className="backdrop-blur-lg justify flex-start h-fit"
+            >
+              {tabs.map(({ value, label, icon }) => {
+                return (
+                  <TabsTrigger
+                    onClick={() => {
+                      changeTab(value);
+                      setIsDrawerExpanded(true);
+                    }}
+                    value={value}
+                    className={clsx(
+                      "px-4 py-2 font-medium flex items-center gap-1 transition",
+                      !isDrawerExpanded && "!text-none"
+                    )}
+                  >
+                    {value === "all" && (
+                      <LibrarySquareAllIconSVG className="mr-1" width={"28"} />
+                    )}
+                    {value === "roman" && (
+                      <LibrarySquareRomanIconSVG
+                        className="mr-1"
+                        width={"28"}
+                      />
+                    )}
+                    {value === "notes" && (
+                      <LibrarySquareNoteIconSVG className="mr-1" width={"28"} />
+                    )}
+                    {label}
+                  </TabsTrigger>
+                );
+              })}
             </TabsList>
           </div>
-          <div className="bg-neutral-700 py-6">
+
+          <div className="relative bg-neutral-700 py-4">
             <div className="container">
               <TabsContent value="all">
                 <Library variant="chords" />
@@ -51,7 +97,7 @@ export default function ChordsPage() {
               </TabsContent>
             </div>
           </div>
-        </Tabs>
+        </Tabs> */}
         <Settings />
       </main>
     </>
