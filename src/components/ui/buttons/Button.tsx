@@ -6,6 +6,9 @@ import { ReactNode } from "react";
 import {cva} from "class-variance-authority";
 import ExpandSVG from "@/components/elements/svg/icons/interface/ExpandSVG";
 import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
+import VolumeHiIconSVG from "@/components/elements/svg/icons/media/VolumeHiIconSVG";
+import VolumeLoIconSVG from "@/components/elements/svg/icons/media/VolumeLoIconSVG";
+import VolumeMuteIconSVG from "@/components/elements/svg/icons/media/VolumeMuteIconSVG";
 
 type Props = {
   onClick?: any;
@@ -70,6 +73,9 @@ export default function Button({
       whileTap={{ scale: 0.9 }}
     >
       {icon === "play" && <PlayIconSVG pathClass={pathClass} />}
+      {icon === "volume-hi" && <VolumeHiIconSVG />}
+      {(icon === "volume" || icon === "volume-lo") && <VolumeLoIconSVG />}
+      {icon === "volume-mute" && <VolumeMuteIconSVG />}
       {icon === "close" && <CloseIconSVG pathClass={pathClass} />}
       {icon === "expand" && <ExpandSVG className="-rotate-90" pathClass="transition fill-neutral-300 group-hover:fill-neutral-100"/>}
       {icon === "arrow-sm-top" && <ArrowSmSVG direction="top" pathClass="transition stroke-neutral-300 group-hover:stroke-neutral-100"/>}

@@ -6,16 +6,22 @@ type Props = {
   srOnly?: string;
 };
 
-export default function ButtonSettings({ onClick, srOnly = "Settings" }: Props) {
+export default function ButtonSettings({
+  onClick,
+  srOnly = "Settings",
+}: Props) {
   return (
     <motion.button
       id="ButtonSettings"
       onClick={onClick}
-      className="flex items-center justify-center p-2 w-fit cursor-pointer"
-      whileHover={{ scale: 1.1, rotate: 30 }}
-      whileTap={{ scale: 0.85 }}
+      className="flex items-center hover:bg-neutral-500 rounded-xl justify-center p-2 w-fit cursor-pointer"
     >
-      <SettingsIconSVG />
+      <motion.div
+        whileHover={{ scale: 1.1, rotate: 30 }}
+        whileTap={{ scale: 0.85 }}
+      >
+        <SettingsIconSVG />
+      </motion.div>
       {srOnly && <span className="sr-only">{srOnly}</span>}
     </motion.button>
   );
