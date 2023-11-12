@@ -1,9 +1,21 @@
+import SpinnerSVG from "@/components/elements/svg/icons/interface/SpinnerSVG";
 import PlayIconSVG from "@/components/elements/svg/icons/media/PlayIconSVG";
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 type Props = {
   onClick?: any;
   srOnly?: string;
+  isLoading?: boolean;
+};
+
+type LoadingWrapperProps = {
+  children?: ReactNode;
+  isLoading?: boolean;
+};
+
+const LoadingWrapper = ({ isLoading, children }: LoadingWrapperProps) => {
+  return isLoading ? <div className="opacity-0">{children}</div> : children;
 };
 
 const slideUpMotion = {
@@ -19,8 +31,7 @@ const slideUpMotion = {
   },
 };
 
-// TODO - expand to different icons and 'custom' with icon passed in children
-export default function ButtonPlayTile({ onClick, srOnly = "Play" }: Props) {
+export default function ButtonPlayTile({ onClick, srOnly = "Play", isLoading = false, }: Props) {
   return (
     <motion.button
       id="ButtonPlayTile"
@@ -29,9 +40,13 @@ export default function ButtonPlayTile({ onClick, srOnly = "Play" }: Props) {
       className="absolute bottom-2 right-2 flex items-center justify-center p-2.5 bg-emerald-500 rounded-full cursor-pointer"
       whileTap={{ scale: 0.8 }}
       whileHover={{ scale: 1.15 }}
-    >
+    ><LoadingWrapper isLoading={isLoading}>
       <PlayIconSVG width="16" pathClass="stroke-neutral-600 fill-neutral-600" />
+      </LoadingWrapper>
       {srOnly && <span className="sr-only">{srOnly}</span>}
+      {isLoading && <div className=" absolute left-1/2 -rotate-90 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <SpinnerSVG className="origin-center" pathClass="stroke-neutral-800"/>
+      </div>}
     </motion.button>
   );
 }

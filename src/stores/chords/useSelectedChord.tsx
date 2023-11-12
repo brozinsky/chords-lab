@@ -35,9 +35,9 @@ interface SelectedChordState {
   setQuality: (value: string) => void;
 }
 
-const initialRoot = "C";
-const initialQuality = "major";
-const chordData = Chord.get([initialRoot, initialQuality]);
+const initialRoot = localStorage.getItem("root") || "C";
+const initialQuality = localStorage.getItem("quality") || "major";
+const chordData = Chord.get([initialRoot + "2", initialQuality]);
 
 const initialChord: ChordProps = {
   empty: false,
@@ -57,14 +57,20 @@ const initialChord: ChordProps = {
 };
 
 const useSelectedChord = create<SelectedChordState>((set) => ({
-  root: "C",
-  setRoot: (value) => set(() => ({ root: value })),
+  root: initialRoot,
+  setRoot: (value) => {
+    localStorage.setItem("root", value);
+    set({ root: value });
+  },
 
-  quality: "major",
-  setQuality: (value) => set(() => ({ quality: value })),
+  quality: initialQuality,
+  setQuality: (value) => {
+    localStorage.setItem("quality", value);
+    set({ quality: value });
+  },
 
   selectedChord: initialChord,
-  setSelectedChord: (value) => set(() => ({ selectedChord: value })),
+  setSelectedChord: (value) => set({ selectedChord: value }),
 }));
 
 useSelectedChord.subscribe((state, prevState) => {

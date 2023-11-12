@@ -117,7 +117,7 @@ const ListingChords = () => {
           // }}
           spaceBetween={30}
           navigation={true}
-          // modules={[Grid, Navigation]}
+          modules={[Grid, Navigation]}
           className="swiper-chord"
         >
           {Array.from({ length: 12 }, () => 1).map(() => {
@@ -138,7 +138,7 @@ const ListingChords = () => {
           // }}
           spaceBetween={30}
           navigation={true}
-          // modules={[Grid, Navigation]}
+          modules={[Grid, Navigation]}
           className="swiper-chord"
         >
           {chordsList

@@ -4,6 +4,7 @@ import PianoScaleSVG from "@/components/elements/svg/PianoScaleSVG";
 import { Chord, Note, Scale } from "tonal";
 import { motion } from "framer-motion";
 import ButtonPlayTile from "./buttons/ButtonPlayTile";
+import usePlayPiano from "@/hooks/usePlayPiano";
 
 type PianoTileProps = {
   note: string;
@@ -24,6 +25,8 @@ const PianoTile = ({
   onPlayClick,
   intervals,
 }: PianoTileProps) => {
+  const { isPianoSoundLoading } = usePlayPiano();
+
   const notes =
     variant === "scale"
       ? Scale.get(`${note}1 ${name}`).notes.map((note) =>
@@ -98,7 +101,7 @@ const PianoTile = ({
           </div>
         ) : null}
       </div>
-      <ButtonPlayTile onClick={(e: Event) => onPlayClick(e, note, name)} />
+      <ButtonPlayTile onClick={(e: Event) => onPlayClick(e, note, name)} isLoading={isPianoSoundLoading} />
     </motion.div>
   );
 };

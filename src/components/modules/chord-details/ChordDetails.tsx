@@ -3,13 +3,10 @@ import PianoChord from "./_partials/PianoChord";
 import React, { useState } from "react";
 import { processIntervals } from "@/utils/processIntervals";
 import shortid from "shortid";
-import useFilterStore from "@/stores/chords/useFilterStore";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import Button from "@/components/ui/buttons/Button";
 import RadioGroup from "@/components/ui/RadioGroup";
 import Select from "@/components/ui/Select";
-import { notes } from "@/utils/notesData";
-import { chords } from "@/utils/chords";
 import Modal from "@/components/ui/Modal";
 import ButtonInfo from "@/components/ui/buttons/ButtonInfo";
 import ChordFormula from "./_partials/ChordFormula";
@@ -24,48 +21,17 @@ const playModeOptions = [
 const ChordDetails = () => {
   const { selectedChord, root, setRoot, quality, setQuality } =
     useSelectedChord();
-  const { allChordsRoot } = useFilterStore();
-  const { playPianoNotes } = usePlayPiano();
+  const { isPianoSoundLoading, playPianoNotes, playPianoChord } = usePlayPiano();
   const [playMode, setPlayMode] = useState(playModeOptions[0].value);
+
+  if (selectedChord?.name === undefined) return;
 
   const extendedChords = Chord.extended(selectedChord.name.toLowerCase());
   const reducedChords = Chord.reduced(selectedChord.name.toLowerCase());
-  
-  if (selectedChord === undefined) return;
-  
-  const playSelectedChord = (playMode: string) => {
-    const notes = selectedChord?.notes;
-
-    if (!notes) {
-      return;
-    }
-
-    if (playMode === "chord") playPianoNotes(notes as string[]);
-
-    if (playMode === "arpeggio") {
-      const playNoteWithInterval = (noteIndex: number) => {
-        if (noteIndex < notes.length) {
-          playPianoNotes([notes[noteIndex]] as string[]);
-          setTimeout(() => {
-            playNoteWithInterval(noteIndex + 1);
-          }, 200);
-        }
-      };
-
-      playNoteWithInterval(0);
-    }
-  };
 
   return (
     <section id="ChordDetails">
       {/* Chord name */}
-      {/* <h1 className="text-5xl mb-6 text-center">
-        {selectedChord.name && selectedChord.name.length > 3
-          ? selectedChord.name
-          : allChordsRoot +
-            " " +
-            (selectedChord.aliases && selectedChord.aliases[0])}
-      </h1> */}
       <div className="flex flex-row gap-2 justify-center mb-6">
         <Select
           variant="ghost"
@@ -99,7 +65,8 @@ const ChordDetails = () => {
           <Button
             variant="emerald"
             icon="play"
-            onClick={() => playSelectedChord(playMode)}
+            isLoading={isPianoSoundLoading}
+            onClick={() => playPianoChord(playMode, selectedChord?.notes as string[])}
           >
             Play
           </Button>

@@ -18,10 +18,11 @@
         @apply text-emerald-300;
       }
     }
-    &:active {
-      @apply bg-emerald-800;
+    &:active,
+    &.piano-key--playing {
+      @apply bg-emerald-600;
       .piano-note {
-        @apply text-emerald-200;
+        @apply text-emerald-100;
       }
     }
     .kbd {
@@ -41,8 +42,9 @@
         @apply text-emerald-100;
       }
     }
-    &:active {
-      @apply bg-emerald-300;
+    &:active,
+    &.piano-key--playing {
+      @apply bg-emerald-200;
       .piano-note {
         @apply text-white;
       }

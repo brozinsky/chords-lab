@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Howl } from "howler";
 import { Note } from "tonal";
 import pianoLibrary23MP3 from "@/assets/audio/piano-octave-2-3.mp3";
+import usePlayPianoStore from "@/stores/usePlayPianoStore";
+import {
+  simplifyNotes,
+} from "@/utils/functions/music-theory/simplifyNotes";
 
 interface MidiSprite {
   [key: number]: [number, number];
@@ -36,6 +40,12 @@ const MIDI_SPRITE_2_3: MidiSprite = {
 
 export default function usePlayPiano() {
   const [isPianoSoundLoading, setIsPianoSoundLoading] = useState(true);
+  // const [currentlyPlayedNotes, setCurrentlyPlayedNotes] = useState<string[]>([]);
+
+  const {
+    currentlyPlayedNotes,
+    setCurrentlyPlayedNotes,
+  } = usePlayPianoStore();
 
   const sound = new Howl({
     src: [pianoLibrary23MP3],
@@ -56,6 +66,7 @@ export default function usePlayPiano() {
 
   const playPianoNotes = (notesArray: string[]) => {
     if (!isPianoSoundLoading) {
+      setCurrentlyPlayedNotes(simplifyNotes(notesArray));
       notesArray.forEach((note) => {
         const midi = Note.midi(note);
         if (midi) {
@@ -65,5 +76,28 @@ export default function usePlayPiano() {
       });
     }
   };
-  return { isPianoSoundLoading, playPianoMidi, playPianoNotes };
+
+  const playPianoChord = (playMode: string, notes: string[]) => {
+
+    if (!notes) {
+      return;
+    }
+
+    if (playMode === "chord") playPianoNotes(notes);
+
+    if (playMode === "arpeggio") {
+      const playNoteWithInterval = (noteIndex: number) => {
+        if (noteIndex < notes.length) {
+          playPianoNotes([notes[noteIndex]]);
+          setTimeout(() => {
+            playNoteWithInterval(noteIndex + 1);
+          }, 200);
+        }
+      };
+
+      playNoteWithInterval(0);
+    }
+  };
+
+  return { isPianoSoundLoading, playPianoMidi, playPianoNotes, playPianoChord, currentlyPlayedNotes };
 };

@@ -1,4 +1,3 @@
-import Settings from "@/components/modules/settings/Settings";
 import MenuTop from "@/components/modules/navigation/MenuTop";
 import ChordDetails from "@/components/modules/chord-details/ChordDetails";
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -98,7 +97,6 @@ export default function ChordsPage() {
             </div>
           </div>
         </Tabs> */}
-        <Settings />
       </main>
     </>
   );

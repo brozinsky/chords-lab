@@ -1,4 +1,3 @@
-import Settings from "@/components/modules/settings/Settings";
 // import Piano from "@/components/modules/piano/Piano";
 import Library from "@/components/modules/library/Library";
 import ChordDetails from "@/components/modules/chord-details/ChordDetails";
@@ -18,7 +17,6 @@ export default function Root() {
         <section className="py-20">
           <Library />
         </section>
-        <Settings />
       </main>
     </>
   );

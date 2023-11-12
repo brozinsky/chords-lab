@@ -7,9 +7,10 @@
 }
 .swiper-chord {
   height: 11rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 1rem;
   .swiper-wrapper {
     height: fit-content;
+    height: 100%;
   }
   &--expanded {
     height: 22rem;
@@ -38,7 +39,9 @@
   left: 0;
 }
 
+
 .swiper-slide {
   @apply text-center text-base flex justify-center items-center;
-  height: calc((100% - 30px) / 2) !important;
+  // height: calc((100% - 30px) / 2) !important;
+  height: calc((100% - 30px)) !important;
 }

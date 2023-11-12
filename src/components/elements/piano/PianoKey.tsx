@@ -1,20 +1,27 @@
+import clsx from "clsx";
 import { Note } from "tonal";
 
 interface PianoKeyProps {
   name: string;
+  isPlaying: boolean;
   isActive: boolean;
   onClick?: () => void;
 }
 
-const PianoKey = ({ name, isActive, onClick }: PianoKeyProps) => {
+const PianoKey = ({ name, isPlaying, isActive, onClick }: PianoKeyProps) => {
   const activeAccidental = "♯";
   // const activeAccidental = "♭";
+  const classNames = clsx(
+    "piano-key",
+    "piano-key--sm",
+    name.includes("#") ? "piano-key--black" : "piano-key--white",
+    isActive && "piano-key--active",
+    isPlaying && "piano-key--playing"
+  );
   return (
     <div
       onClick={onClick}
-      className={`piano-key piano-key--sm ${
-        name.includes("#") ? "piano-key--black" : "piano-key--white"
-      } ${isActive ? "piano-key--active" : ""}`}
+      className={classNames}
     >
       <div className="piano-note">
         <div className="flex items-end">
