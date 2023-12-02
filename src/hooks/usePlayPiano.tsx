@@ -6,6 +6,7 @@ import usePlayPianoStore from "@/stores/usePlayPianoStore";
 import {
   simplifyNotes,
 } from "@/utils/functions/music-theory/simplifyNotes";
+import useBPMStore from "@/stores/settings/useBPMStore";
 
 interface MidiSprite {
   [key: number]: [number, number];
@@ -41,6 +42,7 @@ const MIDI_SPRITE_2_3: MidiSprite = {
 export default function usePlayPiano() {
   const [isPianoSoundLoading, setIsPianoSoundLoading] = useState(true);
   // const [currentlyPlayedNotes, setCurrentlyPlayedNotes] = useState<string[]>([]);
+  const {bpm} = useBPMStore();
 
   const {
     currentlyPlayedNotes,
@@ -91,7 +93,7 @@ export default function usePlayPiano() {
           playPianoNotes([notes[noteIndex]]);
           setTimeout(() => {
             playNoteWithInterval(noteIndex + 1);
-          }, 200);
+          }, 60000 / 4 / bpm);
         }
       };
 
