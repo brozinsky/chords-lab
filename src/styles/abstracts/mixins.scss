@@ -45,3 +45,41 @@ $xxxl-width: 1660px;
     @content;
   }
 }
+
+/// Mixin to place items on a circle
+/// @author Kitty Giraudel
+/// @author Ana Tudor
+/// @param {Integer} $item-count - Number of items on the circle
+/// @param {Length} $circle-size - Large circle size
+/// @param {Length} $item-size - Single item size
+@mixin on-circle($item-count, $circle-size, $item-size) {
+  position: relative;
+  width: $circle-size;
+  height: $circle-size;
+  padding: 0;
+  border-radius: 50%;
+  list-style: none;
+
+  > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $item-size;
+    height: $item-size;
+    margin: -(calc($item-size / 2));
+
+    $angle: calc(360 / $item-count);
+    $rot: 0;
+
+    @for $i from 1 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: rotate($rot * 1deg - 90deg)
+          translate(calc($circle-size / 2))
+          rotate($rot * -1deg + 90deg);
+      }
+
+      $rot: $rot + $angle;
+    }
+  }
+}

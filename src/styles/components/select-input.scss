@@ -20,7 +20,7 @@
   &--ghost {
     .select-input {
       &__button {
-        @apply py-2 text-5xl px-2 rounded-lg;
+        @apply py-2 text-5xl px-4 rounded-lg bg-neutral-800;
         transition: 0.25s ease all;
         &:hover,
         &[data-headlessui-state="open"] {
