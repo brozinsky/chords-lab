@@ -30,7 +30,7 @@ export default function ChordsPage() {
         <div
           className={clsx(
             "container flex flex-col items-center justify-center py-12",
-            isDrawerExpanded && "pb-[300px] mb-[20px]"
+            isDrawerExpanded && "pb-[300px] mb-[8rem]"
           )}
         >
           <div className="flex flex-row">

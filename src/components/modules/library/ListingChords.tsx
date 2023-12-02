@@ -23,7 +23,12 @@ import ButtonToggled from "@/components/ui/buttons/ButtonToggled";
 const ListingChords = () => {
   const { playPianoNotes } = usePlayPiano();
   const { getRomanChords } = useRomanNumerals();
-  const { isDrawerExpanded, toggleIsDrawerExpanded, isTwoRows, toggleIsTwoRows } = useMenuDrawer();
+  const {
+    isDrawerExpanded,
+    toggleIsDrawerExpanded,
+    isTwoRows,
+    toggleIsTwoRows,
+  } = useMenuDrawer();
 
   const { chordsList, setChordsList } = useChordsTab();
   const { allChordsList } = useChordsListStore();
@@ -89,17 +94,16 @@ const ListingChords = () => {
           >
         </Button> */}
         <ButtonToggled
-            className=""
-            toggleState={isDrawerExpanded}
-            variant="neutral-dark"
-            shape="hemicircle"
-            icon="arrow-sm-top"
-            size="wide"
-            classNameIcon="rotate-90 transition"
-            classNameIconToggled="-rotate-90 transition"
-            onToggle={toggleIsDrawerExpanded}
-          >
-        </ButtonToggled>
+          className=""
+          toggleState={isDrawerExpanded}
+          variant="neutral-dark"
+          shape="hemicircle"
+          icon="arrow-sm-top"
+          size="wide"
+          classNameIcon="rotate-90 transition"
+          classNameIconToggled="-rotate-90 transition"
+          onToggle={toggleIsDrawerExpanded}
+        ></ButtonToggled>
       </div>
       {/* TODO - use similar view on mobile */}
       {/* <div className="grid grid-cols-12 grid-rows-2">
@@ -115,27 +119,67 @@ const ListingChords = () => {
           //   rows: 2,
           //   fill: "row",
           // }}
+          breakpoints={{
+            319: {
+              slidesPerView: 1,
+            },
+            639: {
+              slidesPerView: 2,
+            },
+            767: {
+              slidesPerView: 2,
+            },
+            1023: {
+              slidesPerView: 3,
+            },
+            1535: {
+              slidesPerView: 4,
+            },
+            1659: {
+              slidesPerView: 5,
+            },
+          }}
           spaceBetween={30}
           navigation={true}
           modules={[Grid, Navigation]}
           className="swiper-chord"
         >
           {Array.from({ length: 12 }, () => 1).map(() => {
-              return (
-                <SwiperSlide key={1}>
-                  <PianoTileSkeleton />
-                </SwiperSlide>
-              );
-            })}
+            return (
+              <SwiperSlide key={1}>
+                <PianoTileSkeleton />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       )}
       {renderAsync && chordsList.length > 0 && (
         <Swiper
-          slidesPerView={6}
+          slidesPerView={1}
           // grid={{
           //   rows: 2,
           //   fill: "row",
           // }}
+          breakpoints={{
+            319: {
+              slidesPerView: 2,
+            },
+            639: {
+              slidesPerView: 3,
+            },
+            767: {
+              slidesPerView: 4,
+            },
+            1023: {
+              slidesPerView: 5,
+            },
+            1535: {
+              slidesPerView: 6,
+            },
+            // 1659: {
+            //   slidesPerView: 5,
+            // },
+          }}
           spaceBetween={30}
           navigation={true}
           modules={[Grid, Navigation]}
@@ -166,7 +210,7 @@ const ListingChords = () => {
         </Swiper>
       )}
       {chordsList.length <= 0 && (
-        <div className="h-[352px] p-8 mx-auto flex flex-col items-center">
+        <div className="p-8 pb-10 mx-auto flex flex-col items-center">
           <SearchIconSVG className={"mb-3"} width={"50"} />
           <div className="font-bold text-foreground">
             No chords found matching the current filter

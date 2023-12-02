@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Volume from "../settings/_partials/Volume";
 import Button from "@/components/ui/buttons/Button";
 import useSettingsStore from "@/stores/useSettingsStore";
+import Settings from "../settings/Settings";
 
 const navItems = [
   { name: "Chords", url: "/chords" },
@@ -35,7 +36,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-neutral-600 border border-neutral-500">
+    <header className="sticky top-0 z-50 bg-neutral-600 border-b border-neutral-400">
       <nav className="container flex flex-wrap items-center justify-between gap-4">
         <Link to="/">
           <div className="flex items-center flex-shrink-0 mr-6 text-white cursor-pointer select-none">
@@ -62,7 +63,9 @@ const Header = () => {
             <Volume />
           </div>
         </Dropdown>
-        <Modal trigger={<ButtonSettings />}>Settings</Modal>
+        <Modal trigger={<ButtonSettings />}>
+          <Settings />
+        </Modal>
       </nav>
     </header>
   );

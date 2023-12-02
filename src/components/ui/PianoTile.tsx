@@ -101,6 +101,7 @@ const PianoTile = ({
           </div>
         ) : null}
       </div>
+      <div className="text-xl absolute right-2 w-9 h-9 bottom-2 flex items-center justify-center">II</div>
       <ButtonPlayTile onClick={(e: Event) => onPlayClick(e, note, name)} isLoading={isPianoSoundLoading} />
     </motion.div>
   );

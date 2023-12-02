@@ -1,10 +1,7 @@
-import CloseIconSVG from "@/components/elements/svg/icons/interface/CloseIconSVG";
-import PlayIconSVG from "@/components/elements/svg/icons/media/PlayIconSVG";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import { cva } from "class-variance-authority";
-import ExpandSVG from "@/components/elements/svg/icons/interface/ExpandSVG";
 import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
 
 type Props = {
@@ -36,7 +33,7 @@ export default function ButtonToggled({
   const classes = cva(
     [
       className,
-      "flex items-center justify-center w-fit  gap-2 cursor-pointer",
+      "flex border-t border-l border-r border-neutral-500 items-center justify-center w-fit  gap-2 cursor-pointer",
     ],
     {
       variants: {
@@ -56,7 +53,7 @@ export default function ButtonToggled({
         size: {
           md: "px-6 py-3",
           sm: "px-2 py-2",
-          wide: "px-12 pt-1 pb-2"
+          wide: "px-12 pt-1 pb-1"
         },
       },
     }

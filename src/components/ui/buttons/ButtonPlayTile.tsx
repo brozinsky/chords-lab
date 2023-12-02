@@ -37,9 +37,8 @@ export default function ButtonPlayTile({ onClick, srOnly = "Play", isLoading = f
       id="ButtonPlayTile"
       onClick={onClick}
       variants={slideUpMotion}
-      className="absolute bottom-2 right-2 flex items-center justify-center p-2.5 bg-emerald-500 rounded-full cursor-pointer"
-      whileTap={{ scale: 0.8 }}
-      whileHover={{ scale: 1.15 }}
+      className="absolute bottom-2 right-2 flex items-center justify-center p-2.5 active:bg-emerald-300 hover:bg-emerald-400 bg-emerald-500 rounded-full cursor-pointer"
+      whileTap={{ scale: 0.95 }}
     ><LoadingWrapper isLoading={isLoading}>
       <PlayIconSVG width="16" pathClass="stroke-neutral-600 fill-neutral-600" />
       </LoadingWrapper>
