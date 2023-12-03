@@ -10,7 +10,7 @@ export default function RelationsCircle() {
   const { selectedChord } = useSelectedChord();
   const { playPianoNotes } = usePlayPiano();
   return (
-    <div className="relative">
+    <div id="RelationsCircle" className="relative w-fit h-fit">
       {/* <span className="absolute top-4 -left-4 transform rotate-[210deg]"> */}
       {intervalsLib.map(
         (
@@ -61,7 +61,7 @@ export default function RelationsCircle() {
           return (
             <React.Fragment key={symbol}>
               {isIntervalIncluded && (
-                <span className={`absolute top-4 -left-4 transform ${rotate}`}>
+                <span className={`absolute -top-4 -left-4 transform ${rotate}`}>
                   <IntervalsConnectionsSVG
                     intervals={processedIntervals as string[]}
                   />

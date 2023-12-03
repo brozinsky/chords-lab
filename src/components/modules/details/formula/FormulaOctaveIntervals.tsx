@@ -10,7 +10,10 @@ export default function FormulaOctaveIntervals() {
   const { selectedChord } = useSelectedChord();
   const { playPianoNotes } = usePlayPiano();
   return (
-    <div className="grid w-full gap-0.5 grid-cols-13">
+    <div
+      id="FormulaOctaveIntervals"
+      className="grid w-full gap-0.5 grid-cols-13"
+    >
       {intervalsLib.map(
         ({ id, range, symbol, name, isConsonant, symbolSecondary }) => {
           const isIntervalIncluded = selectedChord!.intervals!.some(
@@ -34,9 +37,9 @@ export default function FormulaOctaveIntervals() {
                 }
                 whileTap={{ scale: 0.85 }}
                 className={clsx(
-                  "border border-transparent select-none transition flex items-center justify-center text-lg bg-neutral-700 rounded-xl p-1",
+                  "border border-transparent select-none transition flex items-center justify-center text-lg bg-neutral-600 rounded-xl p-1",
                   isIntervalIncluded
-                    ? "hover:bg-neutral-600 cursor-pointer border-neutral-500  p-1"
+                    ? "hover:bg-neutral-500 cursor-pointer p-1"
                     : "self-center justify-self-center w-5 h-5 text-sm p-1"
                 )}
               >

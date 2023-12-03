@@ -19,6 +19,7 @@ import SearchIconSVG from "@/components/elements/svg/icons/SearchIconSVG";
 import PianoTileSkeleton from "@/components/ui/PianoTileSkeleton";
 import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 import ButtonToggled from "@/components/ui/buttons/ButtonToggled";
+import shortid from "shortid";
 
 const ListingChords = () => {
   const { playPianoNotes } = usePlayPiano();
@@ -146,7 +147,7 @@ const ListingChords = () => {
         >
           {Array.from({ length: 12 }, () => 1).map(() => {
             return (
-              <SwiperSlide key={1}>
+              <SwiperSlide key={shortid.generate()}>
                 <PianoTileSkeleton />
               </SwiperSlide>
             );
