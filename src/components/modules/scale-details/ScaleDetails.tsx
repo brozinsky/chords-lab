@@ -24,6 +24,10 @@ import {
 } from "@/utils/functions/music-theory/selectOptions";
 import RadioGroup from "@/components/ui/RadioGroup";
 import Button from "@/components/ui/buttons/Button";
+import useBPMStore from "@/stores/settings/useBPMStore";
+import Dropdown from "@/components/ui/Dropdown";
+import { motion } from "framer-motion";
+import DropdownBPM from "@/components/ui/dropdowns/DropdownBPM";
 
 const playModeOptions = [
   { id: "11", name: "Ascending", value: "ascending" },
@@ -34,10 +38,15 @@ const ScaleDetails = () => {
   const { tonic, setTonic, type, setType, selectedScale } = useSelectedScale();
   const { playPianoNotes } = usePlayPiano();
   const [playMode, setPlayMode] = useState(playModeOptions[0].value);
+  const { bpm } = useBPMStore();
 
   if (!selectedScale) {
     return <div>Select a scale.</div>;
   }
+
+  useEffect(() => {
+    console.log(selectedScale);
+  }, [selectedScale]);
 
   const extendedScales = Scale.extended(selectedScale.type.toLowerCase());
   const reducedScales = Scale.reduced(selectedScale.type.toLowerCase());
@@ -75,12 +84,12 @@ const ScaleDetails = () => {
         playPianoNotes([notes[noteIndex]] as string[]);
         setTimeout(() => {
           playNoteWithInterval(noteIndex + 1, direction);
-        }, 200);
+        }, 60000 / 4 / bpm);
       } else if (direction === "descending" && noteIndex >= 0) {
         playPianoNotes([notes[noteIndex]] as string[]);
         setTimeout(() => {
           playNoteWithInterval(noteIndex - 1, direction);
-        }, 200);
+        }, 60000 / 4 / bpm);
       }
     };
 
@@ -112,6 +121,22 @@ const ScaleDetails = () => {
       <PianoScale scale={simplifiedScale} />
       <section className="mt-6 space-y-2">
         <div className="flex justify-end gap-4">
+          <Dropdown
+            isCenter
+            trigger={
+              <motion.div
+                whileTap={{ scale: 0.92 }}
+                className="select-none cursor-pointer p-2 rounded-lg active:bg-neutral-600 flex flex-col items-center"
+              >
+                <div className="text-lg">{bpm}</div>
+                <div className="text-xs">BPM</div>
+              </motion.div>
+            }
+          >
+            <div className="flex flex-row gap-1 py-1 pl-1.5 pr-4">
+              <DropdownBPM />
+            </div>
+          </Dropdown>
           <RadioGroup
             options={playModeOptions}
             defaultOption="chord"
@@ -132,16 +157,16 @@ const ScaleDetails = () => {
             {selectedScale.notes.map((note, index) => {
               return (
                 <React.Fragment key={note}>
-                  <span
+                  <div
                     // data-tooltip-id={"note-" + note}
                     onClick={() => playPianoNotes([note])}
-                    className="p-2 rounded-lg active:bg-neutral-600 cursor-pointer select-none text-center text-2xl min-w-[2rem]"
+                    className="p-2 px-3 rounded-lg bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 cursor-pointer select-none text-center text-2xl min-w-[2rem]"
                   >
                     {simplifyNote(note).slice(0, -1)}
-                  </span>
-                  <span className="self-center text-2xl text-center">
+                  </div>
+                  <div className="self-center text-2xl text-center">
                     {infoScale.notes.length - 1 !== index ? "-" : null}
-                  </span>
+                  </div>
                 </React.Fragment>
               );
             })}
@@ -155,7 +180,7 @@ const ScaleDetails = () => {
                 <React.Fragment key={shortid.generate()}>
                   <span
                     data-tooltip-id={"interval-" + interval}
-                    className="cursor-default text-center text-2xl min-w-[2rem]"
+                    className="cursor-default px-3 text-center text-2xl min-w-[2rem]"
                   >
                     {interval}
                   </span>
@@ -242,7 +267,7 @@ const ScaleDetails = () => {
             </div>
           </div>
         ) : null}
-        {/* {isMajor ? (
+        {isMajor ? (
           <>
             <div>{Key.majorKey(tonic).grades}</div>
             <div>{Key.majorKey(tonic).chords}</div>
@@ -250,8 +275,10 @@ const ScaleDetails = () => {
         ) : null}
         {isMajor ? <AddInfoMajor /> : null}
         {isMinor && minorScaleType !== null ? (
-          <AddInfoMinor type={minorScaleType as "harmonic" | "melodic" | "natural"} />
-        ) : null} */}
+          <AddInfoMinor
+            type={minorScaleType as "harmonic" | "melodic" | "natural"}
+          />
+        ) : null}
       </section>
     </section>
   );
