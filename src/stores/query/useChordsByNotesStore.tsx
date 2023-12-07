@@ -24,7 +24,7 @@ export default function useChordsByNotesStore() {
     refetch: refetchChordsByNotes,
     isRefetching: isRefetchingChordsByNotes,
   } = useQuery({
-    queryKey: ["Chords By Notes", notesChordsNotes],
+    queryKey: ["Tab", "Chords By Notes", notesChordsNotes],
     queryFn: () => filterChordsByNotes(),
     // queryFn: () => Promise.reject("Treść błędu")
   });

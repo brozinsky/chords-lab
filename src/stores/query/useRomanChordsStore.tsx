@@ -13,7 +13,7 @@ export default function useRomanChordsStore() {
     refetch: refetchRomanChords,
     isRefetching: isRefetchingRomanChords,
   } = useQuery({
-    queryKey: ["Roman Chords", romanScaleTonic, romanScaleType],
+    queryKey: ["Tab","Roman Chords", romanScaleTonic, romanScaleType],
     queryFn: () => getRomanChords(romanScaleTonic, romanScaleType),
     // queryFn: () => Promise.reject("Treść błędu")
   });

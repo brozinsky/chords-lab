@@ -21,7 +21,7 @@ export default function useAllChordsRootStore() {
     refetch: refetchAllChordsRoot,
     isRefetching: isRefetchingAllChordsRoot,
   } = useQuery({
-    queryKey: ["All Chords By Root", allChordsRoot],
+    queryKey: ["Tab", "All Chords By Root", allChordsRoot],
     queryFn: () => filterChordsByRoot(),
     // queryFn: () => Promise.reject("Treść błędu")
   });

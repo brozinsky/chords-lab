@@ -13,6 +13,9 @@ import clsx from "clsx";
 import useChordsTab from "@/hooks/chords/useChordsTabs";
 import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 import ButtonToggled from "./buttons/ButtonToggled";
+import useAllChordsRootStore from "@/stores/query/useAllChordsRootStore";
+import useRomanChordsStore from "@/stores/query/useRomanChordsStore";
+import useChordsByNotesStore from "@/stores/query/useChordsByNotesStore";
 
 type Tab = {
   label: string;
@@ -27,6 +30,16 @@ export default function Tabs({ tabs }: Props) {
   const { changeTab } = useChordsTab();
   const { isDrawerExpanded, setIsDrawerExpanded, toggleIsDrawerExpanded } =
     useMenuDrawer();
+
+    const { allChordsRootData, isLoadingAllChordsRoot, isRefetchingAllChordsRoot } =
+    useAllChordsRootStore();
+  const { romanChordsData, isLoadingRomanChords, isRefetchingRomanChords } =
+    useRomanChordsStore();
+  const {
+    chordsByNotesData,
+    isLoadingChordsByNotes,
+    isRefetchingChordsByNotes,
+  } = useChordsByNotesStore();
 
   return (
     <TabsShadcn
