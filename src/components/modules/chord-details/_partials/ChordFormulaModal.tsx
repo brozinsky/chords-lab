@@ -19,7 +19,7 @@ function FormulaTable({ title, className = "", tbody }: any) {
   );
 }
 
-export default function ChordFormula() {
+export default function ChordFormulaModal() {
   const intervalRows = intervalDegrees.map(({ id, symbol, name }) => (
     <tr key={id}>
       <td>{symbol}</td>

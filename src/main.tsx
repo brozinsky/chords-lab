@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import Home from "@/routes/Home";
 import ChordsPage from "@/routes/ChordsPage";
 import ScalesPage from "@/routes/ScalesPage";
@@ -9,6 +8,10 @@ import ErrorPage from "@/routes/ErrorPage";
 import "@/styles//main.scss";
 import CirclePage from "./routes/CirclePage";
 import { MantineProvider } from "@mantine/core";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -35,8 +38,11 @@ const router = createBrowserRouter([
 // @ts-ignore
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <MantineProvider>
-      <RouterProvider router={router} />
-    </MantineProvider>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <MantineProvider>
+        <RouterProvider router={router} />
+      </MantineProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

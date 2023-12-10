@@ -1,12 +1,14 @@
 import { Menu, Transition } from "@headlessui/react";
+import clsx from "clsx";
 import { Fragment, ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
   trigger?: ReactNode;
+  isCenter?: boolean;
 }
 
-export default function Dropdown({ children, trigger }: Props) {
+export default function Dropdown({ children, trigger, isCenter = false }: Props) {
   return (
     <div id="Dropdown" className="">
       <Menu as="div" className="relative inline-block text-left">
@@ -28,7 +30,12 @@ export default function Dropdown({ children, trigger }: Props) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="z-50 absolute right-0 mt-3 w-56 origin-top-right divide-y divide-neutral-800 rounded-md bg-neutral-500">
+          <Menu.Items
+            className={clsx(
+              "z-50 absolute mt-3 w-56 origin-top-right divide-y divide-neutral-800 rounded-md bg-neutral-500",
+              isCenter ? "left-1/2 -translate-x-1/2" : "right-0"
+            )}
+          >
             {children}
           </Menu.Items>
         </Transition>

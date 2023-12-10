@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
+import { Disclosure, Transition } from "@headlessui/react";
 
 const Settings = () => {
   return (
     <div className="container">
-     Settings
+      <div className="flex flex-col">
+        Settings
+      </div>
     </div>
   );
 };

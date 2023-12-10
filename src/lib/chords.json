@@ -1,0 +1,1430 @@
+[
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "C",
+    "notesArr": ["C", "E", "G"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "C#",
+    "notesArr": ["C#", "F", "G#"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "D",
+    "notesArr": ["D", "F#", "A"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "D#",
+    "notesArr": ["D#", "G", "A#"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "E",
+    "notesArr": ["E", "G#", "B"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "F",
+    "notesArr": ["F", "A", "C"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "F#",
+    "notesArr": ["F#", "A#", "C#"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "G",
+    "notesArr": ["G", "B", "D"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "G#",
+    "notesArr": ["G#", "C", "D#"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "A",
+    "notesArr": ["A", "C#", "E"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "A#",
+    "notesArr": ["A#", "D", "F"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "root": "B",
+    "notesArr": ["B", "D#", "F#"],
+    "abbreviations": ["maj", "major", "M", "△"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "C",
+    "notesArr": ["C", "D#", "G"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "C#",
+    "notesArr": ["C#", "E", "G#"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "D",
+    "notesArr": ["D", "F", "A"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "D#",
+    "notesArr": ["D#", "F#", "A#"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "E",
+    "notesArr": ["E", "G", "B"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "F",
+    "notesArr": ["F", "G#", "C"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "F#",
+    "notesArr": ["F#", "A", "C#"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "G",
+    "notesArr": ["G", "A#", "D"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "G#",
+    "notesArr": ["G#", "B", "D#"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "A",
+    "notesArr": ["A", "C", "E"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "A#",
+    "notesArr": ["A#", "C#", "F"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "root": "B",
+    "notesArr": ["B", "D", "F#"],
+    "abbreviations": ["min", "minor", "m", "-"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "C",
+    "notesArr": ["C", "E", "G", "B"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "C#",
+    "notesArr": ["C#", "F", "G#", "C"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "D",
+    "notesArr": ["D", "F#", "A", "C#"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "D#",
+    "notesArr": ["D#", "G", "A#", "D"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "E",
+    "notesArr": ["E", "G#", "B", "D#"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "F",
+    "notesArr": ["F", "A", "C", "E"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "F#",
+    "notesArr": ["F#", "A#", "C#", "F"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "G",
+    "notesArr": ["G", "B", "D", "F#"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "G#",
+    "notesArr": ["G#", "C", "D#", "G"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "A",
+    "notesArr": ["A", "C#", "E", "G#"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "A#",
+    "notesArr": ["A#", "D", "F", "A"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "root": "B",
+    "notesArr": ["B", "D#", "F#", "A#"],
+    "abbreviations": ["maj7", "△7"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "C",
+    "notesArr": ["C", "E", "G#"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "C#",
+    "notesArr": ["C#", "F", "A"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "D",
+    "notesArr": ["D", "F#", "A#"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "D#",
+    "notesArr": ["D#", "G", "B"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "E",
+    "notesArr": ["E", "G#", "C"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "F",
+    "notesArr": ["F", "A", "C#"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "F#",
+    "notesArr": ["F#", "A#", "D"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "G",
+    "notesArr": ["G", "B", "D#"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "G#",
+    "notesArr": ["G#", "C", "E"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "A",
+    "notesArr": ["A", "C#", "F"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "A#",
+    "notesArr": ["A#", "D", "F#"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "root": "B",
+    "notesArr": ["B", "D#", "G"],
+    "abbreviations": ["aug", "+"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "C",
+    "notesArr": ["C", "D#", "F#"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "C#",
+    "notesArr": ["C#", "E", "G"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "D",
+    "notesArr": ["D", "F", "G#"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "D#",
+    "notesArr": ["D#", "F#", "A"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "E",
+    "notesArr": ["E", "G", "A#"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "F",
+    "notesArr": ["F", "G#", "B"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "F#",
+    "notesArr": ["F#", "A", "C"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "G",
+    "notesArr": ["G", "A#", "C#"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "G#",
+    "notesArr": ["G#", "B", "D"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "A",
+    "notesArr": ["A", "C", "D#"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "A#",
+    "notesArr": ["A#", "C#", "E"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "root": "B",
+    "notesArr": ["B", "D", "F"],
+    "abbreviations": ["dim", "°"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "C",
+    "notesArr": ["C", "D#", "G", "A#"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "C#",
+    "notesArr": ["C#", "E", "G#", "B"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "D",
+    "notesArr": ["D", "F", "A", "C"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "D#",
+    "notesArr": ["D#", "F#", "A#", "C#"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "E",
+    "notesArr": ["E", "G", "B", "D"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "F",
+    "notesArr": ["F", "G#", "C", "D#"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "F#",
+    "notesArr": ["F#", "A", "C#", "E"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "G",
+    "notesArr": ["G", "A#", "D", "F"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "G#",
+    "notesArr": ["G#", "B", "D#", "F#"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "A",
+    "notesArr": ["A", "C", "E", "G"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "A#",
+    "notesArr": ["A#", "C#", "F", "G#"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "root": "B",
+    "notesArr": ["B", "D", "F#", "A"],
+    "abbreviations": ["min7", "m7", "-7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "C",
+    "notesArr": ["C", "D#", "F#", "A#"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "C#",
+    "notesArr": ["C#", "E", "G", "B"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "D",
+    "notesArr": ["D", "F", "G#", "C"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "D#",
+    "notesArr": ["D#", "F#", "A", "C#"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "E",
+    "notesArr": ["E", "G", "A#", "D"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "F",
+    "notesArr": ["F", "G#", "B", "D#"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "F#",
+    "notesArr": ["F#", "A", "C", "E"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "G",
+    "notesArr": ["G", "A#", "C#", "F"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "G#",
+    "notesArr": ["G#", "B", "D", "F#"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "A",
+    "notesArr": ["A", "C", "D#", "G"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "A#",
+    "notesArr": ["A#", "C#", "E", "G#"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 11],
+    "root": "B",
+    "notesArr": ["B", "D", "F", "A"],
+    "abbreviations": ["dim7", "°7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "C",
+    "notesArr": ["C", "E", "G#", "B"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "C#",
+    "notesArr": ["C#", "F", "A", "C"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "D",
+    "notesArr": ["D", "F#", "A#", "C#"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "D#",
+    "notesArr": ["D#", "G", "B", "D"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "E",
+    "notesArr": ["E", "G#", "C", "D#"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "F",
+    "notesArr": ["F", "A", "C#", "E"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "F#",
+    "notesArr": ["F#", "A#", "D", "F"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "G",
+    "notesArr": ["G", "B", "D#", "F#"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "G#",
+    "notesArr": ["G#", "C", "E", "G"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "A",
+    "notesArr": ["A", "C#", "F", "G#"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "A#",
+    "notesArr": ["A#", "D", "F#", "A"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "root": "B",
+    "notesArr": ["B", "D#", "G", "A#"],
+    "abbreviations": ["aug7", "+7"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "C",
+    "notesArr": ["C", "D#", "G", "A"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "C#",
+    "notesArr": ["C#", "E", "G#", "A#"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "D",
+    "notesArr": ["D", "F", "A", "B"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "D#",
+    "notesArr": ["D#", "F#", "A#", "C"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "E",
+    "notesArr": ["E", "G", "B", "C#"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "F",
+    "notesArr": ["F", "G#", "C", "D"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "F#",
+    "notesArr": ["F#", "A", "C#", "D#"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "G",
+    "notesArr": ["G", "A#", "D", "E"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "G#",
+    "notesArr": ["G#", "B", "D#", "F"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "A",
+    "notesArr": ["A", "C", "E", "F#"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "A#",
+    "notesArr": ["A#", "C#", "F", "G"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "root": "B",
+    "notesArr": ["B", "D", "F#", "G#"],
+    "abbreviations": ["min6", "m6", "-6"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "C",
+    "notesArr": ["C", "E", "G", "A"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "C#",
+    "notesArr": ["C#", "F", "G#", "A#"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "D",
+    "notesArr": ["D", "F#", "A", "B"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "D#",
+    "notesArr": ["D#", "G", "A#", "C"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "E",
+    "notesArr": ["E", "G#", "B", "C#"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "F",
+    "notesArr": ["F", "A", "C", "D"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "F#",
+    "notesArr": ["F#", "A#", "C#", "D#"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "G",
+    "notesArr": ["G", "B", "D", "E"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "G#",
+    "notesArr": ["G#", "C", "D#", "F"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "A",
+    "notesArr": ["A", "C#", "E", "F#"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "A#",
+    "notesArr": ["A#", "D", "F", "G"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "root": "B",
+    "notesArr": ["B", "D#", "F#", "G#"],
+    "abbreviations": ["dom7", "7"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "C",
+    "notesArr": ["C", "E", "G", "G#"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "C#",
+    "notesArr": ["C#", "F", "G#", "A"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "D",
+    "notesArr": ["D", "F#", "A", "A#"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "D#",
+    "notesArr": ["D#", "G", "A#", "B"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "E",
+    "notesArr": ["E", "G#", "B", "C"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "F",
+    "notesArr": ["F", "A", "C", "C#"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "F#",
+    "notesArr": ["F#", "A#", "C#", "D"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "G",
+    "notesArr": ["G", "B", "D", "D#"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "G#",
+    "notesArr": ["G#", "C", "D#", "E"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "A",
+    "notesArr": ["A", "C#", "E", "F"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "A#",
+    "notesArr": ["A#", "D", "F", "F#"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "root": "B",
+    "notesArr": ["B", "D#", "F#", "G"],
+    "abbreviations": ["maj6", "△6"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "C",
+    "notesArr": ["C", "D#", "F#", "A"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "C#",
+    "notesArr": ["C#", "E", "G", "A#"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "D",
+    "notesArr": ["D", "F", "G#", "B"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "D#",
+    "notesArr": ["D#", "F#", "A", "C"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "E",
+    "notesArr": ["E", "G", "A#", "C#"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "F",
+    "notesArr": ["F", "G#", "B", "D"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "F#",
+    "notesArr": ["F#", "A", "C", "D#"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "G",
+    "notesArr": ["G", "A#", "C#", "E"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "G#",
+    "notesArr": ["G#", "B", "D", "F"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "A",
+    "notesArr": ["A", "C", "D#", "F#"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "A#",
+    "notesArr": ["A#", "C#", "E", "G"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "root": "B",
+    "notesArr": ["B", "D", "F", "G#"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "C",
+    "notesArr": ["C", "F", "G"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "C#",
+    "notesArr": ["C#", "F#", "G#"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "D",
+    "notesArr": ["D", "G", "A"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "D#",
+    "notesArr": ["D#", "G#", "A#"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "E",
+    "notesArr": ["E", "A", "B"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "F",
+    "notesArr": ["F", "A#", "C"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "F#",
+    "notesArr": ["F#", "B", "C#"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "G",
+    "notesArr": ["G", "C", "D"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "G#",
+    "notesArr": ["G#", "C#", "D#"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "A",
+    "notesArr": ["A", "D", "E"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "A#",
+    "notesArr": ["A#", "D#", "F"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "root": "B",
+    "notesArr": ["B", "E", "F#"],
+    "abbreviations": ["sus2"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "C",
+    "notesArr": ["C", "D#", "G#"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "C#",
+    "notesArr": ["C#", "E", "A"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "D",
+    "notesArr": ["D", "F", "A#"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "D#",
+    "notesArr": ["D#", "F#", "B"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "E",
+    "notesArr": ["E", "G", "C"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "F",
+    "notesArr": ["F", "G#", "C#"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "F#",
+    "notesArr": ["F#", "A", "D"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "G",
+    "notesArr": ["G", "A#", "D#"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "G#",
+    "notesArr": ["G#", "B", "E"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "A",
+    "notesArr": ["A", "C", "F"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "A#",
+    "notesArr": ["A#", "C#", "F#"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "root": "B",
+    "notesArr": ["B", "D", "G"],
+    "abbreviations": ["sus", "sus4"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "C",
+    "notesArr": ["C", "E", "G", "B", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "C#",
+    "notesArr": ["C#", "F", "G#", "C", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "D",
+    "notesArr": ["D", "F#", "A", "C#", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "D#",
+    "notesArr": ["D#", "G", "A#", "D", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "E",
+    "notesArr": ["E", "G#", "B", "D#", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "F",
+    "notesArr": ["F", "A", "C", "E", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "F#",
+    "notesArr": ["F#", "A#", "C#", "F", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "G",
+    "notesArr": ["G", "B", "D", "F#", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "G#",
+    "notesArr": ["G#", "C", "D#", "G", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "A",
+    "notesArr": ["A", "C#", "E", "G#", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "A#",
+    "notesArr": ["A#", "D", "F", "A", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "root": "B",
+    "notesArr": ["B", "D#", "F#", "A#", null],
+    "abbreviations": ["maj9", "△9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "C",
+    "notesArr": ["C", "D#", "G", "A#", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "C#",
+    "notesArr": ["C#", "E", "G#", "B", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "D",
+    "notesArr": ["D", "F", "A", "C", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "D#",
+    "notesArr": ["D#", "F#", "A#", "C#", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "E",
+    "notesArr": ["E", "G", "B", "D", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "F",
+    "notesArr": ["F", "G#", "C", "D#", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "F#",
+    "notesArr": ["F#", "A", "C#", "E", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "G",
+    "notesArr": ["G", "A#", "D", "F", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "G#",
+    "notesArr": ["G#", "B", "D#", "F#", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "A",
+    "notesArr": ["A", "C", "E", "G", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "A#",
+    "notesArr": ["A#", "C#", "F", "G#", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "root": "B",
+    "notesArr": ["B", "D", "F#", "A", null],
+    "abbreviations": ["min9", "m9", "-9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "C",
+    "notesArr": ["C", "E", "G", "A", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "C#",
+    "notesArr": ["C#", "F", "G#", "A#", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "D",
+    "notesArr": ["D", "F#", "A", "B", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "D#",
+    "notesArr": ["D#", "G", "A#", "C", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "E",
+    "notesArr": ["E", "G#", "B", "C#", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "F",
+    "notesArr": ["F", "A", "C", "D", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "F#",
+    "notesArr": ["F#", "A#", "C#", "D#", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "G",
+    "notesArr": ["G", "B", "D", "E", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "G#",
+    "notesArr": ["G#", "C", "D#", "F", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "A",
+    "notesArr": ["A", "C#", "E", "F#", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "A#",
+    "notesArr": ["A#", "D", "F", "G", null],
+    "abbreviations": ["9", "dom9"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "root": "B",
+    "notesArr": ["B", "D#", "F#", "G#", null],
+    "abbreviations": ["9", "dom9"]
+  }
+]

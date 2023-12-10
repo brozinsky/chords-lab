@@ -4,6 +4,8 @@ import ChordDetails from "@/components/modules/chord-details/ChordDetails";
 import clsx from "clsx";
 import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 import Tabs from "@/components/ui/Tabs";
+import { useMediaQuery } from "@mantine/hooks";
+import MobileNotSupported from "@/components/layout/MobileNotSupported";
 
 const tabs = [
   {
@@ -22,15 +24,21 @@ const tabs = [
 
 export default function ChordsPage() {
   const { isDrawerExpanded } = useMenuDrawer();
+  const matches = useMediaQuery("(max-width: 768px)");
+
+  if (matches) {
+    return <MobileNotSupported />;
+  }
 
   return (
     <>
+      {matches && <div>tester</div>}
       <MenuTop />
       <main>
         <div
           className={clsx(
             "container flex flex-col items-center justify-center py-12",
-            isDrawerExpanded && "pb-[300px] mb-[20px]"
+            isDrawerExpanded && "pb-[300px] mb-[8rem]"
           )}
         >
           <div className="flex flex-row">

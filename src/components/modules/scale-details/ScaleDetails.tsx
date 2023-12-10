@@ -1,39 +1,25 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useSelectedScale from "@/stores/useSelectedScale";
 import PianoScale from "./_partials/PianoScale";
-import { Key, Note, Scale } from "tonal";
-import { processIntervals } from "@/utils/processIntervals";
+import { Key, Scale } from "tonal";
 import AddInfoMinor from "./_partials/AddInfoMinor";
 import AddInfoMajor from "./_partials/AddInfoMajor";
-import shortid from "shortid";
-import { Tooltip as ReactTooltip } from "react-tooltip";
-import {
-  findIntervalNameBySymbol,
-  getNumberStepsArray,
-  getWholeAndHalfSteps,
-} from "@/utils/notes";
-import {
-  simplifyNote,
-  simplifyNotes,
-} from "@/utils/functions/music-theory/simplifyNotes";
-import usePlayPiano from "@/hooks/usePlayPiano";
-import Select from "@/components/ui/Select";
-import {
-  notesOptions,
-  scaleTypeOptions,
-} from "@/utils/functions/music-theory/selectOptions";
-import RadioGroup from "@/components/ui/RadioGroup";
-import Button from "@/components/ui/buttons/Button";
-
-const playModeOptions = [
-  { id: "11", name: "Ascending", value: "ascending" },
-  { id: "22", name: "Descending", value: "descending" },
-];
+import { simplifyNotes } from "@/utils/functions/music-theory/simplifyNotes";
+import NotesDetails from "../details/NotesDetails";
+import SelectPanel from "../details/SelectPanel";
+import PlayPanel from "../details/PlayPanel";
+import Steps from "../details/Steps";
+import ExtendedScales from "../details/scales/ExtendedScales";
+import ReducedScales from "../details/scales/ReducedScales";
+import FormulaScales from "../details/scales/FormulaScales";
+import RelatedScales from "../details/scales/RelatedScales";
 
 const ScaleDetails = () => {
-  const { tonic, setTonic, type, setType, selectedScale } = useSelectedScale();
-  const { playPianoNotes } = usePlayPiano();
-  const [playMode, setPlayMode] = useState(playModeOptions[0].value);
+  const { tonic, type, selectedScale } = useSelectedScale();
+
+  useEffect(() => {
+    console.log(selectedScale);
+  }, [selectedScale]);
 
   if (!selectedScale) {
     return <div>Select a scale.</div>;
@@ -60,189 +46,36 @@ const ScaleDetails = () => {
 
   const simplifiedScale = simplifyNotes(selectedScale.notes);
 
-  const playSelectedScale = (playMode: string) => {
-    const notes = selectedScale?.notes;
-
-    if (!notes) {
-      return;
-    }
-
-    const playNoteWithInterval = (
-      noteIndex: number,
-      direction: "ascending" | "descending"
-    ) => {
-      if (direction === "ascending" && noteIndex < notes.length) {
-        playPianoNotes([notes[noteIndex]] as string[]);
-        setTimeout(() => {
-          playNoteWithInterval(noteIndex + 1, direction);
-        }, 200);
-      } else if (direction === "descending" && noteIndex >= 0) {
-        playPianoNotes([notes[noteIndex]] as string[]);
-        setTimeout(() => {
-          playNoteWithInterval(noteIndex - 1, direction);
-        }, 200);
-      }
-    };
-
-    if (playMode === "ascending") {
-      playNoteWithInterval(0, "ascending");
-    } else if (playMode === "descending") {
-      playNoteWithInterval(notes.length - 1, "descending");
-    }
-  };
-
   return (
-    <section className="flex flex-col">
-      {/* <h1 className="text-5xl mb-6 text-center">{infoScale.name}</h1> */}
-      <div className="flex flex-row gap-2 justify-center mb-6">
-        <Select
-          variant="ghost"
-          options={notesOptions}
-          state={tonic}
-          setState={setTonic}
-        />
-        <Select
-          variant="ghost"
-          options={scaleTypeOptions}
-          displayValue={infoScale.name.split(" ").slice(1).join(" ")}
-          state={type}
-          setState={setType}
-        />
-      </div>
-      <PianoScale scale={simplifiedScale} />
-      <section className="mt-6 space-y-2">
-        <div className="flex justify-end gap-4">
-          <RadioGroup
-            options={playModeOptions}
-            defaultOption="chord"
-            state={playMode}
-            setState={setPlayMode}
-          />
-          <Button
-            variant="emerald"
-            icon="play"
-            onClick={() => playSelectedScale(playMode)}
-          >
-            Play
-          </Button>
-        </div>
-        <div className="items-end flex flex-row gap-4">
-          <span className="w-[4rem] mb-2">Notes:</span>
-          <div className="gap-2 flex">
-            {selectedScale.notes.map((note, index) => {
-              return (
-                <React.Fragment key={note}>
-                  <span
-                    // data-tooltip-id={"note-" + note}
-                    onClick={() => playPianoNotes([note])}
-                    className="p-2 rounded-lg active:bg-neutral-600 cursor-pointer select-none text-center text-2xl min-w-[2rem]"
-                  >
-                    {simplifyNote(note).slice(0, -1)}
-                  </span>
-                  <span className="self-center text-2xl text-center">
-                    {infoScale.notes.length - 1 !== index ? "-" : null}
-                  </span>
-                </React.Fragment>
-              );
-            })}
-          </div>
-        </div>
-        <div className="items-end flex flex-row gap-4">
-          <span className="w-[4rem]">Formula:</span>
-          <div className="flex gap-2">
-            {processIntervals(infoScale.intervals).map((interval, index) => {
-              return (
-                <React.Fragment key={shortid.generate()}>
-                  <span
-                    data-tooltip-id={"interval-" + interval}
-                    className="cursor-default text-center text-2xl min-w-[2rem]"
-                  >
-                    {interval}
-                  </span>
-                  <span className="text-2xl text-center">
-                    {infoScale.notes.length - 1 !== index ? "-" : null}
-                  </span>
-                  <ReactTooltip
-                    key={interval}
-                    id={"interval-" + interval}
-                    place="right"
-                    variant="light"
-                    content={findIntervalNameBySymbol(interval) as string}
-                  />
-                </React.Fragment>
-              );
-            })}
-          </div>
-        </div>
-        <div className="flex flex-row gap-6">
-          <div className="mt-4">Intervals:</div>
-          <table className="border border-neutral-500 rounded-md mt-4">
-            <tbody>
-              <tr>
-                {getNumberStepsArray(infoScale.chroma).map((step) => {
-                  return (
-                    <React.Fragment key={shortid.generate()}>
-                      <td className="text-sm px-1.5 text-center border border-neutral-500">
-                        {step}
-                      </td>
-                    </React.Fragment>
-                  );
-                })}
-              </tr>
-              <tr>
-                {getWholeAndHalfSteps(
-                  getNumberStepsArray(infoScale.chroma)
-                ).map((step) => {
-                  return (
-                    <React.Fragment key={shortid.generate()}>
-                      <td className="text-sm px-1.5 text-center border border-neutral-500">
-                        {step}
-                      </td>
-                    </React.Fragment>
-                  );
-                })}
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        {extendedScales.length > 0 ? (
-          <div className="items-end flex flex-row gap-4 max-w-[509px] flex-wrap">
-            <p>Extended Scales:</p>
-            <div className="inline-flex flex-wrap gap-3 gap-y-1">
-              {extendedScales.map((type) => {
-                return (
-                  <span
-                    key={shortid.generate()}
-                    onClick={() => setType(type)}
-                    className="cursor-pointer underline"
-                  >
-                    {type}
-                  </span>
-                );
-              })}
-            </div>
-          </div>
-        ) : null}
+    <section id="ScaleDetails" className="flex flex-col">
+      <h1 className="invisible h-0">Scale details of {selectedScale.name}</h1>
 
-        {reducedScales.length > 0 ? (
-          <div className="items-end flex flex-row gap-4 max-w-[509px] flex-wrap">
-            <p>Reduced Scales:</p>
-            <div className="inline-flex flex-wrap gap-3 gap-y-1">
-              {reducedScales.map((type) => {
-                return (
-                  <span
-                    key={shortid.generate()}
-                    onClick={() => setType(type)}
-                    className="cursor-pointer underline"
-                  >
-                    {type}
-                  </span>
-                );
-              })}
-            </div>
+      {/* Scale name */}
+      <SelectPanel variant={"scales"} />
+
+      {/* Piano keyboard */}
+      <PianoScale scale={simplifiedScale} />
+
+      <section className="mt-2 space-y-2">
+        <PlayPanel variant={"scales"} notes={selectedScale.notes as string[]} />
+
+        <NotesDetails notes={selectedScale.notes as string[]} />
+
+        <FormulaScales
+          notes={infoScale.notes}
+          intervals={infoScale.intervals}
+        />
+
+        <Steps notesChroma={infoScale.chroma} />
+
+        {(extendedScales.length > 0 || reducedScales.length > 0) && (
+          <div className="flex flex-col gap-2 mx-auto w-full rounded-2xl bg-neutral-800 p-2 max-w-[582px]">
+            <RelatedScales scales={extendedScales} heading="Extended scales" />
+            <RelatedScales scales={reducedScales} heading="Reduced scales" />
           </div>
-        ) : null}
-        {/* {isMajor ? (
+        )}
+
+        {isMajor ? (
           <>
             <div>{Key.majorKey(tonic).grades}</div>
             <div>{Key.majorKey(tonic).chords}</div>
@@ -250,8 +83,10 @@ const ScaleDetails = () => {
         ) : null}
         {isMajor ? <AddInfoMajor /> : null}
         {isMinor && minorScaleType !== null ? (
-          <AddInfoMinor type={minorScaleType as "harmonic" | "melodic" | "natural"} />
-        ) : null} */}
+          <AddInfoMinor
+            type={minorScaleType as "harmonic" | "melodic" | "natural"}
+          />
+        ) : null}
       </section>
     </section>
   );

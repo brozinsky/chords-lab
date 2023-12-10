@@ -1,0 +1,20 @@
+.interval-circle {
+  &__container {
+    @include on-circle($item-count: 12, $circle-size: 15rem, $item-size: 1.5rem);
+    margin: 2rem auto;
+    border: solid 3px theme("colors.neutral.700");
+    div {
+      // @apply max-w-full rounded-xl border select-none transition flex items-center justify-center text-lg bg-neutral-700 p-1 hover:bg-neutral-600 cursor-pointer border-neutral-500;
+      @apply flex items-center justify-center;
+      transition: 0.15s;
+
+      // &:hover,
+      // &:active {
+      //   filter: grayscale(0);
+      // }
+    }
+  }
+  &__item--active {
+    @apply w-10 h-8 -mt-4 -ml-5;
+  }
+}
