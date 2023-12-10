@@ -7,6 +7,7 @@ import Volume from "../settings/_partials/Volume";
 import Button from "@/components/ui/buttons/Button";
 import useSettingsStore from "@/stores/useSettingsStore";
 import Settings from "../settings/Settings";
+import LogoSVG from "@/components/elements/svg/LogoSVG";
 
 const navItems = [
   { name: "Chords", url: "/chords" },
@@ -40,9 +41,8 @@ const Header = () => {
       <nav className="container flex flex-wrap items-center justify-between gap-4">
         <Link to="/">
           <div className="flex items-center flex-shrink-0 mr-6 text-white cursor-pointer select-none">
-            <span className="text-xl font-semibold tracking-tight text-emerald-500">
-              Logo
-            </span>
+            <LogoSVG width={40} height={34}/>
+            <div className="mt-1 ml-2 text-xl">Chords <span className="font-bold">Lab</span></div>
           </div>
         </Link>
         {/* <Hamburger /> */}
