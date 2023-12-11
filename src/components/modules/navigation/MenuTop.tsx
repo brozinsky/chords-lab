@@ -45,27 +45,26 @@ const Header = () => {
             <div className="mt-1 ml-2 text-xl">Chords <span className="font-bold">Lab</span></div>
           </div>
         </Link>
-        {/* <Hamburger /> */}
-        <div className="justify-end flex-grow block w-full lg:flex lg:items-center lg:w-auto">
-          <ul className="flex items-center justify-end space-x-8 text-sm">
-            {navItems.map(({ name, url }, i) => {
-              return (
-                <NavLink key={name + i} href={url}>
-                  {name}
-                </NavLink>
-              );
-            })}
-          </ul>
+          <div className="justify-end flex-grow flex items-center w-auto">
+            <ul className="pr-4 flex items-center justify-end space-x-8 text-sm">
+              {navItems.map(({ name, url }, i) => {
+                return (
+                  <NavLink key={name + i} href={url}>
+                    {name}
+                  </NavLink>
+                );
+              })}
+            </ul>
+          <Dropdown trigger={<Button icon={volume === 0 ? "volume-mute" : "volume"} size="sm" variant="ghost" />}>
+            <div className="flex flex-row gap-1 py-1 pl-1.5 pr-4">
+              <Button onClick={toggleMute} icon={getVolumeIcon(volume)} size="sm" variant="ghost" />
+              <Volume />
+            </div>
+          </Dropdown>
+          <Modal trigger={<ButtonSettings />}>
+            <Settings />
+          </Modal>
         </div>
-        <Dropdown trigger={<Button icon={volume === 0 ? "volume-mute" : "volume"} size="sm" variant="ghost" />}>
-          <div className="flex flex-row gap-1 py-1 pl-1.5 pr-4">
-            <Button onClick={toggleMute} icon={getVolumeIcon(volume)} size="sm" variant="ghost" />
-            <Volume />
-          </div>
-        </Dropdown>
-        <Modal trigger={<ButtonSettings />}>
-          <Settings />
-        </Modal>
       </nav>
     </header>
   );

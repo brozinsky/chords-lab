@@ -97,10 +97,6 @@ const ListingChords = () => {
       {isLoadingChordsList && (
         <Swiper
           slidesPerView={6}
-          // grid={{
-          //   rows: 2,
-          //   fill: "row",
-          // }}
           breakpoints={{
             319: {
               slidesPerView: 1,
@@ -109,16 +105,13 @@ const ListingChords = () => {
               slidesPerView: 2,
             },
             767: {
-              slidesPerView: 2,
-            },
-            1023: {
               slidesPerView: 3,
             },
-            1535: {
-              slidesPerView: 4,
-            },
-            1659: {
+            1023: {
               slidesPerView: 5,
+            },
+            1535: {
+              slidesPerView: 6,
             },
           }}
           spaceBetween={30}

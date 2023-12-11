@@ -4,7 +4,7 @@ import FilterNotes from "./FilterNotes";
 import FilterTypes from "./FilterTypes";
 import useFilterStore from "@/stores/chords/useFilterStore";
 import FilterMultiNotes from "./FilterMultiNotes";
-
+import { ScrollArea } from '@mantine/core';
 type NotesTypes = (typeof notes)[number];
 
 export default function Filter() {
@@ -25,7 +25,7 @@ export default function Filter() {
       <div className="flex items-center gap-3">
         {activeTab === "all" && (
           <>
-            <span>Root note</span>
+            <span className="shrink-0">Root note</span>
             <FilterNotes
               onClick={(note: NotesTypes) => setAllChordsRoot(note)}
               activeNote={allChordsRoot}

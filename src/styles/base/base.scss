@@ -26,6 +26,25 @@ a {
   @apply bg-neutral-600;
 }
 
+.container {
+  max-width: 97%;
+  @include sm {
+    width: 600px;
+  }
+  @include md {
+    width: 984px;
+  }
+  @include lg {
+    width: 1240px;
+  }
+  @include xl {
+    width: 1240px;
+  }
+  @include xxl {
+    width: 1464px;
+  }
+}
+
 // @media (prefers-color-scheme: dark) {
 //   html {
 //     color-scheme: dark;

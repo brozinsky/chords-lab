@@ -1,5 +1,5 @@
 .chord-list-item {
-  @apply px-4 py-4 rounded-xl bg-card border-2 border-neutral-400 text-light flex flex-row items-center justify-center gap-2;
+  @apply px-2 py-4 rounded-xl bg-card border-2 border-neutral-400 text-light flex flex-row items-center justify-center gap-2;
   cursor: pointer;
   transition: 0.25s all ease;
   opacity: 0.75;
@@ -16,8 +16,12 @@
     opacity: 1;
   }
   &--note {
-    @apply px-4 py-2;
-    width: 55px;
+    @apply px-3 py-2;
+    width: 44px;
+    @include lg {
+      @apply px-4;
+      width: 55px;
+    }
   }
   &--type {
     @apply px-4 py-2;
