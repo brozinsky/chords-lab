@@ -3,7 +3,7 @@ type SVGProps = {
   width?: string;
 };
 
-export default function LibraryIconSVG({ className, width = "24" }: SVGProps) {
+export default function LibraryIconSVG({ className, width = "18" }: SVGProps) {
   return (
     <svg
       className={className}

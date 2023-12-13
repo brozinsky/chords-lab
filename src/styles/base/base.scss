@@ -26,6 +26,10 @@ a {
   @apply bg-neutral-600;
 }
 
+.bg-unavailable {
+  background: #ffffff81;
+}
+
 .container {
   max-width: 97%;
   @include sm {

@@ -12,7 +12,7 @@ import LogoSVG from "@/components/elements/svg/LogoSVG";
 const navItems = [
   { name: "Chords", url: "/chords" },
   { name: "Scales", url: "/scales" },
-  { name: "Circle", url: "/circle" },
+  // { name: "Circle", url: "/circle" },
 ];
 
 const Header = () => {

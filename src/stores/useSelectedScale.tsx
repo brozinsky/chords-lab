@@ -23,12 +23,16 @@ interface SelectedScaleState {
   setSelectedScale: (value: ScaleProps | undefined) => void;
 }
 
+const initialTonic =  "C";
+const initialType = "major";
+const scaleData = Scale.get(`${initialTonic}2 ${initialType}`);
+
 const useSelectedScale = create<SelectedScaleState>((set) => ({
-  tonic: "C",
+  tonic: initialTonic,
   setTonic: (value) => set(() => ({ tonic: value })),
-  type: "major",
+  type: initialType,
   setType: (value) => set(() => ({ type: value })),
-  selectedScale: undefined,
+  selectedScale: scaleData,
   setSelectedScale: (value) => set(() => ({ selectedScale: value })),
 }));
 

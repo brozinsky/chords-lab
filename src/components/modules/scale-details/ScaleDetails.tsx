@@ -17,10 +17,6 @@ import RelatedScales from "../details/scales/RelatedScales";
 const ScaleDetails = () => {
   const { tonic, type, selectedScale } = useSelectedScale();
 
-  useEffect(() => {
-    console.log(selectedScale);
-  }, [selectedScale]);
-
   if (!selectedScale) {
     return <div>Select a scale.</div>;
   }

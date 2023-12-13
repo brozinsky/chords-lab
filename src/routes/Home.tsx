@@ -1,12 +1,14 @@
-// import Piano from "@/components/modules/piano/Piano";
-import Library from "@/components/modules/library/Library";
-import ChordDetails from "@/components/modules/chord-details/ChordDetails";
-import MenuTop from "@/components/modules/navigation/MenuTop";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileNotSupported from "@/components/layout/MobileNotSupported";
+import BentoModule from "@/components/modules/bento/BentoModule";
+import BentoTitle from "@/components/modules/bento/BentoTitle";
+import BentoSettings from "@/components/modules/bento/BentoSettings";
+import BentoToggle from "@/components/modules/bento/BentoToggle";
+import { useState } from "react";
 
 export default function Root() {
   const matches = useMediaQuery("(max-width: 768px)");
+  const [activeInstrument, setActiveInstrument] = useState<"piano" | "guitar">("piano")
 
   if (matches) {
     return <MobileNotSupported />;
@@ -14,18 +16,20 @@ export default function Root() {
 
   return (
     <>
-      <MenuTop />
-      <main>
-        <div className="container flex flex-col items-center justify-center py-12">
-          <div className="flex flex-row">
-            {/* <Piano /> */}
-            <ChordDetails />
-          </div>
-        </div>
-        <section className="py-20">
-          <Library />
-        </section>
-      </main>
+      <div className="container flex justify-center items-center py-8 xl:h-screen">
+        <main className="grid grid-cols-3 lg:grid-cols-6 gap-4 w-full ">
+          <BentoTitle order={'order-1'} width={"col-span-2"} height={"h-72"} />
+
+          <BentoModule width={"col-span-3 lg:col-span-4 xl:col-span-3"} order={'lg:order-2 order-3'} variant="chords" category="library" height={"h-72"} />
+          <BentoToggle order={'lg:order-3 order-2'} value={activeInstrument} setValue={setActiveInstrument}/>
+
+          <BentoModule width={"col-span-3 lg:col-span-5 xl:col-span-3"} order={'order-4'} variant="scales" category="library" height={"h-72"} />
+
+          <BentoModule isDisabled width={"col-span-3 lg:col-span-6 xl:col-span-3"} order={'order-5'} variant="progression" category="playground"  height={"h-72"} />
+
+          {/* <BentoSettings width={"col-span-2"} /> */}
+        </main>
+      </div>
     </>
   );
 }

@@ -11,7 +11,7 @@ export default function ArrowSmSVG({
   direction = "right",
   className,
   width = "24",
-  pathClass = "stroke-foreground",
+  pathClass = "stroke-red-500",
 }: SVGProps) {
   const directionClass = {
     right: "",

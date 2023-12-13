@@ -13,10 +13,6 @@ const ChordDetails = () => {
 
   if (selectedChord?.name === undefined) return;
 
-  useEffect(() => {
-    console.log(selectedChord);
-  }, [selectedChord]);
-
   const extendedChords = Chord.extended(selectedChord.name.toLowerCase());
   const reducedChords = Chord.reduced(selectedChord.name.toLowerCase());
 
