@@ -3,7 +3,7 @@ import ChordDetails from "@/components/modules/chord-details/ChordDetails";
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import clsx from "clsx";
 import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
-import Tabs from "@/components/ui/Tabs";
+import TabsChords from "@/components/ui/TabsChords";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileNotSupported from "@/components/layout/MobileNotSupported";
 
@@ -45,7 +45,7 @@ export default function ChordsPage() {
             <ChordDetails />
           </div>
         </div>
-        <Tabs tabs={tabs} />
+        <TabsChords tabs={tabs} />
         {/* <Tabs
           id="Tabs"
           defaultValue="all"

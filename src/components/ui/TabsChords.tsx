@@ -26,7 +26,7 @@ type Props = {
   tabs: Tab[];
 };
 
-export default function Tabs({ tabs }: Props) {
+export default function TabsChords({ tabs }: Props) {
   const { changeTab } = useChordsTab();
   const { isDrawerExpanded, setIsDrawerExpanded, toggleIsDrawerExpanded } =
     useMenuDrawer();
