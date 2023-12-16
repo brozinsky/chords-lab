@@ -5,7 +5,7 @@
 Chords Lab is a web application that allows users explore musical scales and chords.
 The project aims on creating all possible chords and scales based on the formulas for a given instrument.
 
-![overview-gif](doc/overview.gif)
+![overview-gif](docs/overview.gif)
 
 ## Built With
 
