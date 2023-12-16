@@ -1,27 +1,21 @@
-# React + TypeScript + Vite
+# Chords Lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About The Project - [Live Demo](https://chords-lab.vercel.app/)
 
-Currently, two official plugins are available:
+Chords Lab is a web application that allows users explore musical scales and chords.
+The project aims on creating all possible chords and scales based on the formulas for a given instrument.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Built With
 
-## Expanding the ESLint configuration
+* Main framework - [React](https://reactjs.org/) with [Typescript](https://www.typescriptlang.org/)
+* Styling using [Tailwindcss](https://tailwindcss.com/)
+* Music theory library - [TonalJS](https://github.com/tonaljs/tonal)
+* State management with [React Query](https://tanstack.com/query/v3/) and [Zustand](https://zustand-demo.pmnd.rs/)
+* Animations made with [Framer Motion](https://www.framer.com/motion/)
+* Build tool - [Vite](https://vitejs.dev/)
+* Used UI primitives by [HeadlessUI](https://headlessui.com/) and [Radix](https://www.radix-ui.com/)
+* Design in [Figma](https://www.figma.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## License
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+All rights reserved
