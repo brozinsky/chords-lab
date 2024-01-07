@@ -62,6 +62,7 @@ export default function ButtonToggled({
   return (
     <motion.button
       id="ButtonToggled"
+      aria-label={`${toggleState ? "Collapse tabs" : "Expand tabs"}`}
       onClick={onToggle}
       className={classes({ variant, shape, size })}
       whileHover={{ scale: 1.05 }}

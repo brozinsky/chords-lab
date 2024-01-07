@@ -5,6 +5,7 @@ import { Chord, Note, Scale } from "tonal";
 import { motion } from "framer-motion";
 import ButtonPlayTile from "./buttons/ButtonPlayTile";
 import usePlayPiano from "@/hooks/usePlayPiano";
+import shortid from "shortid";
 
 type PianoTileProps = {
   note: string;
@@ -64,7 +65,7 @@ const PianoTile = ({
 
   return (
     <motion.div
-      id="PianoTile"
+      id={`PianoTile-${shortid.generate()}`}
       initial="rest"
       whileHover="hover"
       animate="rest"

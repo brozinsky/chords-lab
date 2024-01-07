@@ -10,6 +10,7 @@ import VolumeHiIconSVG from "@/components/elements/svg/icons/media/VolumeHiIconS
 import VolumeLoIconSVG from "@/components/elements/svg/icons/media/VolumeLoIconSVG";
 import VolumeMuteIconSVG from "@/components/elements/svg/icons/media/VolumeMuteIconSVG";
 import SpinnerSVG from "@/components/elements/svg/icons/interface/SpinnerSVG";
+import shortid from "shortid";
 
 type Props = {
   onClick?: any;
@@ -20,6 +21,7 @@ type Props = {
   shape?: "rectangle" | "circle" | "square" | null | undefined;
   size?: "md" | "sm" | null | undefined;
   isLoading?: boolean;
+  label?: string;
 };
 
 type LoadingWrapperProps = {
@@ -39,7 +41,8 @@ export default function Button({
   icon,
   className,
   shape = "rectangle",
-  size = "md"
+  size = "md",
+  label
 }: Props) {
   const classes = cva([className, "relative flex items-center justify-center w-fit  gap-2 rounded-xl cursor-pointer"], {
     variants: {
@@ -81,7 +84,8 @@ export default function Button({
   });
   return (
     <motion.button
-      id="Button"
+      id={`Button-${shortid.generate()}`}
+      aria-label={label}
       onClick={onClick}
       className={classes({variant, shape, size, isLoading})}
       whileHover={isLoading ? undefined : { scale: 1.05 }}

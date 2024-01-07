@@ -13,6 +13,7 @@ export default function ButtonSettings({
   return (
     <motion.button
       id="ButtonSettings"
+      aria-label="Settings"
       onClick={onClick}
       className="flex items-center hover:bg-neutral-500 rounded-xl justify-center p-2 w-fit cursor-pointer"
     >

@@ -46,7 +46,7 @@ const Header = () => {
           </div>
         </Link>
           <div className="justify-end flex-grow flex items-center w-auto">
-            <ul className="pr-4 flex items-center justify-end space-x-8 text-sm">
+            <div className="pr-4 flex items-center justify-end space-x-8 text-sm">
               {navItems.map(({ name, url }, i) => {
                 return (
                   <NavLink key={name + i} href={url}>
@@ -54,10 +54,10 @@ const Header = () => {
                   </NavLink>
                 );
               })}
-            </ul>
-          <Dropdown trigger={<Button icon={volume === 0 ? "volume-mute" : "volume"} size="sm" variant="ghost" />}>
+            </div>
+          <Dropdown trigger={<Button label="Volume" icon={volume === 0 ? "volume-mute" : "volume"} size="sm" variant="ghost" />}>
             <div className="flex flex-row gap-1 py-1 pl-1.5 pr-4">
-              <Button onClick={toggleMute} icon={getVolumeIcon(volume)} size="sm" variant="ghost" />
+              <Button label="Toggle mute" onClick={toggleMute} icon={getVolumeIcon(volume)} size="sm" variant="ghost" />
               <Volume />
             </div>
           </Dropdown>

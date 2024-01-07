@@ -2,6 +2,7 @@ import SpinnerSVG from "@/components/elements/svg/icons/interface/SpinnerSVG";
 import PlayIconSVG from "@/components/elements/svg/icons/media/PlayIconSVG";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import shortid from "shortid";
 
 type Props = {
   onClick?: any;
@@ -34,7 +35,7 @@ const slideUpMotion = {
 export default function ButtonPlayTile({ onClick, srOnly = "Play", isLoading = false, }: Props) {
   return (
     <motion.button
-      id="ButtonPlayTile"
+      id={`ButtonPlayTile-${shortid.generate()}`}
       onClick={onClick}
       variants={slideUpMotion}
       className="absolute bottom-2 right-2 flex items-center justify-center p-2.5 active:bg-emerald-300 hover:bg-emerald-400 bg-emerald-500 rounded-full cursor-pointer"
