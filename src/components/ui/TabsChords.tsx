@@ -46,7 +46,7 @@ export default function TabsChords({ tabs }: Props) {
       id="Tabs"
       defaultValue="all"
       className={clsx(
-        "tabs fixed w-full bottom-0",
+        "tabs fixed w-full bottom-0 z-20",
         isDrawerExpanded && "tabs--open"
       )}
     >
