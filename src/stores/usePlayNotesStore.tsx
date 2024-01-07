@@ -3,19 +3,12 @@ import { create } from "zustand";
 interface SelectedScaleState {
   currentlyPlayedNotes: string[];
   setCurrentlyPlayedNotes: (value: string[]) => void;
-
-  isPianoSoundLoading: boolean;
-  setIsPianoSoundLoading: (value: boolean) => void;
 }
 
 const usePlayPianoStore = create<SelectedScaleState>((set) => ({
   currentlyPlayedNotes: [],
   setCurrentlyPlayedNotes: (value) =>
     set(() => ({ currentlyPlayedNotes: value })),
-
-  isPianoSoundLoading: true,
-  setIsPianoSoundLoading: (value) =>
-    set(() => ({ isPianoSoundLoading: value })),
 }));
 
 export default usePlayPianoStore;
