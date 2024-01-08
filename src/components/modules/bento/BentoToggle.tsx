@@ -18,6 +18,7 @@ const BentoToggle = ({ width, height, value, setValue, order }: Props) => {
   return (
     <section id="BentoTitle" className={clsx(classes, width, height, order)}>
       <button
+        aria-label="Set instrument to piano"
         onClick={() => setValue("piano")}
         className={clsx(
           "transition bg-neutral-800 rounded-lg",
@@ -33,6 +34,7 @@ const BentoToggle = ({ width, height, value, setValue, order }: Props) => {
         />
       </button>
       <button
+        aria-label="Set instrument to guitar"
         data-tooltip-id={"not-available"}
         className={clsx(
           "transition bg-neutral-800 rounded-lg",
