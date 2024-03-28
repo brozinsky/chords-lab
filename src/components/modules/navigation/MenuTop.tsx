@@ -61,9 +61,9 @@ const Header = () => {
               <Volume />
             </div>
           </Dropdown>
-          <Modal trigger={<ButtonSettings />}>
+          {/* <Modal trigger={<ButtonSettings />}>
             <Settings />
-          </Modal>
+          </Modal> */}
         </div>
       </nav>
     </header>
