@@ -29,7 +29,7 @@ export default function Modal({ children, trigger }: Props) {
               delay: 0.1,
             }}
           >
-            <Dialog.Close>
+            <Dialog.Close className="fixed right-0 top-0">
               <Button
                 className="fixed right-0 top-0"
                 icon="close"
