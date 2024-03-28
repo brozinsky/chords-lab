@@ -8,6 +8,7 @@ import MarqueeBento from "./MarqueeBento";
 import ChordMapIconSVG from "@/components/elements/svg/icons/bento-modules/ChordMapIconSVG";
 import BentoProgressionBg from "@/components/elements/svg/bento/BentoProgressionBg";
 import EditIconSVG from "@/components/elements/svg/icons/interface/EditIconSVG";
+import { Link } from "react-router-dom";
 
 type Props = {
   width?: string;
@@ -79,8 +80,8 @@ const BentoModule = ({
           </div>
 
           {!isDisabled ? (
-            <a
-              href={`/${variant}`}
+            <Link
+              to={`/${variant}`}
               className="group hover:bg-emerald-500 border-emerald-500 py-2 px-4 mt-4 border w-fit rounded-lg group cursor-pointer flex flex-row gap-2 items-center"
             >
               <div className="group-hover:text-black font-medium">
@@ -92,7 +93,7 @@ const BentoModule = ({
                   width={"14"}
                 />
               </div>
-            </a>
+            </Link>
           ) : (
             <div className="">Not available yet</div>
           )}
