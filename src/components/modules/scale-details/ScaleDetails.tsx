@@ -1,18 +1,15 @@
 import { useEffect } from "react";
 import useSelectedScale from "@/stores/useSelectedScale";
 import PianoScale from "./_partials/PianoScale";
-import { Key, Scale } from "tonal";
-import AddInfoMinor from "./_partials/AddInfoMinor";
-import AddInfoMajor from "./_partials/AddInfoMajor";
+import { Scale } from "tonal";
 import { simplifyNotes } from "@/utils/functions/music-theory/simplifyNotes";
 import NotesDetails from "../details/NotesDetails";
 import SelectPanel from "../details/SelectPanel";
 import PlayPanel from "../details/PlayPanel";
 import Steps from "../details/Steps";
-import ExtendedScales from "../details/scales/ExtendedScales";
-import ReducedScales from "../details/scales/ReducedScales";
 import FormulaScales from "../details/scales/FormulaScales";
 import RelatedScales from "../details/scales/RelatedScales";
+import { ChordsInScale } from "../details/scales/ChordsInScale";
 
 const ScaleDetails = () => {
   const { tonic, type, selectedScale } = useSelectedScale();
@@ -26,7 +23,6 @@ const ScaleDetails = () => {
 
   const infoScale = Scale.get(`${tonic} ${type}`);
 
-  const isMajor = selectedScale.type.toLowerCase() === "major";
   const isMinor =
     selectedScale.type.includes("minor") &&
     (selectedScale.type.includes("harmonic") ||
@@ -43,8 +39,8 @@ const ScaleDetails = () => {
   const simplifiedScale = simplifyNotes(selectedScale.notes);
 
   return (
-    <section id="ScaleDetails" className="flex flex-col">
-      <h1 className="invisible h-0">Scale details of {selectedScale.name}</h1>
+    <section id="ScaleDetails" className="flex flex-col max-w-[583px]">
+      <h1 className="sr-only h-0">Scale details of {selectedScale.name}</h1>
 
       {/* Scale name */}
       <SelectPanel variant={"scales"} />
@@ -62,6 +58,8 @@ const ScaleDetails = () => {
           intervals={infoScale.intervals}
         />
 
+        <ChordsInScale scaleType={type} scale={simplifiedScale}/>
+
         <Steps notesChroma={infoScale.chroma} />
 
         {(extendedScales.length > 0 || reducedScales.length > 0) && (
@@ -70,19 +68,6 @@ const ScaleDetails = () => {
             <RelatedScales scales={reducedScales} heading="Reduced scales" />
           </div>
         )}
-
-        {isMajor ? (
-          <>
-            <div>{Key.majorKey(tonic).grades}</div>
-            <div>{Key.majorKey(tonic).chords}</div>
-          </>
-        ) : null}
-        {isMajor ? <AddInfoMajor /> : null}
-        {isMinor && minorScaleType !== null ? (
-          <AddInfoMinor
-            type={minorScaleType as "harmonic" | "melodic" | "natural"}
-          />
-        ) : null}
       </section>
     </section>
   );

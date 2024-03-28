@@ -1,4 +1,4 @@
-import React, { useRef, ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useRef, useEffect, useState } from "react";
 import { useToggleState } from "@react-stately/toggle";
 import { useCheckbox } from "@react-aria/checkbox";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
@@ -6,12 +6,22 @@ import { useFocusRing } from "@react-aria/focus";
 import { mergeProps } from "@react-aria/utils";
 import classNames from "clsx";
 
+type TProps = {
+  isSelected: boolean;
+  state: boolean;
+  onChange: (state: boolean) => void;
+  animationDraw?: boolean;
+  animationSwipe?: boolean;
+  isDisabled?: boolean;
+  children: any;
+};
+
 const Checkbox = ({
   animationDraw = false,
   animationSwipe = true,
-  isDisabled,
+  isDisabled = false,
   ...props
-}) => {
+}: TProps) => {
   const state = useToggleState(props);
   const ref = useRef(null);
   const { inputProps } = useCheckbox(props, state, ref);

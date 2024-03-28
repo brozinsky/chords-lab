@@ -16,7 +16,7 @@ export default function FormulaScales({ notes, intervals }: Props) {
   return (
     <section
       id="FormulaScales"
-      className="flex flex-col gap-2 px-6 rounded-2xl bg-neutral-800 p-2 pb-4"
+      className="flex flex-col gap-2 px-6 rounded-2xl bg-neutral-800 p-2 pb-4 overflow-auto"
     >
       <div className="w-[5rem] flex items-center">
         <h2>Formula:</h2>

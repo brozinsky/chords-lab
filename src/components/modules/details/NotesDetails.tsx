@@ -12,7 +12,7 @@ export default function NotesDetails({ notes }: Props) {
   return (
     <section
       id="NotesDetails"
-      className="flex flex-col gap-2 px-6 rounded-2xl bg-neutral-800 p-2"
+      className="flex flex-col gap-2 px-6 rounded-2xl bg-neutral-800 p-2 overflow-auto"
     >
       <h2>Notes:</h2>
 

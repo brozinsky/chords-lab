@@ -1,15 +1,55 @@
-export const scales: { name: string; notes: number[] }[] = [
+export const scales: { name: string; notes: number[]; chords?: any[] }[] = [
   {
     name: "major",
     notes: [1, 3, 5, 6, 8, 10, 12],
+    chords: [
+      { roman: "I", quality: "maj" },
+      { roman: "ii", quality: "min" },
+      { roman: "iii", quality: "min" },
+      { roman: "IV", quality: "maj" },
+      { roman: "V", quality: "maj" },
+      { roman: "vi", quality: "min" },
+      { roman: "vii°", quality: "dim" },
+    ],
   },
   {
     name: "minor",
     notes: [1, 3, 4, 6, 8, 9, 11],
+    chords: [
+      { roman: "i", quality: "min" },
+      { roman: "ii°", quality: "dim" },
+      { roman: "III", quality: "maj" },
+      { roman: "iv", quality: "min" },
+      { roman: "v", quality: "min" },
+      { roman: "VI ", quality: "maj" },
+      { roman: "VII", quality: "maj" },
+    ],
   },
   {
     name: "melodic minor",
     notes: [1, 3, 4, 6, 8, 10, 12],
+    chords: [
+      { roman: "i", quality: "min" },
+      { roman: "ii", quality: "min" },
+      { roman: "III+", quality: "aug" },
+      { roman: "IV", quality: "maj" },
+      { roman: "V", quality: "maj" },
+      { roman: "vi°", quality: "dim" },
+      { roman: "vii°", quality: "dim" },
+    ],
+  },
+  {
+    name: "harmonic minor",
+    notes: [1, 3, 4, 6, 7, 8, 12],
+    chords: [
+      { roman: "i", quality: "min" },
+      { roman: "ii°", quality: "dim" },
+      { roman: "III+", quality: "aug" },
+      { roman: "iv", quality: "min" },
+      { roman: "V", quality: "maj" },
+      { roman: "VI", quality: "maj" },
+      { roman: "vii°", quality: "dim" },
+    ],
   },
   {
     name: "pentatonic major",

@@ -18,7 +18,7 @@ const ChordDetails = () => {
 
   return (
     <section id="ChordDetails">
-      <h1 className="invisible h-0">Chord details of {selectedChord.name}</h1>
+      <h1 className="sr-only h-0">Chord details of {selectedChord.name}</h1>
       {/* Chord name */}
       <SelectPanel variant={"chords"} />
 
