@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function RelatedScales({ scales, heading }: Props) {
-  const { setType } = useSelectedScale();
+  const { tonic, setType } = useSelectedScale();
 
   return (
     <>
@@ -44,7 +44,7 @@ export default function RelatedScales({ scales, heading }: Props) {
                           onClick={() => setType(type)}
                           className="cursor-pointer underline"
                         >
-                          {type}
+                          {tonic} {type}
                         </span>
                       );
                     })}
