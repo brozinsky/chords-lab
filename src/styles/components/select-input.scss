@@ -11,8 +11,14 @@
   }
   &__list {
     @apply w-full absolute overflow-auto rounded-lg mt-2;
-    max-height: 10rem;
+    max-height: 18rem;
     min-width: 5rem;
+    &--type {
+      width: 18rem;
+    }
+    &--tonic {
+      width: 7rem;
+    }
   }
   &__label {
     @apply mb-3 text-emerald-500;
@@ -20,11 +26,13 @@
   &--ghost {
     .select-input {
       &__button {
-        @apply py-2 text-5xl px-4 rounded-lg bg-neutral-800;
+        @apply py-2 px-4 rounded-lg bg-neutral-800 border-[2px] border-transparent;
+        font-size: 2.75rem;
+        line-height: 1.25;
         transition: 0.25s ease all;
         &:hover,
         &[data-headlessui-state="open"] {
-          @apply bg-neutral-700;
+          @apply bg-neutral-600 border-neutral-400;
         }
       }
       &__list {

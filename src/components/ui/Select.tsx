@@ -1,5 +1,6 @@
 import { InputOption, SetState, State } from "@/utils/types";
 import { Listbox, Transition } from "@headlessui/react";
+import clsx from "clsx";
 import { Fragment, useState } from "react";
 
 type Props = {
@@ -10,15 +11,19 @@ type Props = {
   state: State;
   setState: SetState;
   displayValue?: string;
+  buttonClassName?: string;
+  contentType?: "type" | "tonic" | undefined;
 };
 
 export default function Select({
   variant = "base",
   label,
   options,
+  contentType,
   state,
   setState,
   displayValue,
+  buttonClassName,
 }: Props) {
   // const [state, setState] = useState(
   //   defaultValue ? defaultValue : options[0].value
@@ -33,13 +38,19 @@ export default function Select({
       onChange={setState}
     >
       {label && (
-        <Listbox.Label className={"select-input__label block truncate"}>
+        <Listbox.Label className={"select-input__label block"}>
           {label}
         </Listbox.Label>
       )}
-      <Listbox.Button className={"select-input__button relative"}>
-        {displayValue ? displayValue : state}
-      </Listbox.Button>
+      <div className={clsx(buttonClassName, "overflow-hidden")}>
+        <Listbox.Button
+          className={
+            "select-input__button relative truncate nowrap overflow-hidden text-ellipsis"
+          }
+        >
+          {displayValue ? displayValue : state}
+        </Listbox.Button>
+      </div>
       <Transition
         as={Fragment}
         enter="transition duration-100 ease-out"
@@ -49,7 +60,13 @@ export default function Select({
         leaveFrom="transform scale-100 opacity-100"
         leaveTo="transform scale-95 opacity-0"
       >
-        <Listbox.Options className="select-input__list">
+        <Listbox.Options
+          className={clsx(
+            contentType === "type" && "select-input__list--type",
+            contentType === "tonic" && "select-input__list--tonic",
+            "select-input__list"
+          )}
+        >
           {options.map(({ id, name, value }) => (
             <Listbox.Option
               key={id}

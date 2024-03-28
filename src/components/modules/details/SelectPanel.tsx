@@ -44,13 +44,16 @@ export default function SelectPanel({ variant }: Props) {
   return (
     <div id="SelectPanel" className="flex flex-row gap-2 justify-center mb-6">
       <Select
-        variant="ghost"
+        variant={"ghost"}
+        contentType={"tonic"}
         options={select1.options}
         state={select1.state}
         setState={select1.setState}
       />
       <Select
-        variant="ghost"
+        buttonClassName={"max-w-[500px]"}
+        contentType={"type"}
+        variant={"ghost"}
         options={select2.options}
         displayValue={select2.displayValue}
         state={select2.state}
