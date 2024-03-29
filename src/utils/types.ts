@@ -4,6 +4,7 @@ export type TNotes = (typeof notes)[number];
 
 export type TChord = {
   name: string;
+  root: TNotes;
   notes: number[];
   abbreviations: string[];
 };

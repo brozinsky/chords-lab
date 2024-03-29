@@ -1,11 +1,9 @@
 import useChordsListStore from "@/stores/chords/useChordsListStore";
 import { useNavigate } from "react-router-dom";
-import useRomanChordsStore from "@/stores/query/useRomanChordsStore";
+import useRomanChordsQuery from "@/stores/query/useRomanChordsQuery";
 import useChordsByNotesStore from "@/stores/query/useChordsByNotesStore";
 import useAllChordsRootStore from "@/stores/query/useAllChordsRootStore";
-import { ChordType } from "@/utils/types";
-
-type ChordsTabs = "all" | "roman" | "notes";
+import { TChord, TChordsTabs } from "@/utils/types";
 
 const useChordsTab = () => {
   const {
@@ -16,23 +14,23 @@ const useChordsTab = () => {
   } = useChordsListStore((state) => state);
   const navigate = useNavigate();
 
-  const { romanChordsData } = useRomanChordsStore();
+  const romanChords = useRomanChordsQuery();
   const { chordsByNotesData } = useChordsByNotesStore();
   const { allChordsRootData } = useAllChordsRootStore();
 
-  const changeTab = (tabName: ChordsTabs) => {
+  const changeTab = (tabName: TChordsTabs) => {
     setActiveTab(tabName);
 
     // set the chordsList based on the selected tab
     switch (tabName) {
       case "all":
-        setChordsList(allChordsRootData as ChordType[]);
+        setChordsList(allChordsRootData as TChord[]);
         break;
       case "roman":
-        setChordsList(romanChordsData as ChordType[]);
+        setChordsList(romanChords.data as TChord[]);
         break;
       case "notes":
-        setChordsList(chordsByNotesData as ChordType[]);
+        setChordsList(chordsByNotesData as TChord[]);
         break;
       default:
         break;

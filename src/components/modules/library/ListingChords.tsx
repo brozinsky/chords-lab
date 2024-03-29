@@ -161,10 +161,11 @@ const ListingChords = () => {
                 ]).notes;
                 if (notes.length < 1) return;
                 return (
-                  <SwiperSlide key={chord.name}>
+                  <SwiperSlide key={chord.root + "-" + chord.abbreviations[0]}>
                     <PianoTile
                       variant="chord"
                       note={chord.root}
+                      romanNumeral={chord.romanNumeral || null}
                       name={chord.abbreviations[0]}
                       selected={selectedChord}
                       onClick={handleTileClick}

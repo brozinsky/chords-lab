@@ -1,12 +1,12 @@
 import { notes, arrangeNotesByRoot } from "@/utils/notesData";
 
-export interface Chord {
+export interface TChordData {
   name: string;
   notes: number[];
   abbreviations: string[];
 }
 
-export const chords: Chord[] = [
+export const chords: TChordData[] = [
   {
     name: "major",
     notes: [1, 5, 8],

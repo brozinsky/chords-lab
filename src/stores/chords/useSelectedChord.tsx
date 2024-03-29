@@ -1,7 +1,8 @@
+import { TNotes } from "@/utils/types";
 import { Chord } from "tonal";
 import { create } from "zustand";
 
-export interface Chord {
+export interface TChord {
   abbreviations: string[];
   chordName: string;
   intervalNotes: string[];
@@ -9,7 +10,7 @@ export interface Chord {
   note: string;
 }
 
-interface ChordProps {
+interface TChordProps {
   empty?: boolean;
   name?: string;
   setNum?: number;
@@ -27,10 +28,10 @@ interface ChordProps {
 }
 
 interface SelectedChordState {
-  selectedChord: ChordProps | undefined;
-  setSelectedChord: (value: ChordProps | undefined) => void;
-  root: string;
-  setRoot: (value: string) => void;
+  selectedChord: TChordProps | undefined;
+  setSelectedChord: (value: TChordProps | undefined) => void;
+  root: TNotes;
+  setRoot: (value: TNotes) => void;
   quality: string;
   setQuality: (value: string) => void;
 }
@@ -39,7 +40,7 @@ const initialRoot = localStorage.getItem("root") || "C";
 const initialQuality = localStorage.getItem("quality") || "major";
 const chordData = Chord.get([initialRoot + "2", initialQuality]);
 
-const initialChord: ChordProps = {
+const initialChord: TChordProps = {
   empty: false,
   name: chordData.name,
   setNum: chordData.setNum,
@@ -75,14 +76,11 @@ const useSelectedChord = create<SelectedChordState>((set) => ({
 
 useSelectedChord.subscribe((state, prevState) => {
   const { root, quality } = state;
-  const {
-    root: prevRoot,
-    quality: prevQuality,
-  } = prevState;
+  const { root: prevRoot, quality: prevQuality } = prevState;
 
   if (root !== prevRoot || quality !== prevQuality) {
     const chordData = Chord.get([root + "2", quality]);
-    const newChord: ChordProps = {
+    const newChord: TChordProps = {
       ...chordData,
     };
 
