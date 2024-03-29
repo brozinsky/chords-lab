@@ -55,13 +55,13 @@ const Header = () => {
                 );
               })}
             </div>
-          <Dropdown trigger={<Button label="Volume" icon={volume === 0 ? "volume-mute" : "volume"} size="sm" variant="ghost" />}>
+          <Dropdown trigger={<Button isDiv label="Volume" icon={volume === 0 ? "volume-mute" : "volume"} size="sm" variant="ghost" />}>
             <div className="flex flex-row gap-1 py-1 pl-1.5 pr-4">
               <Button label="Toggle mute" onClick={toggleMute} icon={getVolumeIcon(volume)} size="sm" variant="ghost" />
               <Volume />
             </div>
           </Dropdown>
-          {/* <Modal trigger={<ButtonSettings />}>
+          {/* <Modal trigger={<ButtonSettings isDiv/>}>
             <Settings />
           </Modal> */}
         </div>

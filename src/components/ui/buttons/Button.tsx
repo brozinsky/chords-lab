@@ -12,7 +12,7 @@ import VolumeMuteIconSVG from "@/components/elements/svg/icons/media/VolumeMuteI
 import SpinnerSVG from "@/components/elements/svg/icons/interface/SpinnerSVG";
 import shortid from "shortid";
 
-type Props = {
+type TProps = {
   onClick?: any;
   children?: ReactNode;
   variant?: "neutral" | "emerald" | "ghost" | null | undefined;
@@ -22,14 +22,15 @@ type Props = {
   size?: "md" | "sm" | null | undefined;
   isLoading?: boolean;
   label?: string;
+  isDiv?: boolean;
 };
 
-type LoadingWrapperProps = {
+type TLoadingWrapper = {
   children?: ReactNode;
   isLoading?: boolean;
 };
 
-const LoadingWrapper = ({ isLoading, children }: LoadingWrapperProps) => {
+const LoadingWrapper = ({ isLoading, children }: TLoadingWrapper) => {
   return isLoading ? <div className="opacity-0">{children}</div> : children;
 };
 
@@ -42,8 +43,9 @@ export default function Button({
   className,
   shape = "rectangle",
   size = "md",
-  label
-}: Props) {
+  label,
+  isDiv = false
+}: TProps) {
   const classes = cva([className, "relative flex items-center justify-center w-fit  gap-2 rounded-xl cursor-pointer"], {
     variants: {
       variant: {
@@ -82,8 +84,11 @@ export default function Button({
     "stroke-neutral-600": variant === "emerald",
     "stroke-neutral-100": variant === "neutral",
   });
+
+  const MotionComponent = !isDiv ? motion.button : motion.div;
+
   return (
-    <motion.button
+    <MotionComponent
       id={`Button-${shortid.generate()}`}
       aria-label={label}
       onClick={onClick}
@@ -106,6 +111,6 @@ export default function Button({
       {isLoading && <div className=" absolute left-1/2 -rotate-90 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <SpinnerSVG className="origin-center" pathClass="stroke-neutral-800"/>
       </div>}
-     </motion.button>
+     </MotionComponent>
   );
 }

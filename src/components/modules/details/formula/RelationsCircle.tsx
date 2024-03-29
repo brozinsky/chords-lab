@@ -44,7 +44,7 @@ export default function RelationsCircle() {
               selectedChord!.intervals?.slice(thisIntervalIndex);
 
             if (slicedIntervals!.length < 2) return;
-            console.log("slicedIntervals", slicedIntervals);
+            // console.log("slicedIntervals", slicedIntervals);
 
             slicedIntervals!.forEach((_, index, array) => {
               if (index < array.length - 1) {
@@ -52,7 +52,7 @@ export default function RelationsCircle() {
                   array[index + 1],
                   slicedIntervals![0]
                 );
-                console.log("to", array[index + 1], slicedIntervals![0]);
+                // console.log("to", array[index + 1], slicedIntervals![0]);
                 processedIntervals?.push(substractedInterval as string);
               }
             });

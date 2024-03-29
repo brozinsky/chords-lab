@@ -17,16 +17,16 @@ import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 // import useRomanChordsStore from "@/stores/query/useRomanChordsStore";
 // import useChordsByNotesStore from "@/stores/query/useChordsByNotesStore";
 
-type Tab = {
+type TTab = {
   label: string;
   value: string;
 };
 
-type Props = {
-  tabs: Tab[];
+type TProps = {
+  tabs: TTab[];
 };
 
-export default function TabsChords({ tabs }: Props) {
+export default function TabsChords({ tabs }: TProps) {
   const { changeTab } = useChordsTab();
   const { isDrawerExpanded, setIsDrawerExpanded, toggleIsDrawerExpanded } =
     useMenuDrawer();
@@ -71,6 +71,7 @@ export default function TabsChords({ tabs }: Props) {
           {tabs.map(({ value, label }) => {
             return (
               <TabsTrigger
+                key={value + label}
                 onClick={() => {
                   changeTab(value as "all" | "roman" | "notes");
                   setIsDrawerExpanded(true);

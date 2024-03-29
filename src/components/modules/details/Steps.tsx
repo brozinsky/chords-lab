@@ -3,7 +3,7 @@ import React from "react";
 import shortid from "shortid";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
-type Props = {
+type TProps = {
   notesChroma: string;
 };
 
@@ -13,7 +13,7 @@ const fullStepInfo = [
   { value: "W+H", name: "Whole and a Half step" },
 ];
 
-export default function Steps({ notesChroma }: Props) {
+export default function Steps({ notesChroma }: TProps) {
   return (
     <section
       id="Steps"
@@ -40,7 +40,6 @@ export default function Steps({ notesChroma }: Props) {
                 const foundStep = fullStepInfo.find(
                   (item) => item.value === step
                 );
-                console.log(foundStep && foundStep.name);
                 return (
                   <React.Fragment key={shortid.generate()}>
                     <td

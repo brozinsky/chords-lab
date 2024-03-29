@@ -52,7 +52,7 @@ export const ChordsInScale = ({ scaleType, scale }: TProps) => {
             <tr>
               {currentScale.chords?.map((chord) => (
                 <td
-                  key={`roman-${chord.noteIndex}`}
+                  key={`roman-${chord.roman.toLowerCase()}`}
                   className="text-sm px-1.5 text-center border border-neutral-500"
                 >
                   {chord.roman}
@@ -62,7 +62,7 @@ export const ChordsInScale = ({ scaleType, scale }: TProps) => {
             <tr>
               {currentScale.chords?.map((chord, index) => (
                 <td
-                  key={`quality-${chord.noteIndex}`}
+                  key={`quality-${chord.roman.toLowerCase()}`}
                   className="text-sm px-1.5 text-center border border-neutral-500"
                 >
                   <div className="flex flex-row gap-1.5 justify-center mx-auto w-full">
@@ -79,14 +79,14 @@ export const ChordsInScale = ({ scaleType, scale }: TProps) => {
                 ).notes;
                 return (
                   <td
-                    key={`notes-${chord.noteIndex}`}
+                    key={`notes-${chord.roman.toLowerCase()}`}
                     className="text-sm px-1.5 text-center border border-neutral-500"
                   >
                     <div className="space-x-1">
                       {!showScaleNotes &&
                         currentChordNotes.map((note) => {
                           return (
-                            <span className="text-neutral-100">{note}</span>
+                            <span key={note} className="text-neutral-100">{note}</span>
                           );
                         })}
                       {showScaleNotes &&

@@ -15,10 +15,6 @@ const ListingScales = () => {
   const { tonic, setTonic, type, setType } = useSelectedScale();
   const [category, setCategory] = useState(scaleTypesCategory[0]);
 
-  // useEffect(() => {
-  //   console.log(ScaleType.all().filter(item => !types.exotic.includes(item.name) && !types.blues.includes(item.name) && !types.pentatonic.includes(item.name) && !types.minor.includes(item.name)))
-  // }, []);
-
   return (
     <>
       <div className="flex flex-row gap-2">

@@ -40,9 +40,6 @@ export default function CirclePage() {
 
   const circle = circleOfFifths("C", 12);
 
-  React.useEffect(() => {
-    console.log(circle);
-  }, []);
   return (
     <>
       <MenuTop />
