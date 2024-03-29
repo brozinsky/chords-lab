@@ -3,6 +3,7 @@ import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
 import { Disclosure, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import shortid from "shortid";
+import ButtonLink from "@/components/ui/buttons/ButtonLink";
 
 type Props = {
   scales: string[];
@@ -39,13 +40,9 @@ export default function RelatedScales({ scales, heading }: Props) {
                   <Disclosure.Panel className="px-4 pt-4 pb-2 flex flex-wrap gap-3 items-center gap-y-1">
                     {scales.map((type: string) => {
                       return (
-                        <span
-                          key={shortid.generate()}
-                          onClick={() => setType(type)}
-                          className="cursor-pointer underline"
-                        >
+                        <ButtonLink key={shortid.generate()} onClick={() => setType(type)} >
                           {tonic} {type}
-                        </span>
+                        </ButtonLink>
                       );
                     })}
                   </Disclosure.Panel>

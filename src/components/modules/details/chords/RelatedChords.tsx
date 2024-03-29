@@ -1,4 +1,5 @@
 import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
+import ButtonLink from "@/components/ui/buttons/ButtonLink";
 import useSelectedChord from "@/stores/chords/useSelectedChord";
 import { Disclosure, Transition } from "@headlessui/react";
 import clsx from "clsx";
@@ -40,13 +41,12 @@ export default function RelatedChords({ chords, heading }: Props) {
                   <Disclosure.Panel className="px-4 pt-4 pb-2 flex flex-wrap gap-3 items-center gap-y-1">
                     {chords.map((type: string) => {
                       return (
-                        <span
+                        <ButtonLink
                           key={shortid.generate()}
                           onClick={() => setSelectedChord(Chord.get(type))}
-                          className="cursor-pointer underline"
                         >
                           {type}
-                        </span>
+                        </ButtonLink>
                       );
                     })}
                   </Disclosure.Panel>
