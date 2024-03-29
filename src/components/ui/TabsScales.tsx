@@ -24,7 +24,7 @@ export default function TabsScales({ tabs }: TProps) {
       id="TabsScales"
       defaultValue="all"
       className={clsx(
-        "tabs fixed w-full bottom-0",
+        "tabs tabs--scales fixed w-full bottom-0",
         isDrawerExpanded && "tabs--open"
       )}
     >

@@ -1,11 +1,11 @@
-import { TNotesAllEnharmonic } from "@/utils/types";
+import { TNotes } from "@/utils/types";
 import clsx from "clsx";
 import { MouseEventHandler } from "react";
 
 type TProps = {
   onClick: MouseEventHandler<HTMLDivElement>;
-  note: TNotesAllEnharmonic;
-  activeNote: TNotesAllEnharmonic;
+  note: TNotes;
+  activeNote: TNotes;
 };
 
 const LibraryNoteButton = ({

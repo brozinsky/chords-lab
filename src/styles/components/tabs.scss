@@ -1,6 +1,9 @@
 .tabs {
   transition: 0.35s cubic-bezier(.65,-0.18,.4,.73) all;
   transform: translateY(265px);
+  &--scales {
+    transform: translateY(170px);
+  }
   &--open {
     transform: translateY(0);
   }

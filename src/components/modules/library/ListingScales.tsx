@@ -10,13 +10,29 @@ import { Grid, Navigation } from "swiper/modules";
 import FilterButton from "@/components/ui/FilterButton";
 import { useState } from "react";
 import { scaleTypesCategory, scaleTypes } from "@/utils/data/scaleTypes";
+import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
+import ButtonToggled from "@/components/ui/buttons/ButtonToggled";
 
 const ListingScales = () => {
   const { tonic, setTonic, type, setType } = useSelectedScale();
   const [category, setCategory] = useState(scaleTypesCategory[0]);
+  const { isDrawerExpanded, toggleIsDrawerExpanded } = useMenuDrawer();
 
   return (
     <>
+      <div className="flex flex-row gap-0 absolute left-1/2 -top-14">
+        <ButtonToggled
+          className=""
+          toggleState={isDrawerExpanded}
+          variant="neutral-dark"
+          shape="hemicircle"
+          icon="arrow-sm-top"
+          size="wide"
+          classNameIcon="rotate-90 transition"
+          classNameIconToggled="-rotate-90 transition"
+          onToggle={toggleIsDrawerExpanded}
+        ></ButtonToggled>
+      </div>
       <div className="flex flex-row gap-2">
         {notes.map((note) => (
           <LibraryNoteButton
