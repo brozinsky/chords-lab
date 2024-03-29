@@ -31,6 +31,7 @@ export default function Modal({ children, trigger }: TProps) {
           >
             <Dialog.Close className="fixed right-0 top-0">
               <Button
+                isDiv
                 className="fixed right-0 top-0"
                 icon="close"
                 size="sm"
