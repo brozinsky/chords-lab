@@ -1,10 +1,10 @@
-type SVGProps = {
-  className?: string;
-  width?: string;
-  pathClass?: string;
-};
+import { TSVG } from "@/utils/types";
 
-export default function CloseIconSVG({ className, width = "24", pathClass = "stroke-foreground", }: SVGProps) {
+export default function CloseIconSVG({
+  className,
+  width = "24",
+  pathClass = "stroke-foreground",
+}: TSVG) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

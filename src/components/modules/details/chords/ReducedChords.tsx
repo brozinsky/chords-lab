@@ -3,11 +3,11 @@ import { Disclosure, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import shortid from "shortid";
 
-type Props = {
+type TProps = {
   reducedChords: string[];
 };
 
-export default function ReducedChords({ reducedChords }: Props) {
+export default function ReducedChords({ reducedChords }: TProps) {
   return (
     <>
       {reducedChords.length > 0 ? (

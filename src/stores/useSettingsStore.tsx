@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
-type Store = {
+type TStore = {
   volume: number;
   prevVolume: number;
   setVolume: (value: number) => void;
 };
 
-const useSettingsStore = create<Store>((set) => {
+const useSettingsStore = create<TStore>((set) => {
   const storedVolume = parseFloat(localStorage.getItem("volume") || "0.3");
   const storedPrevVolume = parseFloat(
     localStorage.getItem("prevVolume") || "0.3"

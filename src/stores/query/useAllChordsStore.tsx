@@ -1,8 +1,8 @@
 import { getAllChords } from "@/utils/chords";
-import { ChordType } from "@/utils/types";
+import { TChord } from "@/utils/types";
 import { useQuery } from '@tanstack/react-query';
 
-let initAllChords: ChordType[] | null = null;
+let initAllChords: TChord[] | null = null;
 
 const initializeAllChords = async () => {
   if (initAllChords === null) {

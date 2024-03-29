@@ -1,14 +1,10 @@
-type SVGProps = {
-  className?: string;
-  width?: string;
-  pathClass?: string;
-};
+import { TSVG } from "@/utils/types";
 
 export default function PlayIconSVG({
   pathClass = "stroke-foreground",
   className,
   width = "24",
-}: SVGProps) {
+}: TSVG) {
   return (
     <svg
       className={className}

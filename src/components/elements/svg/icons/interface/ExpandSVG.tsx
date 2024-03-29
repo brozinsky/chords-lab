@@ -1,10 +1,6 @@
-type SVGProps = {
-  className?: string;
-  width?: string;
-  pathClass?: string;
-};
+import { TSVG } from "@/utils/types";
 
-export default function ExpandSVG({ className, width = "24", pathClass = "fill-foreground" }: SVGProps) {
+export default function ExpandSVG({ className, width = "24", pathClass = "fill-foreground" }: TSVG) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

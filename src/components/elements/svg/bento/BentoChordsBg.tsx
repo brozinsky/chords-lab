@@ -1,17 +1,13 @@
-import clsx from "clsx";
+import { TSVG } from "@/utils/types";
 
-type SVGProps = {
-  className?: string;
-  width?: string;
-  height?: string;
-  pathClass?: string;
+type TProps = TSVG & {
   direction?: "left" | "right" | "top" | "bottom";
 };
 
 export default function BentoChordsBg({
   width = "180",
   height = "112",
-}: SVGProps) {
+}: TProps) {
   return (
     <div className="flex flex-col justify-end items-end -mr-4">
       <svg

@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { chords, getAllChords } from "@/utils/chords";
-import { ChordType } from "@/utils/types";
+import { TChord } from "@/utils/types";
 
 const initChordsList = chords.map((chord) => ({
   ...chord,
   root: "c",
 }));
 
-let initAllChords: ChordType[] | null = null;
+let initAllChords: TChord[] | null = null;
 
 const initializeAllChords = () => {
   if (initAllChords === null) {
@@ -20,11 +20,11 @@ interface StoreState {
   chordTab: string;
   setChordTab: (value: string) => void;
 
-  chordsList: ChordType[];
-  setChordsList: (value: ChordType[]) => void;
+  chordsList: TChord[];
+  setChordsList: (value: TChord[]) => void;
 
   allChordsList: any;
-  setAllChordsList: (value: ChordType[]) => void;
+  setAllChordsList: (value: TChord[]) => void;
 }
 
 const useChordsListStore = create<StoreState>((set) => ({

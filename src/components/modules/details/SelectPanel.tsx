@@ -8,11 +8,11 @@ import {
 } from "@/utils/functions/music-theory/selectOptions";
 import { Scale } from "tonal";
 
-type Props = {
+type TProps = {
   variant: "scales" | "chords";
 };
 
-export default function SelectPanel({ variant }: Props) {
+export default function SelectPanel({ variant }: TProps) {
   const { selectedChord, root, setRoot, quality, setQuality } =
     useSelectedChord();
   const { tonic, setTonic, type, setType } = useSelectedScale();

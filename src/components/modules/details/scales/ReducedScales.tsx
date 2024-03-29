@@ -4,11 +4,11 @@ import { Disclosure, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import shortid from "shortid";
 
-type Props = {
+type TProps = {
   reducedScales: string[];
 };
 
-export default function ReducedScales({ reducedScales }: Props) {
+export default function ReducedScales({ reducedScales }: TProps) {
   const { setType } = useSelectedScale();
 
   return (

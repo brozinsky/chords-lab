@@ -5,16 +5,16 @@ import clsx from "clsx";
 import useChordsTab from "@/hooks/chords/useChordsTabs";
 import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 
-type Tab = {
+type TTab = {
   label: string;
   value: string;
 };
 
-type Props = {
-  tabs?: Tab[];
+type TProps = {
+  tabs?: TTab[];
 };
 
-export default function TabsScales({ tabs }: Props) {
+export default function TabsScales({ tabs }: TProps) {
   const { changeTab } = useChordsTab();
 
   const { isDrawerExpanded, setIsDrawerExpanded } = useMenuDrawer();

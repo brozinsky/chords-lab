@@ -7,7 +7,7 @@ import ButtonPlayTile from "./buttons/ButtonPlayTile";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import shortid from "shortid";
 
-type PianoTileProps = {
+type TProps = {
   note: string;
   name: string;
   selected: any;
@@ -15,6 +15,7 @@ type PianoTileProps = {
   onPlayClick: any;
   intervals?: string[];
   variant?: "scale" | "chord";
+  romanNumeral?: string;
 };
 
 const PianoTile = ({
@@ -25,7 +26,8 @@ const PianoTile = ({
   onClick,
   onPlayClick,
   intervals,
-}: PianoTileProps) => {
+  romanNumeral,
+}: TProps) => {
   const { isPianoSoundLoading } = usePlayPiano();
 
   const notes =
@@ -86,7 +88,10 @@ const PianoTile = ({
         >
           <span className="text-lg">{note}</span> {name}
         </motion.div>
-        <motion.div variants={notesMotion} className="absolute bottom-2 left-2 flex gap-1 items-center">
+        <motion.div
+          variants={notesMotion}
+          className="absolute bottom-2 left-2 flex gap-1 items-center"
+        >
           {notes.map((note, index) => {
             return (
               <span key={note} className="text-xs">
@@ -102,8 +107,15 @@ const PianoTile = ({
           </div>
         ) : null}
       </div>
-      <div className="text-xl absolute right-2 w-9 h-9 bottom-2 flex items-center justify-center">II</div>
-      <ButtonPlayTile onClick={(e: Event) => onPlayClick(e, note, name)} isLoading={isPianoSoundLoading} />
+      {romanNumeral && (
+        <div className="text-xl absolute right-2 w-9 h-9 bottom-2 flex items-center justify-center">
+          {romanNumeral}
+        </div>
+      )}
+      <ButtonPlayTile
+        onClick={(e: Event) => onPlayClick(e, note, name)}
+        isLoading={isPianoSoundLoading}
+      />
     </motion.div>
   );
 };

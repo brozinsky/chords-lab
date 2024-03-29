@@ -5,8 +5,6 @@ import FilterTypes from "./FilterTypes";
 import useFilterStore from "@/stores/chords/useFilterStore";
 import FilterMultiNotes from "./FilterMultiNotes";
 
-type NotesTypes = (typeof notes)[number];
-
 export default function Filter() {
   const {
     romanScaleTonic,
@@ -21,7 +19,7 @@ export default function Filter() {
         <>
           <span>Scale tonic</span>
           <FilterNotes
-            onClick={(note: NotesTypes) => setRomanScaleTonic(note)}
+            onClick={(note: TNotes) => setRomanScaleTonic(note)}
             activeNote={romanScaleTonic}
           />
         </>

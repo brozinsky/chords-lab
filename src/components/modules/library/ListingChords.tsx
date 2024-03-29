@@ -17,29 +17,18 @@ import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 import ButtonToggled from "@/components/ui/buttons/ButtonToggled";
 import shortid from "shortid";
 import useAllChordsRootStore from "@/stores/query/useAllChordsRootStore";
-import useRomanChordsStore from "@/stores/query/useRomanChordsStore";
+import useRomanChordsQuery from "@/stores/query/useRomanChordsQuery";
 import useChordsByNotesStore from "@/stores/query/useChordsByNotesStore";
+import { scales } from "@/utils/notesData";
 
 const ListingChords = () => {
   const { playPianoNotes } = usePlayPiano();
-  const {
-    isDrawerExpanded,
-    toggleIsDrawerExpanded,
-    isTwoRows,
-    toggleIsTwoRows,
-  } = useMenuDrawer();
+  const { isDrawerExpanded, toggleIsDrawerExpanded } = useMenuDrawer();
 
   const { selectedChord, setRoot, setQuality } = useSelectedChord();
-  const {
-    allChordsRootData,
-    isLoadingAllChordsRoot,
-  } = useAllChordsRootStore();
-  const { romanChordsData, isLoadingRomanChords } =
-    useRomanChordsStore();
-  const {
-    chordsByNotesData,
-    isLoadingChordsByNotes,
-  } = useChordsByNotesStore();
+  const { allChordsRootData, isLoadingAllChordsRoot } = useAllChordsRootStore();
+  const romanChords = useRomanChordsQuery();
+  const { chordsByNotesData, isLoadingChordsByNotes } = useChordsByNotesStore();
 
   const { activeTab } = useChordsTab();
 
@@ -47,7 +36,7 @@ const ListingChords = () => {
     activeTab === "all"
       ? allChordsRootData
       : activeTab === "roman"
-      ? romanChordsData
+      ? romanChords.data
       : activeTab === "notes"
       ? chordsByNotesData
       : [];
@@ -56,7 +45,7 @@ const ListingChords = () => {
     activeTab === "all"
       ? isLoadingAllChordsRoot
       : activeTab === "roman"
-      ? isLoadingRomanChords
+      ? romanChords.isLoading
       : activeTab === "notes"
       ? isLoadingChordsByNotes
       : [];
@@ -128,66 +117,64 @@ const ListingChords = () => {
           })}
         </Swiper>
       )}
-      {chordsList &&
-        !isLoadingChordsList &&
-        chordsList.length > 0 && (
-          <Swiper
-            slidesPerView={1}
-            // grid={{
-            //   rows: 2,
-            //   fill: "row",
-            // }}
-            breakpoints={{
-              319: {
-                slidesPerView: 2,
-              },
-              639: {
-                slidesPerView: 3,
-              },
-              767: {
-                slidesPerView: 4,
-              },
-              1023: {
-                slidesPerView: 5,
-              },
-              1535: {
-                slidesPerView: 6,
-              },
-              // 1659: {
-              //   slidesPerView: 5,
-              // },
-            }}
-            spaceBetween={30}
-            navigation={true}
-            modules={[Grid, Navigation]}
-            className="swiper-chord"
-          >
-            {chordsList &&
-              !isLoadingChordsList &&
-              chordsList
-                // .filter((item) => item.intervals.length <= 4)
-                // .map((get) => get)
-                .map((chord, index) => {
-                  const notes = Chord.get([
-                    chord.root + "1",
-                    chord.abbreviations[0],
-                  ]).notes;
-                  if (notes.length < 1) return;
-                  return (
-                    <SwiperSlide key={chord.name}>
-                      <PianoTile
-                        variant="chord"
-                        note={chord.root}
-                        name={chord.abbreviations[0]}
-                        selected={selectedChord}
-                        onClick={handleTileClick}
-                        onPlayClick={handlePlayClick}
-                      />
-                    </SwiperSlide>
-                  );
-                })}
-          </Swiper>
-        )}
+      {chordsList && !isLoadingChordsList && chordsList.length > 0 && (
+        <Swiper
+          slidesPerView={1}
+          // grid={{
+          //   rows: 2,
+          //   fill: "row",
+          // }}
+          breakpoints={{
+            319: {
+              slidesPerView: 2,
+            },
+            639: {
+              slidesPerView: 3,
+            },
+            767: {
+              slidesPerView: 4,
+            },
+            1023: {
+              slidesPerView: 5,
+            },
+            1535: {
+              slidesPerView: 6,
+            },
+            // 1659: {
+            //   slidesPerView: 5,
+            // },
+          }}
+          spaceBetween={30}
+          navigation={true}
+          modules={[Grid, Navigation]}
+          className="swiper-chord"
+        >
+          {chordsList &&
+            !isLoadingChordsList &&
+            chordsList
+              // .filter((item) => item.intervals.length <= 4)
+              // .map((get) => get)
+              .map((chord, index) => {
+                const notes = Chord.get([
+                  chord.root + "1",
+                  chord.abbreviations[0],
+                ]).notes;
+                if (notes.length < 1) return;
+                return (
+                  <SwiperSlide key={chord.name}>
+                    <PianoTile
+                      variant="chord"
+                      note={chord.root}
+                      name={chord.abbreviations[0]}
+                      selected={selectedChord}
+                      onClick={handleTileClick}
+                      onPlayClick={handlePlayClick}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+        </Swiper>
+      )}
       {chordsList && chordsList.length <= 0 && (
         <div className="p-8 pb-10 mx-auto flex flex-col items-center">
           <SearchIconSVG className={"mb-3"} width={"50"} />

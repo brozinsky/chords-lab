@@ -1,16 +1,15 @@
 import FilterButton from "@/components/ui/FilterButton";
 import { notes } from "@/utils/notesData";
+import { TNotes } from "@/utils/types";
 import shortid from "shortid";
 
-type NotesTypes = (typeof notes)[number];
-
-type Props = {
-  activeNotes: NotesTypes[];
-  onClick: (note: NotesTypes[]) => void;
+type TProps = {
+  activeNotes: TNotes[];
+  onClick: (note: TNotes[]) => void;
 };
 
-export default function FilterMultiNotes({ onClick, activeNotes }: Props) {
-  const handleToggle = (note: NotesTypes | string) => {
+export default function FilterMultiNotes({ onClick, activeNotes }: TProps) {
+  const handleToggle = (note: TNotes | string) => {
     const isActive = activeNotes.includes(note);
     if (isActive) {
       //@ts-ignore

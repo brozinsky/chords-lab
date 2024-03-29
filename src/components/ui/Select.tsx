@@ -1,15 +1,15 @@
-import { InputOption, SetState, State } from "@/utils/types";
+import { TInputOption, TSetState, TState } from "@/utils/types";
 import { Listbox, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment, useState } from "react";
 
-type Props = {
+type TProps = {
   label?: string;
-  options: InputOption[];
+  options: TInputOption[];
   defaultValue?: string;
   variant?: "base" | "ghost";
-  state: State;
-  setState: SetState;
+  state: TState;
+  setState: TSetState;
   displayValue?: string;
   buttonClassName?: string;
   contentType?: "type" | "tonic" | undefined;
@@ -24,7 +24,7 @@ export default function Select({
   setState,
   displayValue,
   buttonClassName,
-}: Props) {
+}: TProps) {
   // const [state, setState] = useState(
   //   defaultValue ? defaultValue : options[0].value
   // );

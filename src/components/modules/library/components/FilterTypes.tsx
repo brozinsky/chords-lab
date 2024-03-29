@@ -6,14 +6,14 @@ const types = [
     "minor"
 ]
 
-type TypesTypes = (typeof types)[number];
+type TTypes = (typeof types)[number];
 
-type Props = {
-  activeType: TypesTypes;
-  onClick: (type: TypesTypes) => void;
+type TProps = {
+  activeType: TTypes;
+  onClick: (type: TTypes) => void;
 };
 
-export default function FilterTypes({ onClick, activeType }: Props) {
+export default function FilterTypes({ onClick, activeType }: TProps) {
   return (
     <div className="flex flex-row gap-2">
       {types.map((type) => (

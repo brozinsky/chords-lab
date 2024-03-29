@@ -1,10 +1,6 @@
-type SVGProps = {
-  className?: string;
-  width?: number;
-  height?: number;
-};
+import { TSVG } from "@/utils/types";
 
-export default function LogoSVG({ className, width = 73, height = 62 }: SVGProps) {
+export default function LogoSVG({ className, width = 73, height = 62 }: TSVG) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

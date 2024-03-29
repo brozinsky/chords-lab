@@ -1,15 +1,9 @@
-type SVGProps = {
-  className?: string;
-  width?: string;
-  height?: string;
-  pathClass?: string;
-  direction?: "left" | "right" | "top" | "bottom";
-};
+import { TSVG } from "@/utils/types";
 
 export default function BentoProgressionBg({
   width = "248",
   height = "77",
-}: SVGProps) {
+}: TSVG) {
   return (
     <div className="flex flex-col justify-end items-end mr-4">
       <svg

@@ -1,7 +1,7 @@
 import { Scale } from "tonal";
 import { create } from "zustand";
 
-interface ScaleProps {
+type TScaleProps = {
   empty: boolean;
   name: string;
   setNum: number;
@@ -14,20 +14,20 @@ interface ScaleProps {
   notes: string[];
 }
 
-interface SelectedScaleState {
+type TSelectedScaleState = {
   tonic: string;
   setTonic: (value: string) => void;
   type: string;
   setType: (value: string) => void;
-  selectedScale: ScaleProps | undefined;
-  setSelectedScale: (value: ScaleProps | undefined) => void;
+  selectedScale: TScaleProps | undefined;
+  setSelectedScale: (value: TScaleProps | undefined) => void;
 }
 
 const initialTonic =  "C";
 const initialType = "major";
 const scaleData = Scale.get(`${initialTonic}2 ${initialType}`);
 
-const useSelectedScale = create<SelectedScaleState>((set) => ({
+const useSelectedScale = create<TSelectedScaleState>((set) => ({
   tonic: initialTonic,
   setTonic: (value) => set(() => ({ tonic: value })),
   type: initialType,
@@ -44,7 +44,7 @@ useSelectedScale.subscribe((state, prevState) => {
 
   if (tonic !== prevTonic || type !== prevType) {
     const scaleData = Scale.get(`${tonic}2 ${type}`);
-    const newScale: ScaleProps = {
+    const newScale: TScaleProps = {
       ...scaleData,
     };
 

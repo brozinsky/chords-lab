@@ -1,16 +1,11 @@
-type SVGProps = {
-  className?: string;
-  width?: number;
-  height?: number;
-  fill?: string;
-};
+import { TSVG } from "@/utils/types";
 
 export default function PianoIconSVG({
   className,
   width = 138,
   height = 132,
   fill = "fill-white",
-}: SVGProps) {
+}: TSVG) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

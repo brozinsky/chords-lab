@@ -3,11 +3,11 @@ import { Disclosure, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import shortid from "shortid";
 
-type Props = {
+type TProps = {
   extendedChords: string[];
 };
 
-export default function ExtendedChords({ extendedChords }: Props) {
+export default function ExtendedChords({ extendedChords }: TProps) {
   return (
     <>
       {extendedChords.length > 0 ? (

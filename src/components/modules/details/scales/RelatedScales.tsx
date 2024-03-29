@@ -5,12 +5,12 @@ import clsx from "clsx";
 import shortid from "shortid";
 import ButtonLink from "@/components/ui/buttons/ButtonLink";
 
-type Props = {
+type TProps = {
   scales: string[];
   heading: string;
 };
 
-export default function RelatedScales({ scales, heading }: Props) {
+export default function RelatedScales({ scales, heading }: TProps) {
   const { tonic, setType } = useSelectedScale();
 
   return (

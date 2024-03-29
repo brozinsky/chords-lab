@@ -1,16 +1,18 @@
 import { create } from "zustand";
 
-type MenuDrawerState = {
+type TState = {
   isDrawerExpanded: boolean;
+  isTwoRows: boolean;
+};
+
+type TAction = {
   setIsDrawerExpanded: (isDrawerExpanded: boolean) => void;
   toggleIsDrawerExpanded: () => void;
-
-  isTwoRows: boolean;
   setIsTwoRows: (isTwoRows: boolean) => void;
   toggleIsTwoRows: () => void;
 };
 
-const useMenuDrawerStore = create<MenuDrawerState>((set) => ({
+const useMenuDrawerStore = create<TState & TAction>((set) => ({
   isDrawerExpanded: true,
   setIsDrawerExpanded: (isDrawerExpanded) => set({ isDrawerExpanded }),
   toggleIsDrawerExpanded: () =>

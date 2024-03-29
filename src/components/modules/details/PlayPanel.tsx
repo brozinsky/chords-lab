@@ -4,12 +4,13 @@ import Button from "@/components/ui/buttons/Button";
 import DropdownBPM from "@/components/ui/dropdowns/DropdownBPM";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import useBPMStore from "@/stores/settings/useBPMStore";
+import { TNotesAllEnharmonic } from "@/utils/types";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-type Props = {
+type TProps = {
   variant: "scales" | "chords";
-  notes: string[];
+  notes: TNotesAllEnharmonic[];
 };
 
 const playModeOptionsChords = [
@@ -22,7 +23,7 @@ const playModeOptionsScales = [
   { id: "22", name: "Descending", value: "descending" },
 ];
 
-export default function PlayPanel({ variant, notes }: Props) {
+export default function PlayPanel({ variant, notes }: TProps) {
   const { isPianoSoundLoading, playPianoChord, playPianoNotes } =
     usePlayPiano();
   const { bpm } = useBPMStore();

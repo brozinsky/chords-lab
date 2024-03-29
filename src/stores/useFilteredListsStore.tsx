@@ -1,20 +1,20 @@
 import { create } from "zustand";
 import isChordInScale from "@/utils/isChordInScale";
 import { createScale } from "@/utils/notesData";
-import { ChordCombination } from "@/hooks/useChordCombinations";
+import { TChordCombinations } from "@/utils/types";
 
 interface FilteredListsStore {
   filteredLists: {
-    scaleFiltered: ChordCombination[];
-    rootFiltered: ChordCombination[];
-    suffixFiltered: ChordCombination[];
+    scaleFiltered: TChordCombinations[];
+    rootFiltered: TChordCombinations[];
+    suffixFiltered: TChordCombinations[];
   };
   updateFilteredLists: (
     isRoot: boolean,
     isSearchedBySuffix: boolean,
     chordRoot: string,
     chordSuffix: string,
-    chordCombinations: ChordCombination[],
+    chordCombinations: TChordCombinations[],
     isInScale: boolean,
     scaleMode: string,
     scaleTonic: string

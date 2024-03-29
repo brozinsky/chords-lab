@@ -6,12 +6,12 @@ import clsx from "clsx";
 import shortid from "shortid";
 import { Chord } from "tonal";
 
-type Props = {
+type TProps = {
   chords: string[];
   heading: string;
 };
 
-export default function RelatedChords({ chords, heading }: Props) {
+export default function RelatedChords({ chords, heading }: TProps) {
   const { setSelectedChord } = useSelectedChord();
 
   return (

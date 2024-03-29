@@ -1,10 +1,10 @@
 import { consonancesLib } from "@/lib/intervals";
 
-type Props = {
+type TProps = {
     intervals: string[];
   }
   
-  const IntervalsConnectionsSVG_REFACTOR = ({ intervals }: Props) => {
+  const IntervalsConnectionsSVG_REFACTOR = ({ intervals }: TProps) => {
   const pathsAttributes = [
     {
       defs: { id: "a", width: 10, height: 246, x: 120, y: 2 },

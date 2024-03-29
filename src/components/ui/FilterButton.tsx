@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { MouseEventHandler } from "react";
 
-type FilterButtonProps = {
+type TProps = {
   onClick: MouseEventHandler<HTMLDivElement>;
   item: string;
   active: boolean
@@ -13,7 +13,7 @@ const FilterButton = ({
   item,
   active,
   variant
-}: FilterButtonProps) => {
+}: TProps) => {
   return (
     <div
       id="FilterButton"

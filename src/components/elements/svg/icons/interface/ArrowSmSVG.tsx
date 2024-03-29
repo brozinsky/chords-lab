@@ -1,9 +1,7 @@
+import { TSVG } from "@/utils/types";
 import clsx from "clsx";
 
-type SVGProps = {
-  className?: string;
-  width?: string;
-  pathClass?: string;
+type TProps = TSVG & {
   direction?: "left" | "right" | "top" | "bottom";
 };
 
@@ -12,7 +10,7 @@ export default function ArrowSmSVG({
   className,
   width = "24",
   pathClass = "stroke-red-500",
-}: SVGProps) {
+}: TProps) {
   const directionClass = {
     right: "",
     left: "rotate-180",

@@ -1,9 +1,6 @@
-type SVGProps = {
-  className?: string;
-  width?: string;
-};
+import { TSVG } from "@/utils/types";
 
-export default function SuccessIconSVG({ className, width = "24" }: SVGProps) {
+export default function SuccessIconSVG({ className, width = "24" }: TSVG) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

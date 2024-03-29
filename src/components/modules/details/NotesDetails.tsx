@@ -2,12 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import { simplifyNote } from "@/utils/functions/music-theory/simplifyNotes";
+import { TNotesAllEnharmonic } from "@/utils/types";
 
-type Props = {
-  notes: string[];
+type TProps = {
+  notes: TNotesAllEnharmonic[];
 };
 
-export default function NotesDetails({ notes }: Props) {
+export default function NotesDetails({ notes }: TProps) {
   const { playPianoNotes } = usePlayPiano();
   return (
     <section

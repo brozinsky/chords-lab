@@ -1,9 +1,6 @@
-type SVGProps = {
-  className?: string;
-  width?: string;
-};
+import { TSVG } from "@/utils/types";
 
-export default function StopIconSVG({ className, width = "24" }: SVGProps) {
+export default function StopIconSVG({ className, width = "24" }: TSVG) {
   return (
     <svg
       className={className}

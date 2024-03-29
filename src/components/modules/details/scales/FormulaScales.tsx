@@ -6,13 +6,14 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import Modal from "@/components/ui/Modal";
 import ButtonInfo from "@/components/ui/buttons/ButtonInfo";
 import ChordFormulaModal from "../../chord-details/_partials/ChordFormulaModal";
+import { TNotesAllEnharmonic } from "@/utils/types";
 
-type Props = {
-  notes: string[];
+type TProps = {
+  notes: TNotesAllEnharmonic[];
   intervals: string[];
 };
 
-export default function FormulaScales({ notes, intervals }: Props) {
+export default function FormulaScales({ notes, intervals }: TProps) {
   return (
     <section
       id="FormulaScales"

@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import SettingsIconSVG from "@/components/elements/svg/icons/interface/SettingsIconSVG";
 
-type Props = {
-  onClick?: any;
+type TProps = {
+  onClick?: () => void;
   srOnly?: string;
 };
 
 export default function ButtonSettings({
   onClick,
   srOnly = "Settings",
-}: Props) {
+}: TProps) {
   return (
     <motion.button
       id="ButtonSettings"

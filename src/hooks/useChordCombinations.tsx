@@ -1,27 +1,20 @@
 import { useMemo } from "react";
 import getIntervalNotes from "@/utils/getIntervalNotes";
+import { TChordCombinations, TNotes } from "@/utils/types";
 
-export interface Chord {
+export type TChord = {
   name: string;
   notes: string[];
   abbreviations: string[];
-}
-
-export interface ChordCombination {
-  note: string;
-  chordName: string;
-  abbreviations: string[];
-  intervals: string[];
-  intervalNotes: string[];
-}
+};
 
 // Custom hook to combine a list of musical notes with a list of chords
 // and to create chord combinations, including additional information about intervals.
 
 function useChordCombinations(
-  notes: string[],
-  chords: Chord[]
-): ChordCombination[] {
+  notes: TNotes[],
+  chords: TChord[]
+): TChordCombinations[] {
   const chordCombinations = useMemo(() => {
     return notes.flatMap((note) =>
       chords.map(({ name, notes, abbreviations }) => ({

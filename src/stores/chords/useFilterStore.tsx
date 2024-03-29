@@ -1,17 +1,17 @@
-import { NotesTypes } from "@/utils/types";
+import { TNotes } from "@/utils/types";
 import { create } from "zustand";
 
 interface FilterStoreState {
-  allChordsRoot: NotesTypes;
+  allChordsRoot: TNotes;
   setAllChordsRoot: (value: string) => void;
 
-  romanScaleTonic: NotesTypes;
+  romanScaleTonic: TNotes;
   setRomanScaleTonic: (value: string) => void;
   romanScaleType: "major" | "minor";
   setRomanScaleType: (value: "major" | "minor") => void;
 
-  notesChordsNotes: NotesTypes[];
-  setNotesChordsNotes: (value: NotesTypes[]) => void;
+  notesChordsNotes: TNotes[];
+  setNotesChordsNotes: (value: TNotes[]) => void;
 }
 
 const useFilterStore = create<FilterStoreState>((set) => ({

@@ -1,15 +1,14 @@
 import FilterButton from "@/components/ui/FilterButton";
 import { notes } from "@/utils/notesData";
+import { TNotes } from "@/utils/types";
 import shortid from "shortid";
 
-type NotesTypes = (typeof notes)[number];
-
-type Props = {
-  activeNote: NotesTypes;
-  onClick: (note: NotesTypes) => void;
+type TProps = {
+  activeNote: TNotes;
+  onClick: (note: TNotes) => void;
 };
 
-export default function FilterNotes({ onClick, activeNote }: Props) {
+export default function FilterNotes({ onClick, activeNote }: TProps) {
   return (
     <div className="flex flex-row gap-2">
       {notes.map((note) => (

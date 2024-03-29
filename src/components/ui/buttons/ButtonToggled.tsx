@@ -4,8 +4,8 @@ import { ReactNode } from "react";
 import { cva } from "class-variance-authority";
 import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
 
-type Props = {
-  onToggle?: any;
+type TProps = {
+  onToggle?: () => void;
   toggleState: boolean;
   children?: ReactNode;
   variant?: "neutral" | "emerald" | "ghost" | "neutral-dark" | null | undefined;
@@ -29,7 +29,7 @@ export default function ButtonToggled({
   classNameIconToggled,
   shape = "rectangle",
   size = "md",
-}: Props) {
+}: TProps) {
   const classes = cva(
     [
       className,

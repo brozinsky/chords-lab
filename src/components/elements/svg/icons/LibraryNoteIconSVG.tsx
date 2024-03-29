@@ -1,12 +1,9 @@
-type SVGProps = {
-  className?: string;
-  width?: string;
-};
+import { TSVG } from "@/utils/types";
 
 export default function LibraryNoteIconSVG({
   className,
   width = "24",
-}: SVGProps) {
+}: TSVG) {
   return (
     <svg
       className={className}

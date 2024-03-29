@@ -1,11 +1,9 @@
 import useChordsTab from "@/hooks/chords/useChordsTabs";
-import { notes } from "@/utils/notesData";
 import FilterNotes from "./FilterNotes";
 import FilterTypes from "./FilterTypes";
 import useFilterStore from "@/stores/chords/useFilterStore";
 import FilterMultiNotes from "./FilterMultiNotes";
-import { ScrollArea } from '@mantine/core';
-type NotesTypes = (typeof notes)[number];
+import { TNotes } from "@/utils/types";
 
 export default function Filter() {
   const {
@@ -27,7 +25,7 @@ export default function Filter() {
           <>
             <span className="shrink-0">Root note</span>
             <FilterNotes
-              onClick={(note: NotesTypes) => setAllChordsRoot(note)}
+              onClick={(note: TNotes) => setAllChordsRoot(note)}
               activeNote={allChordsRoot}
             />
           </>
@@ -36,7 +34,7 @@ export default function Filter() {
           <>
             <span>Scale tonic</span>
             <FilterNotes
-              onClick={(note: NotesTypes) => setRomanScaleTonic(note)}
+              onClick={(note: TNotes) => setRomanScaleTonic(note)}
               activeNote={romanScaleTonic}
             />
           </>

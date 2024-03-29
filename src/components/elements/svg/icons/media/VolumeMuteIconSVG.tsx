@@ -1,14 +1,10 @@
-type SVGProps = {
-  className?: string;
-  width?: string;
-  pathClass?: string;
-};
+import { TSVG } from "@/utils/types";
 
 export default function VolumeMuteIconSVG({
   className,
   pathClass = "stroke-foreground",
   width = "24",
-}: SVGProps) {
+}: TSVG) {
   return (
     <svg
       className={className}

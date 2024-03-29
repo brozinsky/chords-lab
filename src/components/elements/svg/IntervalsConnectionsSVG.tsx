@@ -1,11 +1,11 @@
 import { consonancesLib } from "@/lib/intervals";
 import clsx from "clsx";
 
-type Props = {
+type TProps = {
   intervals: string[];
 }
 
-const IntervalsConnectionsSVG = ({ intervals }: Props) => {
+const IntervalsConnectionsSVG = ({ intervals }: TProps) => {
   const lines = [
     {
       className: consonancesLib[4].className,

@@ -1,14 +1,10 @@
-type SVGProps = {
-  className?: string;
-  width?: number;
-  pathClass?: string;
-};
+import { TSVG } from "@/utils/types";
 
 export default function EditIconSVG({
   className,
   width = 24,
   pathClass = "stroke-foreground",
-}: SVGProps) {
+}: TSVG) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -10,7 +10,7 @@ import BentoProgressionBg from "@/components/elements/svg/bento/BentoProgression
 import EditIconSVG from "@/components/elements/svg/icons/interface/EditIconSVG";
 import { Link } from "react-router-dom";
 
-type Props = {
+type TProps = {
   width?: string;
   height?: string;
   category?: "library" | "playground";
@@ -26,7 +26,7 @@ const BentoModule = ({
   variant,
   isDisabled,
   order,
-}: Props) => {
+}: TProps) => {
   const classes =
     "relative px-4 py-4 rounded-xl bg-transparent border-2 border-neutral-400 text-light flex flex-col items-center justify-center gap-2";
   return (

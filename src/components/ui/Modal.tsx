@@ -3,12 +3,12 @@ import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import Button from "./buttons/Button";
 
-type Props = {
+type TProps = {
   children: ReactNode;
   trigger: ReactNode;
 };
 
-export default function Modal({ children, trigger }: Props) {
+export default function Modal({ children, trigger }: TProps) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>

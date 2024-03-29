@@ -1,4 +1,4 @@
-import { InputOption, SetState, State } from "@/utils/types";
+import { TInputOption, TSetState, TState } from "@/utils/types";
 import { RadioGroup as HUIRadioGroup } from "@headlessui/react";
 import { cva } from "class-variance-authority";
 
@@ -14,15 +14,15 @@ const optionStyles = cva(
   }
 );
 
-type RadioGroupProps = {
-  state: State;
-  setState: SetState;
-  options: InputOption[];
+type TProps = {
+  state: TState;
+  setState: TSetState;
+  options: TInputOption[];
   name?: string;
   defaultOption?: string;
 };
 
-const RadioGroup = ({ state, setState, options, name }: RadioGroupProps) => {
+const RadioGroup = ({ state, setState, options, name }: TProps) => {
   return (
     <HUIRadioGroup
       id="RadioGroup"

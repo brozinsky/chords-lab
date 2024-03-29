@@ -1,13 +1,13 @@
 import LogoSVG from "@/components/elements/svg/LogoSVG";
 import clsx from "clsx";
 
-type Props = {
+type TProps = {
   width?: string;
   height?: string;
   order?: string;
 };
 
-const BentoTitle = ({ width, height, order }: Props) => {
+const BentoTitle = ({ width, height, order }: TProps) => {
   const classes =
     "relative px-4 py-4 rounded-xl bg-transparent border-2 border-neutral-400 text-light flex flex-col items-center justify-center gap-2";
   return (

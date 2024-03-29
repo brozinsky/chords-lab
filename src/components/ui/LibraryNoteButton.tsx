@@ -1,17 +1,18 @@
+import { TNotesAllEnharmonic } from "@/utils/types";
 import clsx from "clsx";
 import { MouseEventHandler } from "react";
 
-type LibraryNoteButtonProps = {
+type TProps = {
   onClick: MouseEventHandler<HTMLDivElement>;
-  note: string;
-  activeNote: string;
+  note: TNotesAllEnharmonic;
+  activeNote: TNotesAllEnharmonic;
 };
 
 const LibraryNoteButton = ({
   onClick,
   note,
   activeNote,
-}: LibraryNoteButtonProps) => {
+}: TProps) => {
   return (
     <div
       id="LibraryNoteButton"
