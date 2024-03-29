@@ -3,6 +3,7 @@ import ButtonLink from "@/components/ui/buttons/ButtonLink";
 import useSelectedChord from "@/stores/chords/useSelectedChord";
 import { Disclosure, Transition } from "@headlessui/react";
 import clsx from "clsx";
+import { useEffect } from "react";
 import shortid from "shortid";
 import { Chord } from "tonal";
 
@@ -12,7 +13,7 @@ type TProps = {
 };
 
 export default function RelatedChords({ chords, heading }: TProps) {
-  const { setSelectedChord } = useSelectedChord();
+  const { setQuality } = useSelectedChord();
 
   return (
     <>
@@ -43,7 +44,7 @@ export default function RelatedChords({ chords, heading }: TProps) {
                       return (
                         <ButtonLink
                           key={shortid.generate()}
-                          onClick={() => setSelectedChord(Chord.get(type))}
+                          onClick={() => setQuality(type.replace(/^[A-G]#?b?/, ""))}
                         >
                           {type}
                         </ButtonLink>
