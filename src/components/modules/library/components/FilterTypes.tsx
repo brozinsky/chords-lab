@@ -1,4 +1,4 @@
-import FilterButton from "@/components/ui/FilterButton";
+import FilterButton from "@/components/ui/buttons/FilterButton";
 import shortid from "shortid";
 
 const types = [

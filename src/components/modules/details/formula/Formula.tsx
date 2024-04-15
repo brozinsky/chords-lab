@@ -1,4 +1,4 @@
-import Modal from "@/components/ui/Modal";
+import Modal from "@/components/ui/modals/Modal";
 import ButtonInfo from "@/components/ui/buttons/ButtonInfo";
 import ChordFormulaModal from "../../chord-details/_partials/ChordFormulaModal";
 import RelationsCircle from "./RelationsCircle";

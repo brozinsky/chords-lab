@@ -1,17 +1,17 @@
 import useSelectedScale from "@/stores/useSelectedScale";
 import { notes } from "@/utils/notesData";
-import LibraryNoteButton from "@/components/ui/LibraryNoteButton";
 import shortid from "shortid";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
 // @ts-ignore
 import { Grid, Navigation } from "swiper/modules";
-import FilterButton from "@/components/ui/FilterButton";
+import FilterButton from "@/components/ui/buttons/FilterButton";
 import { useState } from "react";
 import { scaleTypesCategory, scaleTypes } from "@/utils/data/scaleTypes";
 import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 import ButtonToggled from "@/components/ui/buttons/ButtonToggled";
+import LibraryNoteButton from "@/components/ui/buttons/LibraryNoteButton";
 
 const ListingScales = () => {
   const { tonic, setTonic, type, setType } = useSelectedScale();

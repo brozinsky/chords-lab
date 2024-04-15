@@ -1,7 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
-import Button from "./buttons/Button";
+import Button from "../buttons/Button";
 
 type TProps = {
   children: ReactNode;

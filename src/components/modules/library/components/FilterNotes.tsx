@@ -1,4 +1,4 @@
-import FilterButton from "@/components/ui/FilterButton";
+import FilterButton from "@/components/ui/buttons/FilterButton";
 import { notes } from "@/utils/notesData";
 import { TNotes } from "@/utils/types";
 import shortid from "shortid";

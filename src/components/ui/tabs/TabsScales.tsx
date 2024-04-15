@@ -1,6 +1,6 @@
 // @ts-ignore
-import { Tabs as TabsShadcn, TabsContent, TabsList, TabsTrigger } from "@/components/ui/TabsShadcn";
-import Library from "../modules/library/Library";
+import { Tabs as TabsShadcn, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs/TabsShadcn";
+import Library from "../../modules/library/Library";
 import clsx from "clsx";
 import useChordsTab from "@/hooks/chords/useChordsTabs";
 import { useMenuDrawer } from "@/stores/settings/useDrawerStore";

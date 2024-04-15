@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useSelectedChord from "@/stores/chords/useSelectedChord";
-import PianoTile from "@/components/ui/PianoTile";
+import PianoTile from "@/components/elements/piano/PianoTile";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/grid";
@@ -12,7 +12,6 @@ import useChordsTab from "@/hooks/chords/useChordsTabs";
 import Filter from "./components/Filter";
 import { Chord } from "tonal";
 import SearchIconSVG from "@/components/elements/svg/icons/SearchIconSVG";
-import PianoTileSkeleton from "@/components/ui/PianoTileSkeleton";
 import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 import ButtonToggled from "@/components/ui/buttons/ButtonToggled";
 import shortid from "shortid";
@@ -20,6 +19,7 @@ import useAllChordsRootStore from "@/stores/query/useAllChordsRootStore";
 import useRomanChordsQuery from "@/stores/query/useRomanChordsQuery";
 import useChordsByNotesStore from "@/stores/query/useChordsByNotesStore";
 import { scales } from "@/utils/notesData";
+import PianoTileSkeleton from "@/components/elements/piano/PianoTileSkeleton";
 
 const ListingChords = () => {
   const { playPianoNotes } = usePlayPiano();

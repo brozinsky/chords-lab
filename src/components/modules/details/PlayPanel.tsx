@@ -1,5 +1,5 @@
-import Dropdown from "@/components/ui/Dropdown";
-import RadioGroup from "@/components/ui/RadioGroup";
+import Dropdown from "@/components/ui/dropdowns/Dropdown";
+import RadioGroup from "@/components/ui/inputs/RadioGroup";
 import Button from "@/components/ui/buttons/Button";
 import DropdownBPM from "@/components/ui/dropdowns/DropdownBPM";
 import usePlayPiano from "@/hooks/usePlayPiano";

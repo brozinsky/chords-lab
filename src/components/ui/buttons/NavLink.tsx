@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-const NavLink = ({ children, href }) => {
+type TProps = {
+  children: React.ReactNode;
+  href: string;
+};
+
+const NavLink = ({ children, href }: TProps) => {
   const location = useLocation();
   return (
     <Link to={href} className="flex items-center h-fit">

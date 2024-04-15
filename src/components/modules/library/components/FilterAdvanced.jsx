@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Checkbox from "@/components/elements/Checkbox";
+import Checkbox from "@/components/ui/inputs/Checkbox";
 import useFilterStore from "@/stores/useFilterStore";
 import { chords } from "@/utils/chords";
 import { scales, notes as pianoNotes } from "@/utils/notesData";

@@ -1,4 +1,4 @@
-import Checkbox from "@/components/elements/Checkbox";
+import Checkbox from "@/components/ui/inputs/Checkbox";
 import { scales } from "@/utils/notesData";
 import clsx from "clsx";
 import { useState } from "react";

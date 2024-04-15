@@ -1,6 +1,6 @@
-import NavLink from "@/components/elements/buttons/NavLink";
-import Dropdown from "@/components/ui/Dropdown";
-import Modal from "@/components/ui/Modal";
+import NavLink from "@/components/ui/buttons/NavLink";
+import Dropdown from "@/components/ui/dropdowns/Dropdown";
+import Modal from "@/components/ui/modals/Modal";
 import ButtonSettings from "@/components/ui/buttons/ButtonSettings";
 import { Link } from "react-router-dom";
 import Volume from "../settings/_partials/Volume";

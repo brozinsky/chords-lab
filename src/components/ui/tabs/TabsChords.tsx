@@ -4,11 +4,11 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/TabsShadcn";
-import LibrarySquareAllIconSVG from "../elements/svg/icons/LibrarySquareAllIconSVG";
-import LibrarySquareRomanIconSVG from "../elements/svg/icons/LibrarySquareRomanIconSVG";
-import LibrarySquareNoteIconSVG from "../elements/svg/icons/LibrarySquareNoteIconSVG";
-import Library from "../modules/library/Library";
+} from "@/components/ui/tabs/TabsShadcn";
+import LibrarySquareAllIconSVG from "../../elements/svg/icons/LibrarySquareAllIconSVG";
+import LibrarySquareRomanIconSVG from "../../elements/svg/icons/LibrarySquareRomanIconSVG";
+import LibrarySquareNoteIconSVG from "../../elements/svg/icons/LibrarySquareNoteIconSVG";
+import Library from "../../modules/library/Library";
 import clsx from "clsx";
 import useChordsTab from "@/hooks/chords/useChordsTabs";
 import { useMenuDrawer } from "@/stores/settings/useDrawerStore";

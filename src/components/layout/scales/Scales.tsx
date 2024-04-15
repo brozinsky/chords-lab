@@ -1,6 +1,6 @@
 import ScaleDetails from "@/components/modules/scale-details/ScaleDetails";
 import MenuTop from "@/components/modules/navigation/MenuTop";
-import TabsScales from "@/components/ui/TabsScales";
+import TabsScales from "@/components/ui/tabs/TabsScales";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileNotSupported from "@/components/layout/MobileNotSupported";
 

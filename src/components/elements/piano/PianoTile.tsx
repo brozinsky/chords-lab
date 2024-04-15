@@ -3,7 +3,7 @@ import clsx from "clsx";
 import PianoScaleSVG from "@/components/elements/svg/PianoScaleSVG";
 import { Chord, Note, Scale } from "tonal";
 import { motion } from "framer-motion";
-import ButtonPlayTile from "./buttons/ButtonPlayTile";
+import ButtonPlayTile from "../../ui/buttons/ButtonPlayTile";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import shortid from "shortid";
 

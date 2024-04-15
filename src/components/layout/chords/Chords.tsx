@@ -5,7 +5,7 @@ import { useMenuDrawer } from "@/stores/settings/useDrawerStore";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileNotSupported from "../MobileNotSupported";
 import ChordDetails from "@/components/modules/chord-details/ChordDetails";
-import TabsChords from "@/components/ui/TabsChords";
+import TabsChords from "@/components/ui/tabs/TabsChords";
 
 const tabs = [
   {

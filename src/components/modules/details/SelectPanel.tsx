@@ -1,4 +1,4 @@
-import Select from "@/components/ui/Select";
+import Select from "@/components/ui/dropdowns/Select";
 import useSelectedChord from "@/stores/chords/useSelectedChord";
 import useSelectedScale from "@/stores/useSelectedScale";
 import {

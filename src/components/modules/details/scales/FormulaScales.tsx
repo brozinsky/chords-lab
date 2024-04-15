@@ -3,7 +3,7 @@ import { processIntervals } from "@/utils/processIntervals";
 import React from "react";
 import shortid from "shortid";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import Modal from "@/components/ui/Modal";
+import Modal from "@/components/ui/modals/Modal";
 import ButtonInfo from "@/components/ui/buttons/ButtonInfo";
 import ChordFormulaModal from "../../chord-details/_partials/ChordFormulaModal";
 import { TNotesAllEnharmonic } from "@/utils/types";
