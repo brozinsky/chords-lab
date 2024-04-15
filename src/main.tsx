@@ -1,22 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "@/routes/Home";
-import ChordsPage from "@/routes/ChordsPage";
-import ScalesPage from "@/routes/ScalesPage";
-import ErrorPage from "@/routes/ErrorPage";
+import HomePage from "@/routes/home";
+import ChordsPage from "@/routes/chords";
+import ScalesPage from "@/routes/scales";
+import ErrorPage from "@/routes/error";
 import "@/styles//main.scss";
-import CirclePage from "./routes/CirclePage";
+import CirclePage from "./routes/circle";
 import { MantineProvider } from "@mantine/core";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import IntervalsPage from "./routes/intervals";
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <HomePage />,
     errorElement: <ErrorPage />,
   },
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "circle",
     element: <CirclePage />,
+  },
+  {
+    path: "intervals",
+    element: <IntervalsPage />,
   },
 ]);
 

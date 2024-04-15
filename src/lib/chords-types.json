@@ -1,0 +1,138 @@
+[
+  {
+    "name": "major",
+    "notes": [1, 5, 8],
+    "intervals": ["1P", "3M", "5P"],
+    "abbreviations": ["maj", "major", "M", "△"],
+    "extendedChords": ["major seventh", "major sixth", "major ninth"],
+    "reducedChords": []
+  },
+  {
+    "name": "minor",
+    "notes": [1, 4, 8],
+    "intervals": ["1P", "3m", "5P"],
+    "abbreviations": ["min", "minor", "m", "-"],
+    "extendedChords": ["minor seventh", "minor sixth", "minor ninth"],
+    "reducedChords": []
+  },
+  {
+    "name": "major seventh",
+    "notes": [1, 5, 8, 12],
+    "intervals": ["1P", "3M", "5P", "7M"],
+    "abbreviations": ["maj7", "△7"],
+    "extendedChords": ["major ninth"],
+    "reducedChords": ["major"]
+  },
+  {
+    "name": "augmented",
+    "notes": [1, 5, 9],
+    "intervals": ["1P", "3M", "A5"],
+    "abbreviations": ["aug", "+"],
+    "extendedChords": ["augmented seventh"],
+    "reducedChords": []
+  },
+  {
+    "name": "diminished",
+    "notes": [1, 4, 7],
+    "intervals": ["1P", "3m", "d5"],
+    "abbreviations": ["dim", "°"],
+    "extendedChords": ["diminished seventh", "half-diminished seventh"],
+    "reducedChords": []
+  },
+  {
+    "name": "minor seventh",
+    "notes": [1, 4, 8, 11],
+    "intervals": ["1P", "3m", "5P", "m7"],
+    "abbreviations": ["min7", "m7", "-7"],
+    "extendedChords": ["minor ninth"],
+    "reducedChords": ["minor"]
+  },
+  {
+    "name": "diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "intervals": ["1P", "3m", "d5", "m7"],
+    "abbreviations": ["dim7", "°7"],
+    "extendedChords": [],
+    "reducedChords": ["diminished"]
+  },
+  {
+    "name": "augmented seventh",
+    "notes": [1, 5, 9, 12],
+    "intervals": ["1P", "3M", "A5", "M7"],
+    "abbreviations": ["aug7", "+7"],
+    "extendedChords": [],
+    "reducedChords": ["augmented"]
+  },
+  {
+    "name": "minor sixth",
+    "notes": [1, 4, 8, 10],
+    "intervals": ["1P", "3m", "5P", "M6"],
+    "abbreviations": ["min6", "m6", "-6"],
+    "extendedChords": [],
+    "reducedChords": ["minor"]
+  },
+  {
+    "name": "dominant seventh",
+    "notes": [1, 5, 8, 10],
+    "intervals": ["1P", "3M", "5P", "m7"],
+    "abbreviations": ["dom7", "7"],
+    "extendedChords": ["dominant ninth", "dominant eleventh", "dominant thirteenth"],
+    "reducedChords": ["major"]
+  },
+  {
+    "name": "major sixth",
+    "notes": [1, 5, 8, 9],
+    "intervals": ["1P", "3M", "5P", "M6"],
+    "abbreviations": ["maj6", "△6"],
+    "extendedChords": [],
+    "reducedChords": ["major"]
+  },
+  {
+    "name": "half-diminished seventh",
+    "notes": [1, 4, 7, 10],
+    "intervals": ["1P", "3m", "d5", "m7"],
+    "abbreviations": ["m7b5", "min7b5", "-7b5", "ø", "ø7"],
+    "extendedChords": [],
+    "reducedChords": ["diminished"]
+  },
+  {
+    "name": "suspended second",
+    "notes": [1, 6, 8],
+    "intervals": ["1P", "M2", "5P"],
+    "abbreviations": ["sus2"],
+    "extendedChords": [],
+    "reducedChords": []
+  },
+  {
+    "name": "suspended fourth",
+    "notes": [1, 4, 9],
+    "intervals": ["1P", "P4", "5P"],
+    "abbreviations": ["sus", "sus4"],
+    "extendedChords": [],
+    "reducedChords": []
+  },
+  {
+    "name": "major ninth",
+    "notes": [1, 5, 8, 12, 15],
+    "intervals": ["1P", "3M", "5P", "M7", "M9"],
+    "abbreviations": ["maj9", "△9"],
+    "extendedChords": [],
+    "reducedChords": ["major seventh"]
+  },
+  {
+    "name": "minor ninth",
+    "notes": [1, 4, 8, 11, 14],
+    "intervals": ["1P", "3m", "5P", "m7", "M9"],
+    "abbreviations": ["min9", "m9", "-9"],
+    "extendedChords": [],
+    "reducedChords": ["minor seventh"]
+  },
+  {
+    "name": "dominant ninth",
+    "notes": [1, 5, 8, 10, 14],
+    "intervals": ["1P", "3M", "5P", "m7", "M9"],
+    "abbreviations": ["9", "dom9"],
+    "extendedChords": ["dominant eleventh", "dominant thirteenth"],
+    "reducedChords": ["dominant seventh"]
+  }
+]

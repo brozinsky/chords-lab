@@ -1,6 +1,5 @@
 import MenuTop from "@/components/modules/navigation/MenuTop";
 import { Interval } from "tonal";
-import React from "react";
 import CircleOfFifthsSVG from "@/components/elements/svg/CircleOfFifthsSVG";
 
 function circleOfFifths(startingNote: string, numNotes: number) {
@@ -35,15 +34,15 @@ function circleOfFifths(startingNote: string, numNotes: number) {
   return circleFifths;
 }
 
-export default function CirclePage() {
+const Circle = () => {
   const test = Interval.num("5P");
-
   const circle = circleOfFifths("C", 12);
-
   return (
     <>
       <MenuTop />
       <CircleOfFifthsSVG />
     </>
   );
-}
+};
+
+export default Circle;

@@ -4,13 +4,12 @@ import TabsScales from "@/components/ui/TabsScales";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileNotSupported from "@/components/layout/MobileNotSupported";
 
-export default function ScalesPage() {
+const Scales = () => {
   const matches = useMediaQuery("(max-width: 768px)");
 
   if (matches) {
     return <MobileNotSupported />;
   }
-
   return (
     <>
       <MenuTop />
@@ -26,4 +25,6 @@ export default function ScalesPage() {
       </main>
     </>
   );
-}
+};
+
+export default Scales;
