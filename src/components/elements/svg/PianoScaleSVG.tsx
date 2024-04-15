@@ -7,12 +7,12 @@ const whiteKeyHeight = "242.738";
 const blackKeyWidth = "31.619";
 const blackKeyHeight = "149.286";
 
-interface KeyCoords {
+type TKeyCoords = {
   note: string;
   x: number;
-}
+};
 
-const WHITE_KEY_COORDS: KeyCoords[] = [
+const WHITE_KEY_COORDS: TKeyCoords[] = [
   { note: "C1", x: 0.5 },
   { note: "D1", x: 76.1446 },
   { note: "E1", x: 151.7892 },
@@ -32,7 +32,7 @@ const WHITE_KEY_COORDS: KeyCoords[] = [
   { note: "B2", x: 983.8797999999999 },
 ];
 
-const BLACK_KEY_COORDS: KeyCoords[] = [
+const BLACK_KEY_COORDS: TKeyCoords[] = [
   { note: "C#1", x: 59.832 },
   { note: "D#1", x: 135.477 },
   { note: "F#1", x: 286.762 },
@@ -46,12 +46,12 @@ const BLACK_KEY_COORDS: KeyCoords[] = [
   { note: "A#2", x: 967.551 },
 ];
 
-interface PianoScaleProps {
+type TProps = {
   scale: string[];
   className: string;
-}
+};
 
-const PianoScaleSVG: React.FC<PianoScaleProps> = ({ scale, className }) => {
+const PianoScaleSVG: React.FC<TProps> = ({ scale, className }) => {
   return (
     <svg
       className={className}

@@ -1,7 +1,7 @@
 import { TNotes } from "@/utils/types";
 import { create } from "zustand";
 
-interface FilterStoreState {
+type TStore = {
   allChordsRoot: TNotes;
   setAllChordsRoot: (value: string) => void;
 
@@ -14,7 +14,7 @@ interface FilterStoreState {
   setNotesChordsNotes: (value: TNotes[]) => void;
 }
 
-const useFilterStore = create<FilterStoreState>((set) => ({
+const useFilterStore = create<TStore>((set) => ({
   allChordsRoot: "C",
   setAllChordsRoot: (value) => set(() => ({ allChordsRoot: value })),
 

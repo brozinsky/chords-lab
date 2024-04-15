@@ -2,7 +2,7 @@ import { TNotes } from "@/utils/types";
 import { Chord } from "tonal";
 import { create } from "zustand";
 
-export interface TChord {
+export type TChord = {
   abbreviations: string[];
   chordName: string;
   intervalNotes: string[];
@@ -10,7 +10,7 @@ export interface TChord {
   note: string;
 }
 
-interface TChordProps {
+type TChordProps = {
   empty?: boolean;
   name?: string;
   setNum?: number;
@@ -27,7 +27,7 @@ interface TChordProps {
   notes?: string[];
 }
 
-interface SelectedChordState {
+type TStore = {
   selectedChord: TChordProps | undefined;
   setSelectedChord: (value: TChordProps | undefined) => void;
   root: TNotes;
@@ -57,7 +57,7 @@ const initialChord: TChordProps = {
   notes: chordData.notes,
 };
 
-const useSelectedChord = create<SelectedChordState>((set) => ({
+const useSelectedChord = create<TStore>((set) => ({
   root: initialRoot,
   setRoot: (value) => {
     localStorage.setItem("root", value);

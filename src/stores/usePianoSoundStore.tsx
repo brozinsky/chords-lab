@@ -2,17 +2,17 @@ import { create } from "zustand";
 import { Howl } from "howler";
 import pianoLibrary23MP3 from "@/assets/audio/piano-octave-2-3.mp3";
 
-interface MidiSprite {
+type TMidiSprite = {
   [key: number]: [number, number];
   [key: string]: [number, number];
 }
 
-interface SoundStoreState {
+type TStore = {
   sound: Howl;
   isPianoSoundLoading: boolean;
 }
 
-const MIDI_SPRITE_2_3: MidiSprite = {
+const MIDI_SPRITE_2_3: TMidiSprite = {
   36: [0, 3000],
   37: [4800, 3000],
   38: [9600, 3000],
@@ -37,7 +37,7 @@ const MIDI_SPRITE_2_3: MidiSprite = {
   57: [100800, 3000],
   58: [105600, 3000],
 };
-export const usePianoSoundStore = create<SoundStoreState>((set) => ({
+export const usePianoSoundStore = create<TStore>((set) => ({
   sound: new Howl({
     src: [pianoLibrary23MP3],
     sprite: MIDI_SPRITE_2_3,

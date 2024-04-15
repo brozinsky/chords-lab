@@ -1,11 +1,14 @@
 import { create } from "zustand";
 
-interface StoreState {
+type TState = {
   bpm: number;
-  setBpm: (value: number) => void;
-}
+};
 
-const useBPMStore = create<StoreState>((set) => ({
+type TAction = {
+  setBpm: (value: number) => void;
+};
+
+const useBPMStore = create<TState & TAction>((set) => ({
   bpm: 150,
   setBpm: (value) => set(() => ({ bpm: value })),
 }));

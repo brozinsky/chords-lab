@@ -32,7 +32,6 @@ export default function ChordsPage() {
 
   return (
     <>
-      {matches && <div>tester</div>}
       <MenuTop />
       <main>
         <div

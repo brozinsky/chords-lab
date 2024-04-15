@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import { Note } from "tonal";
 
-interface PianoKeyProps {
+type TProps = {
   name: string;
   isPlaying: boolean;
   isActive: boolean;
   onClick?: () => void;
 }
 
-const PianoKey = ({ name, isPlaying, isActive, onClick }: PianoKeyProps) => {
+const PianoKey = ({ name, isPlaying, isActive, onClick }: TProps) => {
   const activeAccidental = "♯";
   // const activeAccidental = "♭";
   const classNames = clsx(

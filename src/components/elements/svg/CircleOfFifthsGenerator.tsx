@@ -52,7 +52,7 @@ const polarToCartesian = (
   return [x + r * Math.cos(radians), y + r * Math.sin(radians)];
 };
 
-interface CircleOfFifthsWedgeProps {
+type TProps = {
   x: number;
   y: number;
   r0: number;
@@ -68,7 +68,7 @@ const CircleOfFifthsWedge = ({
   r1,
   d0,
   d1,
-}: CircleOfFifthsWedgeProps) => {
+}: TProps) => {
   return (
     <path
       d={segmentPath(x, y, r0, r1, d0, d1)}

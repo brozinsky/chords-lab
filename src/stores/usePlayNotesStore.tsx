@@ -1,11 +1,11 @@
 import { create } from "zustand";
 
-interface SelectedScaleState {
+type TStore = {
   currentlyPlayedNotes: string[];
   setCurrentlyPlayedNotes: (value: string[]) => void;
 }
 
-const usePlayPianoStore = create<SelectedScaleState>((set) => ({
+const usePlayPianoStore = create<TStore>((set) => ({
   currentlyPlayedNotes: [],
   setCurrentlyPlayedNotes: (value) =>
     set(() => ({ currentlyPlayedNotes: value })),

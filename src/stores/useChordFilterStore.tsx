@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { scales, notes as pianoNotes } from "@/utils/notesData";
 import { chords } from "@/utils/chords";
 
-interface ChordFilterStoreState {
+type TStore = {
   lengths: number[];
   setLengths: (value: number[]) => void;
 
@@ -31,7 +31,7 @@ interface ChordFilterStoreState {
   setSearchValue: (value: string) => void;
 }
 
-const useChordFilterStore = create<ChordFilterStoreState>((set) => ({
+const useChordFilterStore = create<TStore>((set) => ({
   lengths: [3, 4],
   setLengths: (value) => set(() => ({ lengths: value })),
 

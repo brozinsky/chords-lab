@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { scales, notes as pianoNotes } from "@/utils/notesData";
 import { chords } from "@/utils/chords";
 
-interface FilterStoreState {
+type TStore = {
   isRoot: boolean;
   setIsRoot: (value: boolean) => void;
 
@@ -28,7 +28,7 @@ interface FilterStoreState {
   setSearchValue: (value: string) => void;
 }
 
-const useFilterStore = create<FilterStoreState>((set) => ({
+const useFilterStore = create<TStore>((set) => ({
   isRoot: false,
   setIsRoot: (value) => set(() => ({ isRoot: value })),
 

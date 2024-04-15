@@ -3,7 +3,7 @@ import isChordInScale from "@/utils/isChordInScale";
 import { createScale } from "@/utils/notesData";
 import { TChordCombinations } from "@/utils/types";
 
-interface FilteredListsStore {
+type TStore = {
   filteredLists: {
     scaleFiltered: TChordCombinations[];
     rootFiltered: TChordCombinations[];
@@ -21,7 +21,7 @@ interface FilteredListsStore {
   ) => void;
 }
 
-const useFilteredListsStore = create<FilteredListsStore>((set) => ({
+const useFilteredListsStore = create<TStore>((set) => ({
   filteredLists: {
     scaleFiltered: [],
     rootFiltered: [],

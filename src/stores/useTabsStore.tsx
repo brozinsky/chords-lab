@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface StoreState {
+type TStore = {
   chordTab: number;
   setChordTab: (value: number)  => void;
 
@@ -8,7 +8,7 @@ interface StoreState {
   setScaleTab: (value: number) => void;
 }
 
-const useTabsStore = create<StoreState>((set) => ({
+const useTabsStore = create<TStore>((set) => ({
   chordTab: 0,
   setChordTab: (value) => set(() => ({ chordTab: value })),
 

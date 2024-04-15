@@ -1,11 +1,11 @@
 import ListingChords from "./ListingChords";
 import ListingScales from "./ListingScales";
 
-interface Props {
+type TProps = {
   variant: "chords" | "scales";
 }
 
-const Library = ({ variant = "chords" }: Props) => {
+const Library = ({ variant = "chords" }: TProps) => {
   return (
     <div id="Library" className="container relative">
       {/* <div className="library-panel library-panel--chord"> */}

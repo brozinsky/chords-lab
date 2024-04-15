@@ -16,7 +16,7 @@ const initializeAllChords = () => {
   return initAllChords;
 };
 
-interface StoreState {
+type TStore = {
   chordTab: string;
   setChordTab: (value: string) => void;
 
@@ -27,7 +27,7 @@ interface StoreState {
   setAllChordsList: (value: TChord[]) => void;
 }
 
-const useChordsListStore = create<StoreState>((set) => ({
+const useChordsListStore = create<TStore>((set) => ({
   chordTab: "all",
   setChordTab: (value) => set({ chordTab: value }),
 

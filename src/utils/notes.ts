@@ -83,11 +83,11 @@ export function getNumberStepsArray(binaryString: string) {
   }
   return steps; //eg 	[2,2,1,2,2,2]
 }
-interface NoteTypes {
+type TNotes = {
   name: string;
 }
 
-export let pianoNotes: NoteTypes[] = [];
+export let pianoNotes: TNotes[] = [];
 for (const note in notesWithSprite) {
   const name = note;
   pianoNotes.push({ name });

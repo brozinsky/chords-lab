@@ -1,6 +1,6 @@
 import { notes, arrangeNotesByRoot } from "@/utils/notesData";
 
-export interface TChordData {
+export type TChordData = {
   name: string;
   notes: number[];
   abbreviations: string[];
