@@ -5,6 +5,7 @@ import HomePage from "@/routes/home";
 import ChordsPage from "@/routes/chords";
 import ScalesPage from "@/routes/scales";
 import ErrorPage from "@/routes/error";
+import ProgressionPage from "@/routes/progression"
 import "@/styles//main.scss";
 import CirclePage from "./routes/circle";
 import { MantineProvider } from "@mantine/core";
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "scales",
     element: <ScalesPage />,
+  },
+  {
+    path: "progression",
+    element: <ProgressionPage />,
   },
   {
     path: "circle",
