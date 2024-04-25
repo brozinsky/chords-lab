@@ -10,11 +10,11 @@ interface IProgressProps
 const Progress = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
   IProgressProps
->(({ className, indicatorColor = "bg-primary-500", value, ...props }, ref) => (
+>(({ className, indicatorColor = "bg-emerald-500", value, ...props }, ref) => (
   <ProgressPrimitive.Root
     ref={ref}
     className={cn(
-      "relative h-2 w-full overflow-hidden rounded-full bg-neutral-400 border-none",
+      "relative h-2 w-full overflow-hidden rounded-full bg-emerald-800 border-none",
       className
     )}
     {...props}
