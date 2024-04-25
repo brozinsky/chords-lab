@@ -46,9 +46,9 @@ export type TChordCombinations = {
 // };
 
 export type TInputOption = {
-  id: string;
+  id: string | number;
   name: string;
-  value: string;
+  value: string | number;
 };
 
 export type TState = string;

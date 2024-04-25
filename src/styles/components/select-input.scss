@@ -23,20 +23,48 @@
   &__label {
     @apply mb-3 text-emerald-500;
   }
-  &--ghost {
+  &--ghost,
+  &--outlined {
     .select-input {
       &__button {
-        @apply py-2 px-4 rounded-lg bg-neutral-800 border-[2px] border-transparent;
+        @apply py-2 px-4 rounded-lg border-[2px];
         font-size: 2.75rem;
         line-height: 1.25;
         transition: 0.25s ease all;
+      }
+      &__list {
+        @apply bg-neutral-700;
+      }
+    }
+  }
+  &--ghost {
+    .select-input {
+      &__button {
+        @apply border-transparent bg-neutral-800;
         &:hover,
         &[data-headlessui-state="open"] {
           @apply bg-neutral-600 border-neutral-400;
         }
       }
-      &__list {
-        @apply bg-neutral-700;
+    }
+  }
+  &--outlined {
+    .select-input {
+      &__button {
+        @apply border-neutral-400 bg-transparent;
+        &:hover,
+        &[data-headlessui-state="open"] {
+          @apply bg-neutral-600 border-neutral-300;
+        }
+      }
+    }
+  }
+  &--sm {
+    .select-input {
+      &__button {
+        @apply py-1;
+        font-size: 1.5rem;
+        line-height: 1.25;
       }
     }
   }

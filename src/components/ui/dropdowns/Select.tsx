@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { TInputOption, TSetState, TState } from "@/utils/types";
 import { Listbox, Transition } from "@headlessui/react";
 import clsx from "clsx";
@@ -7,12 +8,13 @@ type TProps = {
   label?: string;
   options: TInputOption[];
   defaultValue?: string;
-  variant?: "base" | "ghost";
+  variant?: "base" | "ghost" | "outlined";
   state: TState;
   setState: TSetState;
   displayValue?: string;
   buttonClassName?: string;
   contentType?: "type" | "tonic" | undefined;
+  size?: "sm" | undefined;
 };
 
 export default function Select({
@@ -24,6 +26,7 @@ export default function Select({
   setState,
   displayValue,
   buttonClassName,
+  size,
 }: TProps) {
   // const [state, setState] = useState(
   //   defaultValue ? defaultValue : options[0].value
@@ -33,7 +36,10 @@ export default function Select({
     <Listbox
       id="Select"
       as={"div"}
-      className={`select-input select-input--${variant}`}
+      className={cn(
+        `select-input select-input--${variant}`,
+        size && `select-input--${size}`
+      )}
       value={state}
       onChange={setState}
     >
