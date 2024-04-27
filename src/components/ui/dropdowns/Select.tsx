@@ -6,11 +6,11 @@ import { Fragment, useState } from "react";
 
 type TProps = {
   label?: string;
-  options: TInputOption[];
+  options: any;
   defaultValue?: string;
   variant?: "base" | "ghost" | "outlined";
-  state: TState;
-  setState: TSetState;
+  state: any;
+  setState: any;
   displayValue?: string;
   buttonClassName?: string;
   contentType?: "type" | "tonic" | undefined;
