@@ -1,6 +1,10 @@
 import { TSVG } from "@/utils/types";
 
-export default function TrashIconSVG({ className, width = "24" }: TSVG) {
+export default function TrashIconSVG({
+  className,
+  width = "24",
+  pathClass = "stroke-foreground",
+}: TSVG) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,9 +12,10 @@ export default function TrashIconSVG({ className, width = "24" }: TSVG) {
       width={width}
       height={width}
       fill="none"
+      viewBox={`0 0 24 24`}
     >
       <path
-        className="stroke-foreground"
+        className={pathClass}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}
