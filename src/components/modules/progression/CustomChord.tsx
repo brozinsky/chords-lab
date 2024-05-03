@@ -6,9 +6,9 @@ import {
 import { TNotes } from "@/utils/types";
 
 type TProps = {
-  chordKey: TNotes;
+  chordKey?: TNotes;
   setChordKey: (value: TNotes) => void;
-  chordType: string;
+  chordType?: string;
   setChordType: (value: string) => void;
 };
 
