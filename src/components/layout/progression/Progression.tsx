@@ -56,8 +56,8 @@ const Progression = () => {
           </div> */}
           <div className="max-w-[828px] mb-16 w-full">
             <ChordProgression
-              chordId={editedChordId}
-              setChordId={setEditedChordId}
+              editedChordId={editedChordId}
+              setEditedChordId={setEditedChordId}
               progression={chordProgression}
               scaleKey={scaleKey}
               scaleType={scaleType}

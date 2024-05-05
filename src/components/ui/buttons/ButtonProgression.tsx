@@ -1,9 +1,6 @@
 import TrashIconSVG from "@/components/elements/svg/icons/interface/TrashIconSVG";
-import React, {
-  ButtonHTMLAttributes,
-  DetailedHTMLProps,
-  MouseEvent,
-} from "react";
+import clsx from "clsx";
+import { MouseEvent } from "react";
 import { Chord } from "tonal";
 
 type TProps = {
@@ -11,6 +8,7 @@ type TProps = {
   chordKey?: string;
   chordType?: string;
   onClick: () => void;
+  editedChordId: number | null;
   handleDelete?: (index: number) => void;
   id?: number;
   romanNumeral?: string;
@@ -23,19 +21,23 @@ const ButtonProgression = ({
   onClick,
   id,
   romanNumeral,
+  editedChordId,
   handleDelete,
 }: TProps) => {
   const handleDeleteClick = (e: MouseEvent) => {
     e.stopPropagation;
     handleDelete && id && handleDelete(id);
   };
-  const notes = variant === "chord" ? Chord.get(`${chordKey} ${chordType}`).notes  : null
-  console.log(notes);
+  const notes =
+    variant === "chord" ? Chord.get(`${chordKey} ${chordType}`).notes : null;
   if (variant === "new") {
     return (
       <button
         onClick={onClick}
-        className="min-w-[130px] min-h-[116px] items-center transition border-dashed justify-center flex flex-col px-4 py-3 gap-1 rounded-xl border-2 border-neutral-300 cursor-pointer hover:border-neutral-100"
+        className={clsx(
+          editedChordId === id && "!border-emerald-500",
+          "min-w-[130px] min-h-[116px] items-center transition border-dashed justify-center flex flex-col px-4 py-3 gap-1 rounded-xl border-2 border-neutral-300 cursor-pointer hover:border-neutral-100"
+        )}
       >
         <div className="text-3xl hover:text-white transition">+</div>
       </button>
@@ -46,18 +48,20 @@ const ButtonProgression = ({
       <div className="relative group">
         <button
           onClick={onClick}
-          className="relative transition min-w-[130px] min-h-[116px] items-center justify-center flex flex-col px-4 py-3 gap-1 rounded-xl border-2 border-neutral-400 cursor-pointer hover:border-neutral-300"
+          className={clsx(
+            editedChordId === id && "!border-emerald-500",
+            "relative transition min-w-[130px] min-h-[116px] items-center justify-center flex flex-col px-4 py-3 gap-1 rounded-xl border-2 border-neutral-400 cursor-pointer hover:border-neutral-300"
+          )}
         >
           {romanNumeral && <div className="text-xl">{romanNumeral}</div>}
           <div className="text-base">
             {chordKey} {chordType}
           </div>
           <div className="text-xs flex flex-row gap-2">
-            {notes && notes.map((note, index) => {
-              return (
-                  <div key={index}>{note}</div>
-              )
-            })}
+            {notes &&
+              notes.map((note, index) => {
+                return <div key={index}>{note}</div>;
+              })}
           </div>
         </button>
         <button

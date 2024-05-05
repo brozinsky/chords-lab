@@ -1,7 +1,5 @@
 import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
 import ButtonProgression from "@/components/ui/buttons/ButtonProgression";
-import Select from "@/components/ui/dropdowns/Select";
-import React, { useEffect, useState } from "react";
 
 const notesOptions = [
   { id: 1, value: ["I", "IV", "v", "iv"], name: "I - IV - v - iv" },
@@ -21,8 +19,8 @@ type TProps = {
   progression: TChordProgressionItem[];
   scaleKey: string;
   scaleType: string;
-  chordId: number | null;
-  setChordId: (index: number | null) => void
+  editedChordId: number | null;
+  setEditedChordId: (index: number | null) => void
   removeChord: (index: number) => void
 };
 
@@ -30,8 +28,8 @@ const ChordProgression = ({
   progression,
   scaleKey,
   scaleType,
-  chordId,
-  setChordId,
+  editedChordId,
+  setEditedChordId,
   removeChord,
 }: TProps) => {
 
@@ -59,7 +57,8 @@ const ChordProgression = ({
                   romanNumeral={chord.romanNumeral}
                   chordKey={chord.key}
                   chordType={chord.type}
-                  onClick={() => setChordId(chord.id)}
+                  editedChordId={editedChordId}
+                  onClick={() => setEditedChordId(chord.id)}
                   handleDelete={() => removeChord(chord.id)}
                 />
                 <div className="flex flex-col py-4 gap-2 items-center justify-center rounded-lg">
@@ -70,7 +69,8 @@ const ChordProgression = ({
           })}
         <ButtonProgression
           variant="new"
-          onClick={() => setChordId(-1)}
+          editedChordId={editedChordId}
+          onClick={() => setEditedChordId(-1)}
         />
       </div>
       <div></div>
