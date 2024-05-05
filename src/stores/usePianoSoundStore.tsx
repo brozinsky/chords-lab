@@ -5,12 +5,14 @@ import pianoLibrary23MP3 from "@/assets/audio/piano-octave-2-3.mp3";
 type TMidiSprite = {
   [key: number]: [number, number];
   [key: string]: [number, number];
-}
+};
 
 type TStore = {
   sound: Howl;
   isPianoSoundLoading: boolean;
-}
+  currentChordIndexPlaying: number | null;
+  setCurrentChordIndexPlaying: (id: number | null) => void;
+};
 
 const MIDI_SPRITE_2_3: TMidiSprite = {
   36: [0, 3000],
@@ -38,6 +40,8 @@ const MIDI_SPRITE_2_3: TMidiSprite = {
   58: [105600, 3000],
 };
 export const usePianoSoundStore = create<TStore>((set) => ({
+  currentChordIndexPlaying: null,
+  setCurrentChordIndexPlaying: (id) => set({ currentChordIndexPlaying: id }),
   sound: new Howl({
     src: [pianoLibrary23MP3],
     sprite: MIDI_SPRITE_2_3,

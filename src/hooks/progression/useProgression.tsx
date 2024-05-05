@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import progressionRelationsJSON from "@/lib/progression-relations.json";
 import { Chord, Progression } from "tonal";
 import shortid from "shortid";
+import { TChordProgressionItem } from "@/utils/types";
 
 const useProgression = () => {
   const [scaleKey, setScaleKey] = useState("C");
@@ -10,15 +11,15 @@ const useProgression = () => {
   const oneMajData = progressionRelationsJSON["Imaj"];
   const [suggestedChords, setSuggestedChords] = useState(oneMajData);
   // const [chordProgression, setChordProgression] = useState([
-  //   { id: 1, romanNumeral: "Imaj", key: "C", type: "maj" },
-  //   { id: 2, romanNumeral: "Vsus", key: "G", type: "sus" },
-  //   { id: 3, romanNumeral: "Vmaj7", key: "G", type: "maj7" },
-  //   { id: 4, romanNumeral: "IVmaj", key: "F", type: "maj" },
+  //   { id: "1", romanNumeral: "Imaj", key: "C", type: "maj" },
+  //   { id: "2", romanNumeral: "Vsus", key: "G", type: "sus" },
+  //   { id: "3", romanNumeral: "Vmaj7", key: "G", type: "maj7" },
+  //   { id: "4", romanNumeral: "IVmaj", key: "F", type: "maj" },
   // ]);
 
-  const [chordProgression, setChordProgression] = useState([]);
+  const [chordProgression, setChordProgression] = useState<TChordProgressionItem[]>([]);
 
-  function findPreviousChordById(targetId: number) {
+  function findPreviousChordById(targetId: string) {
     for (let i = 1; i < chordProgression.length; i++) {
       // Start from 1 because there is no previous item
       if (chordProgression[i].id === targetId) {
@@ -84,7 +85,7 @@ const useProgression = () => {
     );
   };
 
-  const removeChord = (id: number) => {
+  const removeChord = (id: string) => {
     setChordProgression((currentProgression) =>
       currentProgression.filter((chord) => chord.id !== id)
     );

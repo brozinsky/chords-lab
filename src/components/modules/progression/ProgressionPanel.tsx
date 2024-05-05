@@ -1,5 +1,4 @@
 import Dropdown from "@/components/ui/dropdowns/Dropdown";
-import React, { useState } from "react";
 import Button from "@/components/ui/buttons/Button";
 import { motion } from "framer-motion";
 import DropdownBPM from "@/components/ui/dropdowns/DropdownBPM";
@@ -8,6 +7,8 @@ import {
   notesOptions,
 } from "@/utils/functions/music-theory/selectOptions";
 import Select from "@/components/ui/dropdowns/Select";
+import usePlayPiano from "@/hooks/usePlayPiano";
+import { TChordProgressionItem } from "@/utils/types";
 
 const options = [
   {
@@ -112,6 +113,7 @@ type TProps = {
   setScaleKey: any;
   setScaleType: any;
   scaleType: any;
+  chordProgression: TChordProgressionItem[];
 };
 
 const ProgressionPanel = ({
@@ -119,7 +121,15 @@ const ProgressionPanel = ({
   setScaleKey,
   setScaleType,
   scaleType,
+  chordProgression
 }: TProps) => {
+  const { playPianoProgression } = usePlayPiano();
+  // const [chordProgression, setChordProgression] = useState([
+  //   { id: 1, romanNumeral: "Imaj", key: "C", type: "maj" },
+  //   { id: 2, romanNumeral: "Vsus", key: "G", type: "sus" },
+  //   { id: 3, romanNumeral: "Vmaj7", key: "G", type: "maj7" },
+  //   { id: 4, romanNumeral: "IVmaj", key: "F", type: "maj" },
+  // ]);
 
   return (
     <div className="pt-3 flex justify-between items-center">
@@ -168,7 +178,7 @@ const ProgressionPanel = ({
           variant="emerald"
           icon="play"
           isLoading={false}
-          onClick={() => console.log("")}
+          onClick={() => playPianoProgression(chordProgression)}
         >
           Play
         </Button>

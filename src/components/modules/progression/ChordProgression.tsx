@@ -1,5 +1,6 @@
 import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
 import ButtonProgression from "@/components/ui/buttons/ButtonProgression";
+import usePlayPiano from "@/hooks/usePlayPiano";
 import { TChordProgressionItem } from "@/utils/types";
 
 const notesOptions = [
@@ -13,9 +14,9 @@ type TProps = {
   progression: TChordProgressionItem[];
   scaleKey: string;
   scaleType: string;
-  editedChordId: number | null;
-  setEditedChordId: (index: number | null) => void;
-  removeChord: (index: number) => void;
+  editedChordId: string | null;
+  setEditedChordId: (index: string | null) => void;
+  removeChord: (index: string) => void;
   initNewChord: () => void;
 };
 
@@ -28,6 +29,7 @@ const ChordProgression = ({
   removeChord,
   initNewChord
 }: TProps) => {
+  const { currentChordIndexPlaying } = usePlayPiano();
 
   return (
     <div className="border border-neutral-500 w-full min-h-48 bg-neutral-800 flex flex-col gap-2 px-6 rounded-2xl py-4 justify-between">
@@ -50,6 +52,7 @@ const ChordProgression = ({
               <div className="flex items-center justify-center gap-6" key={chord.id}>
                 <ButtonProgression
                   id={chord.id}
+                  isPlaying={currentChordIndexPlaying !== null && progression[currentChordIndexPlaying].id === chord.id}
                   romanNumeral={chord.romanNumeral}
                   chordKey={chord.key}
                   chordType={chord.type}

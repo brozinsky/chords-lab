@@ -58,6 +58,7 @@ const Progression = () => {
               removeChord={removeChord}
             />
             <ProgressionPanel
+              chordProgression={chordProgression}
               scaleKey={scaleKey}
               setScaleKey={setScaleKey}
               setScaleType={setScaleType}
@@ -66,7 +67,7 @@ const Progression = () => {
           </div>
           {/* <div>chordKey={chordProgression[editedChordIndex].key}</div> */}
 
-          {editedChordId !== null && editedChordId !== -1 && (
+          {editedChordId !== null && (
             <div className="max-w-[828px] w-full bg-neutral-800 rounded-lg border border-neutral-500 px-8 py-6">
               <h2 className="text-2xl mb-3">Add chord</h2>
               {/* <div>

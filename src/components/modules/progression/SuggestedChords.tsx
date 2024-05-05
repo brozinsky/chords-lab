@@ -13,7 +13,7 @@ type TProps = {
   progression: TChordProgressionItem[];
   chords: TChordsValue;
   scaleKey: string;
-  editedChordId: number | null;
+  editedChordId: string | null;
   setChordKey: (key: string) => void;
   setChordType: (type: string) => void;
   setChordRomanNumeral: (key: string, type: string) => void;

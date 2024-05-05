@@ -8,10 +8,11 @@ type TProps = {
   chordKey?: string;
   chordType?: string;
   onClick: () => void;
-  editedChordId: number | null;
-  handleDelete?: (index: number) => void;
-  id?: number;
+  editedChordId: string | null;
+  handleDelete?: (index: string) => void;
+  id?: string;
   romanNumeral?: string;
+  isPlaying?: boolean;
 };
 
 const ButtonProgression = ({
@@ -22,8 +23,10 @@ const ButtonProgression = ({
   id,
   romanNumeral,
   editedChordId,
+  isPlaying,
   handleDelete,
 }: TProps) => {
+
   const handleDeleteClick = (e: MouseEvent) => {
     e.stopPropagation;
     handleDelete && id && handleDelete(id);
@@ -49,8 +52,9 @@ const ButtonProgression = ({
         <button
           onClick={onClick}
           className={clsx(
+            isPlaying && "bg-white/10",
             editedChordId === id && "!border-emerald-500",
-            "relative transition min-w-[130px] min-h-[116px] items-center justify-center flex flex-col px-4 py-3 gap-1 rounded-xl border-2 border-neutral-400 cursor-pointer hover:border-neutral-300"
+            "relative transition min-w-[130px] min-h-[116px] duration-200 items-center justify-center flex flex-col px-4 py-3 gap-1 rounded-xl border-2 border-neutral-400 cursor-pointer hover:border-neutral-300"
           )}
         >
           {romanNumeral && <div className="text-xl">{romanNumeral}</div>}
