@@ -21,8 +21,8 @@ type TProps = {
   progression: TChordProgressionItem[];
   scaleKey: string;
   scaleType: string;
-  chordIndex: number;
-  setChordIndex: (index: number) => void
+  chordId: number | null;
+  setChordId: (index: number | null) => void
   removeChord: (index: number) => void
 };
 
@@ -30,8 +30,8 @@ const ChordProgression = ({
   progression,
   scaleKey,
   scaleType,
-  chordIndex,
-  setChordIndex,
+  chordId,
+  setChordId,
   removeChord,
 }: TProps) => {
 
@@ -51,15 +51,16 @@ const ChordProgression = ({
       </div>
       <div className="flex gap-6 mx-auto py-4 max-w-full overflow-auto">
         {progression.length > 0 &&
-          progression.map((chord, index) => {
+          progression.map((chord) => {
             return (
               <div className="flex items-center justify-center gap-6" key={chord.id}>
                 <ButtonProgression
                   id={chord.id}
+                  romanNumeral={chord.romanNumeral}
                   chordKey={chord.key}
                   chordType={chord.type}
-                  onClick={() => setChordIndex(index)}
-                  handleDelete={() => removeChord(index)}
+                  onClick={() => setChordId(chord.id)}
+                  handleDelete={() => removeChord(chord.id)}
                 />
                 <div className="flex flex-col py-4 gap-2 items-center justify-center rounded-lg">
                   <ArrowSmSVG pathClass={"stroke-neutral-300"} />
@@ -69,7 +70,7 @@ const ChordProgression = ({
           })}
         <ButtonProgression
           variant="new"
-          onClick={() => setChordIndex(progression.length + 1)}
+          onClick={() => setChordId(-1)}
         />
       </div>
       <div></div>

@@ -4,6 +4,7 @@ import React, {
   DetailedHTMLProps,
   MouseEvent,
 } from "react";
+import { Chord } from "tonal";
 
 type TProps = {
   variant?: "chord" | "new";
@@ -12,6 +13,7 @@ type TProps = {
   onClick: () => void;
   handleDelete?: (index: number) => void;
   id?: number;
+  romanNumeral?: string;
 };
 
 const ButtonProgression = ({
@@ -20,12 +22,15 @@ const ButtonProgression = ({
   chordType,
   onClick,
   id,
+  romanNumeral,
   handleDelete,
 }: TProps) => {
   const handleDeleteClick = (e: MouseEvent) => {
     e.stopPropagation;
     handleDelete && id && handleDelete(id);
   };
+  const notes = variant === "chord" ? Chord.get(`${chordKey} ${chordType}`).notes  : null
+  console.log(notes);
   if (variant === "new") {
     return (
       <button
@@ -43,11 +48,17 @@ const ButtonProgression = ({
           onClick={onClick}
           className="relative transition min-w-[130px] min-h-[116px] items-center justify-center flex flex-col px-4 py-3 gap-1 rounded-xl border-2 border-neutral-400 cursor-pointer hover:border-neutral-300"
         >
-          <div className="text-xl">II</div>
+          {romanNumeral && <div className="text-xl">{romanNumeral}</div>}
           <div className="text-base">
             {chordKey} {chordType}
           </div>
-          <div className="text-xs">C - D - E</div>
+          <div className="text-xs flex flex-row gap-2">
+            {notes && notes.map((note, index) => {
+              return (
+                  <div key={index}>{note}</div>
+              )
+            })}
+          </div>
         </button>
         <button
           className="bg-warning group border border-transparent flex items-center justify-center rounded-lg w-8 h-8 absolute -right-1 -top-1 opacity-0 transition duration-500 ease-in-out group-hover:visible invisible group-hover:opacity-100"
