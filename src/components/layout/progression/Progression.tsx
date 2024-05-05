@@ -106,8 +106,12 @@ const Progression = () => {
                   <>
                     <div className="w-full h-[1px] bg-neutral-400 my-6"></div>
                     <SuggestedChords
+                      editedChordId={editedChordId}
+                      progression={chordProgression}
                       chords={suggestedChords}
                       scaleKey={scaleKey}
+                      setChordKey={setChordKey}
+                      setChordType={setChordType}
                     />
                   </>
                 )}

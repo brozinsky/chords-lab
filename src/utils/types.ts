@@ -110,3 +110,10 @@ export type TNotesUpperEnharmonic =
 export type TNotesAllEnharmonic = TNotesEnharmonic & TNotesUpperEnharmonic;
 
 export type TChordsTabs = "all" | "roman" | "notes";
+
+export type TChordProgressionItem = {
+  id: number;
+  key: string;
+  type: string;
+  romanNumeral: string;
+};

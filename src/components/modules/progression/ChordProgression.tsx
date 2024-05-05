@@ -1,5 +1,6 @@
 import ArrowSmSVG from "@/components/elements/svg/icons/interface/ArrowSmSVG";
 import ButtonProgression from "@/components/ui/buttons/ButtonProgression";
+import { TChordProgressionItem } from "@/utils/types";
 
 const notesOptions = [
   { id: 1, value: ["I", "IV", "v", "iv"], name: "I - IV - v - iv" },
@@ -7,13 +8,6 @@ const notesOptions = [
   { id: 3, value: ["I", "V", "IV", "V"], name: "I - IV - v - iv" },
   { id: 4, value: ["I", "IV", "ii", "V"], name: "I - IV - v - iv" },
 ];
-
-type TChordProgressionItem = {
-  id: number;
-  key: string;
-  type: string;
-  romanNumeral: string;
-};
 
 type TProps = {
   progression: TChordProgressionItem[];

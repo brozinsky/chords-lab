@@ -1,18 +1,31 @@
+import { useEffect, useMemo } from "react";
 import Progress from "@/components/ui/progress/Progress";
+import { simplifyChordType } from "@/utils/functions/music-theory/simplifyChordType";
+import { Chord, Progression } from "tonal";
 import clsx from "clsx";
-import React, { useMemo } from "react";
-import { Interval, Note, Progression, RomanNumeral } from "tonal";
+import { TChordProgressionItem } from "@/utils/types";
 
 interface TChordsValue {
   [key: string]: number;
 }
 
 type TProps = {
+  progression: TChordProgressionItem[];
   chords: TChordsValue;
   scaleKey: string;
+  editedChordId: number | null;
+  setChordKey: (key: string) => void;
+  setChordType: (type: string) => void;
 };
 
-const SuggestedChords = ({ chords, scaleKey }: TProps) => {
+const SuggestedChords = ({
+  editedChordId,
+  chords,
+  progression,
+  scaleKey,
+  setChordKey,
+  setChordType,
+}: TProps) => {
   const maxValue = useMemo(() => {
     return Math.max(...Object.values(chords));
   }, [chords]);
@@ -20,6 +33,14 @@ const SuggestedChords = ({ chords, scaleKey }: TProps) => {
   // const totalSum = useMemo(() => {
   //   return Object.values(chords).reduce((sum, value) => sum + value, 0);
   // }, [chords]);
+
+  useEffect(() => {
+    console.log(chords);
+  }, []);
+  const handleOnClick = (key: string, type: string) => {
+    setChordKey(key);
+    setChordType(type);
+  };
 
   return (
     <>
@@ -62,22 +83,53 @@ const SuggestedChords = ({ chords, scaleKey }: TProps) => {
           } else {
             indicatorColor = "bg-emerald-500 opacity-100";
           }
+          const currentChordName = Progression.fromRomanNumerals(scaleKey, [
+            key,
+          ]);
+          const currentChordTonic = Chord.get(currentChordName[0]).tonic;
+          const currentChordType = Chord.get(currentChordName[0]).type;
+
+          const editedChordType = progression.find(
+            (item) => item.id === editedChordId
+          )?.type;
+          const editedChordKey = progression.find(
+            (item) => item.id === editedChordId
+          )?.key;
+
           return (
-            <div
+            <button
               key={key}
-              className="relative flex flex-col px-4 py-3 gap-2 rounded-xl bg-card border-2 border-neutral-400 cursor-pointer hover:border-neutral-300"
+              onClick={() =>
+                currentChordTonic &&
+                currentChordType &&
+                handleOnClick(
+                  currentChordTonic,
+                  simplifyChordType(currentChordType)
+                )
+              }
+              className={clsx(
+                editedChordKey === currentChordTonic &&
+                  editedChordType === simplifyChordType(currentChordType) &&
+                  "!border-emerald-500",
+                "relative flex flex-col px-4 py-3 gap-2 rounded-xl bg-card border-2 border-neutral-400 cursor-pointer hover:border-neutral-300"
+              )}
             >
               <div>
                 <div className="flex flex-row gap-0.5 items-end absolute left-1.5 top-1.5">
                   {standardizeChord(key).map((item, index) => {
                     return (
-                      <div className={clsx(index > 0 ? "text-xs" : "text-sm",)} key={item}>
+                      <div
+                        className={clsx(index > 0 ? "text-xs" : "text-sm")}
+                        key={item}
+                      >
                         {item}
                       </div>
                     );
                   })}
                 </div>
-                <div className="mt-5">{Progression.fromRomanNumerals(scaleKey, [key])}</div>
+                <div className="mt-5">
+                  {Progression.fromRomanNumerals(scaleKey, [key])}
+                </div>
                 {/* <div>{percentage}%</div> */}
               </div>
               <div>
@@ -86,7 +138,7 @@ const SuggestedChords = ({ chords, scaleKey }: TProps) => {
                   indicatorColor={indicatorColor}
                 />
               </div>
-            </div>
+            </button>
           );
         })}
       </div>
