@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from "react";
 import progressionRelationsJSON from "@/lib/progression-relations.json";
 import { Chord, Progression } from "tonal";
+import shortid from "shortid";
 
 const useProgression = () => {
   const [scaleKey, setScaleKey] = useState("C");
   const [scaleType, setScaleType] = useState("major");
-  const [editedChordId, setEditedChordId] = useState<number | null>(null);
+  const [editedChordId, setEditedChordId] = useState<string | null>(null);
   const oneMajData = progressionRelationsJSON["Imaj"];
   const [suggestedChords, setSuggestedChords] = useState(oneMajData);
-  const [chordProgression, setChordProgression] = useState([
-    { id: 1, romanNumeral: "Imaj", key: "C", type: "maj" },
-    { id: 2, romanNumeral: "Vsus", key: "G", type: "sus" },
-    { id: 3, romanNumeral: "Vmaj7", key: "G", type: "maj7" },
-    { id: 4, romanNumeral: "IVmaj", key: "F", type: "maj" },
-  ]);
+  // const [chordProgression, setChordProgression] = useState([
+  //   { id: 1, romanNumeral: "Imaj", key: "C", type: "maj" },
+  //   { id: 2, romanNumeral: "Vsus", key: "G", type: "sus" },
+  //   { id: 3, romanNumeral: "Vmaj7", key: "G", type: "maj7" },
+  //   { id: 4, romanNumeral: "IVmaj", key: "F", type: "maj" },
+  // ]);
 
-  const [romanProgression, setRomanProgression] = useState([
-    "Imaj",
-    "Vsus",
-    "IImin",
-    "IVmaj",
-  ]);
+  const [chordProgression, setChordProgression] = useState([]);
 
   function findPreviousChordById(targetId: number) {
     for (let i = 1; i < chordProgression.length; i++) {
@@ -30,6 +26,16 @@ const useProgression = () => {
       }
     }
     return null; // Return null if no previous item
+  }
+
+  const initNewChord = () => {
+    const newId = shortid();
+    //@ts-ignore
+    setChordProgression((currentProgression) => [
+      ...currentProgression,
+      { id: newId, romanNumeral: "Imaj", key: scaleKey, type: "maj" },
+    ]);
+    setEditedChordId(newId)
   }
 
   const setChordType = (newType: string) => {
@@ -90,7 +96,7 @@ const useProgression = () => {
     setChordProgression((currentProgression) =>
       currentProgression.map((chord) => {
         const currentChordName = Progression.fromRomanNumerals(scaleKey, [
-          chord.romanNumeral
+          chord.romanNumeral,
         ])[0];
         const newKey = Chord.get(currentChordName[0]).tonic;
         return { ...chord, key: newKey };
@@ -111,6 +117,7 @@ const useProgression = () => {
   }, [chordProgression, editedChordId]);
 
   return {
+    initNewChord,
     scaleKey,
     setScaleKey,
     scaleType,

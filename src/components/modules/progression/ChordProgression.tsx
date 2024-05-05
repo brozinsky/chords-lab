@@ -14,8 +14,9 @@ type TProps = {
   scaleKey: string;
   scaleType: string;
   editedChordId: number | null;
-  setEditedChordId: (index: number | null) => void
-  removeChord: (index: number) => void
+  setEditedChordId: (index: number | null) => void;
+  removeChord: (index: number) => void;
+  initNewChord: () => void;
 };
 
 const ChordProgression = ({
@@ -25,6 +26,7 @@ const ChordProgression = ({
   editedChordId,
   setEditedChordId,
   removeChord,
+  initNewChord
 }: TProps) => {
 
   return (
@@ -64,7 +66,7 @@ const ChordProgression = ({
         <ButtonProgression
           variant="new"
           editedChordId={editedChordId}
-          onClick={() => setEditedChordId(-1)}
+          onClick={() => initNewChord()}
         />
       </div>
       <div></div>

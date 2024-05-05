@@ -1,7 +1,6 @@
 import MenuTop from "@/components/modules/navigation/MenuTop";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileNotSupported from "@/components/layout/MobileNotSupported";
-import { useEffect, useState } from "react";
 import ChordProgression from "@/components/modules/progression/ChordProgression";
 import ProgressionPanel from "@/components/modules/progression/ProgressionPanel";
 import useProgression from "@/hooks/progression/useProgression";
@@ -12,6 +11,7 @@ const Progression = () => {
   const matches = useMediaQuery("(max-width: 768px)");
 
   const {
+    initNewChord,
     scaleKey,
     setScaleKey,
     scaleType,
@@ -25,16 +25,6 @@ const Progression = () => {
     chordProgression,
     removeChord,
   } = useProgression();
-
-  const [progression, setProgression] = useState(["I", "IV", "v", "iv"]);
-
-  const [chord, setChord] = useState("Imaj");
-
-  // const [chordProgression, setChordProgression] = useState([
-  //   { id: 1, romanNumeral: "Imaj", key: "C", type: "maj" },
-  //   { id: 2, romanNumeral: "Vsus", key: "G", type: "sus" },
-  //   { id: 3, romanNumeral: "IV", key: "F", type: "maj" },
-  // ]);
 
   if (matches) {
     return <MobileNotSupported />;
@@ -59,6 +49,7 @@ const Progression = () => {
           </div> */}
           <div className="max-w-[828px] mb-16 w-full">
             <ChordProgression
+              initNewChord={initNewChord}
               editedChordId={editedChordId}
               setEditedChordId={setEditedChordId}
               progression={chordProgression}
@@ -75,7 +66,7 @@ const Progression = () => {
           </div>
           {/* <div>chordKey={chordProgression[editedChordIndex].key}</div> */}
 
-          {editedChordId !== null && (
+          {editedChordId !== null && editedChordId !== -1 && (
             <div className="max-w-[828px] w-full bg-neutral-800 rounded-lg border border-neutral-500 px-8 py-6">
               <h2 className="text-2xl mb-3">Add chord</h2>
               {/* <div>
@@ -83,22 +74,22 @@ const Progression = () => {
               <div>type: {chordProgression[editedChordIndex].type}</div>
             </div> */}
 
-              {chordProgression && editedChordId && (
+              {chordProgression && (
                 <CustomChord
                   chordKey={
                     editedChordId !== null && chordProgression.length > 0
                       ? chordProgression.find(
-                          (chord) => chord.id === editedChordId
+                          (chord: any) => chord.id === editedChordId
                         )?.key
-                      : undefined
+                      : ""
                   }
                   setChordKey={setChordKey}
                   chordType={
                     editedChordId !== null && chordProgression.length > 0
                       ? chordProgression.find(
-                          (chord) => chord.id === editedChordId
+                          (chord: any) => chord.id === editedChordId
                         )?.type
-                      : undefined
+                      : ""
                   }
                   setChordType={setChordType}
                 />
