@@ -12,8 +12,13 @@ const Progression = () => {
   const matches = useMediaQuery("(max-width: 768px)");
 
   const {
+    scaleKey,
+    setScaleKey,
+    scaleType,
+    setScaleType,
     setChordType,
     setChordKey,
+    setChordRomanNumeral,
     suggestedChords,
     editedChordId,
     setEditedChordId,
@@ -22,8 +27,6 @@ const Progression = () => {
   } = useProgression();
 
   const [progression, setProgression] = useState(["I", "IV", "v", "iv"]);
-  const [scaleKey, setScaleKey] = useState("C");
-  const [scaleType, setScaleType] = useState("major");
 
   const [chord, setChord] = useState("Imaj");
 
@@ -112,6 +115,7 @@ const Progression = () => {
                       scaleKey={scaleKey}
                       setChordKey={setChordKey}
                       setChordType={setChordType}
+                      setChordRomanNumeral={setChordRomanNumeral}
                     />
                   </>
                 )}

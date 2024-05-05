@@ -16,6 +16,7 @@ type TProps = {
   editedChordId: number | null;
   setChordKey: (key: string) => void;
   setChordType: (type: string) => void;
+  setChordRomanNumeral: (key: string, type: string) => void;
 };
 
 const SuggestedChords = ({
@@ -25,6 +26,7 @@ const SuggestedChords = ({
   scaleKey,
   setChordKey,
   setChordType,
+  setChordRomanNumeral,
 }: TProps) => {
   const maxValue = useMemo(() => {
     return Math.max(...Object.values(chords));
@@ -40,6 +42,7 @@ const SuggestedChords = ({
   const handleOnClick = (key: string, type: string) => {
     setChordKey(key);
     setChordType(type);
+    setChordRomanNumeral(key, type);
   };
 
   return (
