@@ -1,5 +1,6 @@
 .select-input {
-  @apply relative z-10;
+  @apply relative;
+  z-index: auto;
   &__button {
     @apply py-2 px-4 w-full text-left;
   }
@@ -10,7 +11,7 @@
     }
   }
   &__list {
-    @apply w-full absolute overflow-auto rounded-lg mt-2;
+    @apply w-full absolute overflow-auto rounded-lg mt-2 z-10;
     max-height: 18rem;
     min-width: 5rem;
     &--type {
