@@ -69,7 +69,9 @@ const Progression = () => {
 
           {editedChordId !== null && (
             <div className="max-w-[828px] w-full bg-neutral-800 rounded-lg border border-neutral-500 px-8 py-6">
-              <h2 className="text-2xl mb-3">Add chord</h2>
+              <h2 className="text-2xl mb-3 flex items-center gap-2">
+                Add chord
+              </h2>
               {/* <div>
               <div>key: {chordProgression[editedChordIndex].key}</div>
               <div>type: {chordProgression[editedChordIndex].type}</div>

@@ -4,6 +4,7 @@ import { simplifyChordType } from "@/utils/functions/music-theory/simplifyChordT
 import { Chord, Progression } from "tonal";
 import clsx from "clsx";
 import { TChordProgressionItem } from "@/utils/types";
+import MagicWandSVG from "@/components/elements/svg/icons/interface/MagicWandSVG";
 
 interface TChordsValue {
   [key: string]: number;
@@ -48,7 +49,7 @@ const SuggestedChords = ({
   return (
     <>
       <div>
-        <h3 className="mb-5">Suggested</h3>
+        <h3 className="mb-3 flex gap-1.5 items-center"><MagicWandSVG width={20} />Suggested</h3>
       </div>
       <div className="grid grid-cols-6 lg:grid-cols-8 gap-4 relative">
         {Object.entries(chords).map(([key, value]) => {
