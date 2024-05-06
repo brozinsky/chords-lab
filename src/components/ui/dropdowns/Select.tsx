@@ -73,7 +73,7 @@ export default function Select({
             "select-input__list"
           )}
         >
-          {options.map(({ id, name, value }) => (
+          {options.map(({ id, name, value }: any) => (
             <Listbox.Option
               key={id}
               className={({ active }: any) =>

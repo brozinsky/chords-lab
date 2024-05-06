@@ -3,6 +3,7 @@ import progressionRelationsJSON from "@/lib/progression-relations.json";
 import { Chord, Progression } from "tonal";
 import shortid from "shortid";
 import { TChordProgressionItem } from "@/utils/types";
+import { simplifyChordType } from "@/utils/functions/music-theory/simplifyChordType";
 
 const useProgression = () => {
   const [scaleKey, setScaleKey] = useState("C");
@@ -17,7 +18,9 @@ const useProgression = () => {
   //   { id: "4", romanNumeral: "IVmaj", key: "F", type: "maj" },
   // ]);
 
-  const [chordProgression, setChordProgression] = useState<TChordProgressionItem[]>([]);
+  const [chordProgression, setChordProgression] = useState<
+    TChordProgressionItem[]
+  >([]);
 
   function findPreviousChordById(targetId: string) {
     for (let i = 1; i < chordProgression.length; i++) {
@@ -36,8 +39,8 @@ const useProgression = () => {
       ...currentProgression,
       { id: newId, romanNumeral: "Imaj", key: scaleKey, type: "maj" },
     ]);
-    setEditedChordId(newId)
-  }
+    setEditedChordId(newId);
+  };
 
   const setChordType = (newType: string) => {
     const newRomanNumeral = Progression.toRomanNumerals(scaleKey, [
@@ -55,10 +58,15 @@ const useProgression = () => {
     );
   };
 
-  const setChordRomanNumeral = (newKey: string, newType: string) => {
+  const getRomanNumeralFromKeyType = (newKey: string, newType: string) => {
     const newRomanNumeral = Progression.toRomanNumerals(scaleKey, [
       `${newKey}${newType}`,
     ])[0];
+    return newRomanNumeral;
+  };
+
+  const setChordRomanNumeral = (newKey: string, newType: string) => {
+    const newRomanNumeral = getRomanNumeralFromKeyType(newKey, newType);
     //@ts-ignore
     setChordProgression((currentProgression) =>
       currentProgression.map((chord) =>
@@ -67,6 +75,27 @@ const useProgression = () => {
           : chord
       )
     );
+  };
+
+  const setProgressionByRomanNumerals = (myRomanProgression: string[]) => {
+    const newProgression = myRomanProgression.map((romanNumeral) => {
+      const currentChordName = Progression.fromRomanNumerals(scaleKey, [
+        romanNumeral,
+      ]);
+      const currentChordKey = Chord.get(currentChordName[0]).tonic;
+      const currentChordType = simplifyChordType(
+        Chord.get(currentChordName[0]).type
+      );
+
+      return {
+        id: shortid(),
+        romanNumeral: romanNumeral,
+        key: currentChordKey!,
+        type: currentChordType,
+      };
+    });
+
+    setChordProgression(newProgression);
   };
 
   const setChordKey = (newKey: string) => {
@@ -133,6 +162,7 @@ const useProgression = () => {
     setChordProgression,
     findPreviousChordById,
     setChordRomanNumeral,
+    setProgressionByRomanNumerals,
   };
 };
 

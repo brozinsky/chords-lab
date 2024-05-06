@@ -5,6 +5,7 @@ import { Chord, Progression } from "tonal";
 import clsx from "clsx";
 import { TChordProgressionItem } from "@/utils/types";
 import MagicWandSVG from "@/components/elements/svg/icons/interface/MagicWandSVG";
+import { standardizeChord } from "@/utils/functions/music-theory/standardizeChord";
 
 interface TChordsValue {
   [key: string]: number;
@@ -37,9 +38,6 @@ const SuggestedChords = ({
   //   return Object.values(chords).reduce((sum, value) => sum + value, 0);
   // }, [chords]);
 
-  useEffect(() => {
-    console.log(chords);
-  }, []);
   const handleOnClick = (key: string, type: string) => {
     setChordKey(key);
     setChordType(type);
@@ -49,28 +47,13 @@ const SuggestedChords = ({
   return (
     <>
       <div>
-        <h3 className="mb-3 flex gap-1.5 items-center"><MagicWandSVG width={20} />Suggested</h3>
+        <h3 className="mb-3 flex gap-1.5 items-center">
+          <MagicWandSVG width={20} />
+          Suggested
+        </h3>
       </div>
       <div className="grid grid-cols-6 lg:grid-cols-8 gap-4 relative">
         {Object.entries(chords).map(([key, value]) => {
-          function standardizeChord(chord: string) {
-            // Initialize an empty array to store the parts of the chord
-            let parts = [];
-
-            if (chord.endsWith("maj7")) {
-              parts.push(chord.slice(0, -4), "maj7");
-            } else if (chord.endsWith("maj")) {
-              parts.push(chord.slice(0, -3));
-            } else if (chord.endsWith("m")) {
-              parts.push(chord.slice(0, -1).toLowerCase());
-            } else if (chord.endsWith("sus")) {
-              parts.push(chord.slice(0, -3), "sus");
-            } else {
-              parts.push(chord);
-            }
-
-            return parts;
-          }
           const progressValue = Math.max(
             Math.floor((value / maxValue) * 100),
             10

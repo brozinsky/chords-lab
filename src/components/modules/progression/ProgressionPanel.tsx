@@ -9,6 +9,8 @@ import {
 import Select from "@/components/ui/dropdowns/Select";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import { TChordProgressionItem } from "@/utils/types";
+import { useEffect, useState } from "react";
+import shortid from "shortid";
 
 const options = [
   {
@@ -114,6 +116,7 @@ type TProps = {
   setScaleType: any;
   scaleType: any;
   chordProgression: TChordProgressionItem[];
+  setProgressionByRomanNumerals: (romanProgression: string[]) => void;
 };
 
 const ProgressionPanel = ({
@@ -121,7 +124,8 @@ const ProgressionPanel = ({
   setScaleKey,
   setScaleType,
   scaleType,
-  chordProgression
+  chordProgression,
+  setProgressionByRomanNumerals
 }: TProps) => {
   const { playPianoProgression } = usePlayPiano();
   // const [chordProgression, setChordProgression] = useState([
@@ -130,6 +134,42 @@ const ProgressionPanel = ({
   //   { id: 3, romanNumeral: "Vmaj7", key: "G", type: "maj7" },
   //   { id: 4, romanNumeral: "IVmaj", key: "F", type: "maj" },
   // ]);
+
+  const romanProgressionOptions = [
+    {
+      id: shortid(),
+      value: ["Imaj", "Vmaj", "VIm", "IVmaj"],
+      name: "I - V - vi - IV",
+    },
+    {
+      id: shortid(),
+      value: ["VIm", "IVmaj", "Imaj", "Vmaj"],
+      name: "vi - IV - I - V",
+    },
+    {
+      id: shortid(),
+      value: ["Imaj", "Vmaj", "IVmaj", "Vmaj"],
+      name: "I - V - IV - V",
+    },
+    {
+      id: shortid(),
+      value: ["Imaj", "IVmaj", "Vmaj"],
+      name: "I - IV - V",
+    },
+    {
+      id: shortid(),
+      value: ["Imaj", "IVmaj", "Vmaj", "Imaj"],
+      name: ["I - IV - V - I"],
+    },
+  ];
+
+  const [romanProgression, setRomanProgression] = useState(null);
+
+  useEffect(() => {
+    if (romanProgression) {
+      setProgressionByRomanNumerals(romanProgression);
+    }
+  }, [romanProgression]);
 
   return (
     <div className="pt-3 flex justify-between items-center">
@@ -155,6 +195,20 @@ const ProgressionPanel = ({
             setState={setScaleType}
           />
           <span>Scale</span>
+        </div>
+      </div>
+      <div className="flex flex-row gap-6">
+        <div className="flex flex-col gap-2 items-center">
+          <Select
+            size={"sm"}
+            variant={"outlined"}
+            contentType={"tonic"}
+            options={romanProgressionOptions}
+            displayValue={!romanProgression ? "Select" : romanProgression}
+            state={romanProgression}
+            setState={setRomanProgression}
+          />
+          <span>Popular progressions</span>
         </div>
       </div>
       <div className="flex flex-row items-center gap-8">

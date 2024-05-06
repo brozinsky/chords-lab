@@ -11,19 +11,20 @@ const Progression = () => {
   const matches = useMediaQuery("(max-width: 768px)");
 
   const {
+    chordProgression,
+    editedChordId,
     initNewChord,
+    removeChord,
     scaleKey,
-    setScaleKey,
     scaleType,
-    setScaleType,
-    setChordType,
     setChordKey,
     setChordRomanNumeral,
-    suggestedChords,
-    editedChordId,
+    setChordType,
     setEditedChordId,
-    chordProgression,
-    removeChord,
+    setProgressionByRomanNumerals,
+    setScaleKey,
+    setScaleType,
+    suggestedChords,
   } = useProgression();
 
   if (matches) {
@@ -34,19 +35,6 @@ const Progression = () => {
       <MenuTop />
       <main>
         <div className="container flex flex-col items-center justify-center py-12">
-          {/* <div className="max-w-[300px] mb-16">
-            <Select
-              variant={"ghost"}
-              contentType={"tonic"}
-              options={options}
-              state={chord}
-              setState={setChord}
-            />
-          </div> */}
-          {/* <div>
-            {editedChordIndex &&
-              chordProgression[editedChordIndex - 1].romanNumeral}
-          </div> */}
           <div className="max-w-[828px] mb-16 w-full">
             <ChordProgression
               initNewChord={initNewChord}
@@ -63,19 +51,15 @@ const Progression = () => {
               setScaleKey={setScaleKey}
               setScaleType={setScaleType}
               scaleType={scaleType}
+              setProgressionByRomanNumerals={setProgressionByRomanNumerals}
             />
           </div>
-          {/* <div>chordKey={chordProgression[editedChordIndex].key}</div> */}
 
           {editedChordId !== null && (
             <div className="max-w-[828px] w-full bg-neutral-800 rounded-lg border border-neutral-500 px-8 py-6">
               <h2 className="text-2xl mb-3 flex items-center gap-2">
                 Add chord
               </h2>
-              {/* <div>
-              <div>key: {chordProgression[editedChordIndex].key}</div>
-              <div>type: {chordProgression[editedChordIndex].type}</div>
-            </div> */}
 
               {chordProgression && (
                 <CustomChord
