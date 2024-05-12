@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { TChordProgressionItem } from "@/utils/types";
 import MagicWandSVG from "@/components/elements/svg/icons/interface/MagicWandSVG";
 import { standardizeChord } from "@/utils/functions/music-theory/standardizeChord";
+import { cn } from "@/lib/utils";
 
 interface TChordsValue {
   [key: string]: number;
@@ -102,11 +103,17 @@ const SuggestedChords = ({
               )}
             >
               <div>
-                <div className="flex flex-row gap-0.5 items-end absolute left-1.5 top-1.5">
+                <div
+                  className={cn(
+                    "flex flex-row gap-0.5 items-end absolute left-1.5 top-1.5"
+                  )}
+                >
                   {standardizeChord(key).map((item, index) => {
                     return (
                       <div
-                        className={clsx(index > 0 ? "text-xs" : "text-sm")}
+                        className={cn(
+                          index > 0 ? "text-xs" : "text-sm"
+                        )}
                         key={item}
                       >
                         {item}

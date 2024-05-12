@@ -60,9 +60,9 @@ const ChordProgression = ({
                   onClick={() => setEditedChordId(chord.id)}
                   handleDelete={() => removeChord(chord.id)}
                 />
-                <div className="flex flex-col py-4 gap-2 items-center justify-center rounded-lg">
+                {/* <div className="flex flex-col py-4 gap-2 items-center justify-center rounded-lg">
                   <ArrowSmSVG pathClass={"stroke-neutral-300"} />
-                </div>
+                </div> */}
               </div>
             );
           })}

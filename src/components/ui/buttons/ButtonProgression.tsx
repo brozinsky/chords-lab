@@ -1,4 +1,7 @@
 import TrashIconSVG from "@/components/elements/svg/icons/interface/TrashIconSVG";
+import { cn } from "@/lib/utils";
+import { romanNumeralClasses } from "@/utils/classes/romanNumeralClasses";
+import { standardizeChord } from "@/utils/functions/music-theory/standardizeChord";
 import clsx from "clsx";
 import { MouseEvent } from "react";
 import { Chord } from "tonal";
@@ -26,7 +29,6 @@ const ButtonProgression = ({
   isPlaying,
   handleDelete,
 }: TProps) => {
-
   const handleDeleteClick = (e: MouseEvent) => {
     e.stopPropagation;
     handleDelete && id && handleDelete(id);
@@ -52,13 +54,32 @@ const ButtonProgression = ({
         <button
           onClick={onClick}
           className={clsx(
-            isPlaying && "bg-white/10",
+            isPlaying && "bg-white/20",
             editedChordId === id && "!border-emerald-500",
-            "relative transition min-w-[130px] min-h-[116px] duration-200 items-center justify-center flex flex-col px-4 py-3 gap-1 rounded-xl border-2 border-neutral-400 cursor-pointer hover:border-neutral-300"
+            "group relative transition relative min-w-[130px] min-h-[116px] duration-200 items-center justify-center flex flex-col px-4 py-3 gap-1 rounded-xl border-2 border-neutral-400 cursor-pointer hover:border-neutral-300"
           )}
         >
-          {romanNumeral && <div className="text-xl">{romanNumeral}</div>}
-          <div className="text-base">
+          {romanNumeral && (
+            <div
+              className={cn(
+                romanNumeralClasses["default"].class,
+                romanNumeral.includes("sus") &&
+                  romanNumeralClasses["sus"].class,
+                romanNumeral.includes("min") &&
+                  romanNumeralClasses["min"].class,
+                romanNumeral.includes("maj") &&
+                  romanNumeralClasses["maj"].class,
+                romanNumeral.includes("dim") &&
+                  romanNumeralClasses["dim"].class,
+                romanNumeral.includes("aug") &&
+                  romanNumeralClasses["aug"].class,
+                "group-hover:opacity-100 transition duration-200 text-xs absolute top-1 left-1 border border-transparent opacity-70 rounded-lg px-2.5 py-0.5"
+              )}
+            >
+              {standardizeChord(romanNumeral)}
+            </div>
+          )}
+          <div className="text-2xl mt-3">
             {chordKey} {chordType}
           </div>
           <div className="text-xs flex flex-row gap-2">
