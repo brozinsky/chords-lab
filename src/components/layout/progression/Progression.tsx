@@ -50,6 +50,7 @@ const Progression = () => {
               scaleKey={scaleKey}
               setScaleKey={setScaleKey}
               setScaleType={setScaleType}
+              setEditedChordId={setEditedChordId}
               scaleType={scaleType}
               setProgressionByRomanNumerals={setProgressionByRomanNumerals}
             />

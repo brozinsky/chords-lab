@@ -2,111 +2,27 @@ import Dropdown from "@/components/ui/dropdowns/Dropdown";
 import Button from "@/components/ui/buttons/Button";
 import { motion } from "framer-motion";
 import DropdownBPM from "@/components/ui/dropdowns/DropdownBPM";
-import {
-  chordQualityOptions,
-  notesOptions,
-} from "@/utils/functions/music-theory/selectOptions";
+import { notesOptions } from "@/utils/functions/music-theory/selectOptions";
 import Select from "@/components/ui/dropdowns/Select";
 import usePlayPiano from "@/hooks/usePlayPiano";
 import { TChordProgressionItem } from "@/utils/types";
-import { useEffect, useState } from "react";
-import shortid from "shortid";
+import { useEffect, useMemo, useState } from "react";
+import {
+  majorChordProgressions,
+  minorChordProgressions,
+} from "@/lib/chord-progressions";
+import SelectProgression from "@/components/ui/dropdowns/SelectProgression";
 
 const options = [
   {
     id: 1,
-    value: "6min",
-    name: "6min",
+    name: "major",
+    value: "major",
   },
   {
     id: 2,
-    value: "1maj",
-    name: "1maj",
-  },
-  {
-    id: 3,
-    value: "4maj",
-    name: "4maj",
-  },
-  {
-    id: 4,
-    value: "1maj7",
-    name: "1maj7",
-  },
-  {
-    id: 5,
-    value: "5maj7",
-    name: "5maj7",
-  },
-  {
-    id: 6,
-    value: "b7maj",
-    name: "b7maj",
-  },
-  {
-    id: 7,
-    value: "5maj",
-    name: "5maj",
-  },
-  {
-    id: 8,
-    value: "4sus",
-    name: "4sus",
-  },
-  {
-    id: 9,
-    value: "3min",
-    name: "3min",
-  },
-  {
-    id: 10,
-    value: "2min",
-    name: "2min",
-  },
-  {
-    id: 11,
-    value: "5min",
-    name: "5min",
-  },
-  {
-    id: 12,
-    value: "1min",
-    name: "1min",
-  },
-  {
-    id: 13,
-    value: "1sus",
-    name: "1sus",
-  },
-  {
-    id: 14,
-    value: "5sus",
-    name: "5sus",
-  },
-  {
-    id: 15,
-    value: "4min",
-    name: "4min",
-  },
-  {
-    id: 16,
-    value: "2maj",
-    name: "2maj",
-  },
-  {
-    id: 17,
-    value: "b6maj",
-    name: "b6maj",
-  },
-  {
-    id: 18,
-    value: "b3maj",
-    name: "b3maj",
-  },
-  {
-    id: 19,
-    value: "2maj7",
-    name: "2maj7",
+    name: "minor",
+    value: "minor",
   },
 ];
 
@@ -114,10 +30,19 @@ type TProps = {
   scaleKey: any;
   setScaleKey: any;
   setScaleType: any;
-  scaleType: any;
+  scaleType: "minor" | "major";
   chordProgression: TChordProgressionItem[];
+  setEditedChordId: (romanProgression: string | null) => void;
   setProgressionByRomanNumerals: (romanProgression: string[]) => void;
 };
+
+function arraysEqual(a: string[], b: string[]) {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
 
 const ProgressionPanel = ({
   scaleKey,
@@ -125,49 +50,26 @@ const ProgressionPanel = ({
   setScaleType,
   scaleType,
   chordProgression,
-  setProgressionByRomanNumerals
+  setEditedChordId,
+  setProgressionByRomanNumerals,
 }: TProps) => {
   const { playPianoProgression } = usePlayPiano();
-  // const [chordProgression, setChordProgression] = useState([
-  //   { id: 1, romanNumeral: "Imaj", key: "C", type: "maj" },
-  //   { id: 2, romanNumeral: "Vsus", key: "G", type: "sus" },
-  //   { id: 3, romanNumeral: "Vmaj7", key: "G", type: "maj7" },
-  //   { id: 4, romanNumeral: "IVmaj", key: "F", type: "maj" },
-  // ]);
-
-  const romanProgressionOptions = [
-    {
-      id: shortid(),
-      value: ["Imaj", "Vmaj", "VIm", "IVmaj"],
-      name: "I - V - vi - IV",
-    },
-    {
-      id: shortid(),
-      value: ["VIm", "IVmaj", "Imaj", "Vmaj"],
-      name: "vi - IV - I - V",
-    },
-    {
-      id: shortid(),
-      value: ["Imaj", "Vmaj", "IVmaj", "Vmaj"],
-      name: "I - V - IV - V",
-    },
-    {
-      id: shortid(),
-      value: ["Imaj", "IVmaj", "Vmaj"],
-      name: "I - IV - V",
-    },
-    {
-      id: shortid(),
-      value: ["Imaj", "IVmaj", "Vmaj", "Imaj"],
-      name: ["I - IV - V - I"],
-    },
-  ];
-
   const [romanProgression, setRomanProgression] = useState(null);
+
+  const currentOptions = useMemo(
+    () =>
+      scaleType === "major"
+        ? majorChordProgressions
+        : scaleType === "minor"
+        ? minorChordProgressions
+        : majorChordProgressions,
+    [scaleType]
+  );
 
   useEffect(() => {
     if (romanProgression) {
       setProgressionByRomanNumerals(romanProgression);
+      setEditedChordId(null);
     }
   }, [romanProgression]);
 
@@ -190,7 +92,7 @@ const ProgressionPanel = ({
             size={"sm"}
             variant={"outlined"}
             contentType={"tonic"}
-            options={chordQualityOptions}
+            options={options}
             state={scaleType}
             setState={setScaleType}
           />
@@ -199,12 +101,18 @@ const ProgressionPanel = ({
       </div>
       <div className="flex flex-row gap-6">
         <div className="flex flex-col gap-2 items-center">
-          <Select
+          <SelectProgression
             size={"sm"}
             variant={"outlined"}
             contentType={"tonic"}
-            options={romanProgressionOptions}
-            displayValue={!romanProgression ? "Select" : romanProgression}
+            options={currentOptions}
+            displayValue={
+              romanProgression
+                ? [...majorChordProgressions, ...minorChordProgressions].find((item) =>
+                    arraysEqual(item.value, romanProgression)
+                  )?.name
+                : "Select"
+            }
             state={romanProgression}
             setState={setRomanProgression}
           />

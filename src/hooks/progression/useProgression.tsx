@@ -7,16 +7,10 @@ import { simplifyChordType } from "@/utils/functions/music-theory/simplifyChordT
 
 const useProgression = () => {
   const [scaleKey, setScaleKey] = useState("C");
-  const [scaleType, setScaleType] = useState("major");
+  const [scaleType, setScaleType] = useState<"minor" | "major">("major");
   const [editedChordId, setEditedChordId] = useState<string | null>(null);
   const oneMajData = progressionRelationsJSON["Imaj"];
   const [suggestedChords, setSuggestedChords] = useState(oneMajData);
-  // const [chordProgression, setChordProgression] = useState([
-  //   { id: "1", romanNumeral: "Imaj", key: "C", type: "maj" },
-  //   { id: "2", romanNumeral: "Vsus", key: "G", type: "sus" },
-  //   { id: "3", romanNumeral: "Vmaj7", key: "G", type: "maj7" },
-  //   { id: "4", romanNumeral: "IVmaj", key: "F", type: "maj" },
-  // ]);
 
   const [chordProgression, setChordProgression] = useState<
     TChordProgressionItem[]
@@ -24,12 +18,11 @@ const useProgression = () => {
 
   function findPreviousChordById(targetId: string) {
     for (let i = 1; i < chordProgression.length; i++) {
-      // Start from 1 because there is no previous item
       if (chordProgression[i].id === targetId) {
         return chordProgression[i - 1];
       }
     }
-    return null; // Return null if no previous item
+    return null;
   }
 
   const initNewChord = () => {
