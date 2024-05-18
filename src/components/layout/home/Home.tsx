@@ -42,7 +42,6 @@ const Home = () => {
         />
 
         <BentoModule
-          isDisabled
           width={"col-span-3 lg:col-span-6 xl:col-span-3"}
           order={"order-5"}
           variant="progression"
