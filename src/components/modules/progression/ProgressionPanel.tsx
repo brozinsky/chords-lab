@@ -12,6 +12,7 @@ import {
   minorChordProgressions,
 } from "@/lib/chord-progressions";
 import SelectProgression from "@/components/ui/dropdowns/SelectProgression";
+import useBPMStore from "@/stores/settings/useBPMStore";
 
 const options = [
   {
@@ -55,6 +56,7 @@ const ProgressionPanel = ({
 }: TProps) => {
   const { playPianoProgression } = usePlayPiano();
   const [romanProgression, setRomanProgression] = useState(null);
+  const {bpm} = useBPMStore();
 
   const currentOptions = useMemo(
     () =>
@@ -127,7 +129,7 @@ const ProgressionPanel = ({
               whileTap={{ scale: 0.92 }}
               className="select-none cursor-pointer p-2 rounded-lg active:bg-neutral-600 flex flex-col items-center"
             >
-              <div className="text-lg">128</div>
+              <div className="text-lg">{bpm}</div>
               <div className="text-xs">BPM</div>
             </motion.div>
           }
